@@ -1,6 +1,6 @@
 package io.justina.server.entity;
 
-import io.justina.server.Role;
+import io.justina.server.enumeration.Role;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

@@ -1,4 +1,4 @@
-package io.justina.server;
+package io.justina.server.enumeration;
 
 public enum Role {
 

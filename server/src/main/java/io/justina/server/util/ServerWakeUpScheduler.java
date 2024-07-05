@@ -1,4 +1,4 @@
-package io.justina.server.wakeUpRender;
+package io.justina.server.util;
 
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -9,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
 @EnableScheduling
 public class ServerWakeUpScheduler {
 
-    private final String serverUrl = "https:"; // Tu URL del servidor Render
+    private final String serverUrl = "http://localhost:8080"; // Tu URL del servidor Render
 
     private final RestTemplate restTemplate = new RestTemplate();
 
