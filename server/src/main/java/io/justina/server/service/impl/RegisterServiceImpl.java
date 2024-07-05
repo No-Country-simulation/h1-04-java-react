@@ -1,5 +1,8 @@
 package io.justina.server.service.impl;
 
+import io.justina.server.entity.Address;
+import io.justina.server.entity.Document;
+import io.justina.server.enumeration.DocumentType;
 import io.justina.server.enumeration.Institution;
 import io.justina.server.enumeration.Role;
 import lombok.RequiredArgsConstructor;
@@ -54,6 +57,20 @@ public class RegisterServiceImpl implements RegisterService {
             return null;
         }
 
+        Document document = Document.builder()
+                .documentType(DocumentType.valueOf(requestDTO.getDocumentType()))
+                .documentNumber(requestDTO.getDocumentNumber())
+                .build();
+
+        Address address = Address.builder()
+                .street(requestDTO.getStreet())
+                .number(requestDTO.getNumber())
+                .district(requestDTO.getDistrict())
+                .city(requestDTO.getCity())
+                .province(requestDTO.getProvince())
+                .postalCode(requestDTO.getPostalCode())
+                .build();
+
         User user = User.builder()
                 .email(requestDTO.getEmail())
                 .password(passwordEncoder.encode(requestDTO.getPassword()))
@@ -63,6 +80,8 @@ public class RegisterServiceImpl implements RegisterService {
                 .phone(requestDTO.getPhone())
                 .institutionName(Institution.NO_COUNTRY) // por defecto todos los user pertenecen a No Country.
                 .role(Role.PATIENT) // por defecto todos los user son PATIENT.
+                .document(document)
+                .address(address)
                 .build();
 
         userRepository.save(user);

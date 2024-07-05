@@ -40,4 +40,28 @@ public class RegisterRequestDTO {
 
     private String phone;
 
+    @NotBlank(message = "Document type is required.")
+    private String documentType;
+
+    @NotBlank(message = "Document number is required.")
+    private String documentNumber;
+
+    @NotBlank(message = "Street is required.")
+    private String street;
+
+    @NotBlank(message = "Number is required.")
+    private String number;
+
+    @NotBlank(message = "District is required.")
+    private String district;
+
+    @NotBlank(message = "City is required.")
+    private String city;
+
+    @NotBlank(message = "Province is required.")
+    private String province;
+
+    @NotBlank(message = "Postal code is required.")
+    private String postalCode;
+
 }
