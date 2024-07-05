@@ -1,5 +1,6 @@
 package io.justina.server.entity;
 
+import io.justina.server.enumeration.Institution;
 import io.justina.server.enumeration.Role;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -31,7 +32,7 @@ public class User implements UserDetails {
     private String password;
     private LocalDate birthDate;
     private String phone;
-    private String institutionName;
+    private Institution institutionName;
     private Role role;
 
     @Override

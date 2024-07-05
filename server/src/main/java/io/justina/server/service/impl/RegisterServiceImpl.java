@@ -1,5 +1,7 @@
 package io.justina.server.service.impl;
 
+import io.justina.server.enumeration.Institution;
+import io.justina.server.enumeration.Role;
 import lombok.RequiredArgsConstructor;
 import io.justina.server.config.jwt.JwtService;
 import io.justina.server.dto.request.RegisterRequestDTO;
@@ -57,6 +59,10 @@ public class RegisterServiceImpl implements RegisterService {
                 .password(passwordEncoder.encode(requestDTO.getPassword()))
                 .firsName(requestDTO.getFirstName())
                 .lastName(requestDTO.getLastName())
+                .birthDate(requestDTO.getBirthDate())
+                .phone(requestDTO.getPhone())
+                .institutionName(Institution.NO_COUNTRY) // por defecto todos los user pertenecen a No Country.
+                .role(Role.PATIENT) // por defecto todos los user son PATIENT.
                 .build();
 
         userRepository.save(user);
