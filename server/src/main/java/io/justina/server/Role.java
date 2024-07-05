@@ -1,4 +1,9 @@
 package io.justina.server;
 
-public class Role {
+public enum Role {
+
+    DOCTOR,
+    PATIENT,
+    ADMIN
+
 }

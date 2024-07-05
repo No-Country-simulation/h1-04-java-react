@@ -1,11 +1,13 @@
 package io.justina.server.service.impl;
 
+import lombok.RequiredArgsConstructor;
 import io.justina.server.config.jwt.JwtService;
+import io.justina.server.dto.request.RegisterRequestDTO;
+import io.justina.server.dto.response.RegisterResponseDTO;
 import io.justina.server.entity.User;
+import io.justina.server.exception.ExceptionMethods;
 import io.justina.server.repository.UserRepository;
 import io.justina.server.service.RegisterService;
-import lombok.RequiredArgsConstructor;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -40,15 +42,21 @@ public class RegisterServiceImpl implements RegisterService {
             return null;
         }
 
-        if (requestDTO.getFullName() == null || ExceptionMethods.onlySpaces(requestDTO.getFullName())) {
-            System.out.println("Name can't be null or empty.");
+        if (requestDTO.getFirstName() == null || ExceptionMethods.onlySpaces(requestDTO.getFirstName())) {
+            System.out.println("FirstName can't be null or empty.");
             return null;
         }
 
-        var user = User.builder()
+        if (requestDTO.getLastName() == null || ExceptionMethods.onlySpaces(requestDTO.getLastName())) {
+            System.out.println("LastName can't be null or empty.");
+            return null;
+        }
+
+        User user = User.builder()
                 .email(requestDTO.getEmail())
                 .password(passwordEncoder.encode(requestDTO.getPassword()))
-                .fullName(requestDTO.getFullName())
+                .firsName(requestDTO.getFirstName())
+                .lastName(requestDTO.getLastName())
                 .build();
 
         userRepository.save(user);
@@ -57,13 +65,16 @@ public class RegisterServiceImpl implements RegisterService {
 
         Long id = user.getId();
         String email = user.getEmail();
-        String fullName = user.getFullName();
+        String firstName = user.getFirsName();
+        String lastName = user.getLastName();
 
         return RegisterResponseDTO.builder()
                 .id(id)
-                .fullName(fullName)
+                .firstName(firstName)
+                .lastName(lastName)
                 .token(jwtToken)
                 .email(email)
                 .build();
     }
+
 }

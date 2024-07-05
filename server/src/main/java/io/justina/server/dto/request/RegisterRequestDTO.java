@@ -26,7 +26,12 @@ public class RegisterRequestDTO {
     )
     private String password;
 
-    @NotBlank(message = "Full name is required.")
-    @Pattern(regexp = "^[a-zA-Z\\s]+$", message = "Full name should only contain letters and spaces")
-    private String fullName;
+    @NotBlank(message = "First name is required.")
+    @Pattern(regexp = "^[a-zA-Z\\s]+$", message = "First name should only contain letters and spaces")
+    private String firstName;
+
+    @NotBlank(message = "Last name is required.")
+    @Pattern(regexp = "^[a-zA-Z\\s]+$", message = "Last name should only contain letters and spaces")
+    private String lastName;
+
 }

@@ -25,4 +25,5 @@ public class LoginRequestDTO {
             message = "Password must contain at least one uppercase letter, one number, and one special character."
     )
     private String password;
+
 }

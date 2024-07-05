@@ -1,9 +1,6 @@
 package io.justina.server.dto.response;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @Getter
 @Setter
@@ -11,8 +8,10 @@ import lombok.ToString;
 @Builder
 public class RegisterResponseDTO {
 
+    private Long id;
     private String token;
     private String email;
-    private long id;
-    private String fullName;
+    private String firstName;
+    private String lastName;
+
 }

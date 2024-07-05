@@ -8,8 +8,10 @@ import lombok.*;
 @Builder
 public class LoginResponseDTO {
 
+    private Long id;
     private String token;
     private String email;
-    private Long id_user;
-    private String fullName;
+    private String firstName;
+    private String lastName;
+
 }

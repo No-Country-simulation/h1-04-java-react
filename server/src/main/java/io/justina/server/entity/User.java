@@ -8,7 +8,6 @@ import jakarta.persistence.Id;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
@@ -26,17 +25,14 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String email;
-    private String password;
     private String firsName;
     private String lastName;
+    private String email;
+    private String password;
     private LocalDate birthDate;
     private String phone;
     private String institutionName;
     private Role role;
-    private Long documentId;
-
-
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -67,4 +63,5 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return UserDetails.super.isEnabled();
     }
+
 }
