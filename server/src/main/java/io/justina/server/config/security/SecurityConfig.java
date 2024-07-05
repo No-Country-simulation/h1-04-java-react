@@ -1,7 +1,7 @@
-package io.justina.server.security;
+package io.justina.server.config.security;
 
 
-import io.justina.server.jwt.JwtFilter;
+import io.justina.server.config.jwt.JwtFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

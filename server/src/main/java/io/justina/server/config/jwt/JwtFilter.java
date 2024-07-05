@@ -1,4 +1,4 @@
-package io.justina.server.jwt;
+package io.justina.server.config.jwt;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

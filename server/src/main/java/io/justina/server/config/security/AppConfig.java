@@ -1,4 +1,4 @@
-package io.justina.server.security;
+package io.justina.server.config.security;
 
 import io.justina.server.exception.ObjectNotFoundException;
 import io.justina.server.repository.UserRepository;

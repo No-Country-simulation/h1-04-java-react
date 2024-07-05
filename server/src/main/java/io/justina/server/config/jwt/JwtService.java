@@ -1,4 +1,4 @@
-package io.justina.server.jwt;
+package io.justina.server.config.jwt;
 
 
 import io.jsonwebtoken.Claims;
