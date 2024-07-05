@@ -6,6 +6,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import io.justina.server.entity.User;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -22,14 +23,14 @@ public class JwtService {
     @Value("ddb18c3dbef4e93db411edd7cae1984dec70dbda429080382f2a9324f8974851")
     private String secretKey;
 
-    public String generateToken(UserEntity userEntity) {
-        return generateToken(new HashMap<>(), userEntity);
+    public String generateToken(User user) {
+        return generateToken(new HashMap<>(), user);
     }
 
-    public String generateToken(Map<String, Object> extraClaims, UserEntity userEntity) {
+    public String generateToken(Map<String, Object> extraClaims, User user) {
         return Jwts.builder()
                 .setClaims(extraClaims)
-                .setSubject(userEntity.getUsername())
+                .setSubject(user.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis()+1000*60*60*24*10))
                 .signWith(getSigningKey(), SignatureAlgorithm.HS256)
@@ -65,7 +66,6 @@ public class JwtService {
                 .parseClaimsJws(token)
                 .getBody();
     }
-
 
     public boolean validateToken(String token, UserDetails userDetails) {
         final String username = getUserName(token);
