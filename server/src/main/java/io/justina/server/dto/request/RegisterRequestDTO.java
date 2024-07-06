@@ -5,13 +5,14 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.*;
-
 import java.time.LocalDate;
 
 @Getter
 @Setter
 @ToString
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class RegisterRequestDTO {
 
     @NotBlank(message = "Email is required.")
@@ -21,11 +22,8 @@ public class RegisterRequestDTO {
     private String email;
 
     @NotBlank(message = "Password is required.")
-    @Size(min = 8, message = "Password must be at least 8 characters.")
-    @Pattern(
-            regexp = "^(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]+$",
-            message = "Password must contain at least one uppercase letter, one number, and one special character."
-    )
+    @Size(min = 8, max = 25, message = "Password must be at least 8 characters.")
+    @Pattern(regexp = "^(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]+$", message = "Password must contain at least one uppercase letter, one number, and one special character.")
     private String password;
 
     @NotBlank(message = "First name is required.")
@@ -38,30 +36,32 @@ public class RegisterRequestDTO {
 
     private LocalDate birthDate;
 
+    @Size(max = 15, message = "Phone must not exceed 15 characters ")
     private String phone;
 
     @NotBlank(message = "Document type is required.")
     private String documentType;
 
     @NotBlank(message = "Document number is required.")
+    @Size(max = 15, message = "Phone must not exceed 15 characters ")
     private String documentNumber;
 
-    @NotBlank(message = "Street is required.")
+    @Size(max = 15, message = "Street must not exceed 15 characters ")
     private String street;
 
-    @NotBlank(message = "Number is required.")
+    @Size(max = 100, message = "Number must not exceed 100 characters ")
     private String number;
 
-    @NotBlank(message = "District is required.")
+    @Size(max = 50, message = "District must not exceed 50 characters ")
     private String district;
 
-    @NotBlank(message = "City is required.")
+    @Size(max = 50, message = "City must not exceed 50 characters ")
     private String city;
 
-    @NotBlank(message = "Province is required.")
+    @Size(max = 50, message = "Province must not exceed 50 characters ")
     private String province;
 
-    @NotBlank(message = "Postal code is required.")
+    @Size(max = 20, message = "Phone must not exceed 20 characters ")
     private String postalCode;
 
 }

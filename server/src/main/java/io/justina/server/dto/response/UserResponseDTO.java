@@ -2,10 +2,10 @@ package io.justina.server.dto.response;
 
 import io.justina.server.entity.Address;
 import io.justina.server.entity.Document;
+import io.justina.server.entity.User;
 import io.justina.server.enumeration.Institution;
 import io.justina.server.enumeration.Role;
 import lombok.*;
-
 import java.time.LocalDate;
 
 @Getter
@@ -26,5 +26,18 @@ public class UserResponseDTO {
     private Role role;
     private Document document;
     private Address address;
+
+    public UserResponseDTO(User user) {
+        this.id = user.getId();
+        this.firstName = user.getFirsName();
+        this.lastName = user.getLastName();
+        this.email = user.getEmail();
+        this.birthDate = user.getBirthDate();
+        this.phone = user.getPhone();
+        this.institutionName = user.getInstitutionName();
+        this.role = user.getRole();
+        this.document = user.getDocument();
+        this.address = user.getAddress();
+    }
 
 }
