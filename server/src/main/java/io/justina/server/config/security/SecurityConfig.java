@@ -20,7 +20,6 @@ import org.springframework.security.web.util.matcher.RequestMatcher;
 
 @Configuration
 @EnableWebSecurity
-@RequiredArgsConstructor
 @EnableMethodSecurity
 public class SecurityConfig {
 
@@ -51,5 +50,4 @@ public class SecurityConfig {
                 new AntPathRequestMatcher("/v1/api/render/*")
         );
     }
-
 }
