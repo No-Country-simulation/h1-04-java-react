@@ -1,10 +1,8 @@
 package io.justina.server.entity;
 
+import io.justina.server.enumeration.Institution;
 import io.justina.server.enumeration.Role;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -31,8 +29,16 @@ public class User implements UserDetails {
     private String password;
     private LocalDate birthDate;
     private String phone;
-    private String institutionName;
+    private Institution institutionName;
     private Role role;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "document_id", referencedColumnName = "id")
+    private Document document;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    private Address address;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

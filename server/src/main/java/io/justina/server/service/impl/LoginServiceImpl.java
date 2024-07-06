@@ -4,13 +4,12 @@ import io.justina.server.config.jwt.JwtService;
 import io.justina.server.dto.request.LoginRequestDTO;
 import io.justina.server.dto.response.LoginResponseDTO;
 import io.justina.server.entity.User;
-import io.justina.server.exception.MyException;
 import io.justina.server.repository.UserRepository;
 import io.justina.server.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -26,31 +25,19 @@ public class LoginServiceImpl implements LoginService {
     private AuthenticationManager authenticationManager;
 
     @Override
-    public LoginResponseDTO login(LoginRequestDTO requestDTO) throws MyException {
+    public LoginResponseDTO login(LoginRequestDTO loginRequest) throws AuthenticationException {
         try {
-            authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(
-                            requestDTO.getEmail(),
-                            requestDTO.getPassword()
-                    )
-            );
-        } catch (BadCredentialsException e) {
-            System.out.println("Bad credentials for email: " + requestDTO.getEmail());
-            return null;
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
+            User userDetails = userRepository.findByEmail(loginRequest.getEmail()).orElseThrow();
+            String email = loginRequest.getEmail();
+            String token = jwtService.getToken(userDetails, email);
+            return LoginResponseDTO.builder()
+                    .token(token)
+                    .message("Welcome to Justina.io")
+                    .build();
+        } catch (AuthenticationException e) {
+            return new LoginResponseDTO(null, e.getMessage());
         }
-
-        User user = userRepository.findUserByEmail(requestDTO.getEmail())
-                .orElseThrow(() -> new MyException("User not found"));
-
-        var jwtToken = jwtService.generateToken(user);
-
-        return LoginResponseDTO.builder()
-                .email(user.getEmail())
-                .id(user.getId())
-                .token(jwtToken)
-                .firstName(user.getFirsName())
-                .lastName(user.getLastName())
-                .build();
     }
 
 }
