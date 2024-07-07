@@ -1,10 +1,10 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import NavBar from "../Components/Home/Home.jsx"
-import Footer from "../Components/Home/Home.jsx"
+import NavBar from "../Components/NavBar/NavBar.jsx"
+import Footer from "../Components/Footer/Footer.jsx"
 import Home from "../Components/Home/Home.jsx"
-import Login from "../Components/Home/Home.jsx"
-import Register from "../Components/Home/Home.jsx"
-import Error404 from "../Components/Home/Home.jsx"
+import Login from "../Components/Login/Login.jsx"
+import Register from "../Components/Register/Register.jsx"
+import Error404 from "../Components/Error404/Error404.jsx"
 
 const Router = () => {
     return (
