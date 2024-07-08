@@ -6,12 +6,11 @@ import lombok.*;
 @Getter
 @ToString
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class LoginResponseDTO {
 
-    private Long id;
-    private String token;
-    private String email;
-    private String firstName;
-    private String lastName;
+    String token;
+    String message;
 
 }
