@@ -1,10 +1,6 @@
 /** @type {import('tailwindcss').Config} */
-import { forms as formsPlugin } from '@tailwindcss/forms';// Importa el plugin de Tailwind para formularios
-import debugScreensPlugin from 'tailwindcss-debug-screens';// Importa el plugin de debug screens
-
 export default {
-  darkMode: 'class',
-  content: ['./public/index.html', './src/**/*.{jsx,tsx}'],
+  content: ['./public/index.html', './src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
       colors: {
@@ -28,13 +24,5 @@ export default {
       },
     },
   },
-  plugins: [
-    formsPlugin,
-    debugScreensPlugin({
-      style: {
-        backgroundColor: '#2eea36',
-        color: '#000',
-      },
-    }),
-  ],
+  plugins: [],
 };

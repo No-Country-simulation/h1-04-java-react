@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 
-const ButtonComponent = ({ type='button', theme='primary', to, href, target='_self', loading=false, disabled=false, children, ...props }) => {
+const ButtonComponent = ({ type='button', theme='primary', to, href, loading=false, disabled=false, children }) => {
     const classTheme = () => {
         if (disabled) {
             return 'bg-gray-200 text-gray-400';
@@ -30,36 +30,32 @@ const ButtonComponent = ({ type='button', theme='primary', to, href, target='_se
     const ElementTag = Element();
 
 
-    const elementAttrs = () => {
-        if (disabled || !(to || href)) {
-            return type;
-        }
+    const elementAttrs = {};
+    if (disabled || !(to || href)) {
+        elementAttrs.type = type;
+    } else {
         if (to) {
-            return to;
+            elementAttrs.to = to;
         }
-        // href existe
-        return {
-            href,
-            target,
-            rel: 'noopener noreferrer',
-        };
-    };
-    const attributes = elementAttrs();
+        if (href) {
+            elementAttrs.href = href;
+            elementAttrs.rel = 'noopener noreferrer';
+        }
+    }
 
 
     return (
         <ElementTag
-        {...props}
-        {...attributes}
+        {...elementAttrs}
         className={`px-4 py-2.5 inline-flex justify-center items-center gap-2 rounded border border-transparent text-sm font-semibold focus:ring-2 focus:outline-none focus:ring-offset-2 transition-all ${classTheme()}`}
         disabled={disabled || loading}
         >
-            {children}
-            {loading && !disabled && (
+            { children }
+            { loading && !disabled && (
                 <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center z-10">
-                <Icon icon="icomoon-free:spinner2" className="w-5 h-5 animate-spin" style={{ color: theme === 'primary' ? 'white' : 'gray' }} />
+                    <Icon icon="icomoon-free:spinner2" className="w-5 h-5 animate-spin" style={{ color: theme === 'primary' ? 'white' : 'gray' }} />
                 </div>
-            )}
+            ) }
         </ElementTag>
     );
 };
@@ -69,7 +65,6 @@ ButtonComponent.propTypes = {
     theme: PropTypes.oneOf(['primary', 'secondary']),
     to: PropTypes.string,
     href: PropTypes.string,
-    target: PropTypes.oneOf(['_self', '_blank']),
     loading: PropTypes.bool,
     disabled: PropTypes.bool,
     children: PropTypes.node.isRequired,

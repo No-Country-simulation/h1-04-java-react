@@ -1,16 +1,11 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useField } from 'formik';
 import { Icon } from '@iconify/react';
 
-const InputComponent = ({ name, label, type='text', disabled, ...props }) => {
-    const [field, meta, helpers] = useField(name);
-    const { setValue } = helpers;
+const InputComponent = ({ name, label, type='text', disabled }) => {
     const [togglePasswordVisibility, setTogglePasswordVisibility] = useState(false);
 
-
     const typeComputed = type === 'password' && togglePasswordVisibility ? 'text' : type;
-
 
     const handleToggleVisibility = () => {
         setTogglePasswordVisibility(!togglePasswordVisibility);
@@ -19,16 +14,14 @@ const InputComponent = ({ name, label, type='text', disabled, ...props }) => {
 
     return (
         <div className="w-full">
-            <TextTitle name={name} label={label} hasError={meta.touched && meta.error} />
+            <TextTitle name={name} label={label} />
             <div className="input__wrapper">
                 <input
-                {...field}
-                {...props}
                 type={typeComputed}
                 disabled={disabled}
-                className={`w-full ${meta.touched && meta.error ? 'p-invalid' : ''}`}
-                onChange={(e) => setValue(e.target.value)}
+                className="w-full"
                 />
+                
                 {type === 'password' && (
                 <button
                     type="button"
@@ -48,7 +41,6 @@ const InputComponent = ({ name, label, type='text', disabled, ...props }) => {
                 </button>
                 )}
             </div>
-            <TextHelper errorMessage={meta.error && meta.touched ? meta.error : ''} />
         </div>
     );
 };
@@ -56,29 +48,19 @@ const InputComponent = ({ name, label, type='text', disabled, ...props }) => {
 InputComponent.propTypes = {
     name: PropTypes.string.isRequired,
     label: PropTypes.string,
-    type: PropTypes.oneOf(['text', 'password']),
+    type: PropTypes.string.isRequired,
     disabled: PropTypes.bool,
 };
 
-const TextTitle = ({ name, label, hasError }) => (
-    <label htmlFor={name} className={`block text-sm font-medium ${hasError ? 'text-red-600' : 'text-gray-700'}`}>
+const TextTitle = ({ name, label }) => (
+    <label htmlFor={name} className="block text-sm font-medium">
         {label}
     </label>
 );
-
 TextTitle.propTypes = {
     name: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
-    hasError: PropTypes.bool.isRequired,
 };
-const TextHelper = ({ errorMessage }) => (
-    <p className="mt-2 text-sm text-red-600">{errorMessage}</p>
-);
-TextHelper.propTypes = {
-    errorMessage: PropTypes.string,
-};
-TextHelper.defaultProps = {
-    errorMessage: '',
-};
+
 
 export default InputComponent;

@@ -27,7 +27,6 @@ const LinkComponent = ({ to, href, target = '_blank', disabled, children }) => {
   return null;
 };
 
-
 LinkComponent.propTypes = {
   to: PropTypes.string,
   href: PropTypes.string,
