@@ -1,5 +1,7 @@
 package io.justina.server.dto.request;
 
+import io.justina.server.enumeration.Institution;
+import io.justina.server.enumeration.Role;
 import jakarta.validation.constraints.*;
 import lombok.*;
 import java.time.LocalDate;
@@ -10,18 +12,7 @@ import java.time.LocalDate;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class RegisterRequestDTO {
-
-    @NotBlank(message = "Email is required.")
-    @Email(message = "Invalid email address.")
-    @Size(max = 50, message = "Email must not exceed 50 characters ")
-    @Pattern(regexp = ".+@.+\\.[a-zA-Z]{2,}", message = "Email should have a valid domain with at least two characters")
-    private String email;
-
-    @NotBlank(message = "Password is required.")
-    @Size(min = 8, max = 25, message = "Password must be between 8 and 25 characters.")
-    @Pattern(regexp = "^(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]+$", message = "Password must contain at least one uppercase letter, one number, and one special character.")
-    private String password;
+public class UpdateUserRequestDTO {
 
     @NotBlank(message = "First name is required.")
     @Size(max = 50, message = "First name must not exceed 50 characters.")
@@ -32,6 +23,12 @@ public class RegisterRequestDTO {
     @Size(max = 50, message = "Last name must not exceed 50 characters.")
     @Pattern(regexp = "^[a-zA-Z\\s]+$", message = "Last name should only contain letters and spaces.")
     private String lastName;
+
+    @NotBlank(message = "Email is required.")
+    @Email(message = "Invalid email address.")
+    @Size(max = 50, message = "Email must not exceed 50 characters.")
+    @Pattern(regexp = ".+@.+\\.[a-zA-Z]{2,}", message = "Email should have a valid domain with at least two characters.")
+    private String email;
 
     @Past(message = "Birth date must be in the past.")
     private LocalDate birthDate;
@@ -69,5 +66,11 @@ public class RegisterRequestDTO {
     @Size(max = 20, message = "Postal code must not exceed 20 characters.")
     @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "Postal code should contain only letters and numbers.")
     private String postalCode;
+
+    @NotNull(message = "Institution name is required.")
+    private Institution institutionName;
+
+    @NotNull(message = "Role is required.")
+    private Role role;
 
 }

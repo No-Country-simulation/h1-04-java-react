@@ -25,13 +25,14 @@ public class LoginController {
         Map<String, Object> response = new HashMap<>();
         Map<String, Object> data = new HashMap<>();
         LoginResponseDTO loginResponse = loginService.login(loginRequest);
-        if(loginResponse != null){
+        if(loginResponse.getToken() != null){
             data.put("token", loginResponse.getToken());
+            data.put("role", loginResponse.getRole());
             response.put("data", data);
             response.put("message", loginResponse.getMessage());
             return ResponseEntity.ok(response);
         } else {
-            response.put("message", "Incorrect email and/or password");
+            response.put("message", loginResponse.getMessage());
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
         }
     }

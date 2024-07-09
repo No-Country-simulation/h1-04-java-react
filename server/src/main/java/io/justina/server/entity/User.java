@@ -24,13 +24,17 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String firsName;
+    private String firstName;
     private String lastName;
     private String email;
     private String password;
     private LocalDate birthDate;
     private String phone;
     private Institution institutionName;
+    private Boolean isActive;
+    private LocalDate deletedAt;
+
+    @Enumerated(EnumType.STRING)
     private Role role;
 
     @OneToOne(cascade = CascadeType.ALL)
