@@ -1,7 +1,11 @@
 package io.justina.server.service.impl;
 
+import io.justina.server.dto.request.UpdateUserRequestDTO;
 import io.justina.server.dto.response.UserResponseDTO;
+import io.justina.server.entity.Address;
+import io.justina.server.entity.Document;
 import io.justina.server.entity.User;
+import io.justina.server.enumeration.DocumentType;
 import io.justina.server.repository.UserRepository;
 import io.justina.server.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +16,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -48,10 +54,69 @@ public class UserServiceImpl implements UserService {
         return new ResponseEntity<>(new UserResponseDTO(user), HttpStatus.OK);
     }
 
+    @Override
+    public ResponseEntity<UserResponseDTO> updateUser(Long id, UpdateUserRequestDTO requestDTO) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+
+        user.setFirstName(requestDTO.getFirstName());
+        user.setLastName(requestDTO.getLastName());
+        user.setEmail(requestDTO.getEmail());
+        user.setBirthDate(requestDTO.getBirthDate());
+        user.setPhone(requestDTO.getPhone());
+        user.setInstitutionName(requestDTO.getInstitutionName());
+        user.setRole(requestDTO.getRole());
+
+        // Actualizar Document
+        Document document = user.getDocument();
+        if (document == null) {
+            document = new Document();
+            user.setDocument(document);
+        }
+        document.setDocumentType(DocumentType.valueOf(requestDTO.getDocumentType()));
+        document.setDocumentNumber(requestDTO.getDocumentNumber());
+
+        // Actualizar Address
+        Address address = user.getAddress();
+        if (address == null) {
+            address = new Address();
+            user.setAddress(address);
+        }
+        address.setStreet(requestDTO.getStreet());
+        address.setNumber(requestDTO.getNumber());
+        address.setDistrict(requestDTO.getDistrict());
+        address.setCity(requestDTO.getCity());
+        address.setProvince(requestDTO.getProvince());
+        address.setPostalCode(requestDTO.getPostalCode());
+
+        User updatedUser = userRepository.save(user);
+        return new ResponseEntity<>(mapUserToDTO(updatedUser), HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<Void> deleteUser(Long id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        user.setIsActive(false);
+        user.setDeletedAt(LocalDate.now());
+        userRepository.save(user);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @Override
+    public ResponseEntity<Void> updatePassword(Long id, String newPassword) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        user.setPassword(passwordEncoder.encode(newPassword));
+        userRepository.save(user);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+
     private UserResponseDTO mapUserToDTO(User user) {
         return UserResponseDTO.builder()
                 .id(user.getId())
-                .firstName(user.getFirsName())
+                .firstName(user.getFirstName())
                 .lastName(user.getLastName())
                 .email(user.getEmail())
                 .birthDate(user.getBirthDate())

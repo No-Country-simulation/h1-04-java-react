@@ -52,7 +52,7 @@ public class RegisterServiceImpl implements RegisterService {
             User user = User.builder()
                     .email(registerRequest.getEmail())
                     .password(passwordEncoder.encode(registerRequest.getPassword()))
-                    .firsName(registerRequest.getFirstName())
+                    .firstName(registerRequest.getFirstName())
                     .lastName(registerRequest.getLastName())
                     .birthDate(registerRequest.getBirthDate())
                     .phone(registerRequest.getPhone())
