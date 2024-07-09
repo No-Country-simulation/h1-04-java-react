@@ -1,13 +1,12 @@
 package io.justina.server.controller;
 
+import io.justina.server.dto.request.UpdateUserRequestDTO;
 import io.justina.server.dto.response.UserResponseDTO;
 import io.justina.server.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -25,6 +24,21 @@ public class UserController {
     @GetMapping("/{id}")
     public ResponseEntity<UserResponseDTO> getUser(@PathVariable long id){
         return userService.findById(id);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<UserResponseDTO> updateUser(@PathVariable Long id, @RequestBody UpdateUserRequestDTO requestDTO) {
+        return userService.updateUser(id, requestDTO);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+        return userService.deleteUser(id);
+    }
+
+    @PutMapping("/{id}/password")
+    public ResponseEntity<Void> updatePassword(@PathVariable Long id, @RequestBody String newPassword) {
+        return userService.updatePassword(id, newPassword);
     }
 
 }

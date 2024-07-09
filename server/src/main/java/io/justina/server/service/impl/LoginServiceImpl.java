@@ -31,12 +31,18 @@ public class LoginServiceImpl implements LoginService {
             User userDetails = userRepository.findByEmail(loginRequest.getEmail()).orElseThrow();
             String email = loginRequest.getEmail();
             String token = jwtService.getToken(userDetails, email);
+            String role = userDetails.getRole().toString();
             return LoginResponseDTO.builder()
                     .token(token)
+                    .role(role)
                     .message("Welcome to Justina.io")
                     .build();
         } catch (AuthenticationException e) {
-            return new LoginResponseDTO(null, e.getMessage());
+            return LoginResponseDTO.builder()
+                    .token(null)
+                    .role(null)
+                    .message("Error al iniciar sesión: " + e.getMessage())
+                    .build();
         }
     }
 
