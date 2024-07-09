@@ -58,6 +58,7 @@ public class RegisterServiceImpl implements RegisterService {
                     .phone(registerRequest.getPhone())
                     .institutionName(Institution.NO_COUNTRY) // por defecto todos los user pertenecen a No Country.
                     .role(Role.PATIENT) // por defecto todos los user son PATIENT.
+                    .isActive(true) // por defecto todos los user estan activos.
                     .document(document)
                     .address(address)
                     .build();

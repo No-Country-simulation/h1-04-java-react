@@ -30,8 +30,15 @@ public class User implements UserDetails {
     private String password;
     private LocalDate birthDate;
     private String phone;
+
     private Institution institutionName;
+
+    @Enumerated(EnumType.STRING)
     private Role role;
+
+    private boolean isActive;
+
+    private LocalDate deletedAt;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "document_id", referencedColumnName = "id")
