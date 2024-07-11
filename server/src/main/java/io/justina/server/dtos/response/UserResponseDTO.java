@@ -5,8 +5,11 @@ import io.justina.server.entities.Document;
 import io.justina.server.entities.User;
 import io.justina.server.enumerations.Institution;
 import io.justina.server.enumerations.Role;
+import io.justina.server.enumerations.Specialty;
 import lombok.*;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -23,7 +26,7 @@ public class UserResponseDTO {
     private LocalDate birthDate;
     private String phone;
     private Institution institutionName;
-    private Role role;
+    private Set<Role> roles;
     private Boolean isActive;
     private LocalDate deletedAt;
     private Document document;
@@ -37,7 +40,7 @@ public class UserResponseDTO {
         this.birthDate = user.getBirthDate();
         this.phone = user.getPhone();
         this.institutionName = user.getInstitutionName();
-        this.role = user.getRole();
+        this.roles = user.getRoles();
         this.isActive = user.getIsActive();
         this.deletedAt = user.getDeletedAt();
         this.document = user.getDocument();

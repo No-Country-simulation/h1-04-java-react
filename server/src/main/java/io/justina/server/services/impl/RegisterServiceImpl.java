@@ -19,6 +19,11 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 public class RegisterServiceImpl implements RegisterService {
@@ -49,6 +54,10 @@ public class RegisterServiceImpl implements RegisterService {
                     .postalCode(registerRequest.getPostalCode())
                     .build();
 
+            Set<Role> roles = registerRequest.getRoles().stream()
+                    .map(Role::valueOf)
+                    .collect(Collectors.toSet());
+
             User user = User.builder()
                     .email(registerRequest.getEmail())
                     .password(passwordEncoder.encode(registerRequest.getPassword()))
@@ -57,7 +66,8 @@ public class RegisterServiceImpl implements RegisterService {
                     .birthDate(registerRequest.getBirthDate())
                     .phone(registerRequest.getPhone())
                     .institutionName(Institution.NO_COUNTRY) // por defecto todos los user pertenecen a No Country.
-                    .role(Role.PATIENT) // por defecto todos los user son PATIENT.
+//                    .roles(new HashSet<>(Collections.singleton(Role.PATIENT))) // por defecto todos los user son PATIENT.
+                    .roles(roles.isEmpty() ? Set.of(Role.PATIENT) : roles) //if no roles are specified, the default is PATIENT.
                     .isActive(true) // por defecto todos los user estan activos.
                     .document(document)
                     .address(address)
@@ -65,6 +75,7 @@ public class RegisterServiceImpl implements RegisterService {
 
             userRepository.save(user);
             return RegisterResponseDTO.builder()
+                    .message("User registered successfully")
                     .build();
 
         } catch (DataIntegrityViolationException e) {

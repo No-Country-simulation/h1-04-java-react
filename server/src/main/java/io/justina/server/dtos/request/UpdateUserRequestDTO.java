@@ -5,6 +5,7 @@ import io.justina.server.enumerations.Role;
 import jakarta.validation.constraints.*;
 import lombok.*;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -70,7 +71,10 @@ public class UpdateUserRequestDTO {
     @NotNull(message = "Institution name is required.")
     private Institution institutionName;
 
-    @NotNull(message = "Role is required.")
-    private Role role;
+//    @NotNull(message = "Role is required.")
+//    private Role role;
+
+    @NotNull(message = "Roles are required.")
+    private Set<Role> roles;
 
 }
