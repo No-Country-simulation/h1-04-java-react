@@ -15,5 +15,6 @@ public interface PatientService {
     PatientResponseDTO updatePatient(Long patientId, PatientRequestDTO patientRequestDTO);
     void deletePatient(Long patientId);
     PatientResponseDTO deactivatePatient(Long patientId);
+    PatientResponseDTO getPatientByUserId(Long userId);
 
 }
