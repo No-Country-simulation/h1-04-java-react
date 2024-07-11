@@ -18,13 +18,13 @@ const Router = () => {
                 <Routes>
                     <Route exact path='/login' element={<Login/>} />
                     <Route exact path='/register' element={<Register/>} />
+                    
                     <Route exact path='/patient' element={<HomePatient/>} />
                     <Route exact path='/turn-calendar' element={<Turn/>} />
                     <Route exact path='/new-turn' element={<NewTurn/>} />
                     <Route exact path='/confirm-new-turn' element={<Turn/>} />
                     <Route exact path='/error-new-turn' element={<Turn/>} />
                     <Route exact path='/view-turn' element={<Turn/>} />
-                    
                     <Route exact path='/treatments' element={<Treatments/>} />
                     <Route exact path='/treatment-nutrition' element={<Treatment/>} />
                     <Route exact path='/treatment-physical-activity' element={<Treatment/>} />

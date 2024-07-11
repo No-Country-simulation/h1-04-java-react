@@ -5,7 +5,7 @@ import InputComponent from '../../helpers/atoms/InputComponent';
 import LinkComponent from '../../helpers/atoms/LinkComponent';
 import IconComponent from '../../helpers/atoms/IconComponent';
 import ButtonComponent from '../../helpers/atoms/ButtonComponent';
-import logo from "../../Assets/Imgs/JustinaLogo.png"
+import logo from "../../Assets/Imgs/logo.png"
 
 const Login = () => {
     const [isLoading, setIsLoading] = useState(false);
