@@ -1,6 +1,6 @@
 package io.justina.server.config.jwt;
 
-import io.justina.server.service.UserService;
+import io.justina.server.services.UserService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -28,6 +28,7 @@ public class JwtFilter extends OncePerRequestFilter {
 
     @Autowired
     private UserService userService;
+
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
