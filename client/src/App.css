@@ -1,4 +1,4 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -6,8 +6,8 @@
   text-decoration: none;
 }
 
-
-body{
+body {
   background-color: aliceblue;
   color: #141414;
+  height: 100vh;
 }

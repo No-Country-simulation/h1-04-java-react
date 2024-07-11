@@ -44,7 +44,7 @@ const NewTurn = () => {
   }
 
   return (
-    <div className='max-w-md mx-auto bg-white shadow-lg rounded-lg p-4'>
+    <div className='  p-4'>
       <h2 className='text-2xl font-bold mb-4'>Turnos</h2>
 
       <label className='block mb-4'>
