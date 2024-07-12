@@ -5,12 +5,11 @@ import io.justina.server.enumerations.Role;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import java.time.LocalDate;
 import java.util.Collection;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.List;
+
 
 @Entity
 @Table(name = "app_user")
@@ -36,14 +35,14 @@ public class User implements UserDetails {
     private Boolean isActive;
     private LocalDate deletedAt;
 
-//    @Enumerated(EnumType.STRING)
-//    private Role role;
-
-    @ElementCollection(fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
-    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
-    @Column(name = "role")
-    private Set<Role> roles;
+    private Role role;
+
+//    @ElementCollection(fetch = FetchType.EAGER)
+//    @Enumerated(EnumType.STRING)
+//    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
+//    @Column(name = "role")
+//    private Set<Role> roles;
 
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -57,9 +56,10 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-            return roles.stream()
-                    .map(role -> new SimpleGrantedAuthority("ROLE_" + role.name()))
-                    .collect(Collectors.toList());
+        return List.of();
+//            return roles.stream()
+//                    .map(role -> new SimpleGrantedAuthority("ROLE_" + role.name()))
+//                    .collect(Collectors.toList());
 
     }
 

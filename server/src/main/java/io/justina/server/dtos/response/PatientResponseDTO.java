@@ -17,7 +17,6 @@ import java.util.List;
 public class PatientResponseDTO {
 
     private Long patientId;
-    private Long userId;
     private List<String> medicalHistory;
     private List<String> pathologies;
     private List<String> treatments;
@@ -32,7 +31,6 @@ public class PatientResponseDTO {
 
     public PatientResponseDTO(Patient patient) {
         this.patientId = patient.getPatientId();
-        this.userId = patient.getUser().getId();
         this.medicalHistory = patient.getMedicalHistory();
         this.pathologies = patient.getPathologies();
         this.treatments = patient.getTreatments();

@@ -65,7 +65,7 @@ public class UserServiceImpl implements UserService {
         user.setBirthDate(requestDTO.getBirthDate());
         user.setPhone(requestDTO.getPhone());
         user.setInstitutionName(requestDTO.getInstitutionName());
-        user.setRoles(requestDTO.getRoles());
+        user.setRole(requestDTO.getRole());
 
         // Actualizar Document
         Document document = user.getDocument();
@@ -122,7 +122,7 @@ public class UserServiceImpl implements UserService {
                 .birthDate(user.getBirthDate())
                 .phone(user.getPhone())
                 .institutionName(user.getInstitutionName())
-                .roles(user.getRoles())
+                .role(user.getRole())
                 .document(user.getDocument())
                 .address(user.getAddress())
                 .build();

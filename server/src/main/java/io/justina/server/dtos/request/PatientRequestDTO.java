@@ -16,9 +16,6 @@ import java.util.List;
 @NoArgsConstructor
 public class PatientRequestDTO {
 
-    @NotNull(message = "User ID is required.")
-    private Long userId;
-
     @NotBlank(message = "Health insurance is required.")
     @Size(max = 100, message = "Health insurance must not exceed 100 characters.")
     @Pattern(regexp = "^[a-zA-Z\\s]+$", message = "Health insurance should contain only letters and spaces.")

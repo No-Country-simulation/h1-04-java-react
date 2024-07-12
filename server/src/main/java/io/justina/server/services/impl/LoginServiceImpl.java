@@ -31,7 +31,7 @@ public class LoginServiceImpl implements LoginService {
             User userDetails = userRepository.findByEmail(loginRequest.getEmail()).orElseThrow();
             String email = loginRequest.getEmail();
             String token = jwtService.getToken(userDetails, email);
-            String role = userDetails.getRoles().toString();
+            String role = userDetails.getRole().toString();
             return LoginResponseDTO.builder()
                     .token(token)
                     .role(role)

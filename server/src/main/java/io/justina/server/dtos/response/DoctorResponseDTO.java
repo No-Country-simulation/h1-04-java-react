@@ -18,7 +18,6 @@ import java.util.Set;
 public class DoctorResponseDTO {
 
     private Long doctorId;
-    private Long userId;
     private String licenceNumber;
     private Set<Specialty> specialties;
     private Set<Workday> workdays;
@@ -26,7 +25,6 @@ public class DoctorResponseDTO {
 
     public DoctorResponseDTO(Doctor doctor) {
         this.doctorId = doctor.getDoctorId();
-        this.userId = doctor.getUser().getId();
         this.specialties = doctor.getSpecialties();
         this.licenceNumber = doctor.getLicenceNumber();
         this.workdays = doctor.getWorkdays();

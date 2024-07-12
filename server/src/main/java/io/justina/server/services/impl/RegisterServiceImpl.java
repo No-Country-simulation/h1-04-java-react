@@ -54,9 +54,9 @@ public class RegisterServiceImpl implements RegisterService {
                     .postalCode(registerRequest.getPostalCode())
                     .build();
 
-            Set<Role> roles = registerRequest.getRoles().stream()
-                    .map(Role::valueOf)
-                    .collect(Collectors.toSet());
+//            Set<Role> roles = registerRequest.getRoles().stream()
+//                    .map(Role::valueOf)
+//                    .collect(Collectors.toSet());
 
             User user = User.builder()
                     .email(registerRequest.getEmail())
@@ -66,8 +66,8 @@ public class RegisterServiceImpl implements RegisterService {
                     .birthDate(registerRequest.getBirthDate())
                     .phone(registerRequest.getPhone())
                     .institutionName(Institution.NO_COUNTRY) // por defecto todos los user pertenecen a No Country.
-//                    .roles(new HashSet<>(Collections.singleton(Role.PATIENT))) // por defecto todos los user son PATIENT.
-                    .roles(roles.isEmpty() ? Set.of(Role.PATIENT) : roles) //if no roles are specified, the default is PATIENT.
+                    .role(Role.PATIENT) // por defecto todos los user son PATIENT.
+                    //.roles(roles.isEmpty() ? Set.of(Role.PATIENT) : roles) //if no roles are specified, the default is PATIENT.
                     .isActive(true) // por defecto todos los user estan activos.
                     .document(document)
                     .address(address)

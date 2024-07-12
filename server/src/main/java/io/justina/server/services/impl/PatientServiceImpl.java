@@ -104,12 +104,6 @@ public class PatientServiceImpl implements PatientService {
         return new PatientResponseDTO(patient);
     }
 
-    @Override
-    public PatientResponseDTO getPatientByUserId(Long userId) {
-        Patient patient = patientRepository.findByUserId(userId)
-                .orElseThrow(() -> new PatientNotFoundException("Patient not found"));
-        return new PatientResponseDTO(patient);
-    }
 
 
 

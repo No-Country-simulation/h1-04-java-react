@@ -3,7 +3,7 @@ package io.justina.server.dtos.request;
 import jakarta.validation.constraints.*;
 import lombok.*;
 import java.time.LocalDate;
-import java.util.List;
+
 
 @Getter
 @Setter
@@ -70,8 +70,5 @@ public class RegisterRequestDTO {
     @Size(max = 20, message = "Postal code must not exceed 20 characters.")
     @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "Postal code should contain only letters and numbers.")
     private String postalCode;
-
-    @NotEmpty(message = "At least one role must be specified.")
-    private List<String> roles;
 
 }
