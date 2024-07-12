@@ -23,6 +23,7 @@ public class DoctorController {
     @Autowired
     private DoctorService doctorService;
 
+
     @PostMapping("/create")
     @Operation(summary = "Create a new doctor", description = "Creates a new doctor in the system")
     public ResponseEntity<DoctorResponseDTO> createDoctor(@Valid @RequestBody DoctorRequestDTO doctorRequestDTO) {
@@ -54,7 +55,8 @@ public class DoctorController {
     @DeleteMapping("/deleteDoctor")
     @Operation(summary = "Delete a doctor", description = "Delete a doctor from the system by ID")
     public ResponseEntity<DoctorResponseDTO> deleteDoctor(@RequestParam Long doctorId) {
-        return doctorService.deleteDoctor(doctorId);
+        DoctorResponseDTO deletedDoctor = doctorService.deleteDoctor(doctorId);
+        return ResponseEntity.ok(deletedDoctor);
     }
 
     @PutMapping("/deactivateDoctor")
@@ -63,6 +65,5 @@ public class DoctorController {
         DoctorResponseDTO deactivatedDoctor = doctorService.deactivateDoctor(doctorId);
         return ResponseEntity.ok(deactivatedDoctor);
     }
-
 
 }

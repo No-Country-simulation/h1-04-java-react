@@ -3,7 +3,6 @@ package io.justina.server.controllers;
 
 import io.justina.server.dtos.request.PatientRequestDTO;
 import io.justina.server.dtos.response.PatientResponseDTO;
-import io.justina.server.entities.User;
 import io.justina.server.services.PatientService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -11,7 +10,6 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,7 +29,6 @@ public class PatientController {
         PatientResponseDTO createdPatient = patientService.createPatient(patientRequestDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdPatient);
     }
-
 
     @GetMapping("/getPatientById")
     @Operation(summary = "Get patient by ID", description = "Retrieve detailed information about a patient by their ID")
@@ -67,6 +64,5 @@ public class PatientController {
         PatientResponseDTO deactivatedPatient = patientService.deactivatePatient(patientId);
         return ResponseEntity.ok(deactivatedPatient);
     }
-
 
 }

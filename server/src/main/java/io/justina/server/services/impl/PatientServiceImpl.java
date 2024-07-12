@@ -15,6 +15,7 @@ import io.justina.server.services.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -81,27 +82,21 @@ public class PatientServiceImpl implements PatientService {
                 .build();
 
         patient = patientRepository.save(patient);
-        return new PatientResponseDTO("Patient created successfully with ID: " + patient.getPatientId());
+        return new PatientResponseDTO(patient);
     }
 
+    @Override
+    public List<PatientResponseDTO> getAllPatients() {
+        return patientRepository.findAll().stream()
+                .map(PatientResponseDTO::new)
+                .collect(Collectors.toList());
+    }
 
     @Override
     public PatientResponseDTO getPatientById(Long patientId) {
         Patient patient = patientRepository.findById(patientId)
                 .orElseThrow(() -> new PatientNotFoundException("Patient not found"));
-        return new PatientResponseDTO("Patient found: " + patient.getUser().getFirstName() + " " + patient.getUser().getLastName());
-    }
-
-    @Override
-    public List<PatientResponseDTO> getAllPatients() {
-        List<Patient> patients = patientRepository.findAll();
-        if (patients.isEmpty()) {
-            return List.of(new PatientResponseDTO("No patients found"));
-        } else {
-            return patients.stream()
-                    .map(patient -> new PatientResponseDTO("Patient listed: " + patient.getUser().getFirstName() + " " + patient.getUser().getLastName()))
-                    .collect(Collectors.toList());
-        }
+        return new PatientResponseDTO(patient);
     }
 
     @Override
@@ -116,7 +111,6 @@ public class PatientServiceImpl implements PatientService {
         user.setBirthDate(patientRequestDTO.getBirthDate());
         user.setPhone(patientRequestDTO.getPhone());
         user.setInstitutionName(patientRequestDTO.getInstitutionName());
-       // user.setRole(patientRequestDTO.getRole());
 
         Document document = user.getDocument();
         document.setDocumentType(DocumentType.valueOf(patientRequestDTO.getDocumentType()));
@@ -146,18 +140,17 @@ public class PatientServiceImpl implements PatientService {
         patient.setCrossTransplant(patientRequestDTO.getCrossTransplant());
 
         patient = patientRepository.save(patient);
-        return new PatientResponseDTO("Patient updated successfully with ID: " + patient.getPatientId());
+        return new PatientResponseDTO(patient);
     }
 
-
+    @Transactional
     @Override
     public PatientResponseDTO deletePatient(Long patientId) {
         Patient patient = patientRepository.findById(patientId)
                 .orElseThrow(() -> new PatientNotFoundException("Patient not found"));
         patientRepository.delete(patient);
-        return new PatientResponseDTO("Patient deleted successfully.");
+        return new PatientResponseDTO(patient);
     }
-
 
     @Override
     public PatientResponseDTO deactivatePatient(Long patientId) {
@@ -168,7 +161,7 @@ public class PatientServiceImpl implements PatientService {
         user.setActive(false);
         patientRepository.save(patient);
 
-        return new PatientResponseDTO("Patient deactivated successfully with ID: " + patient.getPatientId());
+        return new PatientResponseDTO(patient);
     }
 
 

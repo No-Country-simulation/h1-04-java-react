@@ -15,7 +15,7 @@ public interface DoctorService {
     DoctorResponseDTO getDoctorById(Long doctorId);
     List<DoctorResponseDTO> getAllDoctors();
     DoctorResponseDTO updateDoctor(Long doctorId, DoctorRequestDTO doctorRequestDTO);
-    ResponseEntity<DoctorResponseDTO> deleteDoctor(Long doctorId);
+    DoctorResponseDTO deleteDoctor(Long doctorId);
     DoctorResponseDTO deactivateDoctor(Long doctorId);
 
 }
