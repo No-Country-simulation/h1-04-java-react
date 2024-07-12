@@ -1,13 +1,11 @@
 package io.justina.server.entity;
 
 import io.justina.server.enumeration.DocumentType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
+@Table(name = "document", uniqueConstraints = {@UniqueConstraint(columnNames = "documentNumber")})
 @Getter
 @Setter
 @ToString
