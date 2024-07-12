@@ -21,13 +21,16 @@ public class PatientServiceImpl implements PatientService {
     @Autowired
     private PatientRepository patientRepository;
 
-    @Autowired
-    private UserRepository userRepository;
+//    @Autowired
+//    private UserRepository userRepository;
 
     @Override
     public PatientResponseDTO createPatient(PatientRequestDTO patientRequestDTO) {
+        User user = userRepository.findById(patientRequestDTO.getUserId())
+                .orElseThrow(() -> new PatientNotFoundException("User not found"));
 
         Patient patient = new Patient();
+        patient.setUser(user);
         patient.setMedicalHistory(patientRequestDTO.getMedicalHistory());
         patient.setPathologies(patientRequestDTO.getPathologies());
         patient.setTreatments(patientRequestDTO.getTreatments());
