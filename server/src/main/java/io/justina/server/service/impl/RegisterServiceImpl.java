@@ -4,8 +4,8 @@ import io.justina.server.entity.Address;
 import io.justina.server.entity.Document;
 import io.justina.server.enumeration.DocumentType;
 import io.justina.server.enumeration.Institution;
-import io.justina.server.enumeration.Role;
 import io.justina.server.exception.RegistrationException;
+import io.justina.server.repository.DocumentRepository;
 import lombok.RequiredArgsConstructor;
 import io.justina.server.config.jwt.JwtService;
 import io.justina.server.dto.request.RegisterRequestDTO;
@@ -27,6 +27,9 @@ public class RegisterServiceImpl implements RegisterService {
     private UserRepository userRepository;
 
     @Autowired
+    private DocumentRepository documentRepository;
+
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Autowired
@@ -34,6 +37,16 @@ public class RegisterServiceImpl implements RegisterService {
 
     @Override
     public RegisterResponseDTO register(RegisterRequestDTO registerRequest) throws AuthenticationException {
+        // Verificar si el email ya está en uso
+        if (userRepository.existsByEmail(registerRequest.getEmail())) {
+            throw new RegistrationException("Ya existe un usuario con ese email.");
+        }
+
+        // Verificar si el número de documento ya está en uso
+        if (documentRepository.existsByDocumentNumber(registerRequest.getDocumentNumber())) {
+            throw new RegistrationException("Ya existe un usuario con ese número de documento.");
+        }
+
         try {
             Document document = Document.builder()
                     .documentType(DocumentType.valueOf(registerRequest.getDocumentType()))
@@ -57,23 +70,17 @@ public class RegisterServiceImpl implements RegisterService {
                     .birthDate(registerRequest.getBirthDate())
                     .phone(registerRequest.getPhone())
                     .institutionName(Institution.NO_COUNTRY) // por defecto todos los user pertenecen a No Country.
-                    .role(Role.PATIENT) // por defecto todos los user son PATIENT.
-                    .isActive(true) // por defecto todos los user estan activos.
+                    .role(registerRequest.getRole())
+                    .isActive(true)
                     .document(document)
                     .address(address)
                     .build();
 
             userRepository.save(user);
-            return RegisterResponseDTO.builder()
-                    .build();
+            return RegisterResponseDTO.builder().build();
 
         } catch (DataIntegrityViolationException e) {
-            String errorMessage = e.getCause().getMessage();
-            if (errorMessage.contains(registerRequest.getEmail())) {
-                throw new RegistrationException("Ya existe un usuario con ese email. Error al registrar usuario");
-            } else {
-                throw new RegistrationException("Error al registrar usuario");
-            }
+            throw new RegistrationException("Error al registrar usuario.");
         }
     }
 }
