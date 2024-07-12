@@ -3,9 +3,7 @@ package io.justina.server.service.impl;
 import io.justina.server.dto.request.UpdateUserRequestDTO;
 import io.justina.server.dto.response.UserResponseDTO;
 import io.justina.server.entity.Address;
-import io.justina.server.entity.Document;
 import io.justina.server.entity.User;
-import io.justina.server.enumeration.DocumentType;
 import io.justina.server.repository.UserRepository;
 import io.justina.server.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +14,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.time.LocalDate;
 import java.util.List;
 
@@ -59,22 +56,25 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
 
-        user.setFirstName(requestDTO.getFirstName());
-        user.setLastName(requestDTO.getLastName());
-        user.setEmail(requestDTO.getEmail());
-        user.setBirthDate(requestDTO.getBirthDate());
-        user.setPhone(requestDTO.getPhone());
-        user.setInstitutionName(requestDTO.getInstitutionName());
-        user.setRole(requestDTO.getRole());
-
-        // Actualizar Document
-        Document document = user.getDocument();
-        if (document == null) {
-            document = new Document();
-            user.setDocument(document);
+        if (requestDTO.getFirstName() != null && !requestDTO.getFirstName().trim().isEmpty()) {
+            user.setFirstName(requestDTO.getFirstName());
+        } else if (requestDTO.getFirstName() != null) {
+            throw new IllegalArgumentException("First name cannot be blank");
         }
-        document.setDocumentType(DocumentType.valueOf(requestDTO.getDocumentType()));
-        document.setDocumentNumber(requestDTO.getDocumentNumber());
+        if (requestDTO.getLastName() != null && !requestDTO.getLastName().trim().isEmpty()) {
+            user.setLastName(requestDTO.getLastName());
+        } else if (requestDTO.getLastName() != null) {
+            throw new IllegalArgumentException("Last name cannot be blank");
+        }
+        if (requestDTO.getBirthDate() != null) {
+            user.setBirthDate(requestDTO.getBirthDate());
+        }
+        if (requestDTO.getPhone() != null) {
+            user.setPhone(requestDTO.getPhone());
+        }
+        if (requestDTO.getRole() != null) {
+            user.setRole(requestDTO.getRole());
+        }
 
         // Actualizar Address
         Address address = user.getAddress();
@@ -82,12 +82,24 @@ public class UserServiceImpl implements UserService {
             address = new Address();
             user.setAddress(address);
         }
-        address.setStreet(requestDTO.getStreet());
-        address.setNumber(requestDTO.getNumber());
-        address.setDistrict(requestDTO.getDistrict());
-        address.setCity(requestDTO.getCity());
-        address.setProvince(requestDTO.getProvince());
-        address.setPostalCode(requestDTO.getPostalCode());
+        if (requestDTO.getStreet() != null) {
+            address.setStreet(requestDTO.getStreet());
+        }
+        if (requestDTO.getNumber() != null) {
+            address.setNumber(requestDTO.getNumber());
+        }
+        if (requestDTO.getDistrict() != null) {
+            address.setDistrict(requestDTO.getDistrict());
+        }
+        if (requestDTO.getCity() != null) {
+            address.setCity(requestDTO.getCity());
+        }
+        if (requestDTO.getProvince() != null) {
+            address.setProvince(requestDTO.getProvince());
+        }
+        if (requestDTO.getPostalCode() != null) {
+            address.setPostalCode(requestDTO.getPostalCode());
+        }
 
         User updatedUser = userRepository.save(user);
         return new ResponseEntity<>(mapUserToDTO(updatedUser), HttpStatus.OK);
