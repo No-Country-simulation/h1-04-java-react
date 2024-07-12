@@ -18,8 +18,6 @@ import java.util.Set;
 @NoArgsConstructor
 public class DoctorRequestDTO {
 
-    @NotNull(message = "User ID is required.")
-    private Long userId;
 
     @NotEmpty(message = "Specialty is required.")
     private Set<Specialty> specialties;
@@ -91,8 +89,11 @@ public class DoctorRequestDTO {
     @NotNull(message = "Institution name is required.")
     private Institution institutionName;
 
-    @NotNull(message = "Role is required.")
-    private Role role;
+//    @NotNull(message = "Role is required.")
+//    private Role role;
 
+    @NotBlank(message = "Password is required.")
+    @Size(min = 6, message = "Password must be at least 6 characters long.")
+    private String password;
 
 }

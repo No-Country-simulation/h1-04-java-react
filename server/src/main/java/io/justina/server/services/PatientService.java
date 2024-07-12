@@ -13,7 +13,7 @@ public interface PatientService {
     PatientResponseDTO getPatientById(Long patientId);
     List<PatientResponseDTO> getAllPatients();
     PatientResponseDTO updatePatient(Long patientId, PatientRequestDTO patientRequestDTO);
-    void deletePatient(Long patientId);
+    PatientResponseDTO deletePatient(Long patientId);
     PatientResponseDTO deactivatePatient(Long patientId);
 
 

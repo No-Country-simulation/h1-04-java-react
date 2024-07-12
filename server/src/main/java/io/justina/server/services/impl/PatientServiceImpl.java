@@ -3,13 +3,16 @@ package io.justina.server.services.impl;
 
 import io.justina.server.dtos.request.PatientRequestDTO;
 import io.justina.server.dtos.response.PatientResponseDTO;
+import io.justina.server.entities.Address;
+import io.justina.server.entities.Document;
 import io.justina.server.entities.Patient;
 import io.justina.server.entities.User;
+import io.justina.server.enumerations.DocumentType;
 import io.justina.server.exceptions.PatientNotFoundException;
 import io.justina.server.repositories.PatientRepository;
-import io.justina.server.repositories.UserRepository;
 import io.justina.server.services.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,30 +24,57 @@ public class PatientServiceImpl implements PatientService {
     @Autowired
     private PatientRepository patientRepository;
 
-//    @Autowired
-//    private UserRepository userRepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public PatientResponseDTO createPatient(PatientRequestDTO patientRequestDTO) {
-        User user = userRepository.findById(patientRequestDTO.getUserId())
-                .orElseThrow(() -> new PatientNotFoundException("User not found"));
 
-        Patient patient = new Patient();
-        patient.setUser(user);
-        patient.setMedicalHistory(patientRequestDTO.getMedicalHistory());
-        patient.setPathologies(patientRequestDTO.getPathologies());
-        patient.setTreatments(patientRequestDTO.getTreatments());
-        patient.setMedications(patientRequestDTO.getMedications());
-        patient.setHealthInsurance(patientRequestDTO.getHealthInsurance());
-        patient.setAffiliateNumber(patientRequestDTO.getAffiliateNumber());
-        patient.setTransplanted(patientRequestDTO.getTransplanted());
-        patient.setBloodType(patientRequestDTO.getBloodType());
-        patient.setCivilStatus(patientRequestDTO.getCivilStatus());
-        patient.setChildren(patientRequestDTO.getChildren());
-        patient.setCrossTransplant(patientRequestDTO.getCrossTransplant());
+        Document document = Document.builder()
+                .documentType(DocumentType.valueOf(patientRequestDTO.getDocumentType()))
+                .documentNumber(patientRequestDTO.getDocumentNumber())
+                .build();
+
+        Address address = Address.builder()
+                .street(patientRequestDTO.getStreet())
+                .number(patientRequestDTO.getNumber())
+                .district(patientRequestDTO.getDistrict())
+                .city(patientRequestDTO.getCity())
+                .province(patientRequestDTO.getProvince())
+                .postalCode(patientRequestDTO.getPostalCode())
+                .build();
+
+        User user = User.builder()
+                .email(patientRequestDTO.getEmail())
+                .password(passwordEncoder.encode(patientRequestDTO.getPassword()))
+                .firstName(patientRequestDTO.getFirstName())
+                .lastName(patientRequestDTO.getLastName())
+                .birthDate(patientRequestDTO.getBirthDate())
+                .phone(patientRequestDTO.getPhone())
+                .institutionName(patientRequestDTO.getInstitutionName())
+               // .role(patientRequestDTO.getRole())
+                .isActive(true)
+                .document(document)
+                .address(address)
+                .build();
+
+        Patient patient = Patient.builder()
+                .user(user)
+                .medicalHistory(patientRequestDTO.getMedicalHistory())
+                .pathologies(patientRequestDTO.getPathologies())
+                .treatments(patientRequestDTO.getTreatments())
+                .medications(patientRequestDTO.getMedications())
+                .healthInsurance(patientRequestDTO.getHealthInsurance())
+                .affiliateNumber(patientRequestDTO.getAffiliateNumber())
+                .transplanted(patientRequestDTO.getTransplanted())
+                .bloodType(patientRequestDTO.getBloodType())
+                .civilStatus(patientRequestDTO.getCivilStatus())
+                .children(patientRequestDTO.getChildren())
+                .crossTransplant(patientRequestDTO.getCrossTransplant())
+                .build();
 
         patient = patientRepository.save(patient);
-        return new PatientResponseDTO(patient);
+        return new PatientResponseDTO("Patient created successfully with ID: " + patient.getPatientId());
     }
 
 
@@ -52,20 +82,49 @@ public class PatientServiceImpl implements PatientService {
     public PatientResponseDTO getPatientById(Long patientId) {
         Patient patient = patientRepository.findById(patientId)
                 .orElseThrow(() -> new PatientNotFoundException("Patient not found"));
-        return new PatientResponseDTO(patient);
+        return new PatientResponseDTO("Patient found: " + patient.getUser().getFirstName() + " " + patient.getUser().getLastName());
     }
 
     @Override
     public List<PatientResponseDTO> getAllPatients() {
-        return patientRepository.findAll().stream()
-                .map(PatientResponseDTO::new)
-                .collect(Collectors.toList());
+        List<Patient> patients = patientRepository.findAll();
+        if (patients.isEmpty()) {
+            return List.of(new PatientResponseDTO("No patients found"));
+        } else {
+            return patients.stream()
+                    .map(patient -> new PatientResponseDTO("Patient listed: " + patient.getUser().getFirstName() + " " + patient.getUser().getLastName()))
+                    .collect(Collectors.toList());
+        }
     }
 
     @Override
     public PatientResponseDTO updatePatient(Long patientId, PatientRequestDTO patientRequestDTO) {
         Patient patient = patientRepository.findById(patientId)
                 .orElseThrow(() -> new PatientNotFoundException("Patient not found"));
+
+        User user = patient.getUser();
+        user.setFirstName(patientRequestDTO.getFirstName());
+        user.setLastName(patientRequestDTO.getLastName());
+        user.setEmail(patientRequestDTO.getEmail());
+        user.setBirthDate(patientRequestDTO.getBirthDate());
+        user.setPhone(patientRequestDTO.getPhone());
+        user.setInstitutionName(patientRequestDTO.getInstitutionName());
+       // user.setRole(patientRequestDTO.getRole());
+
+        Document document = user.getDocument();
+        document.setDocumentType(DocumentType.valueOf(patientRequestDTO.getDocumentType()));
+        document.setDocumentNumber(patientRequestDTO.getDocumentNumber());
+
+        Address address = user.getAddress();
+        address.setStreet(patientRequestDTO.getStreet());
+        address.setNumber(patientRequestDTO.getNumber());
+        address.setDistrict(patientRequestDTO.getDistrict());
+        address.setCity(patientRequestDTO.getCity());
+        address.setProvince(patientRequestDTO.getProvince());
+        address.setPostalCode(patientRequestDTO.getPostalCode());
+
+        user.setDocument(document);
+        user.setAddress(address);
 
         patient.setMedicalHistory(patientRequestDTO.getMedicalHistory());
         patient.setPathologies(patientRequestDTO.getPathologies());
@@ -80,15 +139,16 @@ public class PatientServiceImpl implements PatientService {
         patient.setCrossTransplant(patientRequestDTO.getCrossTransplant());
 
         patient = patientRepository.save(patient);
-        return new PatientResponseDTO(patient);
+        return new PatientResponseDTO("Patient updated successfully with ID: " + patient.getPatientId());
     }
 
 
     @Override
-    public void deletePatient(Long patientId) {
+    public PatientResponseDTO deletePatient(Long patientId) {
         Patient patient = patientRepository.findById(patientId)
                 .orElseThrow(() -> new PatientNotFoundException("Patient not found"));
         patientRepository.delete(patient);
+        return new PatientResponseDTO("Patient deleted successfully.");
     }
 
 
@@ -99,12 +159,10 @@ public class PatientServiceImpl implements PatientService {
 
         User user = patient.getUser();
         user.setActive(false);
-        userRepository.save(user);
+        patientRepository.save(patient);
 
-        return new PatientResponseDTO(patient);
+        return new PatientResponseDTO("Patient deactivated successfully with ID: " + patient.getPatientId());
     }
-
-
 
 
 }

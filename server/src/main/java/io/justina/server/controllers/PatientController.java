@@ -56,9 +56,9 @@ public class PatientController {
 
     @DeleteMapping("/deletePatient")
     @Operation(summary = "Delete a patient", description = "Delete a patient from the system by ID")
-    public ResponseEntity<Void> deletePatient(@RequestParam Long patientId) {
-        patientService.deletePatient(patientId);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<PatientResponseDTO> deletePatient(@RequestParam Long patientId) {
+        PatientResponseDTO response = patientService.deletePatient(patientId);
+        return ResponseEntity.ok(response);
     }
 
     @PutMapping("/deactivatePatient")

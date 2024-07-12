@@ -118,8 +118,11 @@ public class PatientRequestDTO {
     @NotNull(message = "Institution name is required.")
     private Institution institutionName;
 
-    @NotNull(message = "Role is required.")
-    private Role role;
+//    @NotNull(message = "Role is required.")
+//    private Role role;
 
+    @NotBlank(message = "Password is required.")
+    @Size(min = 6, message = "Password must be at least 6 characters long.")
+    private String password;
 
 }
