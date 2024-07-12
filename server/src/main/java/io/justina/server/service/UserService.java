@@ -2,6 +2,7 @@ package io.justina.server.service;
 
 import io.justina.server.dto.request.UpdateUserRequestDTO;
 import io.justina.server.dto.response.UserResponseDTO;
+import io.justina.server.enumeration.DocumentType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -21,4 +22,9 @@ public interface UserService extends UserDetailsService {
     ResponseEntity<Void> deleteUser(Long id);
 
     ResponseEntity<Void> updatePassword(Long id, String newPassword);
+
+    ResponseEntity<Void> updateEmail(Long id, String newEmail);
+
+    ResponseEntity<Void> updateDocument(Long id, DocumentType documentType, String documentNumber);
+
 }

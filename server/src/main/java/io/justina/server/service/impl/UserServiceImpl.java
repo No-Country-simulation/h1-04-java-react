@@ -3,7 +3,10 @@ package io.justina.server.service.impl;
 import io.justina.server.dto.request.UpdateUserRequestDTO;
 import io.justina.server.dto.response.UserResponseDTO;
 import io.justina.server.entity.Address;
+import io.justina.server.entity.Document;
 import io.justina.server.entity.User;
+import io.justina.server.enumeration.DocumentType;
+import io.justina.server.repository.DocumentRepository;
 import io.justina.server.repository.UserRepository;
 import io.justina.server.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +25,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private DocumentRepository documentRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -124,6 +130,37 @@ public class UserServiceImpl implements UserService {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+    @Override
+    public ResponseEntity<Void> updateEmail(Long id, String newEmail) {
+        if (userRepository.existsByEmail(newEmail)) {
+            throw new IllegalArgumentException("Email is already in use.");
+        }
+
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        user.setEmail(newEmail);
+        userRepository.save(user);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @Override
+    public ResponseEntity<Void> updateDocument(Long id, DocumentType documentType, String documentNumber) {
+        if (documentRepository.existsByDocumentNumber(documentNumber)) {
+            throw new IllegalArgumentException("Document number is already in use.");
+        }
+
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        Document document = user.getDocument();
+        if (document == null) {
+            document = new Document();
+            user.setDocument(document);
+        }
+        document.setDocumentType(documentType);
+        document.setDocumentNumber(documentNumber);
+        userRepository.save(user);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 
     private UserResponseDTO mapUserToDTO(User user) {
         return UserResponseDTO.builder()
