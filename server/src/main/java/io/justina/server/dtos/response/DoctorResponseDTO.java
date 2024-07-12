@@ -12,6 +12,6 @@ import lombok.*;
 @NoArgsConstructor
 public class DoctorResponseDTO {
 
-    String message;
+
 
 }

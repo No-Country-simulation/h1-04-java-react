@@ -10,6 +10,7 @@ import io.justina.server.entities.User;
 import io.justina.server.enumerations.DocumentType;
 import io.justina.server.exceptions.PatientNotFoundException;
 import io.justina.server.repositories.PatientRepository;
+import io.justina.server.repositories.UserRepository;
 import io.justina.server.services.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -26,6 +27,9 @@ public class PatientServiceImpl implements PatientService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
     public PatientResponseDTO createPatient(PatientRequestDTO patientRequestDTO) {
@@ -57,6 +61,9 @@ public class PatientServiceImpl implements PatientService {
                 .document(document)
                 .address(address)
                 .build();
+
+        user = userRepository.save(user);
+
 
         Patient patient = Patient.builder()
                 .user(user)

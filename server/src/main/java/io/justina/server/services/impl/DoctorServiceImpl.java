@@ -10,6 +10,7 @@ import io.justina.server.entities.User;
 import io.justina.server.enumerations.DocumentType;
 import io.justina.server.exceptions.DoctorNotFoundException;
 import io.justina.server.repositories.DoctorRepository;
+import io.justina.server.repositories.UserRepository;
 import io.justina.server.services.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,6 +29,9 @@ public class DoctorServiceImpl implements DoctorService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private UserRepository userRepository;
 
 
     @Override
@@ -60,6 +64,9 @@ public class DoctorServiceImpl implements DoctorService {
                 .document(document)
                 .address(address)
                 .build();
+
+        user = userRepository.save(user);
+
 
         Doctor doctor = Doctor.builder()
                 .user(user)

@@ -47,19 +47,19 @@ public class PatientRequestDTO {
     private String crossTransplant;
 
     @Size(max = 5000, message = "Medical history must not exceed 5000 characters.")
-    @Pattern(regexp = "^[a-zA-Z0-9\\s,.]+$", message = "Medical history should contain only letters, numbers, spaces, commas, and periods.")
+//    @Pattern(regexp = "^[a-zA-Z0-9\\s,.]+$", message = "Medical history should contain only letters, numbers, spaces, commas, and periods.")
     private List<String> medicalHistory;
 
     @Size(max = 5000, message = "Pathologies must not exceed 5000 characters.")
-    @Pattern(regexp = "^[a-zA-Z0-9\\s,.]+$", message = "Pathologies should contain only letters, numbers, spaces, commas, and periods.")
+//    @Pattern(regexp = "^[a-zA-Z0-9\\s,.]+$", message = "Pathologies should contain only letters, numbers, spaces, commas, and periods.")
     private List<String> pathologies;
 
     @Size(max = 5000, message = "Treatments must not exceed 5000 characters.")
-    @Pattern(regexp = "^[a-zA-Z0-9\\s,.]+$", message = "Treatments should contain only letters, numbers, spaces, commas, and periods.")
+//    @Pattern(regexp = "^[a-zA-Z0-9\\s,.]+$", message = "Treatments should contain only letters, numbers, spaces, commas, and periods.")
     private List<String> treatments;
 
     @Size(max = 5000, message = "Medications must not exceed 5000 characters.")
-    @Pattern(regexp = "^[a-zA-Z0-9\\s,.]+$", message = "Medications should contain only letters, numbers, spaces, commas, and periods.")
+//    @Pattern(regexp = "^[a-zA-Z0-9\\s,.]+$", message = "Medications should contain only letters, numbers, spaces, commas, and periods.")
     private List<String> medications;
 
     @NotBlank(message = "First name is required.")
