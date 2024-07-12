@@ -9,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
 @EnableScheduling
 public class ServerWakeUpScheduler {
 
-    private final String serverUrl = "http://localhost:8080"; // Tu URL del servidor Render
+    private final String serverUrl = "https://justina-n2nb.onrender.com"; // Tu URL del servidor Render
 
     private final RestTemplate restTemplate = new RestTemplate();
 

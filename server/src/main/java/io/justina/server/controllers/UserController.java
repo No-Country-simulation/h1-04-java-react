@@ -1,5 +1,7 @@
 package io.justina.server.controllers;
 
+import io.justina.server.dtos.request.UpdateDocumentRequestDTO;
+import io.justina.server.dtos.request.UpdateEmailRequestDTO;
 import io.justina.server.dtos.request.UpdateUserRequestDTO;
 import io.justina.server.dtos.response.UserResponseDTO;
 import io.justina.server.services.UserService;
@@ -39,6 +41,16 @@ public class UserController {
     @PutMapping("/{id}/password")
     public ResponseEntity<Void> updatePassword(@PathVariable Long id, @RequestBody String newPassword) {
         return userService.updatePassword(id, newPassword);
+    }
+
+    @PutMapping("/{id}/email")
+    public ResponseEntity<Void> updateEmail(@PathVariable Long id, @RequestBody UpdateEmailRequestDTO requestDTO) {
+        return userService.updateEmail(id, requestDTO.getNewEmail());
+    }
+
+    @PutMapping("/{id}/document")
+    public ResponseEntity<Void> updateDocument(@PathVariable Long id, @RequestBody UpdateDocumentRequestDTO requestDTO) {
+        return userService.updateDocument(id, requestDTO.getDocumentType(), requestDTO.getDocumentNumber());
     }
 
 }

@@ -1,11 +1,9 @@
 package io.justina.server.dtos.request;
 
-import io.justina.server.enumerations.Institution;
 import io.justina.server.enumerations.Role;
 import jakarta.validation.constraints.*;
 import lombok.*;
 import java.time.LocalDate;
-
 
 @Getter
 @Setter
@@ -15,21 +13,13 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class UpdateUserRequestDTO {
 
-    @NotBlank(message = "First name is required.")
     @Size(max = 50, message = "First name must not exceed 50 characters.")
     @Pattern(regexp = "^[a-zA-Z\\s]+$", message = "First name should only contain letters and spaces.")
     private String firstName;
 
-    @NotBlank(message = "Last name is required.")
     @Size(max = 50, message = "Last name must not exceed 50 characters.")
     @Pattern(regexp = "^[a-zA-Z\\s]+$", message = "Last name should only contain letters and spaces.")
     private String lastName;
-
-    @NotBlank(message = "Email is required.")
-    @Email(message = "Invalid email address.")
-    @Size(max = 50, message = "Email must not exceed 50 characters.")
-    @Pattern(regexp = ".+@.+\\.[a-zA-Z]{2,}", message = "Email should have a valid domain with at least two characters.")
-    private String email;
 
     @Past(message = "Birth date must be in the past.")
     private LocalDate birthDate;
@@ -37,15 +27,6 @@ public class UpdateUserRequestDTO {
     @Size(max = 15, message = "Phone must not exceed 15 characters.")
     @Pattern(regexp = "^\\+?[0-9]*$", message = "Phone number must contain only digits and optional leading +.")
     private String phone;
-
-    @NotBlank(message = "Document type is required.")
-    @Size(max = 20, message = "Document type must not exceed 20 characters.")
-    private String documentType;
-
-    @NotBlank(message = "Document number is required.")
-    @Size(max = 20, message = "Document number must not exceed 20 characters.")
-    @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "Document number should contain only letters and numbers.")
-    private String documentNumber;
 
     @Size(max = 50, message = "Street must not exceed 50 characters.")
     @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "Street should contain only letters and numbers.")
@@ -68,13 +49,7 @@ public class UpdateUserRequestDTO {
     @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "Postal code should contain only letters and numbers.")
     private String postalCode;
 
-    @NotNull(message = "Institution name is required.")
-    private Institution institutionName;
-
     @NotNull(message = "Role is required.")
     private Role role;
-
-//    @NotNull(message = "Roles are required.")
-//    private Set<Role> roles;
 
 }
