@@ -1,13 +1,12 @@
 package io.justina.server.entities;
 
 
-import io.justina.server.enumerations.BusyDays;
-import io.justina.server.enumerations.Specialty;
-import io.justina.server.enumerations.Workday;
+import io.justina.server.enumerations.*;
 import jakarta.persistence.*;
 import lombok.*;
 
 
+import java.time.LocalDate;
 import java.util.Set;
 
 @Data
@@ -50,5 +49,41 @@ public class Doctor {
     @Column(name = "busy_days")
     private Set<BusyDays> busyDays;
 
+    @Column(name = "first_name")
+    private String firstName;
+
+    @Column(name = "last_name")
+    private String lastName;
+
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "birth_date")
+    private LocalDate birthDate;
+
+    @Column(name = "phone")
+    private String phone;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "institution_name")
+    private Institution institutionName;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role")
+    private Role role;
+
+    @Column(name = "is_active")
+    private Boolean isActive;
+
+    @Column(name = "deleted_at")
+    private LocalDate deletedAt;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "document_id", referencedColumnName = "id")
+    private Document document;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    private Address address;
 
 }

@@ -1,11 +1,16 @@
 package io.justina.server.dtos.response;
 
 
+import io.justina.server.entities.Address;
+import io.justina.server.entities.Document;
 import io.justina.server.entities.Patient;
 import io.justina.server.enumerations.BloodType;
 import io.justina.server.enumerations.CivilStatus;
+import io.justina.server.enumerations.Institution;
+import io.justina.server.enumerations.Role;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Setter
@@ -28,6 +33,17 @@ public class PatientResponseDTO {
     private CivilStatus civilStatus;
     private Integer children;
     private String crossTransplant;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private LocalDate birthDate;
+    private String phone;
+    private Institution institutionName;
+    private Role role;
+    private Boolean isActive;
+    private LocalDate deletedAt;
+    private Document document;
+    private Address address;
 
     public PatientResponseDTO(Patient patient) {
         this.patientId = patient.getPatientId();
@@ -42,5 +58,16 @@ public class PatientResponseDTO {
         this.civilStatus = patient.getCivilStatus();
         this.children = patient.getChildren();
         this.crossTransplant = patient.getCrossTransplant();
+        this.firstName = patient.getFirstName();
+        this.lastName = patient.getLastName();
+        this.email = patient.getEmail();
+        this.birthDate = patient.getBirthDate();
+        this.phone = patient.getPhone();
+        this.institutionName = patient.getInstitutionName();
+        this.role = patient.getRole();
+        this.isActive = patient.getIsActive();
+        this.deletedAt = patient.getDeletedAt();
+        this.document = patient.getDocument();
+        this.address = patient.getAddress();
     }
 }

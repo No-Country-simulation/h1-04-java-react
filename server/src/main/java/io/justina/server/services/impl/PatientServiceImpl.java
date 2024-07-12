@@ -26,11 +26,8 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public PatientResponseDTO createPatient(PatientRequestDTO patientRequestDTO) {
-        User user = userRepository.findById(patientRequestDTO.getUserId())
-                .orElseThrow(() -> new PatientNotFoundException("User not found"));
 
         Patient patient = new Patient();
-        patient.setUser(user);
         patient.setMedicalHistory(patientRequestDTO.getMedicalHistory());
         patient.setPathologies(patientRequestDTO.getPathologies());
         patient.setTreatments(patientRequestDTO.getTreatments());

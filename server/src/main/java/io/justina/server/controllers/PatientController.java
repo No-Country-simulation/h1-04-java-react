@@ -68,12 +68,5 @@ public class PatientController {
         return ResponseEntity.ok(deactivatedPatient);
     }
 
-    @GetMapping("/view")
-    @Operation(summary = "View patient's own details", description = "View the details of the logged-in patient")
-    public ResponseEntity<PatientResponseDTO> viewPatient(Authentication authentication) {
-        User user = (User) authentication.getPrincipal();
-        return ResponseEntity.ok(patientService.getPatientByUserId(user.getId()));
-    }
-
 
 }
