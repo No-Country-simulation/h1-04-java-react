@@ -29,7 +29,7 @@ const NavBar = () => {
         <img src={miniLogo} alt='logo' className='w-32' />
         <img src={notificationIcon} alt='notifications' className='w-6 h-6' />
       </div>
-
+      
       {isMenuOpen && (
         <div className='navbar-menu flex flex-col justify-between h-screen w-64 p-4 absolute top-0 left-0 z-50'>
           <div>
@@ -41,7 +41,7 @@ const NavBar = () => {
               />
               <img src={searchIcon} alt='search' className='w-4 h-4' />
             </div>
-
+            
             <ul className='space-y-4'>
               <a href='/new-turn' className='flex items-center'>
                 <img src={calendarIcon} alt='turnos' className='w-6 h-6 mr-2' />
