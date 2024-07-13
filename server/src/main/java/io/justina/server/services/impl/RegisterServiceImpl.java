@@ -37,12 +37,11 @@ public class RegisterServiceImpl implements RegisterService {
 
     @Override
     public RegisterResponseDTO register(RegisterRequestDTO registerRequest) throws AuthenticationException {
-        // Verificar si el email ya está en uso
+
         if (userRepository.existsByEmail(registerRequest.getEmail())) {
             throw new RegistrationException("Ya existe un usuario con ese email.");
         }
 
-        // Verificar si el número de documento ya está en uso
         if (documentRepository.existsByDocumentNumber(registerRequest.getDocumentNumber())) {
             throw new RegistrationException("Ya existe un usuario con ese número de documento.");
         }
@@ -69,7 +68,7 @@ public class RegisterServiceImpl implements RegisterService {
                     .lastName(registerRequest.getLastName())
                     .birthDate(registerRequest.getBirthDate())
                     .phone(registerRequest.getPhone())
-                    .institutionName(Institution.NO_COUNTRY) // por defecto todos los user pertenecen a No Country.
+                    .institutionName(Institution.NO_COUNTRY)
                     .role(registerRequest.getRole())
                     .isActive(true)
                     .document(document)
@@ -83,4 +82,5 @@ public class RegisterServiceImpl implements RegisterService {
             throw new RegistrationException("Error al registrar usuario.");
         }
     }
+
 }

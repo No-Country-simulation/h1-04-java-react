@@ -10,7 +10,6 @@ import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
 
-
 @Entity
 @Table(name = "app_user", uniqueConstraints = {@UniqueConstraint(columnNames = "email")})
 @Getter
@@ -44,7 +43,6 @@ public class User implements UserDetails {
 //    @Column(name = "role")
 //    private Set<Role> roles;
 
-
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "document_id", referencedColumnName = "id")
     private Document document;
@@ -53,14 +51,12 @@ public class User implements UserDetails {
     @JoinColumn(name = "address_id", referencedColumnName = "id")
     private Address address;
 
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of();
 //            return roles.stream()
 //                    .map(role -> new SimpleGrantedAuthority("ROLE_" + role.name()))
 //                    .collect(Collectors.toList());
-
     }
 
     @Override
@@ -86,14 +82,6 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return UserDetails.super.isEnabled();
-    }
-
-    public Boolean getActive() {
-        return isActive;
-    }
-
-    public void setActive(Boolean active) {
-        isActive = active;
     }
 
 }

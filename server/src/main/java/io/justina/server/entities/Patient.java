@@ -1,11 +1,8 @@
 package io.justina.server.entities;
 
-
 import io.justina.server.enumerations.*;
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.time.LocalDate;
 import java.util.List;
 
 @Data
@@ -69,6 +66,5 @@ public class Patient {
 
     @Column(name = "cross_transplant", length = 255)
     private String crossTransplant;
-
 
 }

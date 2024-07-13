@@ -1,6 +1,5 @@
 package io.justina.server.controllers;
 
-
 import io.justina.server.dtos.request.DoctorRequestDTO;
 import io.justina.server.dtos.response.DoctorResponseDTO;
 import io.justina.server.services.DoctorService;
@@ -11,9 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
-
 
 @RestController
 @RequestMapping("v1/api/doctors")
@@ -22,7 +19,6 @@ public class DoctorController {
 
     @Autowired
     private DoctorService doctorService;
-
 
     @PostMapping("/create")
     @Operation(summary = "Create a new doctor", description = "Creates a new doctor in the system")

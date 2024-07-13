@@ -2,7 +2,10 @@ package io.justina.server.enumerations;
 
 public enum BusyDays {
 
-    SUNDAY,
+    MONDAY,
     TUESDAY,
-    THURSDAY
+    WEDNESDAY,
+    THURSDAY,
+    FRIDAY
+
 }

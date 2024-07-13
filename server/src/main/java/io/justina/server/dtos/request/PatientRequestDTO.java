@@ -1,13 +1,10 @@
 package io.justina.server.dtos.request;
 
-
 import io.justina.server.enumerations.BloodType;
 import io.justina.server.enumerations.CivilStatus;
 import io.justina.server.enumerations.Institution;
-import io.justina.server.enumerations.Role;
 import jakarta.validation.constraints.*;
 import lombok.*;
-
 import java.time.LocalDate;
 import java.util.List;
 
@@ -47,19 +44,15 @@ public class PatientRequestDTO {
     private String crossTransplant;
 
     @Size(max = 5000, message = "Medical history must not exceed 5000 characters.")
-//    @Pattern(regexp = "^[a-zA-Z0-9\\s,.]+$", message = "Medical history should contain only letters, numbers, spaces, commas, and periods.")
     private List<String> medicalHistory;
 
     @Size(max = 5000, message = "Pathologies must not exceed 5000 characters.")
-//    @Pattern(regexp = "^[a-zA-Z0-9\\s,.]+$", message = "Pathologies should contain only letters, numbers, spaces, commas, and periods.")
     private List<String> pathologies;
 
     @Size(max = 5000, message = "Treatments must not exceed 5000 characters.")
-//    @Pattern(regexp = "^[a-zA-Z0-9\\s,.]+$", message = "Treatments should contain only letters, numbers, spaces, commas, and periods.")
     private List<String> treatments;
 
     @Size(max = 5000, message = "Medications must not exceed 5000 characters.")
-//    @Pattern(regexp = "^[a-zA-Z0-9\\s,.]+$", message = "Medications should contain only letters, numbers, spaces, commas, and periods.")
     private List<String> medications;
 
     @NotBlank(message = "First name is required.")
@@ -117,9 +110,6 @@ public class PatientRequestDTO {
 
     @NotNull(message = "Institution name is required.")
     private Institution institutionName;
-
-//    @NotNull(message = "Role is required.")
-//    private Role role;
 
     @NotBlank(message = "Password is required.")
     @Size(min = 6, message = "Password must be at least 6 characters long.")

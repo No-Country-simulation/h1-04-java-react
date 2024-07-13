@@ -10,5 +10,4 @@ public enum Workday {
     FRIDAY,
     SATURDAY
 
-
 }

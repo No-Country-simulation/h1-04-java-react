@@ -82,7 +82,6 @@ public class UserServiceImpl implements UserService {
             user.setRole(requestDTO.getRole());
         }
 
-        // Actualizar Address
         Address address = user.getAddress();
         if (address == null) {
             address = new Address();

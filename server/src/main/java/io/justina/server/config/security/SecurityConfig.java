@@ -43,7 +43,6 @@ public class SecurityConfig {
                 new AntPathRequestMatcher("/v1/api/render/*"),
                 new AntPathRequestMatcher("/v1/api/doctors/**"),
                 new AntPathRequestMatcher("/v1/api/patients/**")
-
         );
     }
 

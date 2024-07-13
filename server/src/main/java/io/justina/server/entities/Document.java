@@ -19,7 +19,6 @@ public class Document {
     private long id;
 
     private DocumentType documentType;
-
     private String documentNumber;
 
 }

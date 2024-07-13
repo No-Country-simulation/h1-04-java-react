@@ -1,6 +1,5 @@
 package io.justina.server.services.impl;
 
-
 import io.justina.server.dtos.request.DoctorRequestDTO;
 import io.justina.server.dtos.response.DoctorResponseDTO;
 import io.justina.server.entities.Address;
@@ -8,6 +7,7 @@ import io.justina.server.entities.Doctor;
 import io.justina.server.entities.Document;
 import io.justina.server.entities.User;
 import io.justina.server.enumerations.DocumentType;
+import io.justina.server.enumerations.Role;
 import io.justina.server.exceptions.DoctorNotFoundException;
 import io.justina.server.repositories.DoctorRepository;
 import io.justina.server.repositories.UserRepository;
@@ -16,7 +16,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,10 +31,8 @@ public class DoctorServiceImpl implements DoctorService {
     @Autowired
     private UserRepository userRepository;
 
-
     @Override
     public DoctorResponseDTO createDoctor(DoctorRequestDTO doctorRequestDTO) {
-
 
         Document document = Document.builder()
                 .documentType(DocumentType.valueOf(doctorRequestDTO.getDocumentType()))
@@ -59,14 +56,13 @@ public class DoctorServiceImpl implements DoctorService {
                 .birthDate(doctorRequestDTO.getBirthDate())
                 .phone(doctorRequestDTO.getPhone())
                 .institutionName(doctorRequestDTO.getInstitutionName())
-                //.role(doctorRequestDTO.getRole())
+                .role(Role.DOCTOR)
                 .isActive(true)
                 .document(document)
                 .address(address)
                 .build();
 
         user = userRepository.save(user);
-
 
         Doctor doctor = Doctor.builder()
                 .user(user)
@@ -78,7 +74,6 @@ public class DoctorServiceImpl implements DoctorService {
 
         doctor = doctorRepository.save(doctor);
         return new DoctorResponseDTO(doctor);
-
     }
 
     @Override
@@ -107,7 +102,6 @@ public class DoctorServiceImpl implements DoctorService {
         user.setBirthDate(doctorRequestDTO.getBirthDate());
         user.setPhone(doctorRequestDTO.getPhone());
         user.setInstitutionName(doctorRequestDTO.getInstitutionName());
-        // user.setRole(doctorRequestDTO.getRole());
 
         Document document = user.getDocument();
         document.setDocumentType(DocumentType.valueOf(doctorRequestDTO.getDocumentType()));
@@ -147,10 +141,9 @@ public class DoctorServiceImpl implements DoctorService {
         Doctor doctor = doctorRepository.findById(id)
                 .orElseThrow(() -> new DoctorNotFoundException("Doctor not found"));
         User user = doctor.getUser();
-        user.setActive(false);
+        user.setIsActive(false);
         doctor = doctorRepository.save(doctor);
         return new DoctorResponseDTO(doctor);
     }
-
 
 }

@@ -1,6 +1,5 @@
 package io.justina.server.controllers;
 
-
 import io.justina.server.dtos.request.PatientRequestDTO;
 import io.justina.server.dtos.response.PatientResponseDTO;
 import io.justina.server.services.PatientService;
@@ -11,9 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
-
 
 @RestController
 @RequestMapping("v1/api/patients")
