@@ -1,6 +1,6 @@
 package io.justina.server.config.jwt;
 
-import io.justina.server.service.UserService;
+import io.justina.server.services.UserService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
