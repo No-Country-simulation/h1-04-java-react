@@ -1,6 +1,7 @@
 package io.justina.server.services.impl;
 
 import io.justina.server.dtos.request.UpdateUserRequestDTO;
+import io.justina.server.dtos.response.UpdateUserResponseDTO;
 import io.justina.server.dtos.response.UserResponseDTO;
 import io.justina.server.entities.Address;
 import io.justina.server.entities.Document;
@@ -18,7 +19,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -58,56 +61,69 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ResponseEntity<UserResponseDTO> updateUser(Long id, UpdateUserRequestDTO requestDTO) {
-        User user = userRepository.findById(id)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+    public ResponseEntity<UpdateUserResponseDTO> updateUser(Long id, UpdateUserRequestDTO requestDTO) {
+        try {
+            User user = userRepository.findById(id)
+                    .orElseThrow(() -> new UsernameNotFoundException("User not found"));
 
-        if (requestDTO.getFirstName() != null && !requestDTO.getFirstName().trim().isEmpty()) {
-            user.setFirstName(requestDTO.getFirstName());
-        } else if (requestDTO.getFirstName() != null) {
-            throw new IllegalArgumentException("First name cannot be blank");
-        }
-        if (requestDTO.getLastName() != null && !requestDTO.getLastName().trim().isEmpty()) {
-            user.setLastName(requestDTO.getLastName());
-        } else if (requestDTO.getLastName() != null) {
-            throw new IllegalArgumentException("Last name cannot be blank");
-        }
-        if (requestDTO.getBirthDate() != null) {
-            user.setBirthDate(requestDTO.getBirthDate());
-        }
-        if (requestDTO.getPhone() != null) {
-            user.setPhone(requestDTO.getPhone());
-        }
-        if (requestDTO.getRole() != null) {
-            user.setRole(requestDTO.getRole());
-        }
+            if (requestDTO.getFirstName() != null && !requestDTO.getFirstName().trim().isEmpty()) {
+                user.setFirstName(requestDTO.getFirstName());
+            } else if (requestDTO.getFirstName() != null) {
+                throw new IllegalArgumentException("First name cannot be blank");
+            }
+            if (requestDTO.getLastName() != null && !requestDTO.getLastName().trim().isEmpty()) {
+                user.setLastName(requestDTO.getLastName());
+            } else if (requestDTO.getLastName() != null) {
+                throw new IllegalArgumentException("Last name cannot be blank");
+            }
+            if (requestDTO.getBirthDate() != null) {
+                user.setBirthDate(requestDTO.getBirthDate());
+            }
+            if (requestDTO.getPhone() != null) {
+                user.setPhone(requestDTO.getPhone());
+            }
+            if (requestDTO.getRole() != null) {
+                user.setRole(requestDTO.getRole());
+            }
 
-        Address address = user.getAddress();
-        if (address == null) {
-            address = new Address();
-            user.setAddress(address);
-        }
-        if (requestDTO.getStreet() != null) {
-            address.setStreet(requestDTO.getStreet());
-        }
-        if (requestDTO.getNumber() != null) {
-            address.setNumber(requestDTO.getNumber());
-        }
-        if (requestDTO.getDistrict() != null) {
-            address.setDistrict(requestDTO.getDistrict());
-        }
-        if (requestDTO.getCity() != null) {
-            address.setCity(requestDTO.getCity());
-        }
-        if (requestDTO.getProvince() != null) {
-            address.setProvince(requestDTO.getProvince());
-        }
-        if (requestDTO.getPostalCode() != null) {
-            address.setPostalCode(requestDTO.getPostalCode());
-        }
+            Address address = user.getAddress();
+            if (address == null) {
+                address = new Address();
+                user.setAddress(address);
+            }
+            if (requestDTO.getStreet() != null) {
+                address.setStreet(requestDTO.getStreet());
+            }
+            if (requestDTO.getNumber() != null) {
+                address.setNumber(requestDTO.getNumber());
+            }
+            if (requestDTO.getDistrict() != null) {
+                address.setDistrict(requestDTO.getDistrict());
+            }
+            if (requestDTO.getCity() != null) {
+                address.setCity(requestDTO.getCity());
+            }
+            if (requestDTO.getProvince() != null) {
+                address.setProvince(requestDTO.getProvince());
+            }
+            if (requestDTO.getPostalCode() != null) {
+                address.setPostalCode(requestDTO.getPostalCode());
+            }
 
-        User updatedUser = userRepository.save(user);
-        return new ResponseEntity<>(mapUserToDTO(updatedUser), HttpStatus.OK);
+            User updatedUser = userRepository.save(user);
+            UserResponseDTO userResponseDTO = mapUserToDTO(updatedUser);
+            UpdateUserResponseDTO updateUserResponseDTO = UpdateUserResponseDTO.builder()
+                    .message("User updated successfully")
+                    .data(userResponseDTO)
+                    .build();
+            return ResponseEntity.ok(updateUserResponseDTO);
+        } catch (Exception e) {
+            UpdateUserResponseDTO updateUserResponseDTO = UpdateUserResponseDTO.builder()
+                    .message("Error updating user: " + e.getMessage())
+                    .data(null)
+                    .build();
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(updateUserResponseDTO);
+        }
     }
 
     @Override

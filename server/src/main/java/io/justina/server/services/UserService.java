@@ -1,6 +1,7 @@
 package io.justina.server.services;
 
 import io.justina.server.dtos.request.UpdateUserRequestDTO;
+import io.justina.server.dtos.response.UpdateUserResponseDTO;
 import io.justina.server.dtos.response.UserResponseDTO;
 import io.justina.server.enumerations.DocumentType;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,7 @@ public interface UserService extends UserDetailsService {
     @Transactional(readOnly = true)
     ResponseEntity<UserResponseDTO> findById(Long id) throws UsernameNotFoundException;
 
-    ResponseEntity<UserResponseDTO> updateUser(Long id, UpdateUserRequestDTO requestDTO);
+    ResponseEntity<UpdateUserResponseDTO> updateUser(Long id, UpdateUserRequestDTO requestDTO);
 
     ResponseEntity<Void> deleteUser(Long id);
 

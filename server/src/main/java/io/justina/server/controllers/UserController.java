@@ -3,12 +3,14 @@ package io.justina.server.controllers;
 import io.justina.server.dtos.request.UpdateDocumentRequestDTO;
 import io.justina.server.dtos.request.UpdateEmailRequestDTO;
 import io.justina.server.dtos.request.UpdateUserRequestDTO;
+import io.justina.server.dtos.response.UpdateUserResponseDTO;
 import io.justina.server.dtos.response.UserResponseDTO;
 import io.justina.server.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("v1/api/user")
@@ -28,7 +30,7 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<UserResponseDTO> updateUser(@PathVariable Long id, @RequestBody UpdateUserRequestDTO requestDTO) {
+    public ResponseEntity<UpdateUserResponseDTO> updateUser(@PathVariable Long id, @RequestBody UpdateUserRequestDTO requestDTO) {
         return userService.updateUser(id, requestDTO);
     }
 
