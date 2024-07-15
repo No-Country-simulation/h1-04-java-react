@@ -57,7 +57,7 @@ const NavBar = () => {
                   alt='avances'
                   className='w-6 h-6 mr-2'
                 />
-                Avances <span className='badge ml-auto'>2</span>
+                Adherencia <span className='badge ml-auto'>2</span>
               </a>
               <a href='#' className='flex items-center' onClick={toggleMenu}>
                 <img src={exitIcon} alt='salir' className='w-6 h-6 mr-2' />

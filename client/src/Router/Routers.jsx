@@ -14,9 +14,9 @@ import NewTurn from "../Components/Patient/Turn/NewTurn/NewTurn.jsx";
 const Router = () => {
   return (
     <BrowserRouter>
-      <div className='bg-white w-[360px] h-[800px] flex flex-col justify-between'>
+      {/* <div className='bg-white w-[360px] h-[800px] flex flex-col justify-between'> */}
         <NavBar />
-        <div className='h-full'>
+        {/* <div className='h-full'> */}
           <Routes>
             <Route exact path='/login' element={<Login />} />
             <Route exact path='/register' element={<Register />} />
@@ -42,9 +42,9 @@ const Router = () => {
 
             <Route path='*' element={<Error404 />} />
           </Routes>
-        </div>
+        {/* </div> */}
         <Footer />
-      </div>
+      {/* </div> */}
     </BrowserRouter>
   );
 };
