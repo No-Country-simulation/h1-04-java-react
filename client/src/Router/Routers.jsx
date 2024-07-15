@@ -10,6 +10,7 @@ import Turn from "../Components/Patient/Turn/Turn.jsx";
 import Treatments from "../Components/Patient/Treatments/Treatments.jsx";
 import Treatment from "../Components/Patient/Treatment/Treatment.jsx";
 import NewTurn from "../Components/Patient/Turn/NewTurn/NewTurn.jsx";
+import TurnCalendar from "../Components/Patient/Turn/TurnCalendar/TurnCalendar.jsx";
 
 const Router = () => {
   return (
@@ -22,7 +23,7 @@ const Router = () => {
             <Route exact path='/register' element={<Register />} />
 
             <Route exact path='/patient' element={<HomePatient />} />
-            <Route exact path='/turn-calendar' element={<Turn />} />
+            <Route exact path='/turn-calendar' element={<TurnCalendar />} />
             <Route exact path='/new-turn' element={<NewTurn />} />
             <Route exact path='/confirm-new-turn' element={<Turn />} />
             <Route exact path='/error-new-turn' element={<Turn />} />
