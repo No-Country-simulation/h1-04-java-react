@@ -8,7 +8,6 @@ import io.justina.server.enumerations.Role;
 import lombok.*;
 import java.time.LocalDate;
 
-
 @Getter
 @Setter
 @ToString
@@ -25,8 +24,6 @@ public class UserResponseDTO {
     private String phone;
     private Institution institutionName;
     private Role role;
-    private Boolean isActive;
-    private LocalDate deletedAt;
     private Document document;
     private Address address;
 
@@ -39,8 +36,6 @@ public class UserResponseDTO {
         this.phone = user.getPhone();
         this.institutionName = user.getInstitutionName();
         this.role = user.getRole();
-        this.isActive = user.getIsActive();
-        this.deletedAt = user.getDeletedAt();
         this.document = user.getDocument();
         this.address = user.getAddress();
     }

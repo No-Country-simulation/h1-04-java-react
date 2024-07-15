@@ -1,13 +1,9 @@
 package io.justina.server.dtos.request;
 
-
 import io.justina.server.enumerations.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
-
-
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.Set;
 
 @Getter
@@ -17,7 +13,6 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DoctorRequestDTO {
-
 
     @NotEmpty(message = "Specialty is required.")
     private Set<Specialty> specialties;
@@ -88,9 +83,6 @@ public class DoctorRequestDTO {
 
     @NotNull(message = "Institution name is required.")
     private Institution institutionName;
-
-//    @NotNull(message = "Role is required.")
-//    private Role role;
 
     @NotBlank(message = "Password is required.")
     @Size(min = 6, message = "Password must be at least 6 characters long.")

@@ -1,14 +1,10 @@
 package io.justina.server.dtos.response;
 
-
 import io.justina.server.entities.Patient;
 import lombok.*;
-
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
 
 @Setter
 @Getter
@@ -73,6 +69,5 @@ public class PatientResponseDTO {
         this.treatments = new ArrayList<>(patient.getTreatments());
         this.medications = new ArrayList<>(patient.getMedications());
     }
-
 
 }

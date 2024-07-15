@@ -1,9 +1,12 @@
 package io.justina.server.services;
 
+import io.justina.server.dtos.request.UpdatePasswordRequestDTO;
 import io.justina.server.dtos.request.UpdateUserRequestDTO;
+import io.justina.server.dtos.response.UpdateUserResponseDTO;
 import io.justina.server.dtos.response.UserResponseDTO;
 import io.justina.server.enumerations.DocumentType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,19 +15,23 @@ import java.util.List;
 public interface UserService extends UserDetailsService {
 
     @Transactional(readOnly = true)
-    List<UserResponseDTO> getAllUsers();
+    UserResponseDTO findById(Long id) throws UsernameNotFoundException;
 
     @Transactional(readOnly = true)
-    ResponseEntity<UserResponseDTO> findById(Long id) throws UsernameNotFoundException;
+    List<UserResponseDTO> getAllUsers();
 
-    ResponseEntity<UserResponseDTO> updateUser(Long id, UpdateUserRequestDTO requestDTO);
+    UpdateUserResponseDTO updateUser(Long id, UpdateUserRequestDTO requestDTO);
 
-    ResponseEntity<Void> deleteUser(Long id);
+    void updatePassword(Long id, UpdatePasswordRequestDTO newPassword);
 
-    ResponseEntity<Void> updatePassword(Long id, String newPassword);
+    void updateEmail(Long id, String newEmail);
 
-    ResponseEntity<Void> updateEmail(Long id, String newEmail);
+    void updateDocument(Long id, DocumentType documentType, String documentNumber) throws IllegalArgumentException;
 
-    ResponseEntity<Void> updateDocument(Long id, DocumentType documentType, String documentNumber);
+    void deleteUser(Long id);
+
+    void desactivateUser(Long id);
+
+    UserDetails loadUserByUsername(String email) throws UsernameNotFoundException;
 
 }

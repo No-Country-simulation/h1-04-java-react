@@ -1,6 +1,5 @@
 package io.justina.server.services.impl;
 
-
 import io.justina.server.dtos.request.PatientRequestDTO;
 import io.justina.server.dtos.response.PatientResponseDTO;
 import io.justina.server.entities.Address;
@@ -8,6 +7,7 @@ import io.justina.server.entities.Document;
 import io.justina.server.entities.Patient;
 import io.justina.server.entities.User;
 import io.justina.server.enumerations.DocumentType;
+import io.justina.server.enumerations.Role;
 import io.justina.server.exceptions.PatientNotFoundException;
 import io.justina.server.repositories.PatientRepository;
 import io.justina.server.repositories.UserRepository;
@@ -16,7 +16,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -57,14 +56,13 @@ public class PatientServiceImpl implements PatientService {
                 .birthDate(patientRequestDTO.getBirthDate())
                 .phone(patientRequestDTO.getPhone())
                 .institutionName(patientRequestDTO.getInstitutionName())
-               // .role(patientRequestDTO.getRole())
+                .role(Role.PATIENT)
                 .isActive(true)
                 .document(document)
                 .address(address)
                 .build();
 
         user = userRepository.save(user);
-
 
         Patient patient = Patient.builder()
                 .user(user)
@@ -158,11 +156,10 @@ public class PatientServiceImpl implements PatientService {
                 .orElseThrow(() -> new PatientNotFoundException("Patient not found"));
 
         User user = patient.getUser();
-        user.setActive(false);
+        user.setIsActive(false);
         patientRepository.save(patient);
 
         return new PatientResponseDTO(patient);
     }
-
 
 }

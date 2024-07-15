@@ -1,15 +1,12 @@
 package io.justina.server.dtos.response;
 
-
 import io.justina.server.entities.Doctor;
 import io.justina.server.enumerations.BusyDays;
 import io.justina.server.enumerations.Specialty;
 import io.justina.server.enumerations.Workday;
 import lombok.*;
-
 import java.time.LocalDate;
 import java.util.Set;
-
 
 @Setter
 @Getter

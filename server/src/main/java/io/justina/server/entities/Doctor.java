@@ -1,20 +1,16 @@
 package io.justina.server.entities;
 
-
 import io.justina.server.enumerations.*;
 import jakarta.persistence.*;
 import lombok.*;
-
-
-import java.time.LocalDate;
 import java.util.Set;
 
-@Data
 @Builder
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 @Entity
 @Table(name="doctor")
 public class Doctor {
