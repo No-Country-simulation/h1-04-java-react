@@ -1,5 +1,4 @@
-import PropTypes from "prop-types";
-import arrow from "../../../Assets/Imgs/arrow.png";
+import arrow from "../../../Assets/Imgs/arrowRight.png";
 
 const Turns = ({ doctor, time, href, type }) => {
   return (
