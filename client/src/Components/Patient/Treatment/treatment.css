@@ -1,0 +1,16 @@
+.titleContainer{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 700;
+}
+.titleContainer img{
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+

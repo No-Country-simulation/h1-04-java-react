@@ -1,10 +1,9 @@
 import imgUser from "../../../Assets/Imgs/example.png"
 import Week from "./Weekk.jsx";
 import Day from "./Day.jsx";
-import "./homePatient.css";
 
 const HomePatient = () => {
-  let user = "pepito"
+  let user = "Juan"
 
   return  (
     <>

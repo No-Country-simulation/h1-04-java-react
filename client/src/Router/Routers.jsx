@@ -28,25 +28,16 @@ const Router = () => {
             <Route exact path='/confirm-new-turn' element={<Turn />} />
             <Route exact path='/error-new-turn' element={<Turn />} />
             <Route exact path='/view-turn' element={<Turn />} />
+            
             <Route exact path='/treatments' element={<Treatments />} />
             <Route exact path='/treatment-nutrition' element={<Treatment />} />
-            <Route
-              exact
-              path='/treatment-physical-activity'
-              element={<Treatment />}
-            />
-            <Route
-              exact
-              path='/treatment-clinical-history'
-              element={<Treatment />}
-            />
-            <Route exact path='/treatment-meditation' element={<Treatment />} />
+            <Route exact path='/treatment-physical-activity' element={<Treatment />} />
+            <Route exact path='/treatment-clinical-history'element={<Treatment />} />
+            <Route exact path='/treatment-medication' element={<Treatment />} />
             <Route exact path='/treatment-psychology' element={<Treatment />} />
-            <Route
-              exact
-              path='/treatment-social-work'
-              element={<Treatment />}
-            />
+            <Route exact path='/treatment-social-work' element={<Treatment />} />
+            <Route exact path='/treatment-physiotherapy' element={<Treatment />} />
+            <Route exact path='/treatment-others' element={<Treatment />} />
 
             <Route exact path='/doctor' element={<HomeDoctor />} />
 

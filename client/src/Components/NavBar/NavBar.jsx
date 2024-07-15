@@ -34,11 +34,7 @@ const NavBar = () => {
         <div className='navbar-menu flex flex-col justify-between h-screen w-64 p-4 absolute top-0 left-0 z-50'>
           <div>
             <div className='search-bar flex items-center px-2 mb-4'>
-              <input
-                type='text'
-                placeholder='Buscar'
-                className='bg-transparent flex-grow outline-none'
-              />
+              <input type='text' placeholder='Buscar' className='bg-transparent flex-grow outline-none' />
               <img src={searchIcon} alt='search' className='w-4 h-4' />
             </div>
 
@@ -47,7 +43,7 @@ const NavBar = () => {
                 <img src={calendarIcon} alt='turnos' className='w-6 h-6 mr-2' />
                 Turnos <span className='badge ml-auto'>1</span>
               </a>
-              <a href='#' className='flex items-center'>
+              <a href='/treatments' className='flex items-center'>
                 <img
                   src={treatmentIcon}
                   alt='tratamiento'

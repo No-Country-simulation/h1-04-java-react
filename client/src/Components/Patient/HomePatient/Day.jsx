@@ -1,5 +1,5 @@
 import PropTypes from "prop-types"
-import arrow from "../../../Assets/Imgs/arrow.png"
+import arrowRight from "../../../Assets/Imgs/arrowRight.png"
 
 const Day = ({activity, time, href}) => {
     return (
@@ -7,7 +7,7 @@ const Day = ({activity, time, href}) => {
             <p className="ml-2">{activity}</p>
             <div className="flex">
                 <p>{time}</p>
-                <a href={href}><img src={arrow} alt="arrow" className="w-6 h-6 ml-4" /></a>
+                <a href={href}><img src={arrowRight} alt="arrow" className="w-6 h-6 ml-4" /></a>
             </div>
         </div>
     )
