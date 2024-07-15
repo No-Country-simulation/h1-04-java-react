@@ -11,6 +11,7 @@ import PlanPsychology from "./Plans/PlanPsychology.jsx";
 import PlanSocial from "./Plans/PlanSocial.jsx";
 import PlanPhysiotherapy from "./Plans/PlanPhysiotherapy.jsx";
 import PlanOthers from "./Plans/PlanOthers.jsx";
+import download from "../../../Assets/Imgs/download.png"
 import "./treatment.css"
 
 
@@ -49,38 +50,46 @@ const Treatment = () => {
 
 
     return (
-        <section>
+        <section className="container">
             <div className="titleContainer">
                 {image && <img src={image} alt={title} />}
                 <h1>{title}</h1>
             </div>
+            <section className="planes">
+                <div>
+                    <h2>Plan de {title}</h2>
+                    <p>Plan personalizado</p>
+                </div>
+                <img src={download} alt="download" />{/* Descargar PDF o algo */}
+            </section>
             { !SelectedComponent ? (
                 <>
                 <section className="optionsContainer">
                     { buttons && buttons.map((but, index) => (
-                        <button key={index} className="bg-stone-300 font-bold flex justify-between p-2 m-3" onClick={() => handleComponent(index)}>
+                        <button key={index} className="option bg-stone-300 font-bold flex justify-between p-2" onClick={() => handleComponent(index)}>
                             { but.label }
+                            <img src={arrowRight} alt="arrow" className="w-6 h-6 ml-4" />
                         </button>
                     )) }
                 </section>
-                <button onClick={()=> navigate(-1)}>
+                <button className="back" onClick={()=> navigate(-1)}>
                     <img src={arrowLeft} alt="back" />
                 </button>
                 </>
             ) : (
-                <section>
+                <article className="containerComponents">
                     <SelectedComponent type={selectedButton.label} />
                     <div className="navigationButtons">
-                        <button onClick={handlePrevious} disabled={selectedButtonIndex === 0}>
-                            <img src={arrowLeft} alt="previous" />
-                            <p>Regresar</p>
-                        </button>
                         <button onClick={handleNext} disabled={selectedButtonIndex === buttons.length - 1}>
-                            <img src={arrowRight} alt="next" />
                             <p>Siguiente Comida</p>
+                            <img src={arrowRight} alt="next" />
+                        </button>
+                        <button onClick={handlePrevious} disabled={selectedButtonIndex === 0}>
+                            <p>Regresar</p>
+                            <img src={arrowLeft} alt="previous" />
                         </button>
                     </div>
-                </section>
+                </article>
             ) }
         </section>
     )

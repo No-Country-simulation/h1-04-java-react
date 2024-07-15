@@ -1,0 +1,43 @@
+.weekContainer{
+    font-size: 13px;
+}
+
+.weekContainer img{
+    width: 20px;
+    height: 20px;
+}
+
+
+.feedBack{
+    color: #191919;
+    background-color: #D9D9D9;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.feedBack h3{
+    font-weight: 600;
+    text-align: center;
+}
+
+.feedBackImgs{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.feedBackImgs img{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 35px;
+    height: 35px;
+}
+
+.feedBack textarea{
+    background-color: #B1B1B1;
+    height: 40px;
+    width: 100%;
+    border-radius: 5px;
+    padding: 5px;
+    resize: none;
+}

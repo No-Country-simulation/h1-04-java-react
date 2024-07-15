@@ -14,3 +14,81 @@
     margin-right: 5px;
 }
 
+.planes{
+    background-color: #4B4544;
+    color: #FFFFFF;
+    margin: auto;
+    width: 90%;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.planes h2{
+    font-weight: 600;
+    font-size: 18px;
+}
+.planes p{
+    font-size: 14px;
+}
+.planes img{
+    width: 25px;
+    height: 25px;
+    margin: 5px;
+}
+
+
+.optionsContainer{
+    width: 90%;
+    margin: auto;
+    padding-bottom: 60px
+}
+
+.option{
+    border-radius: 15px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+
+
+.container {
+    position: relative;
+    /* min-height: 100vh; */
+}
+
+.back{
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    padding: 1px;
+    border: 2px solid #000;
+    border-radius: 30px;
+    width: 35px;
+}
+
+
+.containerComponents{
+    width: 90%;
+    margin: auto;
+}
+
+.navigationButtons button{
+    background-color: #D9D9D9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    font-weight: 700;
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+}
+
+.navigationButtons img{
+    width: 20px;
+    height: 20px;
+}
