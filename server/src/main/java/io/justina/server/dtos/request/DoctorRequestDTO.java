@@ -85,7 +85,8 @@ public class DoctorRequestDTO {
     private Institution institutionName;
 
     @NotBlank(message = "Password is required.")
-    @Size(min = 6, message = "Password must be at least 6 characters long.")
+    @Size(min = 8, max = 25, message = "Password must be between 8 and 25 characters.")
+    @Pattern(regexp = "^(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]+$", message = "Password must contain at least one uppercase letter, one number, and one special character.")
     private String password;
 
 }
