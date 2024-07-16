@@ -59,7 +59,7 @@ public class DoctorController {
     @Operation(summary = "Deactivate a doctor", description = "Deactivate a doctor from the system by ID")
     public ResponseEntity<String> deactivateDoctor(@RequestParam Long doctorId) {
         doctorService.deactivateDoctor(doctorId);
-        return ResponseEntity.ok("Doctor desactivated successfully");
+        return ResponseEntity.ok("Doctor deactivated successfully");
     }
 
 }
