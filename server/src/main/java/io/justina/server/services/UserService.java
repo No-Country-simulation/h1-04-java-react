@@ -5,7 +5,6 @@ import io.justina.server.dtos.request.UpdateUserRequestDTO;
 import io.justina.server.dtos.response.UpdateUserResponseDTO;
 import io.justina.server.dtos.response.UserResponseDTO;
 import io.justina.server.enumerations.DocumentType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -30,7 +29,7 @@ public interface UserService extends UserDetailsService {
 
     void deleteUser(Long id);
 
-    void desactivateUser(Long id);
+    void deactivateUser(Long id);
 
     UserDetails loadUserByUsername(String email) throws UsernameNotFoundException;
 

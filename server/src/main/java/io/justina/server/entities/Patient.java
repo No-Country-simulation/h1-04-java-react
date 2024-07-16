@@ -5,12 +5,12 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.util.List;
 
-@Data
 @Builder
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 @Entity
 @Table(name="patient")
 public class Patient {
