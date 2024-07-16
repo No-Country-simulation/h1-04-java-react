@@ -76,11 +76,11 @@ public class UserController {
         return ResponseEntity.ok("User deleted successfully");
     }
 
-    @DeleteMapping("/desactivateUser/{id}")
+    @DeleteMapping("/deactivateUser/{id}")
     @Operation(summary = "Deactivate a user", description = "Deactivate a user from the system by ID")
-    public ResponseEntity<String> desactivateUser(@PathVariable Long id) {
-        userService.desactivateUser(id);
-        return ResponseEntity.ok("User desactivated successfully");
+    public ResponseEntity<String> deactivateUser(@PathVariable Long id) {
+        userService.deactivateUser(id);
+        return ResponseEntity.ok("User deactivated successfully");
     }
 
 }

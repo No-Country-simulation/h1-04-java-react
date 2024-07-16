@@ -30,12 +30,12 @@ public class DoctorRequestDTO {
 
     @NotBlank(message = "First name is required.")
     @Size(max = 50, message = "First name must not exceed 50 characters.")
-    @Pattern(regexp = "^[a-zA-Z\\s]+$", message = "First name should only contain letters and spaces.")
+    @Pattern(regexp = "^[\\p{L}\\s]+$", message = "First name should only contain letters and spaces.")
     private String firstName;
 
     @NotBlank(message = "Last name is required.")
     @Size(max = 50, message = "Last name must not exceed 50 characters.")
-    @Pattern(regexp = "^[a-zA-Z\\s]+$", message = "Last name should only contain letters and spaces.")
+    @Pattern(regexp = "^[\\p{L}\\s]+$", message = "Last name should only contain letters and spaces.")
     private String lastName;
 
     @NotBlank(message = "Email is required.")
@@ -85,7 +85,8 @@ public class DoctorRequestDTO {
     private Institution institutionName;
 
     @NotBlank(message = "Password is required.")
-    @Size(min = 6, message = "Password must be at least 6 characters long.")
+    @Size(min = 8, max = 25, message = "Password must be between 8 and 25 characters.")
+    @Pattern(regexp = "^(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]+$", message = "Password must contain at least one uppercase letter, one number, and one special character.")
     private String password;
 
 }
