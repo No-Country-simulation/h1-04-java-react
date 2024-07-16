@@ -45,8 +45,4 @@ public class Doctor {
     @Column(name = "busy_days")
     private Set<BusyDays> busyDays;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "institution_name")
-    private Institution institutionName;
-
 }
