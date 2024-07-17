@@ -33,16 +33,16 @@ public class Doctor {
     @Column(name = "licence_number", length = 20)
     private String licenceNumber;
 
-    @ElementCollection(targetClass = Workday.class)
+    @ElementCollection(targetClass = Days.class)
     @CollectionTable(name = "doctor_workdays", joinColumns = @JoinColumn(name = "doctor_id"))
     @Enumerated(EnumType.STRING)
     @Column(name = "workdays")
-    private Set<Workday> workdays;
+    private Set<Days> workdays;
 
-    @ElementCollection(targetClass = Workday.class)
-    @CollectionTable(name = "doctor_busy_days", joinColumns = @JoinColumn(name = "doctor_id"))
+    @ElementCollection(targetClass = AvailableHours.class)
+    @CollectionTable(name = "doctor_schedules", joinColumns = @JoinColumn(name = "doctor_id"))
     @Enumerated(EnumType.STRING)
-    @Column(name = "busy_days")
-    private Set<BusyDays> busyDays;
+    @Column(name = "schedules")
+    private Set<AvailableHours> schedules;
 
 }

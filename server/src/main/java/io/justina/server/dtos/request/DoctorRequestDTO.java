@@ -23,10 +23,7 @@ public class DoctorRequestDTO {
     private String licenceNumber;
 
     @NotEmpty(message = "Workdays are required.")
-    private Set<Workday> workdays;
-
-    @NotEmpty(message = "Busy Days are required.")
-    private Set<BusyDays> busyDays;
+    private Set<Days> workdays;
 
     @NotBlank(message = "First name is required.")
     @Size(max = 50, message = "First name must not exceed 50 characters.")

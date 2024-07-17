@@ -1,9 +1,8 @@
 package io.justina.server.dtos.response;
 
 import io.justina.server.entities.Doctor;
-import io.justina.server.enumerations.BusyDays;
 import io.justina.server.enumerations.Specialty;
-import io.justina.server.enumerations.Workday;
+import io.justina.server.enumerations.Days;
 import lombok.*;
 import java.time.LocalDate;
 import java.util.Set;
@@ -33,8 +32,8 @@ public class DoctorResponseDTO {
     private String institutionName;
     private Set<Specialty> specialties;
     private String licenceNumber;
-    private Set<Workday> workdays;
-    private Set<BusyDays> busyDays;
+    private Set<Days> workdays;
+
 
     public DoctorResponseDTO(Doctor doctor) {
         this.doctorId = doctor.getDoctorId();
@@ -55,7 +54,6 @@ public class DoctorResponseDTO {
         this.specialties = doctor.getSpecialties();
         this.licenceNumber = doctor.getLicenceNumber();
         this.workdays = doctor.getWorkdays();
-        this.busyDays = doctor.getBusyDays();
     }
 
 }

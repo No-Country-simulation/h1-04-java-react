@@ -69,7 +69,6 @@ public class DoctorServiceImpl implements DoctorService {
                 .licenceNumber(doctorRequestDTO.getLicenceNumber())
                 .specialties(doctorRequestDTO.getSpecialties())
                 .workdays(doctorRequestDTO.getWorkdays())
-                .busyDays(doctorRequestDTO.getBusyDays())
                 .build();
 
         doctor = doctorRepository.save(doctor);
@@ -121,7 +120,6 @@ public class DoctorServiceImpl implements DoctorService {
         doctor.setLicenceNumber(doctorRequestDTO.getLicenceNumber());
         doctor.setSpecialties(doctorRequestDTO.getSpecialties());
         doctor.setWorkdays(doctorRequestDTO.getWorkdays());
-        doctor.setBusyDays(doctorRequestDTO.getBusyDays());
 
         doctor = doctorRepository.save(doctor);
         return new DoctorResponseDTO(doctor);
