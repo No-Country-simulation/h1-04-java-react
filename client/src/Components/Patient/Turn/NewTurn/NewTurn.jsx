@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import check from "../../../../Assets/Imgs/check.png";
 import Calendar from "../../../../helpers/atoms/Calendar";
+import DoctorCard from "../../../../helpers/atoms/DoctorCard";
+import DoctorContext from "../../../../context/DoctorContext";
 
 const NewTurn = () => {
   const [selectedEspecialidad, setSelectedEspecialidad] = useState("");
@@ -43,6 +45,10 @@ const NewTurn = () => {
   function show() {
     console.log(selectedEspecialidad, selectedProfesional, selectedTipoCita);
   }
+  const { doctors, loading, error } = useContext(DoctorContext);
+
+  if (loading) return <div className='text-center mt-10'>Loading...</div>;
+  if (error) return <div className='text-center mt-10'>{error}</div>;
 
   return (
     <div className='  p-4'>
@@ -191,6 +197,9 @@ const NewTurn = () => {
         </span>
       </label>
       <button onClick={show}>a</button>
+      {doctors.map((doctor) => (
+        <DoctorCard key={doctor.doctorId} doctor={doctor} />
+      ))}
     </div>
   );
 };

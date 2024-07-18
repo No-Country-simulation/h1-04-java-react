@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import miniLogo from "../../Assets/Imgs/miniLogo.png";
 import logo from "../../Assets/Imgs/logo.png";
 import searchIcon from "../../Assets/Imgs/search.png";
@@ -9,9 +9,11 @@ import treatmentIcon from "../../Assets/Imgs/treatment.png";
 import progressIcon from "../../Assets/Imgs/progress.png";
 import exitIcon from "../../Assets/Imgs/exit.png";
 import "./navbar.css";
+import DoctorContext from "../../context/DoctorContext";
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { logout } = useContext(DoctorContext);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -34,7 +36,11 @@ const NavBar = () => {
         <div className='navbar-menu flex flex-col justify-between h-screen w-64 p-4 absolute top-0 left-0 z-50'>
           <div>
             <div className='search-bar flex items-center px-2 mb-4'>
-              <input type='text' placeholder='Buscar' className='bg-transparent flex-grow outline-none' />
+              <input
+                type='text'
+                placeholder='Buscar'
+                className='bg-transparent flex-grow outline-none'
+              />
               <img src={searchIcon} alt='search' className='w-4 h-4' />
             </div>
 
@@ -59,7 +65,7 @@ const NavBar = () => {
                 />
                 Adherencia <span className='badge ml-auto'>2</span>
               </a>
-              <a href='#' className='flex items-center' onClick={toggleMenu}>
+              <a href='/login' className='flex items-center' onClick={logout}>
                 <img src={exitIcon} alt='salir' className='w-6 h-6 mr-2' />
                 Salir
               </a>

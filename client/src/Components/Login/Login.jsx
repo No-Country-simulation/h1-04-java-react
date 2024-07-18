@@ -1,50 +1,63 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { login as loginService } from "../../services/authService";
 import Alert from "../../helpers/atoms/Alert";
 import InputComponent from "../../helpers/atoms/InputComponent";
 import LinkComponent from "../../helpers/atoms/LinkComponent";
 import IconComponent from "../../helpers/atoms/IconComponent";
 import ButtonComponent from "../../helpers/atoms/ButtonComponent";
 import logo from "../../Assets/Imgs/logo.png";
+import AuthContext from "../../context/DoctorContext";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isWrongCredentials, setIsWrongCredentials] = useState(false);
   const [isError, setIsError] = useState(false);
   const [isNonValidAccount, setIsNonValidAccount] = useState(false);
   const navigate = useNavigate();
+  const { login } = useContext(AuthContext);
 
-  const handleSubmit = (fields) => {
-    fields.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     setIsLoading(true);
 
-    // Aquí iría la lógica real de conexión al backend: fetch o axios
+    // Console log para verificar los datos antes de enviar la solicitud
+    console.log("Email:", email);
+    console.log("Password:", password);
 
-    //login exitoso
-    if (fields.email === "test@example.com" && fields.password === "password") {
+    try {
+      const data = await loginService(email, password);
       setIsLoading(false);
       setIsWrongCredentials(false);
       setIsError(false);
       setIsNonValidAccount(false);
+
+      login(data.data);
+
       // Redirigir o navegar a home
       navigate("/");
-    } else if (fields.email === "test@example.com") {
-      //error con las credenciales
+    } catch (error) {
       setIsLoading(false);
-      setIsWrongCredentials(true);
-      setIsError(false);
-      setIsNonValidAccount(false);
-    } else {
-      //error general
-      setIsLoading(false);
-      setIsWrongCredentials(false);
-      setIsError(true);
-      setIsNonValidAccount(false);
+      if (error.message === "Invalid credentials") {
+        setIsWrongCredentials(true);
+        setIsError(false);
+        setIsNonValidAccount(false);
+      } else if (error.message === "Non-valid account") {
+        setIsWrongCredentials(false);
+        setIsError(false);
+        setIsNonValidAccount(true);
+      } else {
+        setIsWrongCredentials(false);
+        setIsError(true);
+        setIsNonValidAccount(false);
+      }
     }
   };
 
   return (
-    <div className='flex flex-col items-center justify-center px-6 pb-8 mx-auto lg:py-0 '>
+    <div className='flex flex-col items-center justify-center px-6 pb-8 mx-auto lg:py-0'>
       <div className='w-full mt-10 flex flex-col items-center gap-10'>
         <a href='/' className='text-2xl font-semibold text-gray-900'>
           <img
@@ -70,12 +83,20 @@ const Login = () => {
                   type='email'
                   disabled={isLoading}
                   placeholder='nombre@dominio.com'
+                  value={email}
+                  onChange={(e) => {
+                    console.log("Email changed:", e.target.value);
+                    setEmail(e.target.value);
+                  }}
                 />
+
                 <InputComponent
                   name='password'
                   label='Contraseña'
                   type='password'
                   disabled={isLoading}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
 
