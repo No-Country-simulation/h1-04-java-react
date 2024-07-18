@@ -60,5 +60,5 @@ public class InstitutionController {
         institutionService.deactivateInstitution(id);
         return ResponseEntity.ok("Institution deactivated successfully");
     }
-    
+
 }
