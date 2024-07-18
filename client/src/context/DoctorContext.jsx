@@ -9,6 +9,17 @@ export const DoctorProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const [authData, setAuthData] = useState(null);
+
+  const login = (data) => {
+    setAuthData(data);
+    localStorage.setItem("authData", JSON.stringify(data));
+  };
+
+  const logout = () => {
+    setAuthData(null);
+    localStorage.removeItem("authData");
+  };
   useEffect(() => {
     const getDoctors = async () => {
       try {
@@ -25,7 +36,9 @@ export const DoctorProvider = ({ children }) => {
   }, []);
 
   return (
-    <DoctorContext.Provider value={{ doctors, loading, error }}>
+    <DoctorContext.Provider
+      value={{ doctors, loading, error, authData, login, logout }}
+    >
       {children}
     </DoctorContext.Provider>
   );
