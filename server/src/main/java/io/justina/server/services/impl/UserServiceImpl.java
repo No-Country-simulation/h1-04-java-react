@@ -1,5 +1,6 @@
 package io.justina.server.services.impl;
 
+import io.jsonwebtoken.io.IOException;
 import io.justina.server.dtos.request.UpdatePasswordRequestDTO;
 import io.justina.server.dtos.request.UpdateUserRequestDTO;
 import io.justina.server.dtos.response.UpdateUserResponseDTO;
@@ -8,6 +9,7 @@ import io.justina.server.entities.Address;
 import io.justina.server.entities.Document;
 import io.justina.server.entities.User;
 import io.justina.server.enumerations.DocumentType;
+import io.justina.server.helpers.ImageHelper;
 import io.justina.server.repositories.DocumentRepository;
 import io.justina.server.repositories.UserRepository;
 import io.justina.server.services.UserService;
@@ -17,6 +19,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
+
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -29,6 +33,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private DocumentRepository documentRepository;
+
+    @Autowired
+    private ImageHelper imageHelper;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -102,6 +109,22 @@ public class UserServiceImpl implements UserService {
         }
         document.setDocumentType(documentType);
         document.setDocumentNumber(documentNumber);
+        userRepository.save(user);
+    }
+
+    @Override
+    public void addImages(Long id, List<MultipartFile> images) throws IOException {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+
+        for (MultipartFile image : images) {
+            try {
+                String imageUrl = imageHelper.save(image);
+                user.getDocument().getDocumentImages().add(imageUrl);
+            } catch (IOException e) {
+                throw new RuntimeException("Failed to upload image", e);
+            }
+        }
         userRepository.save(user);
     }
 
