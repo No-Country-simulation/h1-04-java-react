@@ -4,6 +4,7 @@ import io.justina.server.enumerations.*;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.List;
+import java.util.Set;
 
 @Builder
 @Getter
@@ -24,31 +25,15 @@ public class Patient {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
-    @Column(name = "medical_history", columnDefinition = "TEXT")
-    @CollectionTable(name = "patient_medical_history", joinColumns = @JoinColumn(name = "patient_id"))
     @ElementCollection
+    @CollectionTable(name = "patient_medical_history", joinColumns = @JoinColumn(name = "patient_id"))
+    @Column(name = "medical_history", columnDefinition = "TEXT")
     private List<String> medicalHistory;
 
-    @Column(name = "pathologies", columnDefinition = "TEXT")
+    @ElementCollection
     @CollectionTable(name = "patient_pathologies", joinColumns = @JoinColumn(name = "patient_id"))
-    @ElementCollection
+    @Column(name = "pathologies", columnDefinition = "TEXT")
     private List<String> pathologies;
-
-    @Column(name = "treatments", columnDefinition = "TEXT")
-    @CollectionTable(name = "patient_treatments", joinColumns = @JoinColumn(name = "patient_id"))
-    @ElementCollection
-    private List<String> treatments;
-
-    @Column(name = "medications", columnDefinition = "TEXT")
-    @CollectionTable(name = "patient_medications", joinColumns = @JoinColumn(name = "patient_id"))
-    @ElementCollection
-    private List<String> medications;
-
-    @Column(name = "health_insurance", length = 100)
-    private String healthInsurance;
-
-    @Column(name = "affiliate_number", length = 100)
-    private String affiliateNumber;
 
     @Column(name = "transplanted")
     private Boolean transplanted;
@@ -66,5 +51,16 @@ public class Patient {
 
     @Column(name = "cross_transplant", length = 255)
     private String crossTransplant;
+
+    @Column(name = "tutor_full_name", length = 150)
+    private String tutorFullName;
+
+    @Column(name = "tutor_phone", length = 100)
+    private String tutorPhone;
+
+    @Lob
+    @Column(name = "file", columnDefinition = "BLOB")
+    private byte[] file;
+
 
 }

@@ -1,6 +1,7 @@
 package io.justina.server.dtos.response;
 
 import io.justina.server.entities.Doctor;
+import io.justina.server.enumerations.AvailableHours;
 import io.justina.server.enumerations.Specialty;
 import io.justina.server.enumerations.Days;
 import lombok.*;
@@ -33,6 +34,7 @@ public class DoctorResponseDTO {
     private Set<Specialty> specialties;
     private String licenceNumber;
     private Set<Days> workdays;
+    private Set<AvailableHours> schedule;
 
 
     public DoctorResponseDTO(Doctor doctor) {
@@ -54,6 +56,7 @@ public class DoctorResponseDTO {
         this.specialties = doctor.getSpecialties();
         this.licenceNumber = doctor.getLicenceNumber();
         this.workdays = doctor.getWorkdays();
+        this.schedule = doctor.getSchedule();
     }
 
 }

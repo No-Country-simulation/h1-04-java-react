@@ -40,9 +40,9 @@ public class Doctor {
     private Set<Days> workdays;
 
     @ElementCollection(targetClass = AvailableHours.class)
-    @CollectionTable(name = "doctor_schedules", joinColumns = @JoinColumn(name = "doctor_id"))
+    @CollectionTable(name = "doctor_schedule", joinColumns = @JoinColumn(name = "doctor_id"))
     @Enumerated(EnumType.STRING)
-    @Column(name = "schedules")
-    private Set<AvailableHours> schedules;
+    @Column(name = "schedule")
+    private Set<AvailableHours> schedule;
 
 }
