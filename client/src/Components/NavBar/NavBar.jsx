@@ -14,6 +14,7 @@ import DoctorContext from "../../context/DoctorContext";
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { logout } = useContext(DoctorContext);
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
