@@ -6,16 +6,16 @@ import java.util.List;
 
 public interface FinancierService {
 
-    FinancierRequestDTO createFinancier(FinancierRequestDTO financierRequestDTO);
+    FinancierResponseDTO createFinancier(FinancierRequestDTO financierRequestDTO);
 
-    FinancierResponseDTO getFinancierById(long id);
+    FinancierResponseDTO getFinancierById(Long id);
 
     List<FinancierResponseDTO> getAllFinanciers();
 
-    FinancierRequestDTO updateFinancier(long id, FinancierRequestDTO financierRequestDTO);
+    FinancierResponseDTO updateFinancier(Long id, FinancierRequestDTO financierRequestDTO);
 
     void deleteFinancier(Long id);
 
-    void deactivateFinancierr(Long id);
+    void deactivateFinancier(Long id);
 
 }
