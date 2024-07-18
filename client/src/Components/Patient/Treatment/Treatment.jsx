@@ -3,7 +3,9 @@ import { treatmentData } from "./data.js"
 import { useState } from "react";
 import arrowLeft from "../../../Assets/Imgs/arrowLeft.png"
 import arrowRight from "../../../Assets/Imgs/arrowRight.png"
-import PlanNutrition from "./Plans/PlanNutrition.jsx";
+import PlanTreatment from "./Plans/PlanTreatment.jsx";
+import PlanStudies from "./Plans/PlanStudies.jsx";
+import PlanNutrition from "./Plans/PlanNutrition/PlanNutrition.jsx";
 import PlanGim from "./Plans/PlanGim.jsx";
 import PlanClinical from "./Plans/PlanClinical.jsx";
 import PlanMedication from "./Plans/PlanMedication.jsx";
@@ -16,10 +18,12 @@ import "./treatment.css"
 
 
 const componentsMap = {
+    '/treatment-treatment': PlanTreatment,
+    '/treatment-studies': PlanStudies,
     '/treatment-nutrition': PlanNutrition,
     '/treatment-physical-activity': PlanGim,
-    '/treatment-clinical-history': PlanClinical,
     '/treatment-medication': PlanMedication,
+    '/treatment-clinical-history': PlanClinical,
     '/treatment-psychology': PlanPsychology,
     '/treatment-social-work': PlanSocial,
     '/treatment-physiotherapy': PlanPhysiotherapy,
@@ -79,16 +83,18 @@ const Treatment = () => {
             ) : (
                 <article className="containerComponents">
                     <SelectedComponent type={selectedButton.label} />
-                    <div className="navigationButtons">
-                        <button onClick={handleNext} disabled={selectedButtonIndex === buttons.length - 1}>
-                            <p>Siguiente Comida</p>
-                            <img src={arrowRight} alt="next" />
-                        </button>
-                        <button onClick={handlePrevious} disabled={selectedButtonIndex === 0}>
-                            <p>Regresar</p>
-                            <img src={arrowLeft} alt="previous" />
-                        </button>
-                    </div>
+                    { location.pathname == '/treatment-nutrition' || location.pathname == '/treatment-physical-activity' ? (
+                        <div className="navigationButtons">
+                            <button onClick={handleNext} disabled={selectedButtonIndex === buttons.length - 1}>
+                                <p>Siguiente Comida</p>
+                                <img src={arrowRight} alt="next" />
+                            </button>
+                            <button onClick={handlePrevious} disabled={selectedButtonIndex === 0}>
+                                <p>Regresar</p>
+                                <img src={arrowLeft} alt="previous" />
+                            </button>
+                        </div>
+                        ) : null }
                 </article>
             ) }
         </section>

@@ -24,10 +24,7 @@
     font-size: 18px;
 }
 
-.treatments{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.treatmentsStyles{
     text-align: center;
     background-color:#D9D9D9;
     color: #000000;
@@ -37,16 +34,23 @@
     box-sizing: border-box;
 }
 
+.treatmentsStyles img{
+    margin: auto;
+    width: 25px;
+    height: 25px;
+    object-fit: cover;
+    object-position: center;
+}
 
 
 @media (max-width: 768px) {
-    .treatments {
+    .treatmentsStyles {
         flex: 1 1 calc(50% - 20px); /* Dos elementos por fila en pantallas medianas */
     }
 }
 
 @media (max-width: 480px) {
-    .treatments {
+    .treatmentsStyles {
         flex: 1 1 calc(100% - 20px); /* Un elemento por fila en pantallas pequeñas */
     }
 }
