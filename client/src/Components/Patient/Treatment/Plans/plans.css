@@ -41,3 +41,154 @@
     padding: 5px;
     resize: none;
 }
+
+
+.containerInsideContent{
+    background-color: #D9D9D9;
+    margin-top: -5px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    padding: 20px;
+}
+.containerInsideContent h1{
+    font-size: 25px;
+    font-weight: 600;
+}
+.containerInsideContent p{
+    font-size: 15px;
+}
+
+
+.arrow-rotate {
+    transform: rotate(90deg);
+    transition: transform 0.3s ease;
+}
+
+.containerInsideContent img{
+    margin: auto;
+    margin-top: 20px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.buttonOk{
+    display: flex;
+    justify-content:flex-end;
+}
+.buttonOk button{
+    color: #fff;
+    background-color: #363130;
+    border-radius: 30px;
+    padding: 10px;
+    margin-top: 10px;
+    width: 200px;
+    font-weight: 500;
+    font-size: 17px;
+}
+
+
+.containerInsideContentStudies{
+    background-color: #DADADC;
+    border: 1px solid #000;
+    border-radius: 5px;
+    margin-top: -5px;
+    margin-bottom: 30px;
+    padding: 10px;
+}
+
+#detailsContentImg{
+    width: 15px;
+    height: 15px;
+    object-fit: cover;
+    margin-right: 0px;
+    margin-bottom: 10px;
+}
+
+
+.exerciseList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.exerciseItem {
+    background-color: #b5bab9;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.exerciseHeader {
+    background-color: #363130;
+    color: #ffffff;
+    padding: 5px;
+    padding-left: 20px;
+    font-size: 600;
+    font-size: 20px;
+}
+
+
+.containeExerciser{
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.exerciseContent{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-bottom: 2px solid #000;
+    padding-bottom: 5px;
+}
+.exerciseContent h2 {
+    flex-grow: 1;
+    margin-left: 10px;
+    font-size: 16px;
+}
+.exerciseContent img {
+    cursor: pointer;
+}
+
+.exerciseDetails {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.containerMedication{
+    background-color: #FAFAFA;
+    margin-top: -5px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    padding: 20px;
+}
+.containerMedication div{
+    margin-left: 5px;
+    margin-right: 5px;
+    flex: 1 1 auto;
+    box-sizing: border-box;
+    font-size: 20px;
+}
+.containerMedication section{
+    margin: 20px;
+    font-weight: 600;
+}
+
+
+.undo{
+    display: flex;
+    align-items: center;
+}
+.undo h1{
+    font-size: 25px;
+    font-weight: 700;
+}
+.undo div{
+    margin-left: 50px;
+    font-size: 20px;
+}
+.undo p{
+    font-size: 15px;
+}

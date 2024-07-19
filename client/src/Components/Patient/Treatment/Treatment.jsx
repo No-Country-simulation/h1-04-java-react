@@ -64,7 +64,7 @@ const Treatment = () => {
                     <h2>Plan de {title}</h2>
                     <p>Plan personalizado</p>
                 </div>
-                <img src={download} alt="download" />{/* Descargar PDF o algo */}
+                <img src={download} alt="download" /> {/* Descargar PDF o algo */}
             </section>
             { !SelectedComponent ? (
                 <>
@@ -76,9 +76,6 @@ const Treatment = () => {
                         </button>
                     )) }
                 </section>
-                <button className="back" onClick={()=> navigate(-1)}>
-                    <img src={arrowLeft} alt="back" />
-                </button>
                 </>
             ) : (
                 <article className="containerComponents">
@@ -97,6 +94,11 @@ const Treatment = () => {
                         ) : null }
                 </article>
             ) }
+            <div className="backContainer">
+                <button className="back" onClick={() => navigate(-1)}>
+                    <img src={arrowLeft} alt="back" />
+                </button>
+            </div>
         </section>
     )
 }

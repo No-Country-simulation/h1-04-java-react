@@ -56,24 +56,33 @@
 
 .container {
     position: relative;
-    /* min-height: 100vh; */
+    padding-bottom: 40px;
 }
-
-.back{
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    padding: 1px;
-    border: 2px solid #000;
-    border-radius: 30px;
-    width: 35px;
-}
-
 
 .containerComponents{
     width: 90%;
     margin: auto;
+    padding-bottom: 110px;
 }
+
+.backContainer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 40px;
+    margin-right: 20px;
+}
+
+.back {
+    padding: 1px;
+    border: 2px solid #000;
+    border-radius: 30px;
+    width: 35px;
+    background-color: #fff;
+    z-index: 1000;
+}
+
+
+
 
 .navigationButtons{
     margin-top: 10px;
