@@ -1,10 +1,8 @@
 package io.justina.server.dtos.request;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.*;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -12,10 +10,10 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class FinancierRequestDTO {
+public class LaboratoryRequestDTO {
 
     @NotBlank(message = "Name is required.")
-    @Size(max = 50, message = "Name must not exceed 50 characters.")
+    @Size(max = 100, message = "Name must not exceed 100 characters.")
     private String name;
 
     @NotBlank(message = "CUIT is required.")
@@ -29,12 +27,12 @@ public class FinancierRequestDTO {
 
     @NotBlank(message = "Email is required.")
     @Email(message = "Invalid email address.")
-    @Size(max = 50, message = "Email must not exceed 50 characters ")
+    @Size(max = 100, message = "Email must not exceed 100 characters.")
     @Pattern(regexp = ".+@.+\\.[a-zA-Z]{2,}", message = "Email should have a valid domain with at least two characters")
     private String email;
 
-    @Size(max = 100, message = "Contact Person must not exceed 100 characters.")
-    private String contactPerson;
+    @Size(max = 100, message = "Responsible must not exceed 100 characters.")
+    private String responsible;
 
     @Size(max = 50, message = "Street must not exceed 50 characters.")
     @Pattern(regexp = "^[a-zA-Z0-9\\s,.-]+$", message = "Street should contain only letters, numbers, spaces, commas, periods, and hyphens.")
@@ -56,5 +54,11 @@ public class FinancierRequestDTO {
     @Size(max = 20, message = "Postal code must not exceed 20 characters.")
     @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "Postal code should contain only letters and numbers.")
     private String postalCode;
+
+    private LocalDate createdAt;
+
+    private LocalDate updatedAt;
+
+    private Boolean active;
 
 }
