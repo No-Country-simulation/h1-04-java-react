@@ -17,5 +17,5 @@ public interface LaboratoryService {
     void deleteLaboratory(Long id);
 
     void deactivateLaboratory(Long id);
-    
+
 }
