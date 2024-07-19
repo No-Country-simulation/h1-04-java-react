@@ -1,11 +1,13 @@
 package io.justina.server.dtos.request;
 
+import io.justina.server.entities.Financier;
 import io.justina.server.enumerations.BloodType;
 import io.justina.server.enumerations.CivilStatus;
 import io.justina.server.enumerations.Institution;
 import jakarta.validation.constraints.*;
 import lombok.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
@@ -15,16 +17,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PatientRequestDTO {
-
-    @NotBlank(message = "Health insurance is required.")
-    @Size(max = 100, message = "Health insurance must not exceed 100 characters.")
-    @Pattern(regexp = "^[a-zA-Z\\s]+$", message = "Health insurance should contain only letters and spaces.")
-    private String healthInsurance;
-
-    @NotBlank(message = "Affiliate number is required.")
-    @Size(max = 100, message = "Affiliate number must not exceed 100 characters.")
-    @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "Affiliate number should contain only letters and numbers.")
-    private String affiliateNumber;
 
     @NotNull(message = "Transplanted status is required.")
     private Boolean transplanted;
@@ -49,11 +41,31 @@ public class PatientRequestDTO {
     @Size(max = 5000, message = "Pathologies must not exceed 5000 characters.")
     private List<String> pathologies;
 
-    @Size(max = 5000, message = "Treatments must not exceed 5000 characters.")
-    private List<String> treatments;
+    @Size(max = 150, message = "Tutor full name must not exceed 150 characters.")
+    @Pattern(regexp = "^[\\p{L}\\s]+$", message = "Tutor full name should only contain letters and spaces.")
+    private String tutorFullName;
 
-    @Size(max = 5000, message = "Medications must not exceed 5000 characters.")
-    private List<String> medications;
+    @Size(max = 100, message = "Tutor phone must not exceed 100 characters.")
+    @Pattern(regexp = "^\\+?[0-9]*$", message = "Tutor phone must contain only digits and optional leading +.")
+    private String tutorPhone;
+
+    @NotNull(message = "File is required.")
+    private byte[] file;
+
+    @NotNull(message = "Treatments are required.")
+    private List<Treatment> treatments;
+
+//    @NotNull(message = "Financier is required.")
+//    private Financier financier;
+
+    @NotBlank(message = "Name is required.")
+    @Size(max = 50, message = "Name must not exceed 50 characters.")
+    private String financierName;
+
+    @NotBlank(message = "CUIT is required.")
+    @Size(max = 11, message = "CUIT must not exceed 11 characters.")
+    @Pattern(regexp = "\\d{11}", message = "CUIT must be exactly 11 digits.")
+    private String cuit;
 
     @NotBlank(message = "First name is required.")
     @Size(max = 50, message = "First name must not exceed 50 characters.")

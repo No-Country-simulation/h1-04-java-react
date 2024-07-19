@@ -57,9 +57,9 @@ public class PatientController {
 
     @PutMapping("/deactivatePatient")
     @Operation(summary = "Deactivate a patient", description = "Deactivate a patient from the system by ID")
-    public ResponseEntity<PatientResponseDTO> deactivatePatient(@RequestParam Long patientId) {
-        PatientResponseDTO deactivatedPatient = patientService.deactivatePatient(patientId);
-        return ResponseEntity.ok(deactivatedPatient);
+    public ResponseEntity<String> deactivatePatient(@RequestParam Long patientId) {
+       patientService.deactivatePatient(patientId);
+        return ResponseEntity.ok("Patient deactivated successfully");
     }
 
 }

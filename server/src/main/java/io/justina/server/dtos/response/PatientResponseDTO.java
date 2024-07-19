@@ -1,8 +1,10 @@
 package io.justina.server.dtos.response;
 
+import io.justina.server.entities.Financier;
 import io.justina.server.entities.Patient;
 import lombok.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,8 +31,6 @@ public class PatientResponseDTO {
     private String province;
     private String postalCode;
     private String institutionName;
-    private String healthInsurance;
-    private String affiliateNumber;
     private Boolean transplanted;
     private String bloodType;
     private String civilStatus;
@@ -38,8 +38,15 @@ public class PatientResponseDTO {
     private String crossTransplant;
     private List<String> medicalHistory;
     private List<String> pathologies;
-    private List<String> treatments;
-    private List<String> medications;
+    private String tutorFullName;
+    private String tutorPhone;
+    private byte[] file;
+    private List<Treatment> treatments;
+    private String financierName;
+    private String cuit;
+//    private Financier financier;
+
+
 
     public PatientResponseDTO(Patient patient) {
         this.patientId = patient.getPatientId();
@@ -57,8 +64,6 @@ public class PatientResponseDTO {
         this.province = patient.getUser().getAddress().getProvince();
         this.postalCode = patient.getUser().getAddress().getPostalCode();
         this.institutionName = patient.getUser().getInstitutionName().name();
-        this.healthInsurance = patient.getHealthInsurance();
-        this.affiliateNumber = patient.getAffiliateNumber();
         this.transplanted = patient.getTransplanted();
         this.bloodType = patient.getBloodType().name();
         this.civilStatus = patient.getCivilStatus().name();
@@ -66,8 +71,14 @@ public class PatientResponseDTO {
         this.crossTransplant = patient.getCrossTransplant();
         this.medicalHistory = new ArrayList<>(patient.getMedicalHistory());
         this.pathologies = new ArrayList<>(patient.getPathologies());
+        this.tutorFullName = patient.getTutorFullName();
+        this.tutorPhone = patient.getTutorPhone();
+        this.file = patient.getFile();
         this.treatments = new ArrayList<>(patient.getTreatments());
-        this.medications = new ArrayList<>(patient.getMedications());
+        this.financierName = patient.getFinancier().getName();
+        this.cuit = patient.getFinancier().getCuit();
+//        this.financier = patient.getFinancier();
+
     }
 
 }

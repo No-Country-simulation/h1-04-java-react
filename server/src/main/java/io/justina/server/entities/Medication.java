@@ -2,8 +2,11 @@ package io.justina.server.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import java.util.Set;
+import java.time.LocalDateTime;
 
 @Builder
 @Getter
@@ -13,6 +16,7 @@ import java.util.Set;
 @ToString
 @Entity
 @Table(name="medication")
+@EntityListeners(AuditingEntityListener.class)
 public class Medication {
 
     @Id
@@ -20,19 +24,26 @@ public class Medication {
     @Column(name = "medication_id")
     private Long medicationId;
 
-    @Column(name = "medication_name", length = 100)
+    @OneToOne
+    @JoinColumn(name = "medical_prescription_id", nullable = false)
+    private MedicalPrescription medicalPrescription;
+
+    @ManyToOne
+    @JoinColumn(name = "laboratory_id", nullable = false)
+    private Laboratory laboratory;
+
+    @Column(name = "medication_name", length = 100, nullable = false)
     private String medicationName;
 
-    @Column(name = "dose_size", length = 100)
-    private String doseSize;
+    @Column(name = "active", nullable = false)
+    private Boolean active;
 
-    @Column(name = "dose_frequency", length = 100)
-    private String doseFrequency;
+    @CreatedDate
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private LocalDateTime createdAt;
 
-    @Column(name = "indications", columnDefinition = "TEXT")
-    private String indications;
-
-    @ManyToMany(mappedBy = "medicationsList")
-    private Set<Patient> patients;
+    @LastModifiedDate
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
 
 }

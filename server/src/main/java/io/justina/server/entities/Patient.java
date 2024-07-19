@@ -1,10 +1,15 @@
 package io.justina.server.entities;
 
 import io.justina.server.enumerations.*;
+import org.springframework.data.annotation.CreatedDate;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Set;
+
 
 @Builder
 @Getter
@@ -14,6 +19,7 @@ import java.util.Set;
 @ToString
 @Entity
 @Table(name="patient")
+@EntityListeners(AuditingEntityListener.class)
 public class Patient {
 
     @Id
@@ -24,6 +30,12 @@ public class Patient {
     @OneToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
+
+    @OneToMany(mappedBy = "patient")
+    private List<Appointment> appointments;
+
+    @OneToMany(mappedBy = "patient")
+    private List<Treatment> treatments;
 
     @ElementCollection
     @CollectionTable(name = "patient_medical_history", joinColumns = @JoinColumn(name = "patient_id"))
@@ -62,5 +74,16 @@ public class Patient {
     @Column(name = "file", columnDefinition = "BLOB")
     private byte[] file;
 
+    @CreatedDate
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private LocalDateTime createdAt;
+
+    @LastModifiedDate
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
+
+    @ManyToOne
+    @JoinColumn(name = "financier_id")
+    private Financier financier;
 
 }

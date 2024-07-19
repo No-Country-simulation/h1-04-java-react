@@ -69,6 +69,7 @@ public class DoctorServiceImpl implements DoctorService {
                 .licenceNumber(doctorRequestDTO.getLicenceNumber())
                 .specialties(doctorRequestDTO.getSpecialties())
                 .workdays(doctorRequestDTO.getWorkdays())
+                .schedule(doctorRequestDTO.getSchedule())
                 .build();
 
         doctor = doctorRepository.save(doctor);
@@ -120,6 +121,7 @@ public class DoctorServiceImpl implements DoctorService {
         doctor.setLicenceNumber(doctorRequestDTO.getLicenceNumber());
         doctor.setSpecialties(doctorRequestDTO.getSpecialties());
         doctor.setWorkdays(doctorRequestDTO.getWorkdays());
+        doctor.setSchedule(doctorRequestDTO.getSchedule());
 
         doctor = doctorRepository.save(doctor);
         return new DoctorResponseDTO(doctor);
@@ -135,13 +137,12 @@ public class DoctorServiceImpl implements DoctorService {
     }
 
     @Override
-    public DoctorResponseDTO deactivateDoctor(Long id) {
-        Doctor doctor = doctorRepository.findById(id)
+    public void deactivateDoctor(Long doctorId) {
+        Doctor doctor = doctorRepository.findById(doctorId)
                 .orElseThrow(() -> new DoctorNotFoundException("Doctor not found"));
         User user = doctor.getUser();
         user.setIsActive(false);
-        doctor = doctorRepository.save(doctor);
-        return new DoctorResponseDTO(doctor);
+        doctorRepository.save(doctor);
     }
 
 }

@@ -1,9 +1,15 @@
 package io.justina.server.dtos.request;
 
+import io.justina.server.entities.Financier;
 import io.justina.server.enumerations.*;
+import jakarta.persistence.Column;
 import jakarta.validation.constraints.*;
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Getter
@@ -88,5 +94,17 @@ public class DoctorRequestDTO {
 
     @NotEmpty(message = "Available hours are required.")
     private Set<AvailableHours> schedule;
+
+//    @NotNull(message = "Financier is required.")
+//    private Financier financier;
+
+//    @NotBlank(message = "Name is required.")
+//    @Size(max = 50, message = "Name must not exceed 50 characters.")
+//    private String name;
+//
+//    @NotBlank(message = "CUIT is required.")
+//    @Size(max = 11, message = "CUIT must not exceed 11 characters.")
+//    @Pattern(regexp = "\\d{11}", message = "CUIT must be exactly 11 digits.")
+//    private String cuit;
 
 }
