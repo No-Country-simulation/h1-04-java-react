@@ -2,10 +2,7 @@ package io.justina.server.services.impl;
 
 import io.justina.server.dtos.request.PatientRequestDTO;
 import io.justina.server.dtos.response.PatientResponseDTO;
-import io.justina.server.entities.Address;
-import io.justina.server.entities.Document;
-import io.justina.server.entities.Patient;
-import io.justina.server.entities.User;
+import io.justina.server.entities.*;
 import io.justina.server.enumerations.DocumentType;
 import io.justina.server.enumerations.Role;
 import io.justina.server.exceptions.PatientNotFoundException;
@@ -64,19 +61,25 @@ public class PatientServiceImpl implements PatientService {
 
         user = userRepository.save(user);
 
+        Financier financier = Financier.builder()
+                .name(patientRequestDTO.getFinancierName())
+                .cuit(patientRequestDTO.getCuit())
+                .build();
+
         Patient patient = Patient.builder()
                 .user(user)
                 .medicalHistory(patientRequestDTO.getMedicalHistory())
                 .pathologies(patientRequestDTO.getPathologies())
-                .treatments(patientRequestDTO.getTreatments())
-                .medications(patientRequestDTO.getMedications())
-                .healthInsurance(patientRequestDTO.getHealthInsurance())
-                .affiliateNumber(patientRequestDTO.getAffiliateNumber())
                 .transplanted(patientRequestDTO.getTransplanted())
                 .bloodType(patientRequestDTO.getBloodType())
                 .civilStatus(patientRequestDTO.getCivilStatus())
                 .children(patientRequestDTO.getChildren())
                 .crossTransplant(patientRequestDTO.getCrossTransplant())
+                .tutorFullName(patientRequestDTO.getTutorFullName())
+                .tutorPhone(patientRequestDTO.getTutorPhone())
+                .file(patientRequestDTO.getFile())
+                .treatments(patientRequestDTO.getTreatments())
+                .financier(financier)
                 .build();
 
         patient = patientRepository.save(patient);
@@ -125,17 +128,23 @@ public class PatientServiceImpl implements PatientService {
         user.setDocument(document);
         user.setAddress(address);
 
+        Financier financier = Financier.builder()
+                .name(patientRequestDTO.getFinancierName())
+                .cuit(patientRequestDTO.getCuit())
+                .build();
+
         patient.setMedicalHistory(patientRequestDTO.getMedicalHistory());
         patient.setPathologies(patientRequestDTO.getPathologies());
-        patient.setTreatments(patientRequestDTO.getTreatments());
-        patient.setMedications(patientRequestDTO.getMedications());
-        patient.setHealthInsurance(patientRequestDTO.getHealthInsurance());
-        patient.setAffiliateNumber(patientRequestDTO.getAffiliateNumber());
         patient.setTransplanted(patientRequestDTO.getTransplanted());
         patient.setBloodType(patientRequestDTO.getBloodType());
         patient.setCivilStatus(patientRequestDTO.getCivilStatus());
         patient.setChildren(patientRequestDTO.getChildren());
         patient.setCrossTransplant(patientRequestDTO.getCrossTransplant());
+        patient.setTutorFullName(patientRequestDTO.getTutorFullName());
+        patient.setTutorPhone(patientRequestDTO.getTutorPhone());
+        patient.setFile(patientRequestDTO.getFile());
+        patient.setTreatments(patientRequestDTO.getTreatments());
+        patient.setFinancier(financier);
 
         patient = patientRepository.save(patient);
         return new PatientResponseDTO(patient);
@@ -151,15 +160,13 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public PatientResponseDTO deactivatePatient(Long patientId) {
+    public void deactivatePatient(Long patientId) {
         Patient patient = patientRepository.findById(patientId)
                 .orElseThrow(() -> new PatientNotFoundException("Patient not found"));
 
         User user = patient.getUser();
         user.setIsActive(false);
         patientRepository.save(patient);
-
-        return new PatientResponseDTO(patient);
     }
 
 }

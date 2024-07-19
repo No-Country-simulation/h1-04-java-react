@@ -6,7 +6,7 @@ import java.time.LocalTime;
 
 @Getter
 @ToString
-public enum Schedules {
+public enum AvailableHours {
     SEVEN_AM(LocalTime.of(7, 0)),
     EIGHT_AM(LocalTime.of(8, 0)),
     TEN_AM(LocalTime.of(10, 0)),
@@ -17,7 +17,7 @@ public enum Schedules {
 
     private final LocalTime time;
 
-    Schedules(LocalTime time) {
+    AvailableHours(LocalTime time) {
         this.time = time;
     }
 

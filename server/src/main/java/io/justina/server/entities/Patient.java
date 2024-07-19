@@ -1,9 +1,15 @@
 package io.justina.server.entities;
 
 import io.justina.server.enumerations.*;
+import org.springframework.data.annotation.CreatedDate;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import java.time.LocalDateTime;
 import java.util.List;
+
 
 @Builder
 @Getter
@@ -13,6 +19,7 @@ import java.util.List;
 @ToString
 @Entity
 @Table(name="patient")
+@EntityListeners(AuditingEntityListener.class)
 public class Patient {
 
     @Id
@@ -24,31 +31,21 @@ public class Patient {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
-    @Column(name = "medical_history", columnDefinition = "TEXT")
-    @CollectionTable(name = "patient_medical_history", joinColumns = @JoinColumn(name = "patient_id"))
+    @OneToMany(mappedBy = "patient")
+    private List<Appointment> appointments;
+
+    @OneToMany(mappedBy = "patient")
+    private List<Treatment> treatments;
+
     @ElementCollection
+    @CollectionTable(name = "patient_medical_history", joinColumns = @JoinColumn(name = "patient_id"))
+    @Column(name = "medical_history", columnDefinition = "TEXT")
     private List<String> medicalHistory;
 
-    @Column(name = "pathologies", columnDefinition = "TEXT")
+    @ElementCollection
     @CollectionTable(name = "patient_pathologies", joinColumns = @JoinColumn(name = "patient_id"))
-    @ElementCollection
+    @Column(name = "pathologies", columnDefinition = "TEXT")
     private List<String> pathologies;
-
-    @Column(name = "treatments", columnDefinition = "TEXT")
-    @CollectionTable(name = "patient_treatments", joinColumns = @JoinColumn(name = "patient_id"))
-    @ElementCollection
-    private List<String> treatments;
-
-    @Column(name = "medications", columnDefinition = "TEXT")
-    @CollectionTable(name = "patient_medications", joinColumns = @JoinColumn(name = "patient_id"))
-    @ElementCollection
-    private List<String> medications;
-
-    @Column(name = "health_insurance", length = 100)
-    private String healthInsurance;
-
-    @Column(name = "affiliate_number", length = 100)
-    private String affiliateNumber;
 
     @Column(name = "transplanted")
     private Boolean transplanted;
@@ -66,5 +63,27 @@ public class Patient {
 
     @Column(name = "cross_transplant", length = 255)
     private String crossTransplant;
+
+    @Column(name = "tutor_full_name", length = 150)
+    private String tutorFullName;
+
+    @Column(name = "tutor_phone", length = 100)
+    private String tutorPhone;
+
+    @Lob
+    @Column(name = "file", columnDefinition = "BLOB")
+    private byte[] file;
+
+    @CreatedDate
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private LocalDateTime createdAt;
+
+    @LastModifiedDate
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
+
+    @ManyToOne
+    @JoinColumn(name = "financier_id")
+    private Financier financier;
 
 }
