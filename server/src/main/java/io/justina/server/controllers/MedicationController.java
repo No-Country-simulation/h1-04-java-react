@@ -6,6 +6,8 @@ import io.justina.server.dtos.response.MedicationResponseDTO;
 import io.justina.server.services.MedicationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,6 +27,7 @@ public class MedicationController {
         MedicationResponseDTO newMedicationResponse = medicationService.createMedication(medicationRequestDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(newMedicationResponse);
     }
+
 
     @GetMapping("/getMedicationById/{id}")
     @Operation(summary = "Get medication by ID", description = "Retrieve detailed information about a medication by its ID")
@@ -54,3 +57,4 @@ public class MedicationController {
         return ResponseEntity.ok("Medication deleted successfully");
     }
 }
+

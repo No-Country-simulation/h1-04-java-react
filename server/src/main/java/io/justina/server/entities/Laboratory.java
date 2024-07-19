@@ -16,7 +16,7 @@ public class Laboratory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long LaboratoryId;
 
     private String name;
 
