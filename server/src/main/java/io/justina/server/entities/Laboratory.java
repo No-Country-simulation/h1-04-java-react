@@ -30,7 +30,7 @@ public class Laboratory {
 
     private String email;
 
-    private String responsable;
+    private String responsible;
 
     private LocalDate createdAt;
 
