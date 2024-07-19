@@ -81,7 +81,6 @@ public class FinancierServiceImpl implements FinancierService {
                 .cuit(dto.getCuit())
                 .phone(dto.getPhone())
                 .email(dto.getEmail())
-                .password(dto.getPassword())
                 .contactPerson(dto.getContactPerson())
                 .address(Address.builder()
                         .street(dto.getStreet())
@@ -99,7 +98,6 @@ public class FinancierServiceImpl implements FinancierService {
         financier.setCuit(dto.getCuit());
         financier.setPhone(dto.getPhone());
         financier.setEmail(dto.getEmail());
-        financier.setPassword(dto.getPassword());
         financier.setContactPerson(dto.getContactPerson());
 
         Address address = financier.getAddress();

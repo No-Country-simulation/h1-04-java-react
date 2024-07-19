@@ -4,22 +4,21 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDate;
 
-@Builder
+@Entity
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @ToString
-@Entity
-@Table(name="financier")
-public class Financier {
+@Table(name = "institution")
+public class Institution {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
-    private String cuit;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id", referencedColumnName = "id")
@@ -30,6 +29,6 @@ public class Financier {
     private String contactPerson;
     private LocalDate createdAt;
     private LocalDate updatedAt;
-    private Boolean isActive;
+    private Boolean active;
 
 }

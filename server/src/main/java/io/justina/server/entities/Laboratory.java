@@ -11,14 +11,15 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name="financier")
-public class Financier {
+@Table(name = "laboratory")
+public class Laboratory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
+
     private String cuit;
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -26,10 +27,15 @@ public class Financier {
     private Address address;
 
     private String phone;
+
     private String email;
-    private String contactPerson;
+
+    private String responsible;
+
     private LocalDate createdAt;
+
     private LocalDate updatedAt;
-    private Boolean isActive;
+
+    private Boolean active;
 
 }
