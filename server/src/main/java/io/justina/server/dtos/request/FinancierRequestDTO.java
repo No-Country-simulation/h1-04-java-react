@@ -33,11 +33,6 @@ public class FinancierRequestDTO {
     @Pattern(regexp = ".+@.+\\.[a-zA-Z]{2,}", message = "Email should have a valid domain with at least two characters")
     private String email;
 
-    @NotBlank(message = "Password is required.")
-    @Size(min = 8, max = 25, message = "Password must be between 8 and 25 characters.")
-    @Pattern(regexp = "^(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]+$", message = "Password must contain at least one uppercase letter, one number, and one special character.")
-    private String password;
-
     @Size(max = 100, message = "Contact Person must not exceed 100 characters.")
     private String contactPerson;
 
