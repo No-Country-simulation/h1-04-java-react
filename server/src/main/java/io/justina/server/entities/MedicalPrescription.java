@@ -18,7 +18,7 @@ public class MedicalPrescription {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "medication_id")
-    private Long medicationId;
+    private Long medicalPrescriptionId;
 
     @Column(name = "medication_name", length = 100)
     private String medicationName;
