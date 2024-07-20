@@ -3,6 +3,7 @@ package io.justina.server.entities;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Builder
 @Getter
@@ -37,5 +38,8 @@ public class Laboratory {
     private LocalDate updatedAt;
 
     private Boolean active;
+
+    @OneToMany(mappedBy = "laboratory")
+    private List<Medication> medications;
 
 }

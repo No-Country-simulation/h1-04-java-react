@@ -3,6 +3,7 @@ package io.justina.server.entities;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Builder
 @Getter
@@ -31,5 +32,11 @@ public class Financier {
     private LocalDate createdAt;
     private LocalDate updatedAt;
     private Boolean isActive;
+
+    @OneToMany(mappedBy = "financier")
+    private List<Doctor> doctors;
+
+    @OneToMany(mappedBy = "financier")
+    private List<Patient> patients;
 
 }

@@ -34,8 +34,8 @@ public class Doctor {
     @OneToMany(mappedBy = "doctor")
     private List<Appointment> appointments;
 
-    @OneToOne
-    @JoinColumn(name = "financier_id", referencedColumnName = "financier_id")
+    @ManyToOne
+    @JoinColumn(name = "financier_id", referencedColumnName = "id")
     private Financier financier;
 
     @ElementCollection(targetClass = Specialty.class)
@@ -66,6 +66,5 @@ public class Doctor {
     @LastModifiedDate
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
-
 
 }

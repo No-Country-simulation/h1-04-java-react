@@ -8,7 +8,7 @@ import java.time.LocalTime;
 @ToString
 public enum AvailableHours {
 
-    TEN_AM(LocalTime.of(10, 0)),
+    SEVEN_AM(LocalTime.of(7, 0)),
     EIGHT_AM(LocalTime.of(8, 0)),
     NINE_AM(LocalTime.of(9, 0)),
     TEN_AM(LocalTime.of(10, 0)),

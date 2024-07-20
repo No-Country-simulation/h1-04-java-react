@@ -6,6 +6,7 @@ import lombok.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Builder
 @Getter
@@ -23,12 +24,11 @@ public class Treatment {
     @Column(name = "treatment_id")
     private Long treatmentId;
 
-    @ManyToOne
-    @JoinColumn(name = "medical_prescription_id", nullable = false)
-    private MedicalPrescription medicalPrescription;
+    @OneToMany(mappedBy = "treatment", cascade = CascadeType.ALL)
+    private List<MedicalPrescription> medicalPrescriptions;
 
     @ManyToOne
-    @JoinColumn(name = "patient_id", nullable = false)
+    @JoinColumn(name = "patient_id", referencedColumnName = "patient_id")
     private Patient patient;
 
     @Column(name = "treatment_name", nullable = false)
