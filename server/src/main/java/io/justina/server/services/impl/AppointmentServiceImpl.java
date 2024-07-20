@@ -34,7 +34,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     public AppointmentResponseDTO createAppointment(AppointmentRequestDTO request) {
         List<Doctor> doctors = doctorRepository.findDoctorsBySpecialties(request.getDoctorSpecialties());
         if (doctors.isEmpty()) {
-            throw new ResourceNotFoundException("No doctors available for the specified specialties");
+            throw new ResourceNotFoundException("No doctors available for the specified specialty");
         }
 
         Doctor selectedDoctor = doctors.stream()

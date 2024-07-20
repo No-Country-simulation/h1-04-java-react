@@ -13,5 +13,7 @@ public interface PatientRepository extends JpaRepository<Patient, Long> {
     @Query("SELECT p FROM Patient p WHERE p.user.firstName = :firstName AND p.user.lastName = :lastName AND p.user.email = :email")
     Optional<Patient> findByFirstNameAndLastNameAndEmail(String firstName, String lastName, String email);
 
+    Optional<Patient> findByPatientId(Long patientId);
+
 
 }

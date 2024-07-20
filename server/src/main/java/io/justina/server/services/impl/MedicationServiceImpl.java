@@ -7,6 +7,7 @@ import io.justina.server.entities.MedicalPrescription;
 import io.justina.server.entities.Medication;
 import io.justina.server.exceptions.ResourceNotFoundException;
 import io.justina.server.repositories.LaboratoryRepository;
+import io.justina.server.repositories.MedicalPrescriptionRepository;
 import io.justina.server.repositories.MedicationRepository;
 import io.justina.server.services.MedicationService;
 import org.springframework.beans.factory.annotation.Autowired;

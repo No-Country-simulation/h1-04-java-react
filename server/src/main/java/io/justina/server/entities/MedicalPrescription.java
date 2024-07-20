@@ -3,6 +3,7 @@ package io.justina.server.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
 import java.util.Set;
 
 @Builder
@@ -19,6 +20,9 @@ public class MedicalPrescription {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "medication_id")
     private Long medicalPrescriptionId;
+
+    @OneToMany(mappedBy = "medicalPrescription", cascade = CascadeType.ALL)
+    private List<Treatment> treatments;
 
     @Column(name = "medication_name", length = 100)
     private String medicationName;
