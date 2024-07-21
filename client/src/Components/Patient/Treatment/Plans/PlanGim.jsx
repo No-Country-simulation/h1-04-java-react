@@ -37,43 +37,45 @@ const PlanGim = () => {
 
     return (
         <article>
-            <section className="weekContainer">
-                <Week />
-            </section>
-            
-            <section className="exerciseList">
-                {exercises.map(exercise => (
-                    <div key={exercise.id} className="exerciseItem">
-                    <p className="exerciseHeader">{exercise.id}</p>
-                    <article className="containeExerciser">
-                        <div className="exerciseContent">
-                            <h2>{exercise.name}</h2>
-                            <img src={question} alt="question" onClick={() => {
-                                    setIsPopUpVisible(true);
-                                    setSelectedExercise(exercise.name);
-                                }} />
+            <div className={`mainContainer ${isPopUpVisible ? "blurred" : ""}`}>
+                <section className="weekContainer">
+                    <Week />
+                </section>
+                
+                <section className="exerciseList">
+                    {exercises.map(exercise => (
+                        <div key={exercise.id} className="exerciseItem">
+                        <p className="exerciseHeader">{exercise.id}</p>
+                        <article className="containeExerciser">
+                            <div className="exerciseContent">
+                                <h2>{exercise.name}</h2>
+                                <img src={question} alt="question" onClick={() => {
+                                        setIsPopUpVisible(true);
+                                        setSelectedExercise(exercise.name);
+                                    }} />
+                            </div>
+                            <div className="exerciseDetails">
+                                <p>Series: {exercise.series}</p>
+                                <p>Reps: {exercise.reps}</p>
+                                <p>Pausa: {exercise.pause}</p>
+                            </div>
+                        </article>
                         </div>
-                        <div className="exerciseDetails">
-                            <p>Series: {exercise.series}</p>
-                            <p>Reps: {exercise.reps}</p>
-                            <p>Pausa: {exercise.pause}</p>
-                        </div>
-                    </article>
+                    ))}
+                </section>
+                
+                <section className="feedBack">
+                    <h3>¿Cómo te sentiste con la comida?</h3>
+                    <div className="feedBackImgs">
+                        <img src={muyBien} alt="Muy bien" />
+                        <img src={normal} alt="Normal" />
+                        <img src={mal} alt="Mal" />
                     </div>
-                ))}
-            </section>
+                    <p>¿Por qué te sentiste así?</p>
+                    <textarea name="text" id="text"></textarea>
+                </section>
+            </div>
             
-            <section className="feedBack">
-                <h3>¿Cómo te sentiste con la comida?</h3>
-                <div className="feedBackImgs">
-                    <img src={muyBien} alt="Muy bien" />
-                    <img src={normal} alt="Normal" />
-                    <img src={mal} alt="Mal" />
-                </div>
-                <p>¿Por qué te sentiste así?</p>
-                <textarea name="text" id="text"></textarea>
-            </section>
-
             { isPopUpVisible && selectedExercise && <ViewPopUp name={selectedExercise} /> }
         </article>
     )

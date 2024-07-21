@@ -11,6 +11,7 @@ import Treatments from "../Components/Patient/Treatments/Treatments.jsx";
 import Treatment from "../Components/Patient/Treatment/Treatment.jsx";
 import NewTurn from "../Components/Patient/Turn/NewTurn/NewTurn.jsx";
 import TurnCalendar from "../Components/Patient/Turn/TurnCalendar/TurnCalendar.jsx";
+import ProfileConfiguration from "../Components/Patient/ProfileConfiguration/ProfileConfiguration.jsx";
 
 const Router = () => {
   return (
@@ -28,7 +29,7 @@ const Router = () => {
             <Route exact path='/confirm-new-turn' element={<Turn />} />
             <Route exact path='/error-new-turn' element={<Turn />} />
             <Route exact path='/view-turn' element={<Turn />} />
-
+            
             <Route exact path='/treatments' element={<Treatments />} />
             <Route exact path='/treatment-treatment' element={<Treatment />} />
             <Route exact path='/treatment-studies' element={<Treatment />} />
@@ -40,6 +41,8 @@ const Router = () => {
             <Route exact path='/treatment-social-work' element={<Treatment />} />
             <Route exact path='/treatment-physiotherapy' element={<Treatment />} />
             <Route exact path='/treatment-others' element={<Treatment />} />
+            
+            <Route exact path='/profile-configuration' element={<ProfileConfiguration />} />
 
             <Route exact path='/doctor' element={<HomeDoctor />} />
 

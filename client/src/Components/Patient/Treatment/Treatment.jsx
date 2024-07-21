@@ -59,23 +59,23 @@ const Treatment = () => {
                 {image && <img src={image} alt={title} />}
                 <h1>{title}</h1>
             </div>
-            <section className="planes">
+            <article className="planes">
                 <div>
                     <h2>Plan de {title}</h2>
                     <p>Plan personalizado</p>
                 </div>
                 <img src={download} alt="download" /> {/* Descargar PDF o algo */}
-            </section>
+            </article>
             { !SelectedComponent ? (
                 <>
-                <section className="optionsContainer">
+                <article className="optionsContainer">
                     { buttons && buttons.map((but, index) => (
                         <button key={index} className="option bg-stone-300 font-bold flex justify-between p-2" onClick={() => handleComponent(index)}>
                             { but.label }
                             <img src={arrowRight} alt="arrow" className="w-6 h-6 ml-4" />
                         </button>
                     )) }
-                </section>
+                </article>
                 </>
             ) : (
                 <article className="containerComponents">

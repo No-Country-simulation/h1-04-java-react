@@ -6,14 +6,14 @@ import "./footer.css";
 const Footer = () => {
     return (
         <div className="containerFooter">
-            <a href="/patient">
+            <a href='/patient'>
                 <img src={home} alt="home img" />
             </a>
-            <a className="urgency" href="Aca va numero o url">
+            <a href='Aca va numero o url' className="urgency">
                 <img src={urgency} alt="urgency img" />
                 <p>Urgencia</p>
             </a>
-            <a href="#">
+            <a href='/profile-configuration'>
                 <img src={settings} alt="settings img" />
             </a>
         </div>

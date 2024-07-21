@@ -3,9 +3,7 @@ import "./App.css";
 
 function App() {
   return (
-    // <div className='flex h-full  justify-center items-center'>
-      <Router />
-    // </div>
+    <Router />
   );
 }
 
