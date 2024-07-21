@@ -13,25 +13,25 @@ import java.time.LocalDate;
 @Builder
 public class LaboratoryResponseDTO {
 
-    private Long laboratoryId;
+    private Long id;
     private String name;
     private String cuit;
     private Address address;
     private String phone;
     private String email;
-    private String responsable;
+    private String responsible;
     private LocalDate createdAt;
     private LocalDate updatedAt;
     private Boolean active;
 
     public LaboratoryResponseDTO(Laboratory laboratory) {
-        this.laboratoryId = laboratory.getLaboratoryId();
+        this.id = laboratory.getId();
         this.name = laboratory.getName();
         this.cuit = laboratory.getCuit();
         this.address = laboratory.getAddress();
         this.phone = laboratory.getPhone();
         this.email = laboratory.getEmail();
-        this.responsable = laboratory.getResponsible();
+        this.responsible = laboratory.getResponsible();
         this.createdAt = laboratory.getCreatedAt();
         this.updatedAt = laboratory.getUpdatedAt();
         this.active = laboratory.getActive();

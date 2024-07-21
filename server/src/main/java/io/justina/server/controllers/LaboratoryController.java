@@ -5,6 +5,7 @@ import io.justina.server.dtos.response.LaboratoryResponseDTO;
 import io.justina.server.services.LaboratoryService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +22,7 @@ public class LaboratoryController {
 
     @PostMapping("/createLaboratory")
     @Operation(summary = "Create a laboratory", description = "Create a new laboratory in the system")
-    public ResponseEntity<LaboratoryResponseDTO> createLaboratory(@RequestBody LaboratoryRequestDTO requestDTO) {
+    public ResponseEntity<LaboratoryResponseDTO> createLaboratory(@Valid @RequestBody LaboratoryRequestDTO requestDTO) {
         LaboratoryResponseDTO newLaboratoryResponse = laboratoryService.createLaboratory(requestDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(newLaboratoryResponse);
     }
@@ -42,7 +43,7 @@ public class LaboratoryController {
 
     @PutMapping("/updateLaboratory/{id}")
     @Operation(summary = "Update a laboratory", description = "Update information of an existing laboratory by ID")
-    public ResponseEntity<LaboratoryResponseDTO> updateLaboratory(@PathVariable Long id, @RequestBody LaboratoryRequestDTO requestDTO) {
+    public ResponseEntity<LaboratoryResponseDTO> updateLaboratory(@PathVariable Long id, @Valid @RequestBody LaboratoryRequestDTO requestDTO) {
         LaboratoryResponseDTO updatedLaboratoryResponse = laboratoryService.updateLaboratory(id, requestDTO);
         return ResponseEntity.ok(updatedLaboratoryResponse);
     }

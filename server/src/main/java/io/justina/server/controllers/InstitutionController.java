@@ -5,6 +5,7 @@ import io.justina.server.dtos.response.InstitutionResponseDTO;
 import io.justina.server.services.InstitutionService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +22,7 @@ public class InstitutionController {
 
     @PostMapping("/createInstitution")
     @Operation(summary = "Create an institution", description = "Create a new institution in the system")
-    public ResponseEntity<InstitutionResponseDTO> createInstitution(@RequestBody InstitutionRequestDTO requestDTO) {
+    public ResponseEntity<InstitutionResponseDTO> createInstitution(@Valid @RequestBody InstitutionRequestDTO requestDTO) {
         InstitutionResponseDTO newInstitutionResponse = institutionService.createInstitution(requestDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(newInstitutionResponse);
     }
@@ -42,7 +43,7 @@ public class InstitutionController {
 
     @PutMapping("/updateInstitution/{id}")
     @Operation(summary = "Update an institution", description = "Update information of an existing institution by ID")
-    public ResponseEntity<InstitutionResponseDTO> updateInstitution(@PathVariable Long id, @RequestBody InstitutionRequestDTO requestDTO) {
+    public ResponseEntity<InstitutionResponseDTO> updateInstitution(@PathVariable Long id,@Valid @RequestBody InstitutionRequestDTO requestDTO) {
         InstitutionResponseDTO updateInstitutionResponse = institutionService.updateInstitution(id, requestDTO);
         return ResponseEntity.ok(updateInstitutionResponse);
     }

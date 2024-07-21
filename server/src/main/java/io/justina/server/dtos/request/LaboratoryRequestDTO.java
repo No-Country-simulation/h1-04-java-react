@@ -55,10 +55,4 @@ public class LaboratoryRequestDTO {
     @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "Postal code should contain only letters and numbers.")
     private String postalCode;
 
-    private LocalDate createdAt;
-
-    private LocalDate updatedAt;
-
-    private Boolean active;
-
 }
