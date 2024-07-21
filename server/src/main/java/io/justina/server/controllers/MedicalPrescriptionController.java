@@ -1,6 +1,5 @@
 package io.justina.server.controllers;
 
-
 import io.justina.server.dtos.request.MedicalPrescriptionRequestDTO;
 import io.justina.server.dtos.response.MedicalPrescriptionResponseDTO;
 import io.justina.server.services.MedicalPrescriptionService;
@@ -10,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -31,7 +29,7 @@ public class MedicalPrescriptionController {
     @GetMapping("/getMedicalPrescriptionById/{medicalPrescriptionId}")
     @Operation(summary = "Get medical prescription by ID", description = "Retrieve detailed information about a medical prescription by its ID")
     public ResponseEntity<MedicalPrescriptionResponseDTO> getMedicalPrescriptionById(@PathVariable Long medicalPrescriptionId) {
-        MedicalPrescriptionResponseDTO medicalPrescriptionResponse = medicalPrescriptionService.getMedicalPrescriptionByMedicalPrescriptionId(medicalPrescriptionId);
+        MedicalPrescriptionResponseDTO medicalPrescriptionResponse = medicalPrescriptionService.getMedicalPrescriptionId(medicalPrescriptionId);
         return ResponseEntity.ok(medicalPrescriptionResponse);
     }
 

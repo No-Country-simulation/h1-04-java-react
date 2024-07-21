@@ -11,7 +11,7 @@ public interface MedicalPrescriptionService {
     MedicalPrescriptionResponseDTO createMedicalPrescription(MedicalPrescriptionRequestDTO medicalPrescriptionRequestDTO);
     MedicalPrescriptionResponseDTO updateMedicalPrescription(Long medicalPrescriptionId, MedicalPrescriptionRequestDTO medicalPrescriptionRequestDTO);
     void deleteMedicalPrescription(Long medicalPrescriptionId);
-    MedicalPrescriptionResponseDTO getMedicalPrescriptionByMedicalPrescriptionId(Long medicalPrescriptionId);
+    MedicalPrescriptionResponseDTO getMedicalPrescriptionId(Long medicalPrescriptionId);
     List<MedicalPrescriptionResponseDTO> getAllMedicalPrescriptions();
 
 }

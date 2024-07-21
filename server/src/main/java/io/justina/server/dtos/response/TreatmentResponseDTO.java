@@ -38,7 +38,7 @@ public class TreatmentResponseDTO {
         this.indications = treatment.getIndications();
         this.startDate = treatment.getStartDate();
         this.endDate = treatment.getEndDate();
-        this.medicalPrescriptionId = treatment.getMedicalPrescription().getMedicalPrescriptionId();
+        this.medicalPrescriptionId = treatment.getMedicalPrescription().getId();
         this.doseSize = treatment.getMedicalPrescription().getDoseSize();
         this.doseFrequency = treatment.getMedicalPrescription().getDoseFrequency();
         this.Indications = treatment.getMedicalPrescription().getIndications();
