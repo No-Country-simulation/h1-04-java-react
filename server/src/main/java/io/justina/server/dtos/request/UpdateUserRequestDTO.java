@@ -48,7 +48,4 @@ public class UpdateUserRequestDTO {
     @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "Postal code should contain only letters and numbers.")
     private String postalCode;
 
-    @NotNull(message = "Role is required.")
-    private Role role;
-
 }

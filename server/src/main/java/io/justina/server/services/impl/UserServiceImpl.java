@@ -20,7 +20,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -45,7 +44,7 @@ public class UserServiceImpl implements UserService {
     public UserResponseDTO findById(Long id) throws UsernameNotFoundException {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
-        return new UserResponseDTO(user);
+        return mapUserToDTO(user);
     }
 
     @Override
@@ -53,7 +52,7 @@ public class UserServiceImpl implements UserService {
     public List<UserResponseDTO> getAllUsers() {
         List<User> users = userRepository.findAll();
         return users.stream()
-                .map(UserResponseDTO::new)
+                .map(this::mapUserToDTO)
                 .collect(Collectors.toList());
     }
 
@@ -67,6 +66,7 @@ public class UserServiceImpl implements UserService {
 
         User updatedUser = userRepository.save(user);
         UserResponseDTO userResponseDTO = mapUserToDTO(updatedUser);
+
         return UpdateUserResponseDTO.builder()
                 .message("User updated successfully")
                 .data(userResponseDTO)
@@ -167,7 +167,7 @@ public class UserServiceImpl implements UserService {
                 .birthDate(user.getBirthDate())
                 .phone(user.getPhone())
                 .institutionName(user.getInstitutionName())
-                .role(user.getRole())
+                .role(user.getRole().getName())
                 .document(user.getDocument())
                 .address(user.getAddress())
                 .build();
@@ -185,9 +185,6 @@ public class UserServiceImpl implements UserService {
         }
         if (requestDTO.getPhone() != null) {
             user.setPhone(requestDTO.getPhone());
-        }
-        if (requestDTO.getRole() != null) {
-            user.setRole(requestDTO.getRole());
         }
 
         Address address = user.getAddress();

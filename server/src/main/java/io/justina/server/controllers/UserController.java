@@ -9,6 +9,7 @@ import io.justina.server.dtos.response.UserResponseDTO;
 import io.justina.server.services.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -40,28 +41,28 @@ public class UserController {
 
     @PutMapping("/updateUser/{id}")
     @Operation(summary = "Update a user", description = "Update information of an existing user by ID")
-    public ResponseEntity<UpdateUserResponseDTO> updateUser(@PathVariable Long id, @RequestBody UpdateUserRequestDTO requestDTO) {
+    public ResponseEntity<UpdateUserResponseDTO> updateUser(@PathVariable Long id, @Valid @RequestBody UpdateUserRequestDTO requestDTO) {
         UpdateUserResponseDTO updateUserResponse = userService.updateUser(id, requestDTO);
         return ResponseEntity.ok(updateUserResponse);
     }
 
     @PutMapping("/updateUserPassword/{id}")
     @Operation(summary = "Update a user password", description = "Update password of an existing user by ID")
-    public ResponseEntity<String> updatePassword(@PathVariable Long id, @RequestBody UpdatePasswordRequestDTO newPassword) {
+    public ResponseEntity<String> updatePassword(@PathVariable Long id, @Valid @RequestBody UpdatePasswordRequestDTO newPassword) {
         userService.updatePassword(id, newPassword);
         return ResponseEntity.ok("Password updated successfully");
     }
 
     @PutMapping("/updateUserEmail/{id}")
     @Operation(summary = "Update a user email", description = "Update email of an existing user by ID")
-    public ResponseEntity<String> updateEmail(@PathVariable Long id, @RequestBody UpdateEmailRequestDTO requestDTO) {
+    public ResponseEntity<String> updateEmail(@PathVariable Long id, @Valid @RequestBody UpdateEmailRequestDTO requestDTO) {
         userService.updateEmail(id, requestDTO.getNewEmail());
         return ResponseEntity.ok("Email updated successfully");
     }
 
     @PutMapping("/updateUserDocument/{id}")
     @Operation(summary = "Update a user document", description = "Update document of an existing user by ID")
-    public ResponseEntity<String> updateDocument(@PathVariable Long id, @RequestBody UpdateDocumentRequestDTO requestDTO) {
+    public ResponseEntity<String> updateDocument(@PathVariable Long id, @Valid @RequestBody UpdateDocumentRequestDTO requestDTO) {
         try {
             userService.updateDocument(id, requestDTO.getDocumentType(), requestDTO.getDocumentNumber());
             return ResponseEntity.ok("Document updated successfully");

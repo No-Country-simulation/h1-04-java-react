@@ -22,7 +22,7 @@ public class UserResponseDTO {
     private LocalDate birthDate;
     private String phone;
     private Institution institutionName;
-    private Role role;
+    private String role;
     private Document document;
     private Address address;
 
@@ -34,7 +34,7 @@ public class UserResponseDTO {
         this.birthDate = user.getBirthDate();
         this.phone = user.getPhone();
         this.institutionName = user.getInstitutionName();
-        this.role = user.getRole();
+        this.role = user.getRole().getName();
         this.document = user.getDocument();
         this.address = user.getAddress();
     }
