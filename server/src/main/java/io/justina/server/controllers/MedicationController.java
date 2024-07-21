@@ -1,16 +1,15 @@
 package io.justina.server.controllers;
 
-
 import io.justina.server.dtos.request.MedicationRequestDTO;
 import io.justina.server.dtos.response.MedicationResponseDTO;
 import io.justina.server.services.MedicationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -23,11 +22,10 @@ public class MedicationController {
 
     @PostMapping("/createMedication")
     @Operation(summary = "Create a medication", description = "Create a new medication in the system")
-    public ResponseEntity<MedicationResponseDTO> createMedication(@RequestBody MedicationRequestDTO medicationRequestDTO) {
+    public ResponseEntity<MedicationResponseDTO> createMedication(@Valid @RequestBody MedicationRequestDTO medicationRequestDTO) {
         MedicationResponseDTO newMedicationResponse = medicationService.createMedication(medicationRequestDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(newMedicationResponse);
     }
-
 
     @GetMapping("/getMedicationById/{id}")
     @Operation(summary = "Get medication by ID", description = "Retrieve detailed information about a medication by its ID")
@@ -45,7 +43,7 @@ public class MedicationController {
 
     @PutMapping("/updateMedication/{id}")
     @Operation(summary = "Update a medication", description = "Update information of an existing medication by ID")
-    public ResponseEntity<MedicationResponseDTO> updateMedication(@PathVariable Long id, @RequestBody MedicationRequestDTO medicationRequestDTO) {
+    public ResponseEntity<MedicationResponseDTO> updateMedication(@PathVariable Long id,@Valid @RequestBody MedicationRequestDTO medicationRequestDTO) {
         MedicationResponseDTO updatedMedicationResponse = medicationService.updateMedication(id, medicationRequestDTO);
         return ResponseEntity.ok(updatedMedicationResponse);
     }
@@ -56,5 +54,6 @@ public class MedicationController {
         medicationService.deleteMedication(id);
         return ResponseEntity.ok("Medication deleted successfully");
     }
+    
 }
 

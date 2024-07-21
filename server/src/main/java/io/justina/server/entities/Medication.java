@@ -5,8 +5,7 @@ import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Builder
 @Getter
@@ -15,34 +14,26 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name="medication")
 @EntityListeners(AuditingEntityListener.class)
 public class Medication {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "medication_id")
-    private Long medicationId;
+    private Long id;
 
-    @OneToOne(mappedBy = "medication")
-    private MedicalPrescription medicalPrescription;
+    private String medicationName;
+    private Boolean active;
 
     @ManyToOne
-    @JoinColumn(name = "laboratory_id", referencedColumnName = "laboratory_id")
+    @JoinColumn(name = "laboratory_id", referencedColumnName = "id", nullable = false)
     private Laboratory laboratory;
-
-    @Column(name = "medication_name", length = 100, nullable = false)
-    private String medicationName;
-
-    @Column(name = "active", nullable = false)
-    private Boolean active;
 
     @CreatedDate
     @Column(name = "created_at", nullable = false, updatable = false)
-    private LocalDateTime createdAt;
+    private LocalDate createdAt;
 
     @LastModifiedDate
     @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
+    private LocalDate updatedAt;
 
 }
