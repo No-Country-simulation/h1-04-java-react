@@ -2,6 +2,7 @@ package io.justina.server.dtos.response;
 
 import io.justina.server.entities.Financier;
 import io.justina.server.entities.Patient;
+import io.justina.server.entities.Treatment;
 import lombok.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;

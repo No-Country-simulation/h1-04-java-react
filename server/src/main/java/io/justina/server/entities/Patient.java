@@ -34,8 +34,12 @@ public class Patient {
     @OneToMany(mappedBy = "patient")
     private List<Appointment> appointments;
 
-    @OneToMany(mappedBy = "patient")
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
     private List<Treatment> treatments;
+
+    @ManyToOne
+    @JoinColumn(name = "financier_id", referencedColumnName = "id")
+    private Financier financier;
 
     @ElementCollection
     @CollectionTable(name = "patient_medical_history", joinColumns = @JoinColumn(name = "patient_id"))
@@ -81,9 +85,5 @@ public class Patient {
     @LastModifiedDate
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
-
-    @ManyToOne
-    @JoinColumn(name = "financier_id")
-    private Financier financier;
 
 }

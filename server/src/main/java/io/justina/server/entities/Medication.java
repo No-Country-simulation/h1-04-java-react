@@ -24,12 +24,11 @@ public class Medication {
     @Column(name = "medication_id")
     private Long medicationId;
 
-    @OneToOne
-    @JoinColumn(name = "medical_prescription_id", nullable = false)
+    @OneToOne(mappedBy = "medication")
     private MedicalPrescription medicalPrescription;
 
     @ManyToOne
-    @JoinColumn(name = "laboratory_id", nullable = false)
+    @JoinColumn(name = "laboratory_id", referencedColumnName = "laboratory_id")
     private Laboratory laboratory;
 
     @Column(name = "medication_name", length = 100, nullable = false)

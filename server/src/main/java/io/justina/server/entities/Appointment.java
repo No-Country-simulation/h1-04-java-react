@@ -29,11 +29,11 @@ public class Appointment {
     private Long appointmentId;
 
     @ManyToOne
-    @JoinColumn(name = "doctor_id", nullable = false)
+    @JoinColumn(name = "doctor_id", referencedColumnName = "doctor_id")
     private Doctor doctor;
 
     @ManyToOne
-    @JoinColumn(name = "patient_id", nullable = false)
+    @JoinColumn(name = "patient_id", referencedColumnName = "patient_id")
     private Patient patient;
 
     @ElementCollection(targetClass = Days.class)

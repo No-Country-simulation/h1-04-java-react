@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @Builder
 public class LaboratoryResponseDTO {
 
-    private Long id;
+    private Long laboratoryId;
     private String name;
     private String cuit;
     private Address address;
@@ -25,7 +25,7 @@ public class LaboratoryResponseDTO {
     private Boolean active;
 
     public LaboratoryResponseDTO(Laboratory laboratory) {
-        this.id = laboratory.getId();
+        this.laboratoryId = laboratory.getLaboratoryId();
         this.name = laboratory.getName();
         this.cuit = laboratory.getCuit();
         this.address = laboratory.getAddress();
