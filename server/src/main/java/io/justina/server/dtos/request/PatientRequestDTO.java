@@ -4,7 +4,6 @@ package io.justina.server.dtos.request;
 import io.justina.server.entities.Treatment;
 import io.justina.server.enumerations.BloodType;
 import io.justina.server.enumerations.CivilStatus;
-import io.justina.server.enumerations.Institution;
 import jakarta.validation.constraints.*;
 import lombok.*;
 import java.time.LocalDate;

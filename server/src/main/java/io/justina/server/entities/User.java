@@ -1,7 +1,6 @@
 package io.justina.server.entities;
 
 import org.springframework.data.annotation.CreatedDate;
-import io.justina.server.enumerations.Institution;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -33,7 +32,6 @@ public class User implements UserDetails {
     private String password;
     private LocalDate birthDate;
     private String phone;
-    private Institution institutionName;
     private Boolean isActive;
     private LocalDate deletedAt;
 
@@ -55,6 +53,10 @@ public class User implements UserDetails {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id", referencedColumnName = "id")
     private Address address;
+
+    @ManyToOne
+    @JoinColumn(name = "institution_id", referencedColumnName = "id")
+    private Institution institution;
 
     //UserDetails
     @Override

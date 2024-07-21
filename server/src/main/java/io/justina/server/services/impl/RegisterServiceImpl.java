@@ -4,7 +4,6 @@ import io.justina.server.entities.Address;
 import io.justina.server.entities.Document;
 import io.justina.server.entities.Role;
 import io.justina.server.enumerations.DocumentType;
-import io.justina.server.enumerations.Institution;
 import io.justina.server.exceptions.RegistrationException;
 import io.justina.server.repositories.DocumentRepository;
 import io.justina.server.repositories.RoleRepository;

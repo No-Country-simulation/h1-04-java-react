@@ -1,4 +1,4 @@
-package io.justina.server;
+package io.justina.server.data;
 
 import io.justina.server.entities.Role;
 import io.justina.server.repositories.RoleRepository;

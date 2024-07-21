@@ -166,7 +166,7 @@ public class UserServiceImpl implements UserService {
                 .email(user.getEmail())
                 .birthDate(user.getBirthDate())
                 .phone(user.getPhone())
-                .institutionName(user.getInstitutionName())
+                .institutionName(user.getInstitution().getName())
                 .role(user.getRole().getName())
                 .document(user.getDocument())
                 .address(user.getAddress())
