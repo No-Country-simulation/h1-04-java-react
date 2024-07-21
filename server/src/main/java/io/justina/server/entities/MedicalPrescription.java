@@ -37,4 +37,8 @@ public class MedicalPrescription {
     @JoinColumn(name = "medication_id", referencedColumnName = "id", nullable = false)
     private Medication medication;
 
+    @ManyToOne
+    @JoinColumn(name = "treatment_id")
+    private Treatment treatment;
+
 }
