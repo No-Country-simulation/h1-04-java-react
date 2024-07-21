@@ -24,11 +24,12 @@ public class Treatment {
     @Column(name = "treatment_id")
     private Long treatmentId;
 
-    @OneToMany(mappedBy = "treatment", cascade = CascadeType.ALL)
-    private List<MedicalPrescription> medicalPrescriptions;
+    @ManyToOne
+    @JoinColumn(name = "medical_prescription_id", nullable = false)
+    private MedicalPrescription medicalPrescription;
 
     @ManyToOne
-    @JoinColumn(name = "patient_id", referencedColumnName = "patient_id")
+    @JoinColumn(name = "patient_id", nullable = false)
     private Patient patient;
 
     @Column(name = "treatment_name", nullable = false)

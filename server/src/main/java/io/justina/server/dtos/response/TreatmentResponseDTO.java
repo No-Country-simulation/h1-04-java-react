@@ -1,9 +1,7 @@
 package io.justina.server.dtos.response;
 
 
-import io.justina.server.entities.Patient;
 import io.justina.server.entities.Treatment;
-import io.justina.server.entities.MedicalPrescription;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -23,10 +21,10 @@ public class TreatmentResponseDTO {
     private String indications;
     private LocalDate startDate;
     private LocalDate endDate;
-    private List<Long> medicalPrescriptionId;
-    private List<String> doseSizes;
-    private List<String> doseFrequencies;
-    private List<String> Indications;
+    private Long medicalPrescriptionId;
+    private String doseSize;
+    private String doseFrequency;
+    private String Indications;
     private Long patientId;
     private String patientFirstName;
     private String patientLastName;
@@ -40,29 +38,16 @@ public class TreatmentResponseDTO {
         this.indications = treatment.getIndications();
         this.startDate = treatment.getStartDate();
         this.endDate = treatment.getEndDate();
-
-        this.medicalPrescriptionId = treatment.getMedicalPrescriptions().stream()
-                .map(MedicalPrescription::getMedicalPrescriptionId)
-                .collect(Collectors.toList());
-        this.doseSizes = treatment.getMedicalPrescriptions().stream()
-                .map(MedicalPrescription::getDoseSize)
-                .collect(Collectors.toList());
-        this.doseFrequencies = treatment.getMedicalPrescriptions().stream()
-                .map(MedicalPrescription::getDoseFrequency)
-                .collect(Collectors.toList());
-        this.Indications = treatment.getMedicalPrescriptions().stream()
-                .map(MedicalPrescription::getIndications)
-                .collect(Collectors.toList());
-
-        Patient patient = treatment.getPatient();
-        if (patient != null) {
-            this.patientId = patient.getPatientId();
-            this.patientFirstName = patient.getUser().getFirstName();
-            this.patientLastName = patient.getUser().getLastName();
-            this.patientDocumentType = patient.getUser().getDocument().getDocumentType().name();
-            this.patientDocumentNumber = patient.getUser().getDocument().getDocumentNumber();
-            this.patientPathologies = patient.getPathologies();
-        }
+        this.medicalPrescriptionId = treatment.getMedicalPrescription().getMedicalPrescriptionId();
+        this.doseSize = treatment.getMedicalPrescription().getDoseSize();
+        this.doseFrequency = treatment.getMedicalPrescription().getDoseFrequency();
+        this.Indications = treatment.getMedicalPrescription().getIndications();
+        this.patientId = treatment.getPatient().getPatientId();
+        this.patientFirstName = treatment.getPatient().getUser().getFirstName();
+        this.patientLastName = treatment.getPatient().getUser().getLastName();
+        this.patientDocumentType = treatment.getPatient().getUser().getDocument().getDocumentType().name();
+        this.patientDocumentNumber = treatment.getPatient().getUser().getDocument().getDocumentNumber();
+        this.patientPathologies = treatment.getPatient().getPathologies();
     }
 
 }

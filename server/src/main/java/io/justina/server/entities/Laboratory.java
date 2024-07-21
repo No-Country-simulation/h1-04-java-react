@@ -39,7 +39,7 @@ public class Laboratory {
 
     private Boolean active;
 
-    @OneToMany(mappedBy = "laboratory")
-    private List<Medication> medications;
+//    @OneToMany(mappedBy = "laboratory")
+//    private List<Medication> medications;
 
 }

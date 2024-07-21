@@ -32,6 +32,9 @@ public class MedicalPrescription {
     @JoinColumn(name = "treatment_id", referencedColumnName = "treatment_id")
     private Treatment treatment;
 
+//    @OneToMany(mappedBy = "medicalPrescription", cascade = CascadeType.ALL)
+//    private List<Treatment> treatments;
+
     @Column(name = "medication_name", length = 100)
     private String medicationName;
 

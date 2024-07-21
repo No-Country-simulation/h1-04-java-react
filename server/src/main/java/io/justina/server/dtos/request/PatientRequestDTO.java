@@ -1,6 +1,6 @@
 package io.justina.server.dtos.request;
 
-import io.justina.server.entities.Financier;
+
 import io.justina.server.entities.Treatment;
 import io.justina.server.enumerations.BloodType;
 import io.justina.server.enumerations.CivilStatus;

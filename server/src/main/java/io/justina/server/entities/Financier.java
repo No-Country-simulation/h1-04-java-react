@@ -33,10 +33,10 @@ public class Financier {
     private LocalDate updatedAt;
     private Boolean isActive;
 
-    @OneToMany(mappedBy = "financier")
-    private List<Doctor> doctors;
-
-    @OneToMany(mappedBy = "financier")
-    private List<Patient> patients;
+//    @OneToMany(mappedBy = "financier")
+//    private List<Doctor> doctors;
+//
+//    @OneToMany(mappedBy = "financier")
+//    private List<Patient> patients;
 
 }
