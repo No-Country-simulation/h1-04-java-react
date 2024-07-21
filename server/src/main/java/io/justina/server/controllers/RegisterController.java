@@ -4,6 +4,7 @@ import io.justina.server.dtos.request.RegisterRequestDTO;
 import io.justina.server.dtos.response.RegisterResponseDTO;
 import io.justina.server.exceptions.RegistrationException;
 import io.justina.server.services.RegisterService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +23,7 @@ public class RegisterController {
     private RegisterService registerService;
 
     @PostMapping
-    public ResponseEntity<Map<String, Object>> register(@RequestBody RegisterRequestDTO registerRequest){
+    public ResponseEntity<Map<String, Object>> register(@Valid @RequestBody RegisterRequestDTO registerRequest){
         Map<String, Object> response = new HashMap<>();
         try {
             RegisterResponseDTO registerResponse = registerService.register(registerRequest);

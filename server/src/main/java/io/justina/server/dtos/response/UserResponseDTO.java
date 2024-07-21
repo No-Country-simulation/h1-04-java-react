@@ -15,7 +15,7 @@ import java.time.LocalDate;
 @Builder
 public class UserResponseDTO {
 
-    private long id;
+    private Long id;
     private String firstName;
     private String lastName;
     private String email;

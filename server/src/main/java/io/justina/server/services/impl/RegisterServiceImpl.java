@@ -2,10 +2,12 @@ package io.justina.server.services.impl;
 
 import io.justina.server.entities.Address;
 import io.justina.server.entities.Document;
+import io.justina.server.entities.Role;
 import io.justina.server.enumerations.DocumentType;
 import io.justina.server.enumerations.Institution;
 import io.justina.server.exceptions.RegistrationException;
 import io.justina.server.repositories.DocumentRepository;
+import io.justina.server.repositories.RoleRepository;
 import lombok.RequiredArgsConstructor;
 import io.justina.server.config.jwt.JwtService;
 import io.justina.server.dtos.request.RegisterRequestDTO;
@@ -35,6 +37,9 @@ public class RegisterServiceImpl implements RegisterService {
     @Autowired
     private JwtService jwtService;
 
+    @Autowired
+    private RoleRepository roleRepository;
+
     @Override
     public RegisterResponseDTO register(RegisterRequestDTO registerRequest) throws AuthenticationException {
 
@@ -61,6 +66,9 @@ public class RegisterServiceImpl implements RegisterService {
                     .postalCode(registerRequest.getPostalCode())
                     .build();
 
+            Role adminRole = roleRepository.findByName("ADMIN")
+                    .orElseThrow(() -> new RegistrationException("Role ADMIN not found"));
+
             User user = User.builder()
                     .email(registerRequest.getEmail())
                     .password(passwordEncoder.encode(registerRequest.getPassword()))
@@ -69,7 +77,7 @@ public class RegisterServiceImpl implements RegisterService {
                     .birthDate(registerRequest.getBirthDate())
                     .phone(registerRequest.getPhone())
                     .institutionName(Institution.NO_COUNTRY)
-                    .role(registerRequest.getRole())
+                    .role(adminRole)
                     .isActive(true)
                     .document(document)
                     .address(address)

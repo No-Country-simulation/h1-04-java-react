@@ -19,7 +19,7 @@ public class RegisterRequestDTO {
     private String email;
 
     @NotBlank(message = "Password is required.")
-    @Size(min = 8, max = 25, message = "Password must be between 8 and 25 characters.")
+    @Size(min = 8, max = 60, message = "Password must be between 8 and 60 characters.")
     @Pattern(regexp = "^(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]+$", message = "Password must contain at least one uppercase letter, one number, and one special character.")
     private String password;
 
@@ -69,8 +69,5 @@ public class RegisterRequestDTO {
     @Size(max = 20, message = "Postal code must not exceed 20 characters.")
     @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "Postal code should contain only letters and numbers.")
     private String postalCode;
-
-    @NotNull(message = "Role is required.")
-    private Role role;
 
 }
