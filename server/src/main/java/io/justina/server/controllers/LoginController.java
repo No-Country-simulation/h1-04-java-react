@@ -3,6 +3,7 @@ package io.justina.server.controllers;
 import io.justina.server.dtos.request.LoginRequestDTO;
 import io.justina.server.dtos.response.LoginResponseDTO;
 import io.justina.server.services.LoginService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +22,7 @@ public class LoginController {
     private LoginService loginService;
 
     @PostMapping
-    public ResponseEntity<Map<String, Object>> login(@RequestBody LoginRequestDTO loginRequest){
+    public ResponseEntity<Map<String, Object>> login(@Valid @RequestBody LoginRequestDTO loginRequest){
         Map<String, Object> response = new HashMap<>();
         Map<String, Object> data = new HashMap<>();
         LoginResponseDTO loginResponse = loginService.login(loginRequest);

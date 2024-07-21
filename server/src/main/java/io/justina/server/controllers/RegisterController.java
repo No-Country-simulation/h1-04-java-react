@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("v1/api/auth/register")
+@RequestMapping("v1/api/auth/admin-register")
 public class RegisterController {
 
     @Autowired
