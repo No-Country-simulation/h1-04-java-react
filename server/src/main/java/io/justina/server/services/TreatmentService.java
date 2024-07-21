@@ -1,5 +1,6 @@
 package io.justina.server.services;
 
+import io.justina.server.dtos.request.AddMedicalPrescriptionToTreatmentDTO;
 import io.justina.server.dtos.request.TreatmentRequestDTO;
 import io.justina.server.dtos.response.TreatmentResponseDTO;
 
@@ -10,7 +11,9 @@ public interface TreatmentService {
     TreatmentResponseDTO createTreatment(TreatmentRequestDTO treatmentRequestDTO);
     TreatmentResponseDTO updateTreatment(Long treatmentId, TreatmentRequestDTO treatmentRequestDTO);
     void deleteTreatment(Long treatmentId);
-    TreatmentResponseDTO getTreatmentByTreatmentId(Long treatmentId);
+    TreatmentResponseDTO getTreatmentById(Long treatmentId);
     List<TreatmentResponseDTO> getAllTreatments();
     List<TreatmentResponseDTO> getTreatmentsByPatientId(Long patientId);
+    void addMedicalPrescriptionToTreatment(AddMedicalPrescriptionToTreatmentDTO dto);
+
 }

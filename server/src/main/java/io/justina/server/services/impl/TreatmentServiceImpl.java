@@ -1,6 +1,6 @@
 package io.justina.server.services.impl;
 
-
+import io.justina.server.dtos.request.AddMedicalPrescriptionToTreatmentDTO;
 import io.justina.server.dtos.request.TreatmentRequestDTO;
 import io.justina.server.dtos.response.TreatmentResponseDTO;
 import io.justina.server.entities.MedicalPrescription;
@@ -14,7 +14,6 @@ import io.justina.server.services.TreatmentService;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -40,7 +39,7 @@ public class TreatmentServiceImpl implements TreatmentService {
 
     @Override
     @Transactional(readOnly = true)
-    public TreatmentResponseDTO getTreatmentByTreatmentId(Long treatmentId) {
+    public TreatmentResponseDTO getTreatmentById(Long treatmentId) {
         Treatment treatment = treatmentRepository.findByTreatmentId(treatmentId)
                 .orElseThrow(() -> new ResourceNotFoundException("Treatment not found with id: " + treatmentId));
         return new TreatmentResponseDTO(treatment);
@@ -81,6 +80,18 @@ public class TreatmentServiceImpl implements TreatmentService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public void addMedicalPrescriptionToTreatment(AddMedicalPrescriptionToTreatmentDTO dto) {
+        Treatment treatment = treatmentRepository.findById(dto.getTreatmentId())
+                .orElseThrow(() -> new ResourceNotFoundException("Treatment not found with id: " + dto.getTreatmentId()));
+
+        MedicalPrescription medicalPrescription = medicalPrescriptionRepository.findById(dto.getMedicalPrescriptionId())
+                .orElseThrow(() -> new ResourceNotFoundException("Medical Prescription not found with id: " + dto.getMedicalPrescriptionId()));
+
+        medicalPrescription.setTreatment(treatment);
+        medicalPrescriptionRepository.save(medicalPrescription);
+    }
+
     private Treatment convertToEntity(TreatmentRequestDTO dto) {
         MedicalPrescription medicalPrescription = medicalPrescriptionRepository.findByMedicalPrescriptionId(dto.getMedicalPrescriptionId())
                 .orElseThrow(() -> new ResourceNotFoundException("Medical prescription not found"));
@@ -112,4 +123,5 @@ public class TreatmentServiceImpl implements TreatmentService {
         treatment.setMedicalPrescription(medicalPrescription);
         treatment.setPatient(patient);
     }
+
 }
