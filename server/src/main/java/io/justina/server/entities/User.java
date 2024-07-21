@@ -11,7 +11,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
-@Table(name = "app_user", uniqueConstraints = {@UniqueConstraint(columnNames = "email")})
+@Table(name = "admin", uniqueConstraints = {@UniqueConstraint(columnNames = "email")})
 @Getter
 @Setter
 @ToString
@@ -22,7 +22,7 @@ public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     private String firstName;
     private String lastName;
@@ -34,14 +34,9 @@ public class User implements UserDetails {
     private Boolean isActive;
     private LocalDate deletedAt;
 
-    @Enumerated(EnumType.STRING)
+    @ManyToOne
+    @JoinColumn(name = "role_id", referencedColumnName = "id")
     private Role role;
-
-//    @ElementCollection(fetch = FetchType.EAGER)
-//    @Enumerated(EnumType.STRING)
-//    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
-//    @Column(name = "role")
-//    private Set<Role> roles;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "document_id", referencedColumnName = "id")
@@ -54,9 +49,6 @@ public class User implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of();
-//            return roles.stream()
-//                    .map(role -> new SimpleGrantedAuthority("ROLE_" + role.name()))
-//                    .collect(Collectors.toList());
     }
 
     @Override
