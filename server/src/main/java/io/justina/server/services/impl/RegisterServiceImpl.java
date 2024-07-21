@@ -1,17 +1,15 @@
 package io.justina.server.services.impl;
 
-import io.justina.server.entities.Address;
-import io.justina.server.entities.Document;
-import io.justina.server.entities.Role;
+import io.justina.server.entities.*;
 import io.justina.server.enumerations.DocumentType;
 import io.justina.server.exceptions.RegistrationException;
 import io.justina.server.repositories.DocumentRepository;
+import io.justina.server.repositories.InstitutionRepository;
 import io.justina.server.repositories.RoleRepository;
 import lombok.RequiredArgsConstructor;
 import io.justina.server.config.jwt.JwtService;
 import io.justina.server.dtos.request.RegisterRequestDTO;
 import io.justina.server.dtos.response.RegisterResponseDTO;
-import io.justina.server.entities.User;
 import io.justina.server.repositories.UserRepository;
 import io.justina.server.services.RegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +36,9 @@ public class RegisterServiceImpl implements RegisterService {
 
     @Autowired
     private RoleRepository roleRepository;
+
+    @Autowired
+    private InstitutionRepository institutionRepository;
 
     @Override
     public RegisterResponseDTO register(RegisterRequestDTO registerRequest) throws AuthenticationException {
@@ -68,6 +69,9 @@ public class RegisterServiceImpl implements RegisterService {
             Role adminRole = roleRepository.findByName("ADMIN")
                     .orElseThrow(() -> new RegistrationException("Role ADMIN not found"));
 
+            Institution noCountryInstitution = institutionRepository.findByName("NO_COUNTRY")
+                    .orElseThrow(() -> new RegistrationException("Institution NO_COUNTRY not found"));
+
             User user = User.builder()
                     .email(registerRequest.getEmail())
                     .password(passwordEncoder.encode(registerRequest.getPassword()))
@@ -75,7 +79,7 @@ public class RegisterServiceImpl implements RegisterService {
                     .lastName(registerRequest.getLastName())
                     .birthDate(registerRequest.getBirthDate())
                     .phone(registerRequest.getPhone())
-                    .institutionName(Institution.NO_COUNTRY)
+                    .institution(noCountryInstitution)
                     .role(adminRole)
                     .isActive(true)
                     .document(document)
