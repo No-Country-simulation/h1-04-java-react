@@ -3,7 +3,6 @@ package io.justina.server.services;
 import io.justina.server.dtos.request.AddMedicalPrescriptionToTreatmentDTO;
 import io.justina.server.dtos.request.TreatmentRequestDTO;
 import io.justina.server.dtos.response.TreatmentResponseDTO;
-
 import java.util.List;
 
 public interface TreatmentService {
@@ -13,7 +12,6 @@ public interface TreatmentService {
     void deleteTreatment(Long treatmentId);
     TreatmentResponseDTO getTreatmentById(Long treatmentId);
     List<TreatmentResponseDTO> getAllTreatments();
-    List<TreatmentResponseDTO> getTreatmentsByPatientId(Long patientId);
     void addMedicalPrescriptionToTreatment(AddMedicalPrescriptionToTreatmentDTO dto);
 
 }
