@@ -18,16 +18,16 @@ public class DataLoaderLaboratory implements CommandLineRunner {
     public void run(String... args) throws Exception {
         if (laboratoryRepository.count() == 0) {
             laboratoryRepository.saveAll(List.of(
-                    createLaboratory("Lab Uno", "20304050601", "+541112345678", "lab1@example.com", "Responsable Uno", "Calle Falsa", "123", "Barrio Norte", "Ciudad A", "Provincia A", "5000"),
-                    createLaboratory("Lab Dos", "20304050602", "+541112345679", "lab2@example.com", "Responsable Dos", "Calle Verdadera", "456", "Barrio Sur", "Ciudad B", "Provincia B", "5001"),
-                    createLaboratory("Lab Tres", "20304050603", "+541112345680", "lab3@example.com", "Responsable Tres", "Avenida Siempreviva", "789", "Barrio Este", "Ciudad C", "Provincia C", "5002"),
-                    createLaboratory("Lab Cuatro", "20304050604", "+541112345681", "lab4@example.com", "Responsable Cuatro", "Calle Principal", "101", "Barrio Oeste", "Ciudad D", "Provincia D", "5003"),
-                    createLaboratory("Lab Cinco", "20304050605", "+541112345682", "lab5@example.com", "Responsable Cinco", "Calle Secundaria", "202", "Barrio Central", "Ciudad E", "Provincia E", "5004"),
-                    createLaboratory("Lab Seis", "20304050606", "+541112345683", "lab6@example.com", "Responsable Seis", "Calle Tercera", "303", "Barrio Alto", "Ciudad F", "Provincia F", "5005"),
-                    createLaboratory("Lab Siete", "20304050607", "+541112345684", "lab7@example.com", "Responsable Siete", "Calle Cuarta", "404", "Barrio Bajo", "Ciudad G", "Provincia G", "5006"),
-                    createLaboratory("Lab Ocho", "20304050608", "+541112345685", "lab8@example.com", "Responsable Ocho", "Calle Quinta", "505", "Barrio Nuevo", "Ciudad H", "Provincia H", "5007"),
-                    createLaboratory("Lab Nueve", "20304050609", "+541112345686", "lab9@example.com", "Responsable Nueve", "Calle Sexta", "606", "Barrio Viejo", "Ciudad I", "Provincia I", "5008"),
-                    createLaboratory("Lab Diez", "20304050610", "+541112345687", "lab10@example.com", "Responsable Diez", "Calle Séptima", "707", "Barrio Industrial", "Ciudad J", "Provincia J", "5009")
+                    createLaboratory("Laboratorio Bagó", "30567891234", "+541143567890", "contacto@bago.com.ar", "Responsable Bagó", "Avenida Libertador", "1010", "Recoleta", "Buenos Aires", "Buenos Aires", "C1000"),
+                    createLaboratory("Laboratorio Roemmers", "30567891235", "+541143567891", "contacto@roemmers.com.ar", "Responsable Roemmers", "Avenida Santa Fe", "2020", "Palermo", "Buenos Aires", "Buenos Aires", "C1425"),
+                    createLaboratory("Laboratorio Raffo", "30567891236", "+541143567892", "contacto@raffo.com.ar", "Responsable Raffo", "Avenida Córdoba", "3030", "Villa Crespo", "Buenos Aires", "Buenos Aires", "C1414"),
+                    createLaboratory("Laboratorio Elea", "30567891237", "+541143567893", "contacto@elea.com.ar", "Responsable Elea", "Avenida Corrientes", "4040", "Almagro", "Buenos Aires", "Buenos Aires", "C1195"),
+                    createLaboratory("Laboratorio Casasco", "30567891238", "+541143567894", "contacto@casasco.com.ar", "Responsable Casasco", "Avenida Belgrano", "5050", "Monserrat", "Buenos Aires", "Buenos Aires", "C1092"),
+                    createLaboratory("Laboratorio Bernabó", "30567891239", "+541143567895", "contacto@bernabo.com.ar", "Responsable Bernabó", "Avenida Rivadavia", "6060", "Caballito", "Buenos Aires", "Buenos Aires", "C1424"),
+                    createLaboratory("Laboratorio Baliarda", "30567891240", "+541143567896", "contacto@baliarda.com.ar", "Responsable Baliarda", "Avenida San Juan", "7070", "Boedo", "Buenos Aires", "Buenos Aires", "C1234"),
+                    createLaboratory("Laboratorio Richmond", "30567891241", "+541143567897", "contacto@richmond.com.ar", "Responsable Richmond", "Avenida La Plata", "8080", "Caballito", "Buenos Aires", "Buenos Aires", "C1405"),
+                    createLaboratory("Laboratorio Jayor", "30567891242", "+541143567898", "contacto@jayor.com.ar", "Responsable Jayor", "Avenida Independencia", "9090", "San Cristóbal", "Buenos Aires", "Buenos Aires", "C1268"),
+                    createLaboratory("Laboratorio Andrómaco", "30567891243", "+541143567899", "contacto@andromaco.com.ar", "Responsable Andrómaco", "Avenida Callao", "10101", "Balvanera", "Buenos Aires", "Buenos Aires", "C1055")
             ));
         }
     }
@@ -54,4 +54,3 @@ public class DataLoaderLaboratory implements CommandLineRunner {
     }
 
 }
-
