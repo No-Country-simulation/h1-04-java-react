@@ -4,7 +4,6 @@ import io.justina.server.entities.Address;
 import io.justina.server.entities.Document;
 import io.justina.server.entities.User;
 import io.justina.server.enumerations.Institution;
-import io.justina.server.enumerations.Role;
 import lombok.*;
 import java.time.LocalDate;
 

@@ -1,6 +1,5 @@
 package io.justina.server.dtos.request;
 
-import io.justina.server.enumerations.Role;
 import jakarta.validation.constraints.*;
 import lombok.*;
 import java.time.LocalDate;

@@ -7,7 +7,6 @@ import io.justina.server.entities.Doctor;
 import io.justina.server.entities.Document;
 import io.justina.server.entities.User;
 import io.justina.server.enumerations.DocumentType;
-import io.justina.server.enumerations.Role;
 import io.justina.server.exceptions.DoctorNotFoundException;
 import io.justina.server.repositories.DoctorRepository;
 import io.justina.server.repositories.UserRepository;

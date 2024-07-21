@@ -1,7 +1,6 @@
 package io.justina.server.entities;
 
 import io.justina.server.enumerations.Institution;
-import io.justina.server.enumerations.Role;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;

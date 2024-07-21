@@ -4,7 +4,6 @@ import io.justina.server.dtos.request.PatientRequestDTO;
 import io.justina.server.dtos.response.PatientResponseDTO;
 import io.justina.server.entities.*;
 import io.justina.server.enumerations.DocumentType;
-import io.justina.server.enumerations.Role;
 import io.justina.server.exceptions.PatientNotFoundException;
 import io.justina.server.repositories.PatientRepository;
 import io.justina.server.repositories.UserRepository;
