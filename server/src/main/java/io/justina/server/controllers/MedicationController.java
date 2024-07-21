@@ -54,6 +54,6 @@ public class MedicationController {
         medicationService.deleteMedication(id);
         return ResponseEntity.ok("Medication deleted successfully");
     }
-    
+
 }
 
