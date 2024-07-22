@@ -22,8 +22,8 @@ public class MasterDataLoader implements CommandLineRunner {
     @Autowired
     private DataLoaderMedicalPrescription dataLoaderMedicalPrescription;
 
-//    @Autowired
-//    private DataLoaderTreatment dataLoaderTreatment;
+    @Autowired
+    private DataLoaderTreatment dataLoaderTreatment;
 
     // Añadir más Data Loaders aquí
 
@@ -34,7 +34,7 @@ public class MasterDataLoader implements CommandLineRunner {
         dataLoaderLaboratory.run(args);
         dataLoaderMedication.run(args);
         dataLoaderMedicalPrescription.run(args);
-        //dataLoaderTreatment.run(args);
+        dataLoaderTreatment.run(args);
 
         // Ejecutar más Data Loaders aquí
     }
