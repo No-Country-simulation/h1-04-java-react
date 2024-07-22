@@ -28,6 +28,9 @@ public class MasterDataLoader implements CommandLineRunner {
     @Autowired
     private DataLoaderFinancier dataLoaderFinancier;
 
+    @Autowired
+    private DataLoaderAdmin dataLoaderAdmin;
+
     // Añadir más Data Loaders aquí
 
     @Override
@@ -39,6 +42,7 @@ public class MasterDataLoader implements CommandLineRunner {
         dataLoaderMedicalPrescription.run(args);
         dataLoaderTreatment.run(args);
         dataLoaderFinancier.run(args);
+        dataLoaderAdmin.run(args);
 
         // Ejecutar más Data Loaders aquí
     }

@@ -82,7 +82,6 @@ public class DataLoaderMedication implements CommandLineRunner {
                     createMedication("Norfloxacino", laboratories.get(8)),
                     createMedication("Ofloxacino", laboratories.get(9))
             ));
-            System.out.println("Medications loaded successfully.");
         }
     }
 
