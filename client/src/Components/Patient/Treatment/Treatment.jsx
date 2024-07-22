@@ -59,26 +59,23 @@ const Treatment = () => {
                 {image && <img src={image} alt={title} />}
                 <h1>{title}</h1>
             </div>
-            <section className="planes">
+            <article className="planes">
                 <div>
                     <h2>Plan de {title}</h2>
                     <p>Plan personalizado</p>
                 </div>
-                <img src={download} alt="download" />{/* Descargar PDF o algo */}
-            </section>
+                <img src={download} alt="download" /> {/* Descargar PDF o algo */}
+            </article>
             { !SelectedComponent ? (
                 <>
-                <section className="optionsContainer">
+                <article className="optionsContainer">
                     { buttons && buttons.map((but, index) => (
                         <button key={index} className="option bg-stone-300 font-bold flex justify-between p-2" onClick={() => handleComponent(index)}>
                             { but.label }
                             <img src={arrowRight} alt="arrow" className="w-6 h-6 ml-4" />
                         </button>
                     )) }
-                </section>
-                <button className="back" onClick={()=> navigate(-1)}>
-                    <img src={arrowLeft} alt="back" />
-                </button>
+                </article>
                 </>
             ) : (
                 <article className="containerComponents">
@@ -97,6 +94,11 @@ const Treatment = () => {
                         ) : null }
                 </article>
             ) }
+            <div className="backContainer">
+                <button className="back" onClick={() => navigate(-1)}>
+                    <img src={arrowLeft} alt="back" />
+                </button>
+            </div>
         </section>
     )
 }

@@ -1,15 +1,18 @@
+/* eslint-disable react/prop-types */
 import PropTypes from "prop-types"
+import { useState } from "react"
 import Week  from "../../../HomePatient/Weekk.jsx"
 import muyBien from "../../../../../Assets/Imgs/muyBien.png"
 import normal from "../../../../../Assets/Imgs/normal.png"
 import mal from "../../../../../Assets/Imgs/mal.png"
 import imgProduct from "../../../../../Assets/Imgs/example.png"
 import question from "../../../../../Assets/Imgs/question.png"
+import imageExample from "../../../../../Assets/Imgs/imageExample.png"
 import "./planNutrition.css"
-import { useState } from "react"
 
 const PlanNutrition = ({ type }) => {
     const [isPopUpVisible, setIsPopUpVisible] = useState(false);
+    const [selectedMeal, setSelectedMeal] = useState(null);
 
     const calculatePercentage = (current, total) => {
         return (current / total) * 100;
@@ -39,14 +42,44 @@ const PlanNutrition = ({ type }) => {
     ];
 
 
-    const ViewPopUp = () => (
-        <div className="viewPopUp">
+    const ViewPopUp = ({ name }) => (
+        <article className="viewPopUp">
             <div className="popUpContent">
-                <h2>Detalles de la comida</h2>
-                <p>Aquí puedes poner la información detallada...</p>
-                <button onClick={() => setIsPopUpVisible(false)}>Cerrar</button>
+                <h2>{name}</h2>
+                <p>
+                    1. Pelar las mandarinas, sacarle las semillas y procesar todos los gajos y la piel de ½ mandarina + el jugo del limón.
+                    <br />
+                    2. Colocar en una cacerola y cocinar a fuego bajo hasta que al pasar la cuchara, se quede.
+                    <br />
+                    3. Dejar enfriar, agregar las cucharaditas de Hileret Stevia líquida y guardar en un frasco chico de vidrio limpio y en la heladera.
+                    <br />
+                    4. Dura 1 semana.
+                    <br />
+                </p>
+                <section className="gram">
+                    <div>
+                        <p>Carbohidratos</p>
+                        <p>2,29</p>
+                    </div>
+                    <div>
+                        <p>Proteínas</p>
+                        <p>0,14</p>
+                    </div>
+                    <div>
+                        <p>Grasas</p>
+                        <p>0,05</p>
+                    </div>
+                    <div>
+                        <p>Fibras</p>
+                        <p>0,33</p>
+                    </div>
+                </section>
+                <img src={imageExample} alt="image Example" />
+                <div className="btn">
+                    <button onClick={() => setIsPopUpVisible(false)}>Entendido</button>
+                </div>
             </div>
-        </div>
+        </article>
     );
 
 
@@ -90,7 +123,7 @@ const PlanNutrition = ({ type }) => {
                             </div>
                             <p className="recommendation">Recomendado: 30% de tu ingesta diaria (503 kcal)</p>
                             
-                            {meals.map((meal, index) => (
+                            { meals.map((meal, index) => (
                                 <div key={index} className="detailsContainer">
                                     <img src={imgProduct} alt="imgProduct" />
                                     <div className="detailsContentWrapper">
@@ -100,11 +133,14 @@ const PlanNutrition = ({ type }) => {
                                         </div>
                                         <div className="detailsDescription">
                                             <p>{meal.description}</p>
-                                            <img src={question} alt="question" onClick={() => setIsPopUpVisible(true)} />
+                                            <img src={question} alt="question" onClick={() => {
+                                                setIsPopUpVisible(true);
+                                                setSelectedMeal(meal.name);
+                                            }} />
                                         </div>
                                     </div>
                                 </div>
-                            ))}
+                            )) }
                         </article>
                     </section>
                     
@@ -120,7 +156,8 @@ const PlanNutrition = ({ type }) => {
                     </section>
                 </article>
             </div>
-            {isPopUpVisible && <ViewPopUp />}
+            
+            { isPopUpVisible && selectedMeal && <ViewPopUp name={selectedMeal} /> }
         </div>
     )
 }

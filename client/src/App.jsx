@@ -7,9 +7,7 @@ function App() {
   const { authData } = useContext(DoctorContext);
   console.log(authData);
   return (
-    // <div className='flex h-full  justify-center items-center'>
     <Router />
-    // </div>
   );
 }
 

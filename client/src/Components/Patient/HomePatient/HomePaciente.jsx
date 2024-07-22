@@ -24,12 +24,12 @@ const HomePatient = () => {
           <p>Actividad</p>
           <p>Horarios</p>
         </div>
-        <Day activity={"Desayuno"} time={"8:30 hs."} href={"/login"} />
-        <Day activity={"Turno Médico"} time={"10:30 hs."} href={"/login"} />
-        <Day activity={"Medicación"} time={"10:30 hs."} href={"/login"} />
-        <Day activity={"Almuerzo"} time={"12:30 hs."} href={"/login"} />
-        <Day activity={"Actividad  Física"} time={"16:00 hs."} href={"/login"} />
-        <Day activity={"Diálisis"} time={"18:00 hs."} href={"/login"} />
+        <Day activity={"Desayuno"} time={"8:30 hs."} href={'/treatment-nutrition'} />
+        <Day activity={"Turno Médico"} time={"10:30 hs."} href={'/treatments'} />
+        <Day activity={"Medicación"} time={"10:30 hs."} href={'/treatment-medication'} />
+        <Day activity={"Almuerzo"} time={"12:30 hs."} href={'/treatment-nutrition'} />
+        <Day activity={"Actividad  Física"} time={"16:00 hs."} href={'/treatment-physical-activity'} />
+        <Day activity={"Diálisis"} time={"18:00 hs."} href={'/treatments'} />
       </div>
     </>
   )
