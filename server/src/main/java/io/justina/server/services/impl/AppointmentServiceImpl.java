@@ -12,8 +12,7 @@ import io.justina.server.repositories.PatientRepository;
 import io.justina.server.services.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,37 +28,24 @@ public class AppointmentServiceImpl implements AppointmentService {
     @Autowired
     private PatientRepository patientRepository;
 
-
     @Override
     public AppointmentResponseDTO createAppointment(AppointmentRequestDTO request) {
-        List<Doctor> doctors = doctorRepository.findDoctorsBySpecialties(request.getDoctorSpecialties());
-        if (doctors.isEmpty()) {
-            throw new ResourceNotFoundException("No doctors available for the specified specialty");
-        }
-
-        Doctor selectedDoctor = doctors.stream()
-                .filter(doctor -> doctor.getDoctorId().equals(request.getDoctorId()))
-                .findFirst()
+        Doctor doctor = doctorRepository.findById(request.getDoctorId())
                 .orElseThrow(() -> new ResourceNotFoundException("Doctor not found with the specified ID"));
 
+        Patient patient = patientRepository.findById(request.getPatientId())
+                .orElseThrow(() -> new ResourceNotFoundException("Patient not found with the specified ID"));
 
-        Patient patient = patientRepository.findByFirstNameAndLastNameAndEmail(
-                request.getPatientFirstName(),
-                request.getPatientLastName(),
-                request.getPatientEmail()
-        ).orElseThrow(() -> new ResourceNotFoundException("Patient not found"));
-
-
-        Appointment appointment = new Appointment();
-        appointment.setDoctor(selectedDoctor);
-        appointment.setPatient(patient);
-        appointment.setAppointmentDays(request.getAppointmentDays());
-        appointment.setAppointmentHours(request.getAppointmentHours());
-        appointment.setTypeOfAppointment(request.getTypeOfAppointment());
-        appointment.setAppointmentDescription(request.getAppointmentDescription());
-        appointment.setCreatedAt(LocalDateTime.now());
-        appointment.setUpdatedAt(LocalDateTime.now());
-
+        Appointment appointment = Appointment.builder()
+                .doctor(doctor)
+                .patient(patient)
+                .appointmentDay(request.getAppointmentDay())
+                .appointmentHour(request.getAppointmentHour())
+                .typeOfAppointment(request.getTypeOfAppointment())
+                .appointmentDescription(request.getAppointmentDescription())
+                .createdAt(LocalDate.now())
+                .updatedAt(LocalDate.now())
+                .build();
 
         appointment = appointmentRepository.save(appointment);
         return new AppointmentResponseDTO(appointment);
@@ -73,24 +59,16 @@ public class AppointmentServiceImpl implements AppointmentService {
         Doctor doctor = doctorRepository.findById(request.getDoctorId())
                 .orElseThrow(() -> new ResourceNotFoundException("Doctor not found"));
 
-        if (!doctor.getSpecialties().containsAll(request.getDoctorSpecialties())) {
-            throw new ResourceNotFoundException("Doctor does not match the required specialties.");
-        }
-
-
-        Patient patient = patientRepository.findByFirstNameAndLastNameAndEmail(
-                request.getPatientFirstName(),
-                request.getPatientLastName(),
-                request.getPatientEmail()
-        ).orElseThrow(() -> new ResourceNotFoundException("Patient not found"));
+        Patient patient = patientRepository.findById(request.getPatientId())
+                .orElseThrow(() -> new ResourceNotFoundException("Patient not found"));
 
         appointment.setDoctor(doctor);
         appointment.setPatient(patient);
-        appointment.setAppointmentDays(request.getAppointmentDays());
-        appointment.setAppointmentHours(request.getAppointmentHours());
+        appointment.setAppointmentDay(request.getAppointmentDay());
+        appointment.setAppointmentHour(request.getAppointmentHour());
         appointment.setTypeOfAppointment(request.getTypeOfAppointment());
         appointment.setAppointmentDescription(request.getAppointmentDescription());
-        appointment.setUpdatedAt(LocalDateTime.now());
+        appointment.setUpdatedAt(LocalDate.now());
 
         appointment = appointmentRepository.save(appointment);
         return new AppointmentResponseDTO(appointment);

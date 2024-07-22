@@ -2,7 +2,6 @@ package io.justina.server.services;
 
 import io.justina.server.dtos.request.AppointmentRequestDTO;
 import io.justina.server.dtos.response.AppointmentResponseDTO;
-
 import java.util.List;
 
 public interface AppointmentService {
