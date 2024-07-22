@@ -8,12 +8,14 @@ import io.justina.server.enumerations.DocumentType;
 import io.justina.server.repositories.RoleRepository;
 import io.justina.server.repositories.UserRepository;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.time.LocalDate;
 
 @Component
+@Order(8)
 public class DataLoaderAdmin implements CommandLineRunner {
 
     @Autowired

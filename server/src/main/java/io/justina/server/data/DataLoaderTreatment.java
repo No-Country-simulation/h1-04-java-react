@@ -8,12 +8,14 @@ import io.justina.server.repositories.MedicationRepository;
 import io.justina.server.repositories.TreatmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
+@Order(6)
 public class DataLoaderTreatment implements CommandLineRunner {
 
     @Autowired

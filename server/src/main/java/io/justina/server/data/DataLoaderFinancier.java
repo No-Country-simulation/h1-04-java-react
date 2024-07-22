@@ -6,11 +6,13 @@ import io.justina.server.repositories.AddressRepository;
 import io.justina.server.repositories.FinancierRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import java.time.LocalDate;
 import java.util.List;
 
 @Component
+@Order(7)
 public class DataLoaderFinancier implements CommandLineRunner {
 
     @Autowired
