@@ -12,8 +12,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("v1/api/patients")
@@ -25,80 +26,114 @@ public class PatientController {
 
     @PostMapping("/create")
     @Operation(summary = "Create a new patient", description = "Creates a new patient in the system")
-    public ResponseEntity<PatientResponseDTO> createPatient(@Valid @RequestBody PatientRequestDTO patientRequestDTO) {
+    public ResponseEntity<Map<String, Object>> createPatient(@Valid @RequestBody PatientRequestDTO patientRequestDTO) {
+        Map<String, Object> response = new HashMap<>();
         try {
             PatientResponseDTO createdPatient = patientService.createPatient(patientRequestDTO);
-            return ResponseEntity.status(HttpStatus.CREATED).body(createdPatient);
+            response.put("patient", createdPatient);
+            return ResponseEntity.status(HttpStatus.CREATED).body(response);
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            response.put("message", "Internal server error");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
 
     @GetMapping("/getPatientById")
     @Operation(summary = "Get patient by ID", description = "Retrieve detailed information about a patient by their ID")
-    public ResponseEntity<PatientResponseDTO> getPatientById(@RequestParam Long patientId) {
+    public ResponseEntity<Map<String, Object>> getPatientById(@RequestParam Long patientId) {
+        Map<String, Object> response = new HashMap<>();
         try {
             PatientResponseDTO patient = patientService.getPatientById(patientId);
-            return ResponseEntity.ok(patient);
+            response.put("patient", patient);
+            return ResponseEntity.ok(response);
         } catch (PatientNotFoundException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            response.put("message", "Patient not found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+        } catch (Exception e) {
+            response.put("message", "Internal server error");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
 
     @GetMapping("/getAllPatients")
     @Operation(summary = "Get all patients", description = "Retrieve a list of all patients in the system")
-    public ResponseEntity<List<PatientResponseDTO>> getAllPatients() {
+    public ResponseEntity<Map<String, Object>> getAllPatients() {
+        Map<String, Object> response = new HashMap<>();
         try {
             List<PatientResponseDTO> patients = patientService.getAllPatients();
-            return ResponseEntity.ok(patients);
+            response.put("patients", patients);
+            return ResponseEntity.ok(response);
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            response.put("message", "Internal server error");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
 
     @PutMapping("/updatePatient")
     @Operation(summary = "Update a patient", description = "Update information of an existing patient by ID")
-    public ResponseEntity<PatientResponseDTO> updatePatient(@RequestParam Long patientId, @Valid @RequestBody PatientRequestDTO patientRequestDTO) {
+    public ResponseEntity<Map<String, Object>> updatePatient(@RequestParam Long patientId, @Valid @RequestBody PatientRequestDTO patientRequestDTO) {
+        Map<String, Object> response = new HashMap<>();
         try {
             PatientResponseDTO updatedPatient = patientService.updatePatient(patientId, patientRequestDTO);
-            return ResponseEntity.ok(updatedPatient);
+            response.put("patient", updatedPatient);
+            return ResponseEntity.ok(response);
         } catch (PatientNotFoundException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            response.put("message", "Patient not found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+        } catch (Exception e) {
+            response.put("message", "Internal server error");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
 
     @PostMapping("/uploadFile")
     @Operation(summary = "Upload a file for a patient", description = "Uploads a file for a specific patient by ID")
-    public ResponseEntity<PatientResponseDTO> uploadPatientFile(@RequestParam Long patientId, @RequestParam("file") MultipartFile file) {
+    public ResponseEntity<Map<String, Object>> uploadPatientFile(@RequestParam Long patientId, @RequestParam("file") MultipartFile file) {
+        Map<String, Object> response = new HashMap<>();
         try {
             PatientResponseDTO updatedPatient = patientService.uploadPatientFile(patientId, file);
-            return ResponseEntity.ok(updatedPatient);
+            response.put("patient", updatedPatient);
+            return ResponseEntity.ok(response);
         } catch (PatientNotFoundException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            response.put("message", "Patient not found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            response.put("message", "Internal server error");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
 
     @DeleteMapping("/deletePatient")
     @Operation(summary = "Delete a patient", description = "Delete a patient from the system by ID")
-    public ResponseEntity<PatientResponseDTO> deletePatient(@RequestParam Long patientId) {
+    public ResponseEntity<Map<String, Object>> deletePatient(@RequestParam Long patientId) {
+        Map<String, Object> response = new HashMap<>();
         try {
-            PatientResponseDTO response = patientService.deletePatient(patientId);
+            PatientResponseDTO responseDTO = patientService.deletePatient(patientId);
+            response.put("patient", responseDTO);
             return ResponseEntity.ok(response);
         } catch (PatientNotFoundException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            response.put("message", "Patient not found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+        } catch (Exception e) {
+            response.put("message", "Internal server error");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
 
     @DeleteMapping("/deactivatePatient")
     @Operation(summary = "Deactivate a patient", description = "Deactivate a patient from the system by ID")
-    public ResponseEntity<String> deactivatePatient(@RequestParam Long patientId) {
+    public ResponseEntity<Map<String, Object>> deactivatePatient(@RequestParam Long patientId) {
+        Map<String, Object> response = new HashMap<>();
         try {
             patientService.deactivatePatient(patientId);
-            return ResponseEntity.ok("Patient deactivated successfully");
+            response.put("message", "Patient deactivated successfully");
+            return ResponseEntity.ok(response);
         } catch (PatientNotFoundException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            response.put("message", "Patient not found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+        } catch (Exception e) {
+            response.put("message", "Internal server error");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
 

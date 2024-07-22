@@ -42,9 +42,11 @@ public class Financier {
     @JoinColumn(name = "address_id", referencedColumnName = "id")
     private Address address;
 
+    @Builder.Default
     @OneToMany(mappedBy = "financier", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Doctor> doctors = new ArrayList<>();
 
+    @Builder.Default
     @OneToMany(mappedBy = "financier", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Patient> patients = new ArrayList<>();
 
