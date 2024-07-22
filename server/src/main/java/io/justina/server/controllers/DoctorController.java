@@ -2,6 +2,7 @@ package io.justina.server.controllers;
 
 import io.justina.server.dtos.request.DoctorRequestDTO;
 import io.justina.server.dtos.response.DoctorResponseDTO;
+import io.justina.server.exceptions.DoctorNotFoundException;
 import io.justina.server.services.DoctorService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -23,15 +24,23 @@ public class DoctorController {
     @PostMapping("/create")
     @Operation(summary = "Create a new doctor", description = "Creates a new doctor in the system")
     public ResponseEntity<DoctorResponseDTO> createDoctor(@Valid @RequestBody DoctorRequestDTO doctorRequestDTO) {
-        DoctorResponseDTO createdDoctor = doctorService.createDoctor(doctorRequestDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdDoctor);
+        try{
+            DoctorResponseDTO createdDoctor = doctorService.createDoctor(doctorRequestDTO);
+            return ResponseEntity.status(HttpStatus.CREATED).body(createdDoctor);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
     @GetMapping("/getDoctorById")
     @Operation(summary = "Get doctor by ID", description = "Retrieve detailed information about a doctor by their ID")
     public ResponseEntity<DoctorResponseDTO> getDoctorById(@RequestParam Long doctorId) {
-        DoctorResponseDTO doctor = doctorService.getDoctorById(doctorId);
-        return ResponseEntity.ok(doctor);
+        try {
+            DoctorResponseDTO doctor = doctorService.getDoctorById(doctorId);
+            return ResponseEntity.ok(doctor);
+        } catch (DoctorNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
     }
 
     @GetMapping("/getAllDoctors")
@@ -44,22 +53,34 @@ public class DoctorController {
     @PutMapping("/updateDoctor")
     @Operation(summary = "Update a doctor", description = "Update information of an existing doctor by ID")
     public ResponseEntity<DoctorResponseDTO> updateDoctor(@RequestParam Long doctorId, @Valid @RequestBody DoctorRequestDTO doctorRequestDTO) {
-        DoctorResponseDTO updatedDoctor = doctorService.updateDoctor(doctorId, doctorRequestDTO);
-        return ResponseEntity.ok(updatedDoctor);
+        try {
+            DoctorResponseDTO updatedDoctor = doctorService.updateDoctor(doctorId, doctorRequestDTO);
+            return ResponseEntity.ok(updatedDoctor);
+        } catch (DoctorNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
     }
 
     @DeleteMapping("/deleteDoctor")
     @Operation(summary = "Delete a doctor", description = "Delete a doctor from the system by ID")
     public ResponseEntity<DoctorResponseDTO> deleteDoctor(@RequestParam Long doctorId) {
-        DoctorResponseDTO deletedDoctor = doctorService.deleteDoctor(doctorId);
-        return ResponseEntity.ok(deletedDoctor);
+        try {
+            DoctorResponseDTO deletedDoctor = doctorService.deleteDoctor(doctorId);
+            return ResponseEntity.ok(deletedDoctor);
+        } catch (DoctorNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
     }
 
-    @PutMapping("/deactivateDoctor")
+    @DeleteMapping("/deactivateDoctor")
     @Operation(summary = "Deactivate a doctor", description = "Deactivate a doctor from the system by ID")
     public ResponseEntity<String> deactivateDoctor(@RequestParam Long doctorId) {
-        doctorService.deactivateDoctor(doctorId);
-        return ResponseEntity.ok("Doctor deactivated successfully");
+        try {
+            doctorService.deactivateDoctor(doctorId);
+            return ResponseEntity.ok("Doctor deactivated successfully");
+        } catch (DoctorNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
     }
 
 }
