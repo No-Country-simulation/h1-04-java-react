@@ -52,12 +52,12 @@ public class Doctor {
     @LastModifiedDate
     private LocalDate updatedAt;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "financier_id", nullable = false)
+    @JoinColumn(name = "financier_id", referencedColumnName = "id", nullable = false)
     private Financier financier;
 
 }

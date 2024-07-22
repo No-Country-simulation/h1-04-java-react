@@ -6,10 +6,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
-
 
 @Builder
 @Getter
@@ -18,28 +16,12 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name="patient")
 @EntityListeners(AuditingEntityListener.class)
 public class Patient {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "patient_id")
-    private Long patientId;
-
-    @OneToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private User user;
-
-    @OneToMany(mappedBy = "patient")
-    private List<Appointment> appointments;
-
-    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
-    private List<Treatment> treatments;
-
-    @ManyToOne
-    @JoinColumn(name = "financier_id")
-    private Financier financier;
+    private Long id;
 
     @ElementCollection
     @CollectionTable(name = "patient_medical_history", joinColumns = @JoinColumn(name = "patient_id"))
@@ -62,7 +44,6 @@ public class Patient {
     @Column(name = "civil_status")
     private CivilStatus civilStatus;
 
-    @Column(name = "children")
     private Integer children;
 
     @Column(name = "cross_transplant", length = 255)
@@ -80,10 +61,24 @@ public class Patient {
 
     @CreatedDate
     @Column(name = "created_at", nullable = false, updatable = false)
-    private LocalDateTime createdAt;
+    private LocalDate createdAt;
 
     @LastModifiedDate
     @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
+    private LocalDate updatedAt;
+
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Treatment> treatments;
+
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Appointment> appointments;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "financier_id", referencedColumnName = "id", nullable = false)
+    private Financier financier;
 
 }

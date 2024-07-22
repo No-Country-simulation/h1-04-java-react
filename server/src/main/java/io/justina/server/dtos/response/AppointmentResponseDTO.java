@@ -38,7 +38,7 @@ public class AppointmentResponseDTO {
     public AppointmentResponseDTO(Appointment appointment) {
         this.appointmentId = appointment.getAppointmentId();
         this.doctorId = appointment.getDoctor().getDoctorId();
-        this.patientId = appointment.getPatient().getPatientId();
+        this.patientId = appointment.getPatient().getId();
         this.appointmentDays = appointment.getAppointmentDays();
         this.appointmentHours = appointment.getAppointmentHours();
         this.typeOfAppointment = appointment.getTypeOfAppointment();

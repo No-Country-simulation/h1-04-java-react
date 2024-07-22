@@ -1,6 +1,5 @@
 package io.justina.server.dtos.request;
 
-
 import io.justina.server.entities.Treatment;
 import io.justina.server.enumerations.BloodType;
 import io.justina.server.enumerations.CivilStatus;
@@ -17,6 +16,12 @@ import java.util.List;
 @NoArgsConstructor
 public class PatientRequestDTO {
 
+    @Size(max = 5000, message = "Medical history must not exceed 5000 characters.")
+    private List<String> medicalHistory;
+
+    @Size(max = 5000, message = "Pathologies must not exceed 5000 characters.")
+    private List<String> pathologies;
+
     @NotNull(message = "Transplanted status is required.")
     private Boolean transplanted;
 
@@ -26,19 +31,12 @@ public class PatientRequestDTO {
     @NotNull(message = "Civil status is required.")
     private CivilStatus civilStatus;
 
-    @NotNull(message = "Children count is required.")
     @Min(value = 0, message = "Children count cannot be negative.")
     private Integer children;
 
     @Size(max = 255, message = "Cross transplant must not exceed 255 characters.")
     @Pattern(regexp = "^[a-zA-Z0-9\\s]+$", message = "Cross transplant should contain only letters, numbers, and spaces.")
     private String crossTransplant;
-
-    @Size(max = 5000, message = "Medical history must not exceed 5000 characters.")
-    private List<String> medicalHistory;
-
-    @Size(max = 5000, message = "Pathologies must not exceed 5000 characters.")
-    private List<String> pathologies;
 
     @Size(max = 150, message = "Tutor full name must not exceed 150 characters.")
     @Pattern(regexp = "^[\\p{L}\\s]+$", message = "Tutor full name should only contain letters and spaces.")
@@ -48,23 +46,11 @@ public class PatientRequestDTO {
     @Pattern(regexp = "^\\+?[0-9]*$", message = "Tutor phone must contain only digits and optional leading +.")
     private String tutorPhone;
 
-    @NotNull(message = "File is required.")
-    private byte[] file;
-
-    @NotNull(message = "Treatments are required.")
-    private List<Treatment> treatments;
-
-//    @NotNull(message = "Financier is required.")
-//    private Financier financier;
-
-    @NotBlank(message = "Name is required.")
-    @Size(max = 50, message = "Name must not exceed 50 characters.")
-    private String financierName;
-
-    @NotBlank(message = "CUIT is required.")
-    @Size(max = 11, message = "CUIT must not exceed 11 characters.")
-    @Pattern(regexp = "\\d{11}", message = "CUIT must be exactly 11 digits.")
-    private String cuit;
+    @NotBlank(message = "Email is required.")
+    @Email(message = "Invalid email address.")
+    @Size(max = 50, message = "Email must not exceed 50 characters.")
+    @Pattern(regexp = ".+@.+\\.[a-zA-Z]{2,}", message = "Email should have a valid domain with at least two characters.")
+    private String email;
 
     @NotBlank(message = "First name is required.")
     @Size(max = 50, message = "First name must not exceed 50 characters.")
@@ -75,12 +61,6 @@ public class PatientRequestDTO {
     @Size(max = 50, message = "Last name must not exceed 50 characters.")
     @Pattern(regexp = "^[\\p{L}\\s]+$", message = "Last name should only contain letters and spaces.")
     private String lastName;
-
-    @NotBlank(message = "Email is required.")
-    @Email(message = "Invalid email address.")
-    @Size(max = 50, message = "Email must not exceed 50 characters.")
-    @Pattern(regexp = ".+@.+\\.[a-zA-Z]{2,}", message = "Email should have a valid domain with at least two characters.")
-    private String email;
 
     @Past(message = "Birth date must be in the past.")
     private LocalDate birthDate;
@@ -99,7 +79,7 @@ public class PatientRequestDTO {
     private String documentNumber;
 
     @Size(max = 50, message = "Street must not exceed 50 characters.")
-    @Pattern(regexp = "^[a-zA-Z0-9\\s,.]+$", message = "Street should contain only letters, numbers, spaces, commas, and periods.")
+    @Pattern(regexp = "^[a-zA-Z0-9\\s,.-]+$", message = "Street should contain only letters, numbers, spaces, commas, periods, and hyphens.")
     private String street;
 
     @Size(max = 10, message = "Number must not exceed 10 characters.")
@@ -119,12 +99,7 @@ public class PatientRequestDTO {
     @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "Postal code should contain only letters and numbers.")
     private String postalCode;
 
-    @NotNull(message = "Institution name is required.")
-    private Institution institutionName;
-
-    @NotBlank(message = "Password is required.")
-    @Size(min = 8, max = 25, message = "Password must be between 8 and 25 characters.")
-    @Pattern(regexp = "^(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]+$", message = "Password must contain at least one uppercase letter, one number, and one special character.")
-    private String password;
+    @NotNull(message = "ID Financier is required.")
+    private Long idFinancier;
 
 }
