@@ -38,7 +38,7 @@ public class Patient {
     private List<Treatment> treatments;
 
     @ManyToOne
-    @JoinColumn(name = "financier_id", referencedColumnName = "id")
+    @JoinColumn(name = "financier_id")
     private Financier financier;
 
     @ElementCollection
