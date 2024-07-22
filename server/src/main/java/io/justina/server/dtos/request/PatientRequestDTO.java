@@ -1,6 +1,5 @@
 package io.justina.server.dtos.request;
 
-import io.justina.server.entities.Treatment;
 import io.justina.server.enumerations.BloodType;
 import io.justina.server.enumerations.CivilStatus;
 import jakarta.validation.constraints.*;

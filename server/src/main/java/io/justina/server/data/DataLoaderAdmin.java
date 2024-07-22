@@ -77,6 +77,6 @@ public class DataLoaderAdmin implements CommandLineRunner {
 
         userRepository.save(user);
     }
-    
+
 }
 
