@@ -66,18 +66,6 @@ public class TreatmentServiceImpl implements TreatmentService {
         treatmentRepository.delete(treatment);
     }
 
-//    @Override
-//    public void addMedicalPrescriptionToTreatment(AddMedicalPrescriptionToTreatmentDTO dto) {
-//        Treatment treatment = treatmentRepository.findById(dto.getTreatmentId())
-//                .orElseThrow(() -> new ResourceNotFoundException("Treatment not found with id: " + dto.getTreatmentId()));
-//
-//        MedicalPrescription medicalPrescription = medicalPrescriptionRepository.findById(dto.getMedicalPrescriptionId())
-//                .orElseThrow(() -> new ResourceNotFoundException("Medical Prescription not found with id: " + dto.getMedicalPrescriptionId()));
-//
-//        medicalPrescription.setTreatment(treatment);
-//        medicalPrescriptionRepository.save(medicalPrescription);
-//    }
-
     private Treatment convertToEntity(TreatmentRequestDTO dto) {
         return Treatment.builder()
                 .treatmentName(dto.getTreatmentName())

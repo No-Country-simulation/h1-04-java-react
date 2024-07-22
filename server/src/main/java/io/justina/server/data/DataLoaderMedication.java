@@ -7,10 +7,12 @@ import io.justina.server.repositories.LaboratoryRepository;
 import io.justina.server.repositories.MedicationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
+@Order(4)
 public class DataLoaderMedication implements CommandLineRunner {
 
     @Autowired
@@ -80,6 +82,7 @@ public class DataLoaderMedication implements CommandLineRunner {
                     createMedication("Norfloxacino", laboratories.get(8)),
                     createMedication("Ofloxacino", laboratories.get(9))
             ));
+            System.out.println("Medications loaded successfully.");
         }
     }
 

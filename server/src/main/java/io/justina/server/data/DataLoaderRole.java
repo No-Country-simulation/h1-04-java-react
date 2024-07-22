@@ -3,10 +3,12 @@ package io.justina.server.data;
 import io.justina.server.entities.Role;
 import io.justina.server.repositories.RoleRepository;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Component
+@Order(1)
 public class DataLoaderRole implements CommandLineRunner {
 
     @Autowired

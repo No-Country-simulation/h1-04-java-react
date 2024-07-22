@@ -7,10 +7,12 @@ import io.justina.server.repositories.MedicalPrescriptionRepository;
 import io.justina.server.repositories.MedicationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
+@Order(5)
 public class DataLoaderMedicalPrescription implements CommandLineRunner {
 
     @Autowired
@@ -28,7 +30,7 @@ public class DataLoaderMedicalPrescription implements CommandLineRunner {
                 throw new ResourceNotFoundException("No medications found");
             }
 
-            System.out.println("Medications found: " + medications.size());
+            System.out.println("Total medications found: " + medications.size());
 
             List<MedicalPrescription> prescriptions = List.of(
                     createMedicalPrescription("500mg", "Dos veces al día", "Tomar con comida", medications.get(0)),
@@ -51,11 +53,40 @@ public class DataLoaderMedicalPrescription implements CommandLineRunner {
                     createMedicalPrescription("100mg", "Dos veces al día", "Tomar con leche", medications.get(17)),
                     createMedicalPrescription("250mg", "Una vez al día", "Tomar por la mañana", medications.get(18)),
                     createMedicalPrescription("350mg", "Tres veces al día", "Tomar con agua", medications.get(19)),
-                    createMedicalPrescription("500mg", "Dos veces al día", "Tomar con comida", medications.get(20))
+                    createMedicalPrescription("500mg", "Dos veces al día", "Tomar con comida", medications.get(20)),
+                    createMedicalPrescription("600mg", "Una vez al día", "Tomar con jugo", medications.get(21)),
+                    createMedicalPrescription("750mg", "Dos veces al día", "Tomar con café", medications.get(22)),
+                    createMedicalPrescription("400mg", "Una vez al día", "Tomar con té", medications.get(23)),
+                    createMedicalPrescription("250mg", "Dos veces al día", "Tomar con agua", medications.get(24)),
+                    createMedicalPrescription("100mg", "Tres veces al día", "Tomar con comida", medications.get(25)),
+                    createMedicalPrescription("200mg", "Una vez al día", "Tomar con leche", medications.get(26)),
+                    createMedicalPrescription("300mg", "Dos veces al día", "Tomar en ayunas", medications.get(27)),
+                    createMedicalPrescription("400mg", "Una vez al día", "Tomar con té", medications.get(28)),
+                    createMedicalPrescription("150mg", "Tres veces al día", "Tomar con agua", medications.get(29)),
+                    createMedicalPrescription("250mg", "Dos veces al día", "Tomar con café", medications.get(30)),
+                    createMedicalPrescription("500mg", "Una vez al día", "Tomar con jugo", medications.get(31)),
+                    createMedicalPrescription("600mg", "Dos veces al día", "Tomar con comida", medications.get(32)),
+                    createMedicalPrescription("800mg", "Una vez al día", "Tomar en ayunas", medications.get(33)),
+                    createMedicalPrescription("1g", "Tres veces al día", "Tomar con agua", medications.get(34)),
+                    createMedicalPrescription("1.2g", "Dos veces al día", "Tomar con jugo", medications.get(35)),
+                    createMedicalPrescription("2g", "Una vez al día", "Tomar con comida", medications.get(36)),
+                    createMedicalPrescription("300mg", "Dos veces al día", "Tomar con leche", medications.get(37)),
+                    createMedicalPrescription("400mg", "Tres veces al día", "Tomar con café", medications.get(38)),
+                    createMedicalPrescription("500mg", "Una vez al día", "Tomar con té", medications.get(39)),
+                    createMedicalPrescription("600mg", "Dos veces al día", "Tomar con agua", medications.get(40)),
+                    createMedicalPrescription("800mg", "Una vez al día", "Tomar con comida", medications.get(41)),
+                    createMedicalPrescription("1g", "Tres veces al día", "Tomar con jugo", medications.get(42)),
+                    createMedicalPrescription("1.2g", "Dos veces al día", "Tomar con café", medications.get(43)),
+                    createMedicalPrescription("2g", "Una vez al día", "Tomar con leche", medications.get(44)),
+                    createMedicalPrescription("300mg", "Dos veces al día", "Tomar con té", medications.get(45)),
+                    createMedicalPrescription("400mg", "Tres veces al día", "Tomar con comida", medications.get(46)),
+                    createMedicalPrescription("500mg", "Una vez al día", "Tomar en ayunas", medications.get(47)),
+                    createMedicalPrescription("600mg", "Dos veces al día", "Tomar con jugo", medications.get(48)),
+                    createMedicalPrescription("800mg", "Una vez al día", "Tomar con leche", medications.get(49))
             );
 
             medicalPrescriptionRepository.saveAll(prescriptions);
-            System.out.println("Medical Prescriptions created: " + prescriptions.size());
+            System.out.println("Medical prescriptions loaded successfully.");
         }
     }
 

@@ -4,7 +4,6 @@
 //import io.justina.server.entities.Treatment;
 //import io.justina.server.exceptions.ResourceNotFoundException;
 //import io.justina.server.repositories.MedicalPrescriptionRepository;
-//import io.justina.server.repositories.MedicationRepository;
 //import io.justina.server.repositories.TreatmentRepository;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.boot.CommandLineRunner;
@@ -15,7 +14,7 @@
 //import java.util.List;
 //
 //@Component
-//@Order(7)
+//@Order(6)
 //public class DataLoaderTreatment implements CommandLineRunner {
 //
 //    @Autowired
@@ -23,9 +22,6 @@
 //
 //    @Autowired
 //    private MedicalPrescriptionRepository medicalPrescriptionRepository;
-//
-//    @Autowired
-//    private MedicationRepository medicationRepository;
 //
 //    @Override
 //    public void run(String... args) throws Exception {
@@ -36,16 +32,19 @@
 //                throw new ResourceNotFoundException("No medical prescriptions found");
 //            }
 //
-//            List<MedicalPrescription> prescriptionsForTreatment1 = medicalPrescriptions.subList(0, 5);
-//            List<MedicalPrescription> prescriptionsForTreatment2 = medicalPrescriptions.subList(5, 10);
-//            List<MedicalPrescription> prescriptionsForTreatment3 = medicalPrescriptions.subList(10, 15);
-//            List<MedicalPrescription> prescriptionsForTreatment4 = medicalPrescriptions.subList(15, 20);
-//            List<MedicalPrescription> prescriptionsForTreatment5 = medicalPrescriptions.subList(20, 25);
-//            List<MedicalPrescription> prescriptionsForTreatment6 = medicalPrescriptions.subList(25, 30);
-//            List<MedicalPrescription> prescriptionsForTreatment7 = medicalPrescriptions.subList(30, 35);
-//            List<MedicalPrescription> prescriptionsForTreatment8 = medicalPrescriptions.subList(35, 40);
-//            List<MedicalPrescription> prescriptionsForTreatment9 = medicalPrescriptions.subList(40, 45);
-//            List<MedicalPrescription> prescriptionsForTreatment10 = medicalPrescriptions.subList(45, 50);
+//            int size = medicalPrescriptions.size();
+//            System.out.println("Total medical prescriptions found: " + size);
+//
+//            List<MedicalPrescription> prescriptionsForTreatment1 = medicalPrescriptions.subList(0, Math.min(5, size));
+//            List<MedicalPrescription> prescriptionsForTreatment2 = medicalPrescriptions.subList(Math.min(5, size), Math.min(10, size));
+//            List<MedicalPrescription> prescriptionsForTreatment3 = medicalPrescriptions.subList(Math.min(10, size), Math.min(15, size));
+//            List<MedicalPrescription> prescriptionsForTreatment4 = medicalPrescriptions.subList(Math.min(15, size), Math.min(20, size));
+//            List<MedicalPrescription> prescriptionsForTreatment5 = medicalPrescriptions.subList(Math.min(20, size), Math.min(25, size));
+//            List<MedicalPrescription> prescriptionsForTreatment6 = medicalPrescriptions.subList(Math.min(25, size), Math.min(30, size));
+//            List<MedicalPrescription> prescriptionsForTreatment7 = medicalPrescriptions.subList(Math.min(30, size), Math.min(35, size));
+//            List<MedicalPrescription> prescriptionsForTreatment8 = medicalPrescriptions.subList(Math.min(35, size), Math.min(40, size));
+//            List<MedicalPrescription> prescriptionsForTreatment9 = medicalPrescriptions.subList(Math.min(40, size), Math.min(45, size));
+//            List<MedicalPrescription> prescriptionsForTreatment10 = medicalPrescriptions.subList(Math.min(45, size), Math.min(50, size));
 //
 //            treatmentRepository.saveAll(List.of(
 //                    createTreatment("Tratamiento para la hipertensión", "Control y reducción de la presión arterial", prescriptionsForTreatment1),
@@ -67,16 +66,10 @@
 //                .treatmentName(treatmentName)
 //                .indications(indications)
 //                .startDate(LocalDate.now())
-//                .medicalPrescriptions(new ArrayList<>())
+//                .medicalPrescriptions(new ArrayList<>(medicalPrescriptions))
 //                .build();
-//
-//        for (MedicalPrescription prescription : medicalPrescriptions) {
-//            prescription.setTreatment(treatment);
-//            treatment.getMedicalPrescriptions().add(prescription);
-//        }
 //
 //        return treatment;
 //    }
 //
 //}
-//
