@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-@Order(6)
+@Order(7)
 public class DataLoaderTreatment implements CommandLineRunner {
 
     @Autowired

@@ -15,7 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.time.LocalDate;
 
 @Component
-@Order(8)
+@Order(9)
 public class DataLoaderAdmin implements CommandLineRunner {
 
     @Autowired

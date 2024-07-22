@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-@Order(5)
+@Order(6)
 public class DataLoaderMedicalPrescription implements CommandLineRunner {
 
     @Autowired

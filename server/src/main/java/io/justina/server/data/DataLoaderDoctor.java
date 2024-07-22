@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Set;
 
 @Component
-@Order(9)
+@Order(10)
 public class DataLoaderDoctor implements CommandLineRunner {
 
     @Autowired

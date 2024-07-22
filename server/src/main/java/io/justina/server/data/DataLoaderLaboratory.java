@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-@Order(3)
+@Order(4)
 public class DataLoaderLaboratory implements CommandLineRunner {
 
     @Autowired
