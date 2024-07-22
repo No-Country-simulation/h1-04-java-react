@@ -58,6 +58,9 @@ public class User implements UserDetails {
     @JoinColumn(name = "institution_id", referencedColumnName = "id")
     private Institution institution;
 
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Doctor doctor;
+
     //UserDetails
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
