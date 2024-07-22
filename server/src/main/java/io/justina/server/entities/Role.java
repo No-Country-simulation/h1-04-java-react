@@ -10,7 +10,6 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name = "role")
 public class Role {
 
     @Id

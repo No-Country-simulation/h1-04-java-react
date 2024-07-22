@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -18,7 +19,7 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public Role createRole(String name) {
-        if (roleRepository.findByName(name) != null) {
+        if (roleRepository.findByName(name).isPresent()) {
             throw new IllegalArgumentException("Role with name " + name + " already exists.");
         }
         Role role = new Role();
@@ -34,11 +35,8 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public Role getRoleByName(String name) {
-        Role role = roleRepository.findByName(name);
-        if (role == null) {
-            throw new ResourceNotFoundException("Role not found with name: " + name);
-        }
-        return role;
+        return roleRepository.findByName(name)
+                .orElseThrow(() -> new ResourceNotFoundException("Role not found with name: " + name));
     }
 
     @Override
