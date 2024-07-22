@@ -34,4 +34,8 @@ public class Treatment {
     @OneToMany(mappedBy = "treatment", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<MedicalPrescription> medicalPrescriptions;
 
+    @ManyToOne
+    @JoinColumn(name = "patient_id")
+    private Patient patient;
+
 }

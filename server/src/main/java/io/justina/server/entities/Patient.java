@@ -57,7 +57,7 @@ public class Patient {
 
     @ElementCollection
     @CollectionTable(name = "patient_files", joinColumns = @JoinColumn(name = "patient_id"))
-    @Column(name = "file", columnDefinition = "BLOB")
+    @Column(name = "file", columnDefinition = "BYTEA")
     private List<byte[]> files;
 
     @CreatedDate
