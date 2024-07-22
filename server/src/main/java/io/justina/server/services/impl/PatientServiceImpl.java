@@ -5,7 +5,9 @@ import io.justina.server.dtos.response.PatientResponseDTO;
 import io.justina.server.entities.*;
 import io.justina.server.enumerations.DocumentType;
 import io.justina.server.exceptions.PatientNotFoundException;
+import io.justina.server.repositories.FinancierRepository;
 import io.justina.server.repositories.PatientRepository;
+import io.justina.server.repositories.RoleRepository;
 import io.justina.server.repositories.UserRepository;
 import io.justina.server.services.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +29,21 @@ public class PatientServiceImpl implements PatientService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private RoleRepository roleRepository;
+
+    @Autowired
+    private FinancierRepository financierRepository;
+
+    private final String DEFAULT_PASSWORD = "12345Aa*";
+
     @Override
     public PatientResponseDTO createPatient(PatientRequestDTO patientRequestDTO) {
+        Role patientRole = roleRepository.findByName("PATIENT")
+                .orElseThrow(() -> new RuntimeException("Role PATIENT not found"));
+
+        Financier financier = financierRepository.findById(patientRequestDTO.getIdFinancier())
+                .orElseThrow(() -> new RuntimeException("Financier not found"));
 
         Document document = Document.builder()
                 .documentType(DocumentType.valueOf(patientRequestDTO.getDocumentType()))
@@ -46,24 +61,18 @@ public class PatientServiceImpl implements PatientService {
 
         User user = User.builder()
                 .email(patientRequestDTO.getEmail())
-                .password(passwordEncoder.encode(patientRequestDTO.getPassword()))
+                .password(passwordEncoder.encode(DEFAULT_PASSWORD))
                 .firstName(patientRequestDTO.getFirstName())
                 .lastName(patientRequestDTO.getLastName())
                 .birthDate(patientRequestDTO.getBirthDate())
                 .phone(patientRequestDTO.getPhone())
-                .institutionName(patientRequestDTO.getInstitutionName())
-                .role(Role.PATIENT)
+                .role(patientRole)
                 .isActive(true)
                 .document(document)
                 .address(address)
                 .build();
 
         user = userRepository.save(user);
-
-        Financier financier = Financier.builder()
-                .name(patientRequestDTO.getFinancierName())
-                .cuit(patientRequestDTO.getCuit())
-                .build();
 
         Patient patient = Patient.builder()
                 .user(user)
@@ -76,8 +85,6 @@ public class PatientServiceImpl implements PatientService {
                 .crossTransplant(patientRequestDTO.getCrossTransplant())
                 .tutorFullName(patientRequestDTO.getTutorFullName())
                 .tutorPhone(patientRequestDTO.getTutorPhone())
-                .file(patientRequestDTO.getFile())
-                .treatments(patientRequestDTO.getTreatments())
                 .financier(financier)
                 .build();
 
@@ -104,13 +111,15 @@ public class PatientServiceImpl implements PatientService {
         Patient patient = patientRepository.findById(patientId)
                 .orElseThrow(() -> new PatientNotFoundException("Patient not found"));
 
+        Financier financier = financierRepository.findById(patientRequestDTO.getIdFinancier())
+                .orElseThrow(() -> new RuntimeException("Financier not found"));
+
         User user = patient.getUser();
         user.setFirstName(patientRequestDTO.getFirstName());
         user.setLastName(patientRequestDTO.getLastName());
         user.setEmail(patientRequestDTO.getEmail());
         user.setBirthDate(patientRequestDTO.getBirthDate());
         user.setPhone(patientRequestDTO.getPhone());
-        user.setInstitutionName(patientRequestDTO.getInstitutionName());
 
         Document document = user.getDocument();
         document.setDocumentType(DocumentType.valueOf(patientRequestDTO.getDocumentType()));
@@ -127,11 +136,6 @@ public class PatientServiceImpl implements PatientService {
         user.setDocument(document);
         user.setAddress(address);
 
-        Financier financier = Financier.builder()
-                .name(patientRequestDTO.getFinancierName())
-                .cuit(patientRequestDTO.getCuit())
-                .build();
-
         patient.setMedicalHistory(patientRequestDTO.getMedicalHistory());
         patient.setPathologies(patientRequestDTO.getPathologies());
         patient.setTransplanted(patientRequestDTO.getTransplanted());
@@ -141,8 +145,6 @@ public class PatientServiceImpl implements PatientService {
         patient.setCrossTransplant(patientRequestDTO.getCrossTransplant());
         patient.setTutorFullName(patientRequestDTO.getTutorFullName());
         patient.setTutorPhone(patientRequestDTO.getTutorPhone());
-        patient.setFile(patientRequestDTO.getFile());
-        patient.setTreatments(patientRequestDTO.getTreatments());
         patient.setFinancier(financier);
 
         patient = patientRepository.save(patient);

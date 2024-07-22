@@ -1,10 +1,7 @@
 package io.justina.server.services;
 
-
 import io.justina.server.dtos.request.PatientRequestDTO;
 import io.justina.server.dtos.response.PatientResponseDTO;
-
-
 import java.util.List;
 
 public interface PatientService {
