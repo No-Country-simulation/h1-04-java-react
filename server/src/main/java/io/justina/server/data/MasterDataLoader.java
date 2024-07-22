@@ -11,12 +11,15 @@ public class MasterDataLoader implements CommandLineRunner {
     private DataLoaderRole dataLoaderRole;
     @Autowired
     private DataLoaderInstitution dataLoaderInstitution;
+    @Autowired
+    private DataLoaderLaboratory dataLoaderLaboratory;
     // Añadir más Data Loaders aquí
 
     @Override
     public void run(String... args) throws Exception {
         dataLoaderRole.run(args);
         dataLoaderInstitution.run(args);
+        dataLoaderLaboratory.run(args);
         // Ejecutar más Data Loaders aquí
     }
 
