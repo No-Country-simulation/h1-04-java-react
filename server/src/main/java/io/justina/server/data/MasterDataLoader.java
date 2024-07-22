@@ -9,12 +9,18 @@ public class MasterDataLoader implements CommandLineRunner {
 
     @Autowired
     private DataLoaderRole dataLoaderRole;
+
     @Autowired
     private DataLoaderInstitution dataLoaderInstitution;
+
     @Autowired
     private DataLoaderLaboratory dataLoaderLaboratory;
+
     @Autowired
     private DataLoaderMedication dataLoaderMedication;
+
+    @Autowired
+    private DataLoaderMedicalPrescription dataLoaderMedicalPrescription;
     // Añadir más Data Loaders aquí
 
     @Override
@@ -23,6 +29,9 @@ public class MasterDataLoader implements CommandLineRunner {
         dataLoaderInstitution.run(args);
         dataLoaderLaboratory.run(args);
         dataLoaderMedication.run(args);
+        dataLoaderMedicalPrescription.run(args);
+
         // Ejecutar más Data Loaders aquí
     }
+
 }

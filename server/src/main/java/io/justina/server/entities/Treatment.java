@@ -31,7 +31,7 @@ public class Treatment {
     @Column(name = "start_date", nullable = false, updatable = false)
     private LocalDate startDate;
 
-    @OneToMany(mappedBy = "treatment", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<MedicalPrescription> medicalPrescriptions;
 
     @ManyToOne

@@ -12,6 +12,6 @@ public interface TreatmentService {
     void deleteTreatment(Long treatmentId);
     TreatmentResponseDTO getTreatmentById(Long treatmentId);
     List<TreatmentResponseDTO> getAllTreatments();
-    void addMedicalPrescriptionToTreatment(AddMedicalPrescriptionToTreatmentDTO dto);
+    //void addMedicalPrescriptionToTreatment(AddMedicalPrescriptionToTreatmentDTO dto);
 
 }

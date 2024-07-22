@@ -24,22 +24,22 @@ public class TreatmentController {
     @Autowired
     private TreatmentService treatmentService;
 
-    @PostMapping("/add-prescription")
-    @Operation(summary = "Add a medical prescription to a treatment", description = "Adds a medical prescription to an existing treatment")
-    public ResponseEntity<Map<String, Object>> addMedicalPrescriptionToTreatment(@Valid @RequestBody AddMedicalPrescriptionToTreatmentDTO dto) {
-        Map<String, Object> response = new HashMap<>();
-        try {
-            treatmentService.addMedicalPrescriptionToTreatment(dto);
-            response.put("message", "Medical prescription added to treatment successfully");
-            return ResponseEntity.ok(response);
-        } catch (TreatmentNotFoundException e) {
-            response.put("message", "Treatment not found");
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
-        } catch (Exception e) {
-            response.put("message", "Internal server error");
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
-        }
-    }
+//    @PostMapping("/add-prescription")
+//    @Operation(summary = "Add a medical prescription to a treatment", description = "Adds a medical prescription to an existing treatment")
+//    public ResponseEntity<Map<String, Object>> addMedicalPrescriptionToTreatment(@Valid @RequestBody AddMedicalPrescriptionToTreatmentDTO dto) {
+//        Map<String, Object> response = new HashMap<>();
+//        try {
+//            treatmentService.addMedicalPrescriptionToTreatment(dto);
+//            response.put("message", "Medical prescription added to treatment successfully");
+//            return ResponseEntity.ok(response);
+//        } catch (TreatmentNotFoundException e) {
+//            response.put("message", "Treatment not found");
+//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+//        } catch (Exception e) {
+//            response.put("message", "Internal server error");
+//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+//        }
+//    }
 
     @PostMapping("/create-treatment")
     @Operation(summary = "Create a treatment", description = "Creates a new treatment")
