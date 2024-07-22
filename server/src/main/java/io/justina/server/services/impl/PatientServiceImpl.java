@@ -14,6 +14,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -168,6 +172,24 @@ public class PatientServiceImpl implements PatientService {
         User user = patient.getUser();
         user.setIsActive(false);
         patientRepository.save(patient);
+    }
+
+    @Override
+    public PatientResponseDTO uploadPatientFile(Long patientId, MultipartFile file) {
+        Patient patient = patientRepository.findById(patientId)
+                .orElseThrow(() -> new PatientNotFoundException("Patient not found"));
+
+        try {
+            byte[] fileBytes = file.getBytes();
+            if (patient.getFiles() == null) {
+                patient.setFiles(new ArrayList<>());
+            }
+            patient.getFiles().add(fileBytes);
+            patient = patientRepository.save(patient);
+            return new PatientResponseDTO(patient);
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to upload file", e);
+        }
     }
 
 }

@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
 import java.util.List;
 
 @RestController
@@ -62,6 +64,19 @@ public class PatientController {
             return ResponseEntity.ok(updatedPatient);
         } catch (PatientNotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
+
+    @PostMapping("/uploadFile")
+    @Operation(summary = "Upload a file for a patient", description = "Uploads a file for a specific patient by ID")
+    public ResponseEntity<PatientResponseDTO> uploadPatientFile(@RequestParam Long patientId, @RequestParam("file") MultipartFile file) {
+        try {
+            PatientResponseDTO updatedPatient = patientService.uploadPatientFile(patientId, file);
+            return ResponseEntity.ok(updatedPatient);
+        } catch (PatientNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 

@@ -55,9 +55,10 @@ public class Patient {
     @Column(name = "tutor_phone", length = 100)
     private String tutorPhone;
 
-    @Lob
+    @ElementCollection
+    @CollectionTable(name = "patient_files", joinColumns = @JoinColumn(name = "patient_id"))
     @Column(name = "file", columnDefinition = "BLOB")
-    private byte[] file;
+    private List<byte[]> files;
 
     @CreatedDate
     @Column(name = "created_at", nullable = false, updatable = false)
