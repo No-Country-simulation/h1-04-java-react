@@ -1,13 +1,8 @@
 package io.justina.server.services;
 
-
 import io.justina.server.dtos.request.DoctorRequestDTO;
 import io.justina.server.dtos.response.DoctorResponseDTO;
-import org.springframework.http.ResponseEntity;
-
-
 import java.util.List;
-
 
 public interface DoctorService {
 
