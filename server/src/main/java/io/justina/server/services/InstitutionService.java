@@ -7,15 +7,10 @@ import java.util.List;
 public interface InstitutionService {
 
     InstitutionResponseDTO createInstitution(InstitutionRequestDTO institutionRequestDTO);
-
     InstitutionResponseDTO getInstitutionById(Long id);
-
     List<InstitutionResponseDTO> getAllInstitutions();
-
     InstitutionResponseDTO updateInstitution(Long id, InstitutionRequestDTO institutionRequestDTO);
-
     void deleteInstitution(Long id);
-
     void deactivateInstitution(Long id);
 
 }

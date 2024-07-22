@@ -3,7 +3,6 @@ package io.justina.server.services.impl;
 import io.justina.server.dtos.request.MedicationRequestDTO;
 import io.justina.server.dtos.response.MedicationResponseDTO;
 import io.justina.server.entities.Laboratory;
-import io.justina.server.entities.MedicalPrescription;
 import io.justina.server.entities.Medication;
 import io.justina.server.exceptions.ResourceNotFoundException;
 import io.justina.server.repositories.LaboratoryRepository;

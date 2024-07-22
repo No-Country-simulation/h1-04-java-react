@@ -2,7 +2,6 @@ package io.justina.server.services;
 
 import io.justina.server.dtos.request.DoctorRequestDTO;
 import io.justina.server.dtos.response.DoctorResponseDTO;
-
 import javax.management.relation.RoleNotFoundException;
 import java.util.List;
 

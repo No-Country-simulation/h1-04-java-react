@@ -7,15 +7,10 @@ import java.util.List;
 public interface LaboratoryService {
 
     LaboratoryResponseDTO createLaboratory(LaboratoryRequestDTO laboratoryRequestDTO);
-
     LaboratoryResponseDTO getLaboratoryById(Long id);
-
     List<LaboratoryResponseDTO> getAllLaboratories();
-
     LaboratoryResponseDTO updateLaboratory(Long id, LaboratoryRequestDTO laboratoryRequestDTO);
-
     void deleteLaboratory(Long id);
-
     void deactivateLaboratory(Long id);
 
 }
