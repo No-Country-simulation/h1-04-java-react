@@ -76,7 +76,7 @@ public class PatientController {
         }
     }
 
-    @PutMapping("/deactivatePatient")
+    @DeleteMapping("/deactivatePatient")
     @Operation(summary = "Deactivate a patient", description = "Deactivate a patient from the system by ID")
     public ResponseEntity<String> deactivatePatient(@RequestParam Long patientId) {
         try {
