@@ -30,8 +30,6 @@ public class DataLoaderMedicalPrescription implements CommandLineRunner {
                 throw new ResourceNotFoundException("No medications found");
             }
 
-            System.out.println("Total medications found: " + medications.size());
-
             List<MedicalPrescription> prescriptions = List.of(
                     createMedicalPrescription("500mg", "Dos veces al día", "Tomar con comida", medications.get(0)),
                     createMedicalPrescription("200mg", "Una vez al día", "Tomar en ayunas", medications.get(1)),
@@ -86,7 +84,6 @@ public class DataLoaderMedicalPrescription implements CommandLineRunner {
             );
 
             medicalPrescriptionRepository.saveAll(prescriptions);
-            System.out.println("Medical prescriptions loaded successfully.");
         }
     }
 

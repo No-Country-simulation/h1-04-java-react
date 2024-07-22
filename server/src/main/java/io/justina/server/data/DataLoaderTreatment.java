@@ -35,7 +35,6 @@ public class DataLoaderTreatment implements CommandLineRunner {
             }
 
             int size = medicalPrescriptions.size();
-            System.out.println("Total medical prescriptions found: " + size);
 
             List<MedicalPrescription> prescriptionsForTreatment1 = medicalPrescriptions.subList(0, Math.min(5, size));
             List<MedicalPrescription> prescriptionsForTreatment2 = medicalPrescriptions.subList(Math.min(5, size), Math.min(10, size));
@@ -47,18 +46,6 @@ public class DataLoaderTreatment implements CommandLineRunner {
             List<MedicalPrescription> prescriptionsForTreatment8 = medicalPrescriptions.subList(Math.min(35, size), Math.min(40, size));
             List<MedicalPrescription> prescriptionsForTreatment9 = medicalPrescriptions.subList(Math.min(40, size), Math.min(45, size));
             List<MedicalPrescription> prescriptionsForTreatment10 = medicalPrescriptions.subList(Math.min(45, size), Math.min(50, size));
-
-            System.out.println("Creating treatments with the following prescriptions:");
-            System.out.println("Treatment 1: " + prescriptionsForTreatment1);
-            System.out.println("Treatment 2: " + prescriptionsForTreatment2);
-            System.out.println("Treatment 3: " + prescriptionsForTreatment3);
-            System.out.println("Treatment 4: " + prescriptionsForTreatment4);
-            System.out.println("Treatment 5: " + prescriptionsForTreatment5);
-            System.out.println("Treatment 6: " + prescriptionsForTreatment6);
-            System.out.println("Treatment 7: " + prescriptionsForTreatment7);
-            System.out.println("Treatment 8: " + prescriptionsForTreatment8);
-            System.out.println("Treatment 9: " + prescriptionsForTreatment9);
-            System.out.println("Treatment 10: " + prescriptionsForTreatment10);
 
             treatmentRepository.saveAll(List.of(
                     createTreatment("Tratamiento para la hipertensión", "Control y reducción de la presión arterial", prescriptionsForTreatment1),
@@ -72,7 +59,6 @@ public class DataLoaderTreatment implements CommandLineRunner {
                     createTreatment("Tratamiento para la osteoporosis", "Fortalecimiento de los huesos", prescriptionsForTreatment9),
                     createTreatment("Tratamiento para el asma", "Control y prevención de ataques asmáticos", prescriptionsForTreatment10)
             ));
-            System.out.println("Treatments loaded successfully.");
         }
     }
 
