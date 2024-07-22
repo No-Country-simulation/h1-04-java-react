@@ -1,4 +1,3 @@
-// src/context/DoctorContext.js
 import React, { createContext, useState, useEffect } from "react";
 import { fetchDoctors } from "../services/doctorServices";
 
@@ -20,6 +19,7 @@ export const DoctorProvider = ({ children }) => {
     setAuthData(null);
     localStorage.removeItem("authData");
   };
+
   useEffect(() => {
     const getDoctors = async () => {
       try {
@@ -33,6 +33,12 @@ export const DoctorProvider = ({ children }) => {
     };
 
     getDoctors();
+
+    // Restaurar authData desde localStorage
+    const storedAuthData = localStorage.getItem("authData");
+    if (storedAuthData) {
+      setAuthData(JSON.parse(storedAuthData));
+    }
   }, []);
 
   return (
