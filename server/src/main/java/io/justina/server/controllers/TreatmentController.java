@@ -22,15 +22,15 @@ public class TreatmentController {
     private TreatmentService treatmentService;
 
     @PostMapping("/add-prescription")
+    @Operation(summary = "Add a medical prescription to a treatment", description = "Adds a medical prescription to an existing treatment")
     public ResponseEntity<Void> addMedicalPrescriptionToTreatment(@RequestBody @Valid AddMedicalPrescriptionToTreatmentDTO dto) {
         treatmentService.addMedicalPrescriptionToTreatment(dto);
         return ResponseEntity.ok().build();
     }
 
-    @PostMapping("/add-treatment/{patientId}")
-    @Operation(summary = "Add a treatment to a patient", description = "Creates a new treatment for a specific patient")
-    public ResponseEntity<TreatmentResponseDTO> addTreatment(@PathVariable Long patientId, @Valid @RequestBody TreatmentRequestDTO treatmentRequestDTO) {
-        treatmentRequestDTO.setPatientId(patientId);
+    @PostMapping("/create-treatment")
+    @Operation(summary = "Create a treatment", description = "Creates a new treatment")
+    public ResponseEntity<TreatmentResponseDTO> createTreatment(@Valid @RequestBody TreatmentRequestDTO treatmentRequestDTO) {
         TreatmentResponseDTO newTreatmentResponse = treatmentService.createTreatment(treatmentRequestDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(newTreatmentResponse);
     }
@@ -60,13 +60,6 @@ public class TreatmentController {
     @Operation(summary = "Get all treatments", description = "Retrieve a list of all treatments in the system")
     public ResponseEntity<List<TreatmentResponseDTO>> getAllTreatments() {
         List<TreatmentResponseDTO> treatmentsResponse = treatmentService.getAllTreatments();
-        return ResponseEntity.ok(treatmentsResponse);
-    }
-
-    @GetMapping("/get-treatments-by-patient-id/{patientId}")
-    @Operation(summary = "Get treatments by patient ID", description = "Retrieve a list of all treatments for a specific patient by their ID")
-    public ResponseEntity<List<TreatmentResponseDTO>> getTreatmentsByPatientId(@PathVariable Long patientId) {
-        List<TreatmentResponseDTO> treatmentsResponse = treatmentService.getTreatmentsByPatientId(patientId);
         return ResponseEntity.ok(treatmentsResponse);
     }
 

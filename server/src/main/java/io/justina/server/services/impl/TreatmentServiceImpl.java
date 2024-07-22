@@ -7,7 +7,6 @@ import io.justina.server.entities.MedicalPrescription;
 import io.justina.server.entities.Treatment;
 import io.justina.server.exceptions.ResourceNotFoundException;
 import io.justina.server.repositories.MedicalPrescriptionRepository;
-import io.justina.server.repositories.PatientRepository;
 import io.justina.server.repositories.TreatmentRepository;
 import io.justina.server.services.TreatmentService;
 import org.springframework.transaction.annotation.Transactional;
