@@ -32,10 +32,10 @@ public class Doctor {
     @Column(name = "licence_number", length = 20, nullable = false)
     private String licenceNumber;
 
-    @ElementCollection(targetClass = Days.class)
+    @ElementCollection(targetClass = Day.class)
     @CollectionTable(name = "doctor_workdays", joinColumns = @JoinColumn(name = "doctor_id"))
     @Enumerated(EnumType.STRING)
-    private Set<Days> workdays;
+    private Set<Day> workdays;
 
     @ElementCollection(targetClass = AvailableHours.class)
     @CollectionTable(name = "doctor_schedule", joinColumns = @JoinColumn(name = "doctor_id"))

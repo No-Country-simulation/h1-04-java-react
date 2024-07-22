@@ -2,9 +2,9 @@ package io.justina.server.dtos.response;
 
 import io.justina.server.entities.Appointment;
 import io.justina.server.enumerations.AvailableHours;
-import io.justina.server.enumerations.Days;
+import io.justina.server.enumerations.Day;
 import io.justina.server.enumerations.Specialty;
-import io.justina.server.enumerations.TypeOfAppointments;
+import io.justina.server.enumerations.TypeOfAppointment;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -21,9 +21,9 @@ public class AppointmentResponseDTO {
     private Long appointmentId;
     private Long doctorId;
     private Long patientId;
-    private Set<Days> appointmentDays;
+    private Set<Day> appointmentDays;
     private Set<AvailableHours> appointmentHours;
-    private TypeOfAppointments typeOfAppointment;
+    private TypeOfAppointment typeOfAppointment;
     private String appointmentDescription;
     private String doctorFirstName;
     private String doctorLastName;
@@ -36,7 +36,7 @@ public class AppointmentResponseDTO {
     private LocalDateTime updatedAt;
 
     public AppointmentResponseDTO(Appointment appointment) {
-        this.appointmentId = appointment.getAppointmentId();
+        this.appointmentId = appointment.getId();
         this.doctorId = appointment.getDoctor().getDoctorId();
         this.patientId = appointment.getPatient().getId();
         this.appointmentDays = appointment.getAppointmentDays();

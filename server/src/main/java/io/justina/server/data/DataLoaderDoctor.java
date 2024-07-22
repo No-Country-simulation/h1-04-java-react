@@ -2,7 +2,7 @@ package io.justina.server.data;
 
 import io.justina.server.entities.*;
 import io.justina.server.enumerations.AvailableHours;
-import io.justina.server.enumerations.Days;
+import io.justina.server.enumerations.Day;
 import io.justina.server.enumerations.DocumentType;
 import io.justina.server.enumerations.Specialty;
 import io.justina.server.repositories.DoctorRepository;
@@ -122,7 +122,7 @@ public class DataLoaderDoctor implements CommandLineRunner {
                 .user(user)
                 .licenceNumber("LIC-" + documentNumber)
                 .specialties(specialties)
-                .workdays(EnumSet.allOf(Days.class))
+                .workdays(EnumSet.allOf(Day.class))
                 .schedule(EnumSet.allOf(AvailableHours.class))
                 .financier(financier)
                 .build();

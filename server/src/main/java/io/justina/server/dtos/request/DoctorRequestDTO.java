@@ -1,6 +1,5 @@
 package io.justina.server.dtos.request;
 
-import io.justina.server.entities.Financier;
 import io.justina.server.enumerations.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
@@ -24,7 +23,7 @@ public class DoctorRequestDTO {
     private String licenceNumber;
 
     @NotEmpty(message = "Workdays are required.")
-    private Set<Days> workdays;
+    private Set<Day> workdays;
 
     @NotBlank(message = "Email is required.")
     @Email(message = "Invalid email address.")

@@ -6,7 +6,7 @@ import io.justina.server.entities.Financier;
 import io.justina.server.entities.User;
 import io.justina.server.enumerations.AvailableHours;
 import io.justina.server.enumerations.Specialty;
-import io.justina.server.enumerations.Days;
+import io.justina.server.enumerations.Day;
 import lombok.*;
 import java.util.List;
 import java.util.Set;
@@ -22,7 +22,7 @@ public class DoctorResponseDTO {
     private Long doctorId;
     private Set<Specialty> specialties;
     private String licenceNumber;
-    private Set<Days> workdays;
+    private Set<Day> workdays;
     private Set<AvailableHours> schedule;
     private List<Appointment> appointments;
     private User user;
