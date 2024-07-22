@@ -5,6 +5,7 @@ import io.justina.server.dtos.response.FinancierResponseDTO;
 import io.justina.server.services.FinancierService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +22,7 @@ public class FinancierController {
 
     @PostMapping("/createFinancier")
     @Operation(summary = "Create a financier", description = "Create a new financier in the system")
-    public ResponseEntity<FinancierResponseDTO> createFinancier(@RequestBody FinancierRequestDTO requestDTO) {
+    public ResponseEntity<FinancierResponseDTO> createFinancier(@Valid @RequestBody FinancierRequestDTO requestDTO) {
         FinancierResponseDTO newFinancierResponse = financierService.createFinancier(requestDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(newFinancierResponse);
     }
@@ -42,7 +43,7 @@ public class FinancierController {
 
     @PutMapping("/updateFinancier/{id}")
     @Operation(summary = "Update a financier", description = "Update information of an existing financier by ID")
-    public ResponseEntity<FinancierResponseDTO> updateFinancier(@PathVariable Long id, @RequestBody FinancierRequestDTO requestDTO) {
+    public ResponseEntity<FinancierResponseDTO> updateFinancier(@PathVariable Long id, @Valid @RequestBody FinancierRequestDTO requestDTO) {
         FinancierResponseDTO updateFinancierResponse = financierService.updateFinancier(id, requestDTO);
         return ResponseEntity.ok(updateFinancierResponse);
     }
