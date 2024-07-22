@@ -2,19 +2,23 @@ package io.justina.server.services.impl;
 
 import io.justina.server.dtos.request.DoctorRequestDTO;
 import io.justina.server.dtos.response.DoctorResponseDTO;
-import io.justina.server.entities.Address;
-import io.justina.server.entities.Doctor;
-import io.justina.server.entities.Document;
-import io.justina.server.entities.User;
+import io.justina.server.entities.*;
+import io.justina.server.enumerations.AvailableHours;
 import io.justina.server.enumerations.DocumentType;
 import io.justina.server.exceptions.DoctorNotFoundException;
+import io.justina.server.exceptions.FinancierNotFoundException;
 import io.justina.server.repositories.DoctorRepository;
+import io.justina.server.repositories.FinancierRepository;
+import io.justina.server.repositories.RoleRepository;
 import io.justina.server.repositories.UserRepository;
 import io.justina.server.services.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import javax.management.relation.RoleNotFoundException;
+import java.util.EnumSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,8 +34,22 @@ public class DoctorServiceImpl implements DoctorService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private RoleRepository roleRepository;
+
+    @Autowired
+    private FinancierRepository financierRepository;
+
+    private final String DEFAULT_PASSWORD = "12345Aa*";
+
     @Override
-    public DoctorResponseDTO createDoctor(DoctorRequestDTO doctorRequestDTO) {
+    public DoctorResponseDTO createDoctor(DoctorRequestDTO doctorRequestDTO) throws RoleNotFoundException {
+
+        Role doctorRole = roleRepository.findByName("DOCTOR")
+                .orElseThrow(() -> new RoleNotFoundException("Role DOCTOR not found"));
+
+        Financier financier = financierRepository.findById(doctorRequestDTO.getIdFinancier())
+                .orElseThrow(() -> new FinancierNotFoundException("Financier not found"));
 
         Document document = Document.builder()
                 .documentType(DocumentType.valueOf(doctorRequestDTO.getDocumentType()))
@@ -49,13 +67,12 @@ public class DoctorServiceImpl implements DoctorService {
 
         User user = User.builder()
                 .email(doctorRequestDTO.getEmail())
-                .password(passwordEncoder.encode(doctorRequestDTO.getPassword()))
+                .password(passwordEncoder.encode(DEFAULT_PASSWORD))
                 .firstName(doctorRequestDTO.getFirstName())
                 .lastName(doctorRequestDTO.getLastName())
                 .birthDate(doctorRequestDTO.getBirthDate())
                 .phone(doctorRequestDTO.getPhone())
-                .institutionName(doctorRequestDTO.getInstitutionName())
-                .role(Role.DOCTOR)
+                .role(doctorRole)
                 .isActive(true)
                 .document(document)
                 .address(address)
@@ -68,7 +85,8 @@ public class DoctorServiceImpl implements DoctorService {
                 .licenceNumber(doctorRequestDTO.getLicenceNumber())
                 .specialties(doctorRequestDTO.getSpecialties())
                 .workdays(doctorRequestDTO.getWorkdays())
-                .schedule(doctorRequestDTO.getSchedule())
+                .schedule(EnumSet.allOf(AvailableHours.class))
+                .financier(financier)
                 .build();
 
         doctor = doctorRepository.save(doctor);
@@ -100,7 +118,6 @@ public class DoctorServiceImpl implements DoctorService {
         user.setEmail(doctorRequestDTO.getEmail());
         user.setBirthDate(doctorRequestDTO.getBirthDate());
         user.setPhone(doctorRequestDTO.getPhone());
-        user.setInstitutionName(doctorRequestDTO.getInstitutionName());
 
         Document document = user.getDocument();
         document.setDocumentType(DocumentType.valueOf(doctorRequestDTO.getDocumentType()));
@@ -120,7 +137,7 @@ public class DoctorServiceImpl implements DoctorService {
         doctor.setLicenceNumber(doctorRequestDTO.getLicenceNumber());
         doctor.setSpecialties(doctorRequestDTO.getSpecialties());
         doctor.setWorkdays(doctorRequestDTO.getWorkdays());
-        doctor.setSchedule(doctorRequestDTO.getSchedule());
+        doctor.setSchedule(EnumSet.allOf(AvailableHours.class));
 
         doctor = doctorRepository.save(doctor);
         return new DoctorResponseDTO(doctor);
