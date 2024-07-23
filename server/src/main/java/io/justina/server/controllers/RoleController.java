@@ -1,5 +1,6 @@
 package io.justina.server.controllers;
 
+import io.justina.server.dtos.request.RoleRequestDTO;
 import io.justina.server.entities.Role;
 import io.justina.server.exceptions.RoleNotFoundException;
 import io.justina.server.services.RoleService;
@@ -26,10 +27,10 @@ public class RoleController {
     @Operation(summary = "Create a new role", description = "Creates a new role in the system")
     public ResponseEntity<Map<String, Object>> createRole(
             @Parameter(description = "Name of the role to be created", required = true)
-            @RequestBody String name) {
+            @RequestBody RoleRequestDTO roleRequestDTO) {
         Map<String, Object> response = new HashMap<>();
         try {
-            Role role = roleService.createRole(name);
+            Role role = roleService.createRole(roleRequestDTO.getName());
             response.put("role", role);
             return ResponseEntity.status(HttpStatus.CREATED).body(response);
         } catch (Exception e) {
