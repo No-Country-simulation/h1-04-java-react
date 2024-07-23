@@ -1,10 +1,8 @@
 package io.justina.server.data;
 
-import io.justina.server.entities.Address;
-import io.justina.server.entities.Document;
-import io.justina.server.entities.Role;
-import io.justina.server.entities.User;
+import io.justina.server.entities.*;
 import io.justina.server.enumerations.DocumentType;
+import io.justina.server.repositories.InstitutionRepository;
 import io.justina.server.repositories.RoleRepository;
 import io.justina.server.repositories.UserRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -27,6 +25,9 @@ public class DataLoaderAdmin implements CommandLineRunner {
     @Autowired
     private RoleRepository roleRepository;
 
+    @Autowired
+    private InstitutionRepository institutionRepository;
+
     @Override
     public void run(String... args) throws Exception {
         if (roleRepository.findByName("ADMIN").isEmpty()) {
@@ -38,14 +39,17 @@ public class DataLoaderAdmin implements CommandLineRunner {
         Role adminRole = roleRepository.findByName("ADMIN")
                 .orElseThrow(() -> new RuntimeException("Role ADMIN not found"));
 
-        createAdminUser("admin1@example.com", "Admin", "One", adminRole, "DNI", "12345678", "Calle Falsa", "123", "Barrio Ficticio", "Ciudad Ejemplo", "Provincia Ejemplo", "1000");
-        createAdminUser("admin2@example.com", "Admin", "Two", adminRole, "DNI", "23456789", "Av. Siempre Viva", "742", "Barrio Springfield", "Ciudad Ejemplo", "Provincia Ejemplo", "2000");
-        createAdminUser("admin3@example.com", "Admin", "Three", adminRole, "DNI", "34567890", "Calle Inventada", "456", "Barrio Imaginario", "Ciudad Ejemplo", "Provincia Ejemplo", "3000");
-        createAdminUser("admin4@example.com", "Admin", "Four", adminRole, "DNI", "45678901", "Av. Principal", "789", "Barrio Central", "Ciudad Ejemplo", "Provincia Ejemplo", "4000");
-        createAdminUser("admin5@example.com", "Admin", "Five", adminRole, "DNI", "56789012", "Calle Secundaria", "321", "Barrio Alternativo", "Ciudad Ejemplo", "Provincia Ejemplo", "5000");
+        Institution defaultInstitution = institutionRepository.findByName("JUSTINA_IO")
+                .orElseThrow(() -> new RuntimeException("Institution JUSTINA_IO not found"));
+
+        createAdminUser("admin1@admin.com", "Federico", "González", adminRole, defaultInstitution, "DNI", "120045678", "Calle Corrientes", "1234", "San Nicolás", "CABA", "Buenos Aires", "1043", "+541112345678", LocalDate.of(1980, 5, 20));
+        createAdminUser("admin2@admin.com", "Elena", "Ramírez", adminRole, defaultInstitution, "DNI", "2300456789", "Av. Santa Fe", "5678", "Palermo", "CABA", "Buenos Aires", "1425", "+541198765432", LocalDate.of(1985, 8, 15));
+        createAdminUser("admin3@admin.com", "Andrés", "Torres", adminRole, defaultInstitution, "DNI", "3400567890", "Calle Florida", "987", "Retiro", "CABA", "Buenos Aires", "1005", "+541176543210", LocalDate.of(1990, 11, 10));
+        createAdminUser("admin4@admin.com", "Valeria", "Sánchez", adminRole, defaultInstitution, "DNI", "4500678901", "Av. Callao", "456", "Recoleta", "CABA", "Buenos Aires", "1022", "+541165432198", LocalDate.of(1975, 3, 5));
+        createAdminUser("admin5@admin.com", "Roberto", "Herrera", adminRole, defaultInstitution, "DNI", "5600789012", "Av. Belgrano", "789", "Monserrat", "CABA", "Buenos Aires", "1092", "+541154321987", LocalDate.of(1982, 12, 25));
     }
 
-    private void createAdminUser(String email, String firstName, String lastName, Role adminRole, String documentType, String documentNumber, String street, String number, String district, String city, String province, String postalCode) {
+    private void createAdminUser(String email, String firstName, String lastName, Role adminRole, Institution institution, String documentType, String documentNumber, String street, String number, String district, String city, String province, String postalCode, String phone, LocalDate birthDate) {
         if (userRepository.existsByEmail(email)) {
             return;
         }
@@ -69,10 +73,11 @@ public class DataLoaderAdmin implements CommandLineRunner {
                 .password(passwordEncoder.encode("12345Aa*"))
                 .firstName(firstName)
                 .lastName(lastName)
-                .birthDate(LocalDate.of(1980, 1, 1))
-                .phone("+1234567890")
+                .birthDate(birthDate)
+                .phone(phone)
                 .role(adminRole)
                 .isActive(true)
+                .institution(institution)
                 .document(document)
                 .address(address)
                 .build();
@@ -81,4 +86,5 @@ public class DataLoaderAdmin implements CommandLineRunner {
     }
 
 }
+
 

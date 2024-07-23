@@ -37,8 +37,6 @@ public class MasterDataLoader implements CommandLineRunner {
     @Autowired
     private DataLoaderPatient dataLoaderPatient;
 
-    // Añadir más Data Loaders aquí
-
     @Override
     public void run(String... args) throws Exception {
         dataLoaderRole.run(args);
@@ -52,7 +50,6 @@ public class MasterDataLoader implements CommandLineRunner {
         dataLoaderDoctor.run(args);
         dataLoaderPatient.run(args);
 
-        // Ejecutar más Data Loaders aquí
     }
 
 }
