@@ -67,6 +67,7 @@ public class DataLoaderTreatment implements CommandLineRunner {
                 .treatmentName(treatmentName)
                 .indications(indications)
                 .startDate(LocalDate.now())
+                .active(true)
                 .medicalPrescriptions(new ArrayList<>(medicalPrescriptions))
                 .build();
 

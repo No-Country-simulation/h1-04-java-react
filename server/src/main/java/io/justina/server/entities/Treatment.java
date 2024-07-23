@@ -31,6 +31,8 @@ public class Treatment {
     @Column(name = "start_date", nullable = false, updatable = false)
     private LocalDate startDate;
 
+    private Boolean active;
+
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<MedicalPrescription> medicalPrescriptions;
 

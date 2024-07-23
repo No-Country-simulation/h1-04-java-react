@@ -18,6 +18,7 @@ public class TreatmentResponseDTO {
     private String treatmentName;
     private String indications;
     private LocalDate startDate;
+    private Boolean active;
     private List<MedicalPrescription> medicalPrescriptions;
 
     public TreatmentResponseDTO(Treatment treatment) {
@@ -25,6 +26,7 @@ public class TreatmentResponseDTO {
         this.treatmentName = treatment.getTreatmentName();
         this.indications = treatment.getIndications();
         this.startDate = treatment.getStartDate();
+        this.active = treatment.getActive();
         this.medicalPrescriptions = treatment.getMedicalPrescriptions();
     }
 

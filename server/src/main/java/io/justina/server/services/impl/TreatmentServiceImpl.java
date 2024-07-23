@@ -5,6 +5,7 @@ import io.justina.server.dtos.request.TreatmentRequestDTO;
 import io.justina.server.dtos.response.TreatmentResponseDTO;
 import io.justina.server.entities.MedicalPrescription;
 import io.justina.server.entities.Treatment;
+import io.justina.server.exceptions.MedicalPrescriptionAlreadyAssignedException;
 import io.justina.server.exceptions.ResourceNotFoundException;
 import io.justina.server.repositories.MedicalPrescriptionRepository;
 import io.justina.server.repositories.TreatmentRepository;
@@ -28,6 +29,7 @@ public class TreatmentServiceImpl implements TreatmentService {
     @Override
     public TreatmentResponseDTO createTreatment(TreatmentRequestDTO treatmentRequestDTO) {
         Treatment treatment = convertToEntity(treatmentRequestDTO);
+        treatment.setActive(true);
         Treatment savedTreatment = treatmentRepository.save(treatment);
         return new TreatmentResponseDTO(savedTreatment);
     }
@@ -60,10 +62,30 @@ public class TreatmentServiceImpl implements TreatmentService {
     }
 
     @Override
-    public void deleteTreatment(Long treatmentId) {
+    public void deactivateTreatment(Long treatmentId) {
         Treatment treatment = treatmentRepository.findById(treatmentId)
                 .orElseThrow(() -> new ResourceNotFoundException("Treatment not found with id: " + treatmentId));
-        treatmentRepository.delete(treatment);
+        treatment.setActive(false);
+        treatmentRepository.save(treatment);
+    }
+
+    @Override
+    public TreatmentResponseDTO addMedicalPrescriptionToTreatment(Long treatmentId, Long medicalPrescriptionId) {
+        Treatment treatment = treatmentRepository.findById(treatmentId)
+                .orElseThrow(() -> new ResourceNotFoundException("Treatment not found with id: " + treatmentId));
+
+        MedicalPrescription medicalPrescription = medicalPrescriptionRepository.findById(medicalPrescriptionId)
+                .orElseThrow(() -> new ResourceNotFoundException("Medical prescription not found with id: " + medicalPrescriptionId));
+
+        boolean isAssigned = medicalPrescriptionRepository.isMedicalPrescriptionAssignedToAnyTreatment(medicalPrescriptionId);
+        if (isAssigned) {
+            throw new MedicalPrescriptionAlreadyAssignedException("Medical prescription already assigned to a treatment.");
+        }
+
+        treatment.getMedicalPrescriptions().add(medicalPrescription);
+        Treatment updatedTreatment = treatmentRepository.save(treatment);
+
+        return new TreatmentResponseDTO(updatedTreatment);
     }
 
     private Treatment convertToEntity(TreatmentRequestDTO dto) {
