@@ -61,13 +61,6 @@ public class FinancierServiceImpl implements FinancierService {
     }
 
     @Override
-    public void deleteFinancier(Long id) {
-        Financier financier = financierRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Financier not found with id: " + id));
-        financierRepository.delete(financier);
-    }
-
-    @Override
     public void deactivateFinancier(Long id) {
         Financier financier = financierRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Financier not found with id: " + id));

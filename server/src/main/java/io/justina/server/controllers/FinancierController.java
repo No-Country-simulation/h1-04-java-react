@@ -69,19 +69,6 @@ public class FinancierController {
         }
     }
 
-    @DeleteMapping("/deleteFinancier/{id}")
-    @Operation(summary = "Delete a financier", description = "Delete a financier from the system by ID")
-    public ResponseEntity<String> deleteFinancier(@PathVariable Long id) {
-        try {
-            financierService.deleteFinancier(id);
-            return ResponseEntity.ok("Financier deleted successfully");
-        } catch (FinancierNotFoundException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
-    }
-
     @DeleteMapping("/deactivateFinancier/{id}")
     @Operation(summary = "Deactivate a financier", description = "Deactivate a financier from the system by ID")
     public ResponseEntity<String> deactivateFinancier(@PathVariable Long id) {

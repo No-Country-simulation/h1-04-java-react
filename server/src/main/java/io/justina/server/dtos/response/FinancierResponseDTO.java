@@ -19,6 +19,7 @@ public class FinancierResponseDTO {
     private String phone;
     private String email;
     private String contactPerson;
+    private Boolean isActive;
 
     public FinancierResponseDTO(Financier financier) {
         this.id = financier.getId();;
@@ -28,6 +29,7 @@ public class FinancierResponseDTO {
         this.phone = financier.getPhone();
         this.email = financier.getEmail();
         this.contactPerson = financier.getContactPerson();
+        this.isActive = financier.getIsActive();
     }
 
 }

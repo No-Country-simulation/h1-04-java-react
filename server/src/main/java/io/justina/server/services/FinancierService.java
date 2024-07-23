@@ -10,7 +10,6 @@ public interface FinancierService {
     FinancierResponseDTO getFinancierById(Long id);
     List<FinancierResponseDTO> getAllFinanciers();
     FinancierResponseDTO updateFinancier(Long id, FinancierRequestDTO financierRequestDTO);
-    void deleteFinancier(Long id);
     void deactivateFinancier(Long id);
 
 }
