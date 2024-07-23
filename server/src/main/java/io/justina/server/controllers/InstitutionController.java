@@ -69,19 +69,6 @@ public class InstitutionController {
         }
     }
 
-    @DeleteMapping("/deleteInstitution/{id}")
-    @Operation(summary = "Delete an institution", description = "Delete an institution from the system by ID")
-    public ResponseEntity<String> deleteInstitution(@PathVariable Long id) {
-        try {
-            institutionService.deleteInstitution(id);
-            return ResponseEntity.ok("Institution deleted successfully");
-        } catch (InstitutionNotFoundException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
-    }
-
     @DeleteMapping("/deactivateInstitution/{id}")
     @Operation(summary = "Deactivate an institution", description = "Deactivate an institution from the system by ID")
     public ResponseEntity<String> deactivateInstitution(@PathVariable Long id) {

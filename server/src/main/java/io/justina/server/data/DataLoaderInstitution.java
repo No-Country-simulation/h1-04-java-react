@@ -19,14 +19,17 @@ public class DataLoaderInstitution implements CommandLineRunner {
         if (institutionRepository.count() == 0) {
             Institution noCountry = new Institution();
             noCountry.setName("NO_COUNTRY");
+            noCountry.setActive(true);
             institutionRepository.save(noCountry);
 
             Institution justinaIo = new Institution();
             justinaIo.setName("JUSTINA_IO");
+            justinaIo.setActive(true);
             institutionRepository.save(justinaIo);
 
             Institution multiplicateX7 = new Institution();
             multiplicateX7.setName("MULTIPLICATEX7");
+            multiplicateX7.setActive(true);
             institutionRepository.save(multiplicateX7);
         }
     }

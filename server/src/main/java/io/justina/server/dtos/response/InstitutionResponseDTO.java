@@ -13,10 +13,12 @@ public class InstitutionResponseDTO {
 
     private Long id;
     private String name;
+    private Boolean active;
 
     public InstitutionResponseDTO(Institution institution) {
         this.id = institution.getId();
         this.name = institution.getName();
+        this.active = institution.getActive();
     }
 
 }

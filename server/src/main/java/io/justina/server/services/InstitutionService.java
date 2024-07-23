@@ -10,7 +10,6 @@ public interface InstitutionService {
     InstitutionResponseDTO getInstitutionById(Long id);
     List<InstitutionResponseDTO> getAllInstitutions();
     InstitutionResponseDTO updateInstitution(Long id, InstitutionRequestDTO institutionRequestDTO);
-    void deleteInstitution(Long id);
     void deactivateInstitution(Long id);
 
 }

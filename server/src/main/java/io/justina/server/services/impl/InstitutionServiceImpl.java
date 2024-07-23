@@ -22,6 +22,7 @@ public class InstitutionServiceImpl implements InstitutionService {
     @Override
     public InstitutionResponseDTO createInstitution(InstitutionRequestDTO institutionRequestDTO) {
         Institution institution = convertToEntity(institutionRequestDTO);
+        institution.setActive(true);
         Institution savedInstitution = institutionRepository.save(institution);
         return new InstitutionResponseDTO(savedInstitution);
     }
@@ -55,16 +56,10 @@ public class InstitutionServiceImpl implements InstitutionService {
     }
 
     @Override
-    public void deleteInstitution(Long id) {
-        Institution institution = institutionRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Institution not found with id: " + id));
-        institutionRepository.delete(institution);
-    }
-
-    @Override
     public void deactivateInstitution(Long id) {
         Institution institution = institutionRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Institution not found with id: " + id));
+        institution.setActive(false);
         institutionRepository.save(institution);
     }
 
