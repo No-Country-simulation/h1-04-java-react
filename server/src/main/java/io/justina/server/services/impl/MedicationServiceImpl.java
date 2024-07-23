@@ -70,10 +70,11 @@ public class MedicationServiceImpl implements MedicationService {
     }
 
     @Override
-    public void deleteMedication(Long medicationId) {
+    public void deactivateMedication(Long medicationId) {
         Medication medication = medicationRepository.findById(medicationId)
                 .orElseThrow(() -> new ResourceNotFoundException("Medication not found"));
-        medicationRepository.delete(medication);
+        medication.setActive(false);
+        medicationRepository.save(medication);
     }
 
     private Medication convertToEntity(MedicationRequestDTO dto) {

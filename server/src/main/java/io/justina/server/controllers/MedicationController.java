@@ -69,12 +69,12 @@ public class MedicationController {
         }
     }
 
-    @DeleteMapping("/deleteMedication/{id}")
-    @Operation(summary = "Delete a medication", description = "Delete a medication from the system by ID")
-    public ResponseEntity<String> deleteMedication(@PathVariable Long id) {
+    @DeleteMapping("/deactivateMedication/{id}")
+    @Operation(summary = "Deactivate a medication", description = "Deactivate a medication from the system by ID")
+    public ResponseEntity<String> deactivateMedication(@PathVariable Long id) {
         try {
-            medicationService.deleteMedication(id);
-            return ResponseEntity.ok("Medication deleted successfully");
+            medicationService.deactivateMedication(id);
+            return ResponseEntity.ok("Medication deactivated successfully");
         } catch (MedicationNotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Medication not found");
         } catch (Exception e) {

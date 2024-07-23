@@ -70,7 +70,7 @@ public class MedicalPrescriptionController {
 
     @DeleteMapping("/deactivateMedicalPrescription/{medicalPrescriptionId}")
     @Operation(summary = "Deactivate a medical prescription", description = "Deactivate a medical prescription from the system by ID")
-    public ResponseEntity<String> deleteMedicalPrescription(@PathVariable Long medicalPrescriptionId) {
+    public ResponseEntity<String> deactivateMedicalPrescription(@PathVariable Long medicalPrescriptionId) {
         try {
             medicalPrescriptionService.deactivateMedicalPrescription(medicalPrescriptionId);
             return ResponseEntity.ok("Medical prescription deactivate successfully");

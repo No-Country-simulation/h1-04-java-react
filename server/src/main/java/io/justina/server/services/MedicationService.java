@@ -8,7 +8,7 @@ public interface MedicationService {
 
     MedicationResponseDTO createMedication(MedicationRequestDTO medicationRequestDTO);
     MedicationResponseDTO updateMedication(Long medicationId, MedicationRequestDTO medicationRequestDTO);
-    void deleteMedication(Long medicationId);
+    void deactivateMedication(Long medicationId);
     MedicationResponseDTO getMedicationById(Long medicationId);
     List<MedicationResponseDTO> getAllMedications();
 
