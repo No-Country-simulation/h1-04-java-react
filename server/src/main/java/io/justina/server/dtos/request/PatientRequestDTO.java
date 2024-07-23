@@ -24,10 +24,8 @@ public class PatientRequestDTO {
     @NotNull(message = "Transplanted status is required.")
     private Boolean transplanted;
 
-    @NotNull(message = "Blood type is required.")
     private BloodType bloodType;
 
-    @NotNull(message = "Civil status is required.")
     private CivilStatus civilStatus;
 
     @Min(value = 0, message = "Children count cannot be negative.")
