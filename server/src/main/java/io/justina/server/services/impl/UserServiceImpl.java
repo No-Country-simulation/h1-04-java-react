@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -94,9 +95,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public void updateDocument(Long id, DocumentType documentType, String documentNumber) throws IllegalArgumentException {
+    public void updateDocument(Long id, String documentType, String documentNumber) throws IllegalArgumentException {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+
+        if (documentType == null || !isValidDocumentType(DocumentType.valueOf(documentType))) {
+            throw new IllegalArgumentException("Invalid document type.");
+        }
 
         if (documentRepository.existsByDocumentNumber(documentNumber)) {
             throw new IllegalArgumentException("Document number is already in use.");
@@ -107,9 +112,13 @@ public class UserServiceImpl implements UserService {
             document = new Document();
             user.setDocument(document);
         }
-        document.setDocumentType(documentType);
+        document.setDocumentType(DocumentType.valueOf(documentType));
         document.setDocumentNumber(documentNumber);
         userRepository.save(user);
+    }
+
+    private boolean isValidDocumentType(DocumentType documentType) {
+        return Arrays.stream(DocumentType.values()).anyMatch(d -> d.equals(documentType));
     }
 
     @Override

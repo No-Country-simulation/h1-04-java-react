@@ -38,7 +38,7 @@ public class FinancierRequestDTO {
     private String contactPerson;
 
     @Size(max = 50, message = "Street must not exceed 50 characters.")
-    @Pattern(regexp = "^[a-zA-Z0-9\\s,.-]+$", message = "Street should contain only letters, numbers, spaces, commas, periods, and hyphens.")
+    @Pattern(regexp = "^[a-zA-ZÀ-ÿ\\s]+$", message = "Street should contain only letters, spaces, and numbers.")
     private String street;
 
     @Size(max = 10, message = "Number must not exceed 10 characters.")

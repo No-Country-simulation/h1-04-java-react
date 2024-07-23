@@ -56,13 +56,6 @@ public class LaboratoryServiceImpl implements LaboratoryService {
     }
 
     @Override
-    public void deleteLaboratory(Long id) {
-        Laboratory laboratory = laboratoryRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Laboratory not found with id: " + id));
-        laboratoryRepository.delete(laboratory);
-    }
-
-    @Override
     public void deactivateLaboratory(Long id) {
         Laboratory laboratory = laboratoryRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Laboratory not found with id: " + id));

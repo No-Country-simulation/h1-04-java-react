@@ -69,19 +69,6 @@ public class LaboratoryController {
         }
     }
 
-    @DeleteMapping("/deleteLaboratory/{id}")
-    @Operation(summary = "Delete a laboratory", description = "Delete a laboratory from the system by ID")
-    public ResponseEntity<String> deleteLaboratory(@PathVariable Long id) {
-        try {
-            laboratoryService.deleteLaboratory(id);
-            return ResponseEntity.ok("Laboratory deleted successfully");
-        } catch (LaboratoryNotFoundException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
-    }
-
     @DeleteMapping("/deactivateLaboratory/{id}")
     @Operation(summary = "Deactivate a laboratory", description = "Deactivate a laboratory from the system by ID")
     public ResponseEntity<String> deactivateLaboratory(@PathVariable Long id) {

@@ -40,8 +40,6 @@ public class RegisterRequestDTO {
     @Pattern(regexp = "^\\+?[0-9]*$", message = "Phone number must contain only digits and optional leading +.")
     private String phone;
 
-    @NotBlank(message = "Document type is required.")
-    @Size(max = 20, message = "Document type must not exceed 20 characters.")
     private String documentType;
 
     @NotBlank(message = "Document number is required.")
@@ -50,7 +48,7 @@ public class RegisterRequestDTO {
     private String documentNumber;
 
     @Size(max = 50, message = "Street must not exceed 50 characters.")
-    @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "Street should contain only letters and numbers.")
+    @Pattern(regexp = "^[a-zA-ZÀ-ÿ\\s]+$", message = "Street should contain only letters, spaces, and numbers.")
     private String street;
 
     @Size(max = 10, message = "Number must not exceed 10 characters.")

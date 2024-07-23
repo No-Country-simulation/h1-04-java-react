@@ -15,7 +15,7 @@ public class UpdateDocumentRequestDTO {
 
     @NotBlank(message = "Document type is required.")
     @Size(max = 20, message = "Document type must not exceed 20 characters.")
-    private DocumentType documentType;
+    private String documentType;
 
     @NotBlank(message = "Document number is required.")
     @Size(max = 20, message = "Document number must not exceed 20 characters.")
