@@ -19,6 +19,7 @@ public class MedicalPrescriptionResponseDTO {
     private String doseFrequency;
     private String indications;
     private Medication medication;
+    private Boolean active;
 
     public MedicalPrescriptionResponseDTO(MedicalPrescription medicalPrescription) {
         this.id = medicalPrescription.getId();
@@ -27,6 +28,7 @@ public class MedicalPrescriptionResponseDTO {
         this.doseFrequency = medicalPrescription.getDoseFrequency();
         this.indications = medicalPrescription.getIndications();
         this.medication = medicalPrescription.getMedication();
+        this.active = medicalPrescription.getActive();
     }
 
 }

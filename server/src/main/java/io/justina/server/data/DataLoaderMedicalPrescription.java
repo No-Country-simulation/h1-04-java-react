@@ -93,6 +93,7 @@ public class DataLoaderMedicalPrescription implements CommandLineRunner {
                 .doseFrequency(doseFrequency)
                 .indications(indications)
                 .medication(medication)
+                .active(true)
                 .build();
     }
 

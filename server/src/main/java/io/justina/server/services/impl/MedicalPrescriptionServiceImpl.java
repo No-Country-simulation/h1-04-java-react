@@ -31,6 +31,7 @@ public class MedicalPrescriptionServiceImpl implements MedicalPrescriptionServic
 
         MedicalPrescription medicalPrescription = convertToEntity(medicalPrescriptionRequestDTO);
         medicalPrescription.setMedication(medication);
+        medicalPrescription.setActive(true);
 
         MedicalPrescription savedMedicalPrescription = medicalPrescriptionRepository.save(medicalPrescription);
         return new MedicalPrescriptionResponseDTO(savedMedicalPrescription);
@@ -68,10 +69,11 @@ public class MedicalPrescriptionServiceImpl implements MedicalPrescriptionServic
     }
 
     @Override
-    public void deleteMedicalPrescription(Long medicalPrescriptionId) {
+    public void deactivateMedicalPrescription(Long medicalPrescriptionId) {
         MedicalPrescription medicalPrescription = medicalPrescriptionRepository.findById(medicalPrescriptionId)
                 .orElseThrow(() -> new ResourceNotFoundException("Medical Prescription not found with id: " + medicalPrescriptionId));
-        medicalPrescriptionRepository.delete(medicalPrescription);
+        medicalPrescription.setActive(false);
+        medicalPrescriptionRepository.save(medicalPrescription);
     }
 
     private MedicalPrescription convertToEntity(MedicalPrescriptionRequestDTO dto) {
