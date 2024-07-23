@@ -33,7 +33,7 @@ public class MedicalPrescription {
     @Column(name = "indications", length = 255, nullable = false)
     private String indications;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "medication_id", referencedColumnName = "id", nullable = false)
     private Medication medication;
 
