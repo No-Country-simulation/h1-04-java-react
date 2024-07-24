@@ -1,6 +1,5 @@
 package io.justina.server.dtos.request;
 
-import io.justina.server.enumerations.Role;
 import jakarta.validation.constraints.*;
 import lombok.*;
 import java.time.LocalDate;
@@ -20,7 +19,7 @@ public class RegisterRequestDTO {
     private String email;
 
     @NotBlank(message = "Password is required.")
-    @Size(min = 8, max = 25, message = "Password must be between 8 and 25 characters.")
+    @Size(min = 8, max = 60, message = "Password must be between 8 and 60 characters.")
     @Pattern(regexp = "^(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]+$", message = "Password must contain at least one uppercase letter, one number, and one special character.")
     private String password;
 
@@ -41,8 +40,6 @@ public class RegisterRequestDTO {
     @Pattern(regexp = "^\\+?[0-9]*$", message = "Phone number must contain only digits and optional leading +.")
     private String phone;
 
-    @NotBlank(message = "Document type is required.")
-    @Size(max = 20, message = "Document type must not exceed 20 characters.")
     private String documentType;
 
     @NotBlank(message = "Document number is required.")
@@ -51,7 +48,7 @@ public class RegisterRequestDTO {
     private String documentNumber;
 
     @Size(max = 50, message = "Street must not exceed 50 characters.")
-    @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "Street should contain only letters and numbers.")
+    @Pattern(regexp = "^[a-zA-ZÀ-ÿ0-9\\s.,'-]+$", message = "Street should contain only letters, spaces, numbers, and common punctuation.")
     private String street;
 
     @Size(max = 10, message = "Number must not exceed 10 characters.")
@@ -70,8 +67,5 @@ public class RegisterRequestDTO {
     @Size(max = 20, message = "Postal code must not exceed 20 characters.")
     @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "Postal code should contain only letters and numbers.")
     private String postalCode;
-
-    @NotNull(message = "Role is required.")
-    private Role role;
 
 }

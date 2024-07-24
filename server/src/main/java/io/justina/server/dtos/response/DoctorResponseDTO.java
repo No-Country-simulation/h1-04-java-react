@@ -1,13 +1,17 @@
 package io.justina.server.dtos.response;
 
+import io.justina.server.entities.Address;
 import io.justina.server.entities.Doctor;
-import io.justina.server.entities.Financier;
+import io.justina.server.entities.Document;
 import io.justina.server.enumerations.AvailableHours;
 import io.justina.server.enumerations.Specialty;
-import io.justina.server.enumerations.Days;
+import io.justina.server.enumerations.Day;
 import lombok.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Setter
 @Getter
@@ -18,48 +22,42 @@ import java.util.Set;
 public class DoctorResponseDTO {
 
     private Long doctorId;
+    private Set<Specialty> specialties;
+    private String licenceNumber;
+    private Set<Day> workdays;
+    private List<AvailableHours> schedule;
     private String firstName;
     private String lastName;
     private String email;
     private LocalDate birthDate;
     private String phone;
-    private String documentType;
-    private String documentNumber;
-    private String street;
-    private String number;
-    private String district;
-    private String city;
-    private String province;
-    private String postalCode;
+    private String financierName;
     private String institutionName;
-    private Set<Specialty> specialties;
-    private String licenceNumber;
-    private Set<Days> workdays;
-    private Set<AvailableHours> schedule;
-    private Financier financier;
-
+    private Boolean isActive;
+    private Document document;
+    private Address address;
+    private List<AppointmentResponseDTO> appointments;
+    private Long userId;
 
     public DoctorResponseDTO(Doctor doctor) {
-        this.doctorId = doctor.getDoctorId();
+        this.doctorId = doctor.getId();
+        this.specialties = doctor.getSpecialties();
+        this.licenceNumber = doctor.getLicenceNumber();
+        this.workdays = doctor.getWorkdays();
+        this.schedule = doctor.getSchedule() != null ? new ArrayList<>(doctor.getSchedule()) : null;
+        this.userId = doctor.getUser().getId();
         this.firstName = doctor.getUser().getFirstName();
         this.lastName = doctor.getUser().getLastName();
         this.email = doctor.getUser().getEmail();
         this.birthDate = doctor.getUser().getBirthDate();
         this.phone = doctor.getUser().getPhone();
-        this.documentType = doctor.getUser().getDocument().getDocumentType().name();
-        this.documentNumber = doctor.getUser().getDocument().getDocumentNumber();
-        this.street = doctor.getUser().getAddress().getStreet();
-        this.number = doctor.getUser().getAddress().getNumber();
-        this.district = doctor.getUser().getAddress().getDistrict();
-        this.city = doctor.getUser().getAddress().getCity();
-        this.province = doctor.getUser().getAddress().getProvince();
-        this.postalCode = doctor.getUser().getAddress().getPostalCode();
-        this.institutionName = doctor.getUser().getInstitutionName().name();
-        this.specialties = doctor.getSpecialties();
-        this.licenceNumber = doctor.getLicenceNumber();
-        this.workdays = doctor.getWorkdays();
-        this.schedule = doctor.getSchedule();
-        this.financier = doctor.getFinancier();
+        this.financierName = doctor.getFinancier() != null ? doctor.getFinancier().getName() : null;
+        this.institutionName = doctor.getUser().getInstitution() != null ? doctor.getUser().getInstitution().getName() : null;
+        this.isActive = doctor.getUser().getIsActive();
+        this.document = doctor.getUser().getDocument();
+        this.address = doctor.getUser().getAddress();
+        this.appointments = doctor.getAppointments() != null ? doctor.getAppointments().stream().map(AppointmentResponseDTO::new).collect(Collectors.toList()) : new ArrayList<>();
     }
 
 }
+

@@ -2,7 +2,6 @@ package io.justina.server.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
-import java.time.LocalDate;
 
 @Entity
 @Getter
@@ -11,7 +10,6 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Builder
 @ToString
-@Table(name = "institution")
 public class Institution {
 
     @Id
@@ -19,16 +17,6 @@ public class Institution {
     private Long id;
 
     private String name;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id", referencedColumnName = "id")
-    private Address address;
-
-    private String phone;
-    private String email;
-    private String contactPerson;
-    private LocalDate createdAt;
-    private LocalDate updatedAt;
     private Boolean active;
 
 }

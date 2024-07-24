@@ -3,8 +3,6 @@ package io.justina.server.dtos.response;
 import io.justina.server.entities.Address;
 import io.justina.server.entities.Document;
 import io.justina.server.entities.User;
-import io.justina.server.enumerations.Institution;
-import io.justina.server.enumerations.Role;
 import lombok.*;
 import java.time.LocalDate;
 
@@ -16,14 +14,14 @@ import java.time.LocalDate;
 @Builder
 public class UserResponseDTO {
 
-    private long id;
+    private Long id;
     private String firstName;
     private String lastName;
     private String email;
     private LocalDate birthDate;
     private String phone;
-    private Institution institutionName;
-    private Role role;
+    private String institutionName;
+    private String role;
     private Document document;
     private Address address;
 
@@ -34,8 +32,8 @@ public class UserResponseDTO {
         this.email = user.getEmail();
         this.birthDate = user.getBirthDate();
         this.phone = user.getPhone();
-        this.institutionName = user.getInstitutionName();
-        this.role = user.getRole();
+        this.institutionName = user.getInstitution().getName();
+        this.role = user.getRole().getName();
         this.document = user.getDocument();
         this.address = user.getAddress();
     }

@@ -4,6 +4,7 @@ import io.justina.server.dtos.request.FinancierRequestDTO;
 import io.justina.server.dtos.response.FinancierResponseDTO;
 import io.justina.server.entities.Address;
 import io.justina.server.entities.Financier;
+import io.justina.server.repositories.AddressRepository;
 import io.justina.server.repositories.FinancierRepository;
 import io.justina.server.services.FinancierService;
 import io.justina.server.exceptions.ResourceNotFoundException;
@@ -21,11 +22,13 @@ public class FinancierServiceImpl implements FinancierService {
     @Autowired
     private FinancierRepository financierRepository;
 
+    @Autowired
+    private AddressRepository addressRepository;
+
     @Override
     public FinancierResponseDTO createFinancier(FinancierRequestDTO financierRequestDTO) {
-        Financier financier = convertToEntity(financierRequestDTO);
-        financier.setCreatedAt(LocalDate.now());
-        financier.setUpdatedAt(LocalDate.now());
+        Address address = createAddressFromDTO(financierRequestDTO);
+        Financier financier = convertToEntity(financierRequestDTO, address);
         Financier savedFinancier = financierRepository.save(financier);
         return new FinancierResponseDTO(savedFinancier);
     }
@@ -53,17 +56,8 @@ public class FinancierServiceImpl implements FinancierService {
                 .orElseThrow(() -> new ResourceNotFoundException("Financier not found with id: " + id));
 
         updateFinancierFields(financier, financierRequestDTO);
-        financier.setUpdatedAt(LocalDate.now());
-
         Financier updatedFinancier = financierRepository.save(financier);
         return new FinancierResponseDTO(updatedFinancier);
-    }
-
-    @Override
-    public void deleteFinancier(Long id) {
-        Financier financier = financierRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Financier not found with id: " + id));
-        financierRepository.delete(financier);
     }
 
     @Override
@@ -71,25 +65,19 @@ public class FinancierServiceImpl implements FinancierService {
         Financier financier = financierRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Financier not found with id: " + id));
         financier.setIsActive(false);
-        financier.setUpdatedAt(LocalDate.now());
         financierRepository.save(financier);
     }
 
-    private Financier convertToEntity(FinancierRequestDTO dto) {
+    private Financier convertToEntity(FinancierRequestDTO dto, Address address) {
         return Financier.builder()
                 .name(dto.getName())
                 .cuit(dto.getCuit())
                 .phone(dto.getPhone())
                 .email(dto.getEmail())
                 .contactPerson(dto.getContactPerson())
-                .address(Address.builder()
-                        .street(dto.getStreet())
-                        .number(dto.getNumber())
-                        .district(dto.getDistrict())
-                        .city(dto.getCity())
-                        .province(dto.getProvince())
-                        .postalCode(dto.getPostalCode())
-                        .build())
+                .isActive(true)
+                .createdAt(LocalDate.now())
+                .address(address)
                 .build();
     }
 
@@ -99,7 +87,7 @@ public class FinancierServiceImpl implements FinancierService {
         financier.setPhone(dto.getPhone());
         financier.setEmail(dto.getEmail());
         financier.setContactPerson(dto.getContactPerson());
-
+        // Update address if needed
         Address address = financier.getAddress();
         address.setStreet(dto.getStreet());
         address.setNumber(dto.getNumber());
@@ -107,6 +95,17 @@ public class FinancierServiceImpl implements FinancierService {
         address.setCity(dto.getCity());
         address.setProvince(dto.getProvince());
         address.setPostalCode(dto.getPostalCode());
+    }
+
+    private Address createAddressFromDTO(FinancierRequestDTO dto) {
+        return Address.builder()
+                .street(dto.getStreet())
+                .number(dto.getNumber())
+                .district(dto.getDistrict())
+                .city(dto.getCity())
+                .province(dto.getProvince())
+                .postalCode(dto.getPostalCode())
+                .build();
     }
 
 }

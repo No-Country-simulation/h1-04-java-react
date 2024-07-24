@@ -1,6 +1,5 @@
 package io.justina.server.dtos.request;
 
-import io.justina.server.enumerations.Role;
 import jakarta.validation.constraints.*;
 import lombok.*;
 import java.time.LocalDate;
@@ -29,7 +28,7 @@ public class UpdateUserRequestDTO {
     private String phone;
 
     @Size(max = 50, message = "Street must not exceed 50 characters.")
-    @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "Street should contain only letters and numbers.")
+    @Pattern(regexp = "^[a-zA-ZÀ-ÿ0-9\\s.,'-]+$", message = "Street should contain only letters, spaces, numbers, and common punctuation.")
     private String street;
 
     @Size(max = 10, message = "Number must not exceed 10 characters.")
@@ -48,8 +47,5 @@ public class UpdateUserRequestDTO {
     @Size(max = 20, message = "Postal code must not exceed 20 characters.")
     @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "Postal code should contain only letters and numbers.")
     private String postalCode;
-
-    @NotNull(message = "Role is required.")
-    private Role role;
 
 }

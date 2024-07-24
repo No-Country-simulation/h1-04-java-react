@@ -6,8 +6,7 @@ import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
@@ -18,53 +17,47 @@ import java.util.Set;
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name="doctor")
 @EntityListeners(AuditingEntityListener.class)
 public class Doctor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "doctor_id")
-    private Long doctorId;
-
-    @OneToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private User user;
-
-    @OneToMany(mappedBy = "doctor")
-    private List<Appointment> appointments;
-
-    @ManyToOne
-    @JoinColumn(name = "financier_id", referencedColumnName = "id")
-    private Financier financier;
+    private Long id;
 
     @ElementCollection(targetClass = Specialty.class)
     @CollectionTable(name = "doctor_specialties", joinColumns = @JoinColumn(name = "doctor_id"))
-    @Column(name = "specialties")
     @Enumerated(EnumType.STRING)
     private Set<Specialty> specialties;
 
-    @Column(name = "licence_number", length = 20)
+    @Column(name = "licence_number", length = 20, nullable = false)
     private String licenceNumber;
 
-    @ElementCollection(targetClass = Days.class)
+    @ElementCollection(targetClass = Day.class)
     @CollectionTable(name = "doctor_workdays", joinColumns = @JoinColumn(name = "doctor_id"))
     @Enumerated(EnumType.STRING)
-    @Column(name = "workdays")
-    private Set<Days> workdays;
+    private Set<Day> workdays;
 
     @ElementCollection(targetClass = AvailableHours.class)
     @CollectionTable(name = "doctor_schedule", joinColumns = @JoinColumn(name = "doctor_id"))
     @Enumerated(EnumType.STRING)
-    @Column(name = "schedule")
     private Set<AvailableHours> schedule;
 
+    @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Appointment> appointments;
+
     @CreatedDate
-    @Column(name = "created_at", nullable = false, updatable = false)
-    private LocalDateTime createdAt;
+    @Column(nullable = false, updatable = false)
+    private LocalDate createdAt;
 
     @LastModifiedDate
-    @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
+    private LocalDate updatedAt;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "financier_id", referencedColumnName = "id", nullable = false)
+    private Financier financier;
 
 }

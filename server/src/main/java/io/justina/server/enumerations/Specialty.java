@@ -24,7 +24,7 @@ public enum Specialty {
     OTOLARYNGOLOGY,                   // Otorrinolaringología
     PATHOLOGY,                        // Patología
     PEDIATRICS,                       // Pediatría
-    PHYSICAL_MEDICINE_AND_REHABILITATION, // Medicina Física y Rehabilitación
+    REHABILITATION,                   // Rehabilitación
     PLASTIC_SURGERY,                  // Cirugía Plástica
     PNEUMONOLOGY,                     // Neumonología
     PSYCHIATRY,                       // Psiquiatría

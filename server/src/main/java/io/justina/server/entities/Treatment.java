@@ -1,10 +1,9 @@
 package io.justina.server.entities;
 
-
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
 import java.time.LocalDate;
 import java.util.List;
 
@@ -15,22 +14,12 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name = "treatment")
 @EntityListeners(AuditingEntityListener.class)
 public class Treatment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "treatment_id")
-    private Long treatmentId;
-
-    @ManyToOne
-    @JoinColumn(name = "medical_prescription_id", nullable = false)
-    private MedicalPrescription medicalPrescription;
-
-    @ManyToOne
-    @JoinColumn(name = "patient_id", nullable = false)
-    private Patient patient;
+    private Long id;
 
     @Column(name = "treatment_name", nullable = false)
     private String treatmentName;
@@ -38,10 +27,17 @@ public class Treatment {
     @Column(name = "indications", columnDefinition = "TEXT", nullable = false)
     private String indications;
 
-    @Column(name = "start_date", nullable = false)
+    @CreatedDate
+    @Column(name = "start_date", nullable = false, updatable = false)
     private LocalDate startDate;
 
-    @Column(name = "end_date")
-    private LocalDate endDate;
+    private Boolean active;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<MedicalPrescription> medicalPrescriptions;
+
+    @ManyToOne
+    @JoinColumn(name = "patient_id")
+    private Patient patient;
 
 }

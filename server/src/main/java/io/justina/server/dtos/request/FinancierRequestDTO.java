@@ -33,11 +33,12 @@ public class FinancierRequestDTO {
     @Pattern(regexp = ".+@.+\\.[a-zA-Z]{2,}", message = "Email should have a valid domain with at least two characters")
     private String email;
 
+    @NotBlank(message = "Contact Person is required.")
     @Size(max = 100, message = "Contact Person must not exceed 100 characters.")
     private String contactPerson;
 
     @Size(max = 50, message = "Street must not exceed 50 characters.")
-    @Pattern(regexp = "^[a-zA-Z0-9\\s,.-]+$", message = "Street should contain only letters, numbers, spaces, commas, periods, and hyphens.")
+    @Pattern(regexp = "^[a-zA-ZÀ-ÿ0-9\\s.,'-]+$", message = "Street should contain only letters, spaces, numbers, and common punctuation.")
     private String street;
 
     @Size(max = 10, message = "Number must not exceed 10 characters.")

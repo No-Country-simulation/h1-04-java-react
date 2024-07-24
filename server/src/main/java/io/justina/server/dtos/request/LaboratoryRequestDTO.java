@@ -2,7 +2,6 @@ package io.justina.server.dtos.request;
 
 import jakarta.validation.constraints.*;
 import lombok.*;
-import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -35,7 +34,7 @@ public class LaboratoryRequestDTO {
     private String responsible;
 
     @Size(max = 50, message = "Street must not exceed 50 characters.")
-    @Pattern(regexp = "^[a-zA-Z0-9\\s,.-]+$", message = "Street should contain only letters, numbers, spaces, commas, periods, and hyphens.")
+    @Pattern(regexp = "^[a-zA-ZÀ-ÿ0-9\\s.,'-]+$", message = "Street should contain only letters, spaces, numbers, and common punctuation.")
     private String street;
 
     @Size(max = 10, message = "Number must not exceed 10 characters.")
@@ -54,11 +53,5 @@ public class LaboratoryRequestDTO {
     @Size(max = 20, message = "Postal code must not exceed 20 characters.")
     @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "Postal code should contain only letters and numbers.")
     private String postalCode;
-
-    private LocalDate createdAt;
-
-    private LocalDate updatedAt;
-
-    private Boolean active;
 
 }

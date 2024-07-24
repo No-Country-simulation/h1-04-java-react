@@ -4,6 +4,7 @@ import io.justina.server.dtos.request.RegisterRequestDTO;
 import io.justina.server.dtos.response.RegisterResponseDTO;
 import io.justina.server.exceptions.RegistrationException;
 import io.justina.server.services.RegisterService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,14 +16,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("v1/api/auth/register")
+@RequestMapping("v1/api/auth/admin-register")
 public class RegisterController {
 
     @Autowired
     private RegisterService registerService;
 
     @PostMapping
-    public ResponseEntity<Map<String, Object>> register(@RequestBody RegisterRequestDTO registerRequest){
+    public ResponseEntity<Map<String, Object>> register(@Valid @RequestBody RegisterRequestDTO registerRequest){
         Map<String, Object> response = new HashMap<>();
         try {
             RegisterResponseDTO registerResponse = registerService.register(registerRequest);
@@ -31,6 +32,9 @@ public class RegisterController {
         } catch (RegistrationException e) {
             response.put("message", e.getMessage());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        } catch (Exception e) {
+            response.put("message", "Internal server error");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
 

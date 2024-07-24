@@ -10,7 +10,6 @@ import io.justina.server.services.LaboratoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,8 +23,6 @@ public class LaboratoryServiceImpl implements LaboratoryService {
     @Override
     public LaboratoryResponseDTO createLaboratory(LaboratoryRequestDTO laboratoryRequestDTO) {
         Laboratory laboratory = convertToEntity(laboratoryRequestDTO);
-        laboratory.setCreatedAt(LocalDate.now());
-        laboratory.setUpdatedAt(LocalDate.now());
         Laboratory savedLaboratory = laboratoryRepository.save(laboratory);
         return new LaboratoryResponseDTO(savedLaboratory);
     }
@@ -53,17 +50,9 @@ public class LaboratoryServiceImpl implements LaboratoryService {
                 .orElseThrow(() -> new ResourceNotFoundException("Laboratory not found with id: " + id));
 
         updateLaboratoryFields(laboratory, laboratoryRequestDTO);
-        laboratory.setUpdatedAt(LocalDate.now());
 
         Laboratory updatedLaboratory = laboratoryRepository.save(laboratory);
         return new LaboratoryResponseDTO(updatedLaboratory);
-    }
-
-    @Override
-    public void deleteLaboratory(Long id) {
-        Laboratory laboratory = laboratoryRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Laboratory not found with id: " + id));
-        laboratoryRepository.delete(laboratory);
     }
 
     @Override
@@ -71,7 +60,6 @@ public class LaboratoryServiceImpl implements LaboratoryService {
         Laboratory laboratory = laboratoryRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Laboratory not found with id: " + id));
         laboratory.setActive(false);
-        laboratory.setUpdatedAt(LocalDate.now());
         laboratoryRepository.save(laboratory);
     }
 
