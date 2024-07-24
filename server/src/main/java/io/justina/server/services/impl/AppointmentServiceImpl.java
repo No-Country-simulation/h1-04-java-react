@@ -5,6 +5,7 @@ import io.justina.server.dtos.response.AppointmentResponseDTO;
 import io.justina.server.entities.Appointment;
 import io.justina.server.entities.Doctor;
 import io.justina.server.entities.Patient;
+import io.justina.server.exceptions.ConflictException;
 import io.justina.server.exceptions.ResourceNotFoundException;
 import io.justina.server.repositories.AppointmentRepository;
 import io.justina.server.repositories.DoctorRepository;
@@ -36,6 +37,16 @@ public class AppointmentServiceImpl implements AppointmentService {
         Patient patient = patientRepository.findById(request.getPatientId())
                 .orElseThrow(() -> new ResourceNotFoundException("Patient not found with the specified ID"));
 
+        boolean doctorAvailable = !appointmentRepository.existsByDoctorAndAppointmentDayAndAppointmentHour(doctor, request.getAppointmentDay(), request.getAppointmentHour());
+        if (!doctorAvailable) {
+            throw new ConflictException("The doctor is not available at the selected time.");
+        }
+
+        boolean patientHasAppointment = appointmentRepository.existsByPatientAndAppointmentDayAndAppointmentHour(patient, request.getAppointmentDay(), request.getAppointmentHour());
+        if (patientHasAppointment) {
+            throw new ConflictException("The patient already has an appointment at the selected time.");
+        }
+
         Appointment appointment = Appointment.builder()
                 .doctor(doctor)
                 .patient(patient)
@@ -45,6 +56,7 @@ public class AppointmentServiceImpl implements AppointmentService {
                 .appointmentDescription(request.getAppointmentDescription())
                 .createdAt(LocalDate.now())
                 .updatedAt(LocalDate.now())
+                .isActive(true)
                 .build();
 
         appointment = appointmentRepository.save(appointment);
@@ -75,10 +87,11 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
-    public void deleteAppointment(Long appointmentId) {
+    public void deactivateAppointment(Long appointmentId) {
         Appointment appointment = appointmentRepository.findById(appointmentId)
                 .orElseThrow(() -> new ResourceNotFoundException("Appointment not found"));
-        appointmentRepository.delete(appointment);
+        appointment.setIsActive(false);
+        appointmentRepository.save(appointment);
     }
 
     @Override

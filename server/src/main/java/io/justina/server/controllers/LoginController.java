@@ -32,6 +32,7 @@ public class LoginController {
             if (loginResponse.getToken() != null) {
                 data.put("token", loginResponse.getToken());
                 data.put("role", loginResponse.getRole());
+                data.put("id", loginResponse.getId());
                 response.put("data", data);
                 response.put("message", loginResponse.getMessage());
                 return ResponseEntity.ok(response);

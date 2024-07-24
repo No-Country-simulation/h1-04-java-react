@@ -1,18 +1,24 @@
 package io.justina.server.services.impl;
 
 import io.justina.server.dtos.request.AddMedicalPrescriptionToTreatmentDTO;
+import io.justina.server.dtos.request.CreateTreatmentDTO;
 import io.justina.server.dtos.request.TreatmentRequestDTO;
 import io.justina.server.dtos.response.TreatmentResponseDTO;
 import io.justina.server.entities.MedicalPrescription;
+import io.justina.server.entities.Patient;
 import io.justina.server.entities.Treatment;
 import io.justina.server.exceptions.MedicalPrescriptionAlreadyAssignedException;
 import io.justina.server.exceptions.ResourceNotFoundException;
 import io.justina.server.repositories.MedicalPrescriptionRepository;
+import io.justina.server.repositories.PatientRepository;
 import io.justina.server.repositories.TreatmentRepository;
 import io.justina.server.services.TreatmentService;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,11 +32,39 @@ public class TreatmentServiceImpl implements TreatmentService {
     @Autowired
     private MedicalPrescriptionRepository medicalPrescriptionRepository;
 
+    @Autowired
+    private PatientRepository patientRepository;
+
+    @Transactional
     @Override
-    public TreatmentResponseDTO createTreatment(TreatmentRequestDTO treatmentRequestDTO) {
-        Treatment treatment = convertToEntity(treatmentRequestDTO);
-        treatment.setActive(true);
+    public TreatmentResponseDTO createTreatmentAndAssociateWithPatient(CreateTreatmentDTO createTreatmentDTO) {
+        // Crear el tratamiento
+        Treatment treatment = Treatment.builder()
+                .treatmentName(createTreatmentDTO.getTreatmentName())
+                .indications(createTreatmentDTO.getIndications())
+                .startDate(LocalDate.now())
+                .active(true)
+                .build();
+
+        // Guardar el tratamiento (esto también asegura que el tratamiento tiene un ID)
         Treatment savedTreatment = treatmentRepository.save(treatment);
+
+        // Encontrar al paciente
+        Patient patient = patientRepository.findById(createTreatmentDTO.getPatientId())
+                .orElseThrow(() -> new RuntimeException("Patient not found"));
+
+        // Actualizar la lista de tratamientos del paciente
+        if (patient.getTreatments() == null) {
+            patient.setTreatments(new ArrayList<>());
+        }
+        patient.getTreatments().add(savedTreatment);
+
+        // Establecer el paciente en el tratamiento
+        savedTreatment.setPatient(patient);
+
+        // Guardar el paciente con el tratamiento asociado
+        patientRepository.save(patient);
+
         return new TreatmentResponseDTO(savedTreatment);
     }
 

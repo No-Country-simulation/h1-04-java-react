@@ -1,5 +1,7 @@
 package io.justina.server.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import io.justina.server.enumerations.*;
 import org.springframework.data.annotation.CreatedDate;
 import jakarta.persistence.*;
@@ -69,9 +71,11 @@ public class Patient {
     private LocalDate updatedAt;
 
     @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<Treatment> treatments;
 
     @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<Appointment> appointments;
 
     @OneToOne(cascade = CascadeType.ALL)

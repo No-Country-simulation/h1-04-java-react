@@ -23,6 +23,7 @@ public class LaboratoryServiceImpl implements LaboratoryService {
     @Override
     public LaboratoryResponseDTO createLaboratory(LaboratoryRequestDTO laboratoryRequestDTO) {
         Laboratory laboratory = convertToEntity(laboratoryRequestDTO);
+        laboratory.setActive(true);
         Laboratory savedLaboratory = laboratoryRepository.save(laboratory);
         return new LaboratoryResponseDTO(savedLaboratory);
     }

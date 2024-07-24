@@ -8,7 +8,7 @@ public interface AppointmentService {
 
     AppointmentResponseDTO createAppointment(AppointmentRequestDTO appointmentRequestDTO);
     AppointmentResponseDTO updateAppointment(Long appointmentId, AppointmentRequestDTO appointmentRequestDTO);
-    void deleteAppointment(Long appointmentId);
+    void deactivateAppointment(Long appointmentId);
     AppointmentResponseDTO getAppointmentById(Long appointmentId);
     List<AppointmentResponseDTO> getAppointmentsByDoctorId(Long doctorId);
     List<AppointmentResponseDTO> getAppointmentsByPatientId(Long patientId);

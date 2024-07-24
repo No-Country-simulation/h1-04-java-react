@@ -1,5 +1,6 @@
 package io.justina.server.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import io.justina.server.enumerations.*;
 import jakarta.persistence.*;
 import lombok.*;
@@ -43,6 +44,7 @@ public class Doctor {
     private Set<AvailableHours> schedule;
 
     @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<Appointment> appointments;
 
     @CreatedDate

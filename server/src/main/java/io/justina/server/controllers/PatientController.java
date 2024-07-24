@@ -1,6 +1,6 @@
 package io.justina.server.controllers;
 
-import io.justina.server.dtos.request.PatientRequestDTO;
+import io.justina.server.dtos.request.*;
 import io.justina.server.dtos.response.PatientResponseDTO;
 import io.justina.server.exceptions.PatientNotFoundException;
 import io.justina.server.services.PatientService;
@@ -34,13 +34,14 @@ public class PatientController {
             return ResponseEntity.status(HttpStatus.CREATED).body(response);
         } catch (Exception e) {
             response.put("message", "Internal server error");
+            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
 
-    @GetMapping("/getPatientById")
+    @GetMapping("/getPatientById/{patientId}")
     @Operation(summary = "Get patient by ID", description = "Retrieve detailed information about a patient by their ID")
-    public ResponseEntity<Map<String, Object>> getPatientById(@RequestParam Long patientId) {
+    public ResponseEntity<Map<String, Object>> getPatientById(@PathVariable Long patientId) {
         Map<String, Object> response = new HashMap<>();
         try {
             PatientResponseDTO patient = patientService.getPatientById(patientId);
@@ -69,12 +70,12 @@ public class PatientController {
         }
     }
 
-    @PutMapping("/updatePatient")
+    @PutMapping("/updatePatient/{patientId}")
     @Operation(summary = "Update a patient", description = "Update information of an existing patient by ID")
-    public ResponseEntity<Map<String, Object>> updatePatient(@RequestParam Long patientId, @Valid @RequestBody PatientRequestDTO patientRequestDTO) {
+    public ResponseEntity<Map<String, Object>> updatePatient(@PathVariable Long patientId, @Valid @RequestBody PatientUpdateDTO patientUpdateDTO) {
         Map<String, Object> response = new HashMap<>();
         try {
-            PatientResponseDTO updatedPatient = patientService.updatePatient(patientId, patientRequestDTO);
+            PatientResponseDTO updatedPatient = patientService.updatePatient(patientId, patientUpdateDTO);
             response.put("patient", updatedPatient);
             return ResponseEntity.ok(response);
         } catch (PatientNotFoundException e) {
@@ -86,9 +87,9 @@ public class PatientController {
         }
     }
 
-    @PostMapping("/uploadFile")
+    @PostMapping("/uploadFile/{patientId}")
     @Operation(summary = "Upload a file for a patient", description = "Uploads a file for a specific patient by ID")
-    public ResponseEntity<Map<String, Object>> uploadPatientFile(@RequestParam Long patientId, @RequestParam("file") MultipartFile file) {
+    public ResponseEntity<Map<String, Object>> uploadPatientFile(@PathVariable Long patientId, @RequestParam("file") MultipartFile file) {
         Map<String, Object> response = new HashMap<>();
         try {
             PatientResponseDTO updatedPatient = patientService.uploadPatientFile(patientId, file);
@@ -103,13 +104,13 @@ public class PatientController {
         }
     }
 
-    @DeleteMapping("/deletePatient")
-    @Operation(summary = "Delete a patient", description = "Delete a patient from the system by ID")
-    public ResponseEntity<Map<String, Object>> deletePatient(@RequestParam Long patientId) {
+    @PutMapping("/addMedicalHistory/{patientId}")
+    @Operation(summary = "Add medical history entry", description = "Add a new entry to the medical history of an existing patient by ID")
+    public ResponseEntity<Map<String, Object>> addMedicalHistory(@PathVariable Long patientId, @Valid @RequestBody AddMedicalHistoryDTO addMedicalHistoryDTO) {
         Map<String, Object> response = new HashMap<>();
         try {
-            PatientResponseDTO responseDTO = patientService.deletePatient(patientId);
-            response.put("patient", responseDTO);
+            PatientResponseDTO updatedPatient = patientService.addMedicalHistory(patientId, addMedicalHistoryDTO);
+            response.put("patient", updatedPatient);
             return ResponseEntity.ok(response);
         } catch (PatientNotFoundException e) {
             response.put("message", "Patient not found");
@@ -120,9 +121,60 @@ public class PatientController {
         }
     }
 
-    @DeleteMapping("/deactivatePatient")
+    @PutMapping("/updateMedicalHistory/{patientId}")
+    @Operation(summary = "Update medical history", description = "Update medical history of an existing patient by ID")
+    public ResponseEntity<Map<String, Object>> updateMedicalHistory(@PathVariable Long patientId, @Valid @RequestBody MedicalHistoryUpdateDTO medicalHistoryUpdateDTO) {
+        Map<String, Object> response = new HashMap<>();
+        try {
+            PatientResponseDTO updatedPatient = patientService.updateMedicalHistory(patientId, medicalHistoryUpdateDTO);
+            response.put("patient", updatedPatient);
+            return ResponseEntity.ok(response);
+        } catch (PatientNotFoundException e) {
+            response.put("message", "Patient not found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+        } catch (Exception e) {
+            response.put("message", "Internal server error");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
+    }
+
+    @PutMapping("/addPathology/{patientId}")
+    @Operation(summary = "Add a pathology", description = "Add a new pathology to the existing list of pathologies for a patient by ID")
+    public ResponseEntity<Map<String, Object>> addPathology(@PathVariable Long patientId, @Valid @RequestBody AddPathologyDTO addPathologyDTO) {
+        Map<String, Object> response = new HashMap<>();
+        try {
+            PatientResponseDTO updatedPatient = patientService.addPathology(patientId, addPathologyDTO);
+            response.put("patient", updatedPatient);
+            return ResponseEntity.ok(response);
+        } catch (PatientNotFoundException e) {
+            response.put("message", "Patient not found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+        } catch (Exception e) {
+            response.put("message", "Internal server error");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
+    }
+
+    @PutMapping("/updatePathologies/{patientId}")
+    @Operation(summary = "Update pathologies", description = "Update pathologies of an existing patient by ID")
+    public ResponseEntity<Map<String, Object>> updatePathologies(@PathVariable Long patientId, @Valid @RequestBody PathologiesUpdateDTO pathologiesUpdateDTO) {
+        Map<String, Object> response = new HashMap<>();
+        try {
+            PatientResponseDTO updatedPatient = patientService.updatePathologies(patientId, pathologiesUpdateDTO);
+            response.put("patient", updatedPatient);
+            return ResponseEntity.ok(response);
+        } catch (PatientNotFoundException e) {
+            response.put("message", "Patient not found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+        } catch (Exception e) {
+            response.put("message", "Internal server error");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
+    }
+
+    @DeleteMapping("/deactivatePatient/{patientId}")
     @Operation(summary = "Deactivate a patient", description = "Deactivate a patient from the system by ID")
-    public ResponseEntity<Map<String, Object>> deactivatePatient(@RequestParam Long patientId) {
+    public ResponseEntity<Map<String, Object>> deactivatePatient(@PathVariable Long patientId) {
         Map<String, Object> response = new HashMap<>();
         try {
             patientService.deactivatePatient(patientId);

@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-@Order(6)
+@Order(7)
 public class DataLoaderTreatment implements CommandLineRunner {
 
     @Autowired
@@ -34,30 +34,23 @@ public class DataLoaderTreatment implements CommandLineRunner {
                 throw new ResourceNotFoundException("No medical prescriptions found");
             }
 
-            int size = medicalPrescriptions.size();
+            // Asegúrate de tener al menos 30 prescripciones para evitar errores
+            if (medicalPrescriptions.size() < 30) {
+                throw new IllegalStateException("Se requieren al menos 30 prescripciones médicas");
+            }
 
-            List<MedicalPrescription> prescriptionsForTreatment1 = medicalPrescriptions.subList(0, Math.min(5, size));
-            List<MedicalPrescription> prescriptionsForTreatment2 = medicalPrescriptions.subList(Math.min(5, size), Math.min(10, size));
-            List<MedicalPrescription> prescriptionsForTreatment3 = medicalPrescriptions.subList(Math.min(10, size), Math.min(15, size));
-            List<MedicalPrescription> prescriptionsForTreatment4 = medicalPrescriptions.subList(Math.min(15, size), Math.min(20, size));
-            List<MedicalPrescription> prescriptionsForTreatment5 = medicalPrescriptions.subList(Math.min(20, size), Math.min(25, size));
-            List<MedicalPrescription> prescriptionsForTreatment6 = medicalPrescriptions.subList(Math.min(25, size), Math.min(30, size));
-            List<MedicalPrescription> prescriptionsForTreatment7 = medicalPrescriptions.subList(Math.min(30, size), Math.min(35, size));
-            List<MedicalPrescription> prescriptionsForTreatment8 = medicalPrescriptions.subList(Math.min(35, size), Math.min(40, size));
-            List<MedicalPrescription> prescriptionsForTreatment9 = medicalPrescriptions.subList(Math.min(40, size), Math.min(45, size));
-            List<MedicalPrescription> prescriptionsForTreatment10 = medicalPrescriptions.subList(Math.min(45, size), Math.min(50, size));
-
+            // Crear tratamientos con prescripciones secuenciales
             treatmentRepository.saveAll(List.of(
-                    createTreatment("Tratamiento para la hipertensión", "Control y reducción de la presión arterial", prescriptionsForTreatment1),
-                    createTreatment("Tratamiento para la diabetes tipo 2", "Control de glucosa en sangre", prescriptionsForTreatment2),
-                    createTreatment("Tratamiento para la tiroides", "Regulación de la función tiroidea", prescriptionsForTreatment3),
-                    createTreatment("Tratamiento para el dolor crónico", "Manejo del dolor a largo plazo", prescriptionsForTreatment4),
-                    createTreatment("Tratamiento para el colesterol alto", "Reducción de los niveles de colesterol", prescriptionsForTreatment5),
-                    createTreatment("Tratamiento para el reflujo gástrico", "Alivio del reflujo ácido", prescriptionsForTreatment6),
-                    createTreatment("Tratamiento para infecciones bacterianas", "Erradicación de infecciones bacterianas", prescriptionsForTreatment7),
-                    createTreatment("Tratamiento para la depresión", "Manejo de síntomas depresivos", prescriptionsForTreatment8),
-                    createTreatment("Tratamiento para la osteoporosis", "Fortalecimiento de los huesos", prescriptionsForTreatment9),
-                    createTreatment("Tratamiento para el asma", "Control y prevención de ataques asmáticos", prescriptionsForTreatment10)
+                    createTreatment("Tratamiento para la hipertensión", "Control y reducción de la presión arterial", medicalPrescriptions.subList(0, 3)),
+                    createTreatment("Tratamiento para la diabetes tipo 2", "Control de glucosa en sangre", medicalPrescriptions.subList(3, 6)),
+                    createTreatment("Tratamiento para la tiroides", "Regulación de la función tiroidea", medicalPrescriptions.subList(6, 9)),
+                    createTreatment("Tratamiento para el dolor crónico", "Manejo del dolor a largo plazo", medicalPrescriptions.subList(9, 12)),
+                    createTreatment("Tratamiento para el colesterol alto", "Reducción de los niveles de colesterol", medicalPrescriptions.subList(12, 15)),
+                    createTreatment("Tratamiento para el reflujo gástrico", "Alivio del reflujo ácido", medicalPrescriptions.subList(15, 18)),
+                    createTreatment("Tratamiento para infecciones bacterianas", "Erradicación de infecciones bacterianas", medicalPrescriptions.subList(18, 21)),
+                    createTreatment("Tratamiento para la depresión", "Manejo de síntomas depresivos", medicalPrescriptions.subList(21, 24)),
+                    createTreatment("Tratamiento para la osteoporosis", "Fortalecimiento de los huesos", medicalPrescriptions.subList(24, 27)),
+                    createTreatment("Tratamiento para el asma", "Control y prevención de ataques asmáticos", medicalPrescriptions.subList(27, 30))
             ));
         }
     }

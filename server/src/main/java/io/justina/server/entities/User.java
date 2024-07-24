@@ -12,7 +12,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
-@Table(name = "admin", uniqueConstraints = {@UniqueConstraint(columnNames = "email")})
+@Table(name = "usuario", uniqueConstraints = {@UniqueConstraint(columnNames = "email")})
 @EntityListeners(AuditingEntityListener.class)
 @Getter
 @Setter
@@ -33,6 +33,7 @@ public class User implements UserDetails {
     private LocalDate birthDate;
     private String phone;
     private Boolean isActive;
+
     private LocalDate deletedAt;
 
     @CreatedDate
