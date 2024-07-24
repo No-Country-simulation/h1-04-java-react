@@ -1,5 +1,6 @@
 package io.justina.server.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import io.justina.server.enumerations.AvailableHours;
 import io.justina.server.enumerations.Day;
 import io.justina.server.enumerations.TypeOfAppointment;
@@ -47,12 +48,16 @@ public class Appointment {
     @Column(name = "updated_at")
     private LocalDate updatedAt;
 
+    private Boolean isActive;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "doctor_id", referencedColumnName = "id", nullable = false)
+    @JsonBackReference
     private Doctor doctor;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "patient_id", referencedColumnName = "id", nullable = false)
+    @JsonBackReference
     private Patient patient;
 
 }

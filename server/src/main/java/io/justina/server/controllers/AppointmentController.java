@@ -11,7 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("v1/api/appointments")
@@ -21,7 +24,7 @@ public class AppointmentController {
     @Autowired
     private AppointmentService appointmentService;
 
-    @PostMapping("/create")
+    @PostMapping("/createAppointment")
     @Operation(summary = "Create a new appointment", description = "Creates a new appointment in the system")
     public ResponseEntity<AppointmentResponseDTO> createAppointment(@Valid @RequestBody AppointmentRequestDTO appointmentRequestDTO) {
         try {
@@ -34,9 +37,9 @@ public class AppointmentController {
         }
     }
 
-    @PutMapping("/update")
+    @PutMapping("/updateAppointment/{appointmentId}")
     @Operation(summary = "Update an appointment", description = "Update information of an existing appointment by ID")
-    public ResponseEntity<AppointmentResponseDTO> updateAppointment(@RequestParam Long appointmentId, @Valid @RequestBody AppointmentRequestDTO appointmentRequestDTO) {
+    public ResponseEntity<AppointmentResponseDTO> updateAppointment(@PathVariable Long appointmentId, @Valid @RequestBody AppointmentRequestDTO appointmentRequestDTO) {
         try {
             AppointmentResponseDTO updatedAppointment = appointmentService.updateAppointment(appointmentId, appointmentRequestDTO);
             return ResponseEntity.ok(updatedAppointment);
@@ -47,22 +50,26 @@ public class AppointmentController {
         }
     }
 
-    @DeleteMapping("/delete")
-    @Operation(summary = "Delete an appointment", description = "Delete an appointment from the system by ID")
-    public ResponseEntity<Void> deleteAppointment(@RequestParam Long appointmentId) {
+    @DeleteMapping("/deactivateAppointment/{appointmentId}")
+    @Operation(summary = "Deactivate an appointment", description = "Deactivate an appointment from the system by ID")
+    public ResponseEntity<Map<String, Object>> deactivateAppointment(@PathVariable Long appointmentId) {
+        Map<String, Object> response = new HashMap<>();
         try {
-            appointmentService.deleteAppointment(appointmentId);
-            return ResponseEntity.noContent().build();
+            appointmentService.deactivateAppointment(appointmentId);
+            response.put("message", "Appointment deactivated successfully");
+            return ResponseEntity.ok(response);
         } catch (ResourceNotFoundException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            response.put("message", "Appointment not found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            response.put("message", "Internal server error");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
 
-    @GetMapping("/getById")
+    @GetMapping("/getAppointmentById/{appointmentId}")
     @Operation(summary = "Get appointment by ID", description = "Retrieve detailed information about an appointment by its ID")
-    public ResponseEntity<AppointmentResponseDTO> getAppointmentById(@RequestParam Long appointmentId) {
+    public ResponseEntity<AppointmentResponseDTO> getAppointmentById(@PathVariable Long appointmentId) {
         try {
             AppointmentResponseDTO appointment = appointmentService.getAppointmentById(appointmentId);
             return ResponseEntity.ok(appointment);
@@ -73,9 +80,9 @@ public class AppointmentController {
         }
     }
 
-    @GetMapping("/getByDoctorId")
+    @GetMapping("/getByDoctorId/{doctorId}")
     @Operation(summary = "Get appointments by doctor ID", description = "Retrieve a list of all appointments for a specific doctor by their ID")
-    public ResponseEntity<List<AppointmentResponseDTO>> getAppointmentsByDoctorId(@RequestParam Long doctorId) {
+    public ResponseEntity<List<AppointmentResponseDTO>> getAppointmentsByDoctorId(@PathVariable Long doctorId) {
         try {
             List<AppointmentResponseDTO> appointments = appointmentService.getAppointmentsByDoctorId(doctorId);
             return ResponseEntity.ok(appointments);
@@ -84,9 +91,9 @@ public class AppointmentController {
         }
     }
 
-    @GetMapping("/getByPatientId")
+    @GetMapping("/getByPatientId/{patientId}")
     @Operation(summary = "Get appointments by patient ID", description = "Retrieve a list of all appointments for a specific patient by their ID")
-    public ResponseEntity<List<AppointmentResponseDTO>> getAppointmentsByPatientId(@RequestParam Long patientId) {
+    public ResponseEntity<List<AppointmentResponseDTO>> getAppointmentsByPatientId(@PathVariable Long patientId) {
         try {
             List<AppointmentResponseDTO> appointments = appointmentService.getAppointmentsByPatientId(patientId);
             return ResponseEntity.ok(appointments);

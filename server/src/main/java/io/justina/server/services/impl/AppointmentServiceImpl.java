@@ -45,6 +45,7 @@ public class AppointmentServiceImpl implements AppointmentService {
                 .appointmentDescription(request.getAppointmentDescription())
                 .createdAt(LocalDate.now())
                 .updatedAt(LocalDate.now())
+                .isActive(true)
                 .build();
 
         appointment = appointmentRepository.save(appointment);
@@ -75,10 +76,11 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
-    public void deleteAppointment(Long appointmentId) {
+    public void deactivateAppointment(Long appointmentId) {
         Appointment appointment = appointmentRepository.findById(appointmentId)
                 .orElseThrow(() -> new ResourceNotFoundException("Appointment not found"));
-        appointmentRepository.delete(appointment);
+        appointment.setIsActive(false);
+        appointmentRepository.save(appointment);
     }
 
     @Override
