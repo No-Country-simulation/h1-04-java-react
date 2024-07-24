@@ -15,6 +15,8 @@ import TurnCalendar from "../Components/Patient/Turn/TurnCalendar/TurnCalendar.j
 import ProfileConfiguration from "../Components/Patient/ProfileConfiguration/ProfileConfiguration.jsx";
 import Consultation from "../Components/Doctor/Consultation/Consultation.jsx"
 import PreviousConsultation from "../Components/Doctor/PreviousConsultation/PreviousConsultation.jsx"
+import Calendar from "../Components/Doctor/Calendar/Calendar.jsx";
+import Recipe from "../Components/Doctor/Recipe/Recipe.jsx";
 
 const Router = () => {
   return (
@@ -53,6 +55,8 @@ const Router = () => {
             <Route exact path='/doctorPatient' element={<Patients />} />
             <Route exact path='/previous-consultation' element={<PreviousConsultation />} />
             <Route exact path='/consultation' element={<Consultation />} />
+            <Route exact path='/doctorCalendar' element={<Calendar />} />
+            <Route exact path='/doctorRecipe' element={<Recipe />} />
 
             <Route path='*' element={<Error404 />} />
           </Routes>
