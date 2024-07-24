@@ -15,7 +15,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Component
-@Order(10)
+@Order(8)
 public class DataLoaderPatient implements CommandLineRunner {
 
     @Autowired

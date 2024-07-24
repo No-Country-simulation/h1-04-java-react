@@ -44,16 +44,15 @@ public class MasterDataLoader implements CommandLineRunner {
     public void run(String... args) throws Exception {
         dataLoaderRole.run(args);
         dataLoaderInstitution.run(args);
+        dataLoaderFinancier.run(args);
         dataLoaderLaboratory.run(args);
         dataLoaderMedication.run(args);
         dataLoaderMedicalPrescription.run(args);
         dataLoaderTreatment.run(args);
-        dataLoaderFinancier.run(args);
+        dataLoaderPatient.run(args);
         dataLoaderAdmin.run(args);
         dataLoaderDoctor.run(args);
-        dataLoaderPatient.run(args);
 //        dataLoaderAppoinment.run(args);
-
     }
 
 }

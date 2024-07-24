@@ -12,7 +12,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Component
-@Order(7)
+@Order(3)
 public class DataLoaderFinancier implements CommandLineRunner {
 
     @Autowired
