@@ -1,7 +1,9 @@
 package io.justina.server.controllers;
 
 import io.justina.server.dtos.request.DoctorRequestDTO;
+import io.justina.server.dtos.request.DoctorUpdateRequestDTO;
 import io.justina.server.dtos.response.DoctorResponseDTO;
+import io.justina.server.dtos.response.UpdateDoctorResponseDTO;
 import io.justina.server.exceptions.DoctorNotFoundException;
 import io.justina.server.services.DoctorService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -37,9 +39,9 @@ public class DoctorController {
         }
     }
 
-    @GetMapping("/getDoctorById")
+    @GetMapping("/getDoctorById/{doctorId}")
     @Operation(summary = "Get doctor by ID", description = "Retrieve detailed information about a doctor by their ID")
-    public ResponseEntity<Map<String, Object>> getDoctorById(@RequestParam Long doctorId) {
+    public ResponseEntity<Map<String, Object>> getDoctorById(@PathVariable Long doctorId) {
         Map<String, Object> response = new HashMap<>();
         try {
             DoctorResponseDTO doctor = doctorService.getDoctorById(doctorId);
@@ -68,12 +70,12 @@ public class DoctorController {
         }
     }
 
-    @PutMapping("/updateDoctor")
+    @PutMapping("/updateDoctor/{doctorId}")
     @Operation(summary = "Update a doctor", description = "Update information of an existing doctor by ID")
-    public ResponseEntity<Map<String, Object>> updateDoctor(@RequestParam Long doctorId, @Valid @RequestBody DoctorRequestDTO doctorRequestDTO) {
+    public ResponseEntity<Map<String, Object>> updateDoctor(@PathVariable Long doctorId, @Valid @RequestBody DoctorUpdateRequestDTO doctorUpdateRequestDTO) {
         Map<String, Object> response = new HashMap<>();
         try {
-            DoctorResponseDTO updatedDoctor = doctorService.updateDoctor(doctorId, doctorRequestDTO);
+            UpdateDoctorResponseDTO updatedDoctor = doctorService.updateDoctor(doctorId, doctorUpdateRequestDTO);
             response.put("doctor", updatedDoctor);
             return ResponseEntity.ok(response);
         } catch (DoctorNotFoundException e) {
@@ -85,26 +87,9 @@ public class DoctorController {
         }
     }
 
-    @DeleteMapping("/deleteDoctor")
-    @Operation(summary = "Delete a doctor", description = "Delete a doctor from the system by ID")
-    public ResponseEntity<Map<String, Object>> deleteDoctor(@RequestParam Long doctorId) {
-        Map<String, Object> response = new HashMap<>();
-        try {
-            DoctorResponseDTO deletedDoctor = doctorService.deleteDoctor(doctorId);
-            response.put("doctor", deletedDoctor);
-            return ResponseEntity.ok(response);
-        } catch (DoctorNotFoundException e) {
-            response.put("message", "Doctor not found");
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
-        } catch (Exception e) {
-            response.put("message", "Internal server error");
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
-        }
-    }
-
-    @DeleteMapping("/deactivateDoctor")
+    @DeleteMapping("/deactivateDoctor/{doctorId}")
     @Operation(summary = "Deactivate a doctor", description = "Deactivate a doctor from the system by ID")
-    public ResponseEntity<Map<String, Object>> deactivateDoctor(@RequestParam Long doctorId) {
+    public ResponseEntity<Map<String, Object>> deactivateDoctor(@PathVariable Long doctorId) {
         Map<String, Object> response = new HashMap<>();
         try {
             doctorService.deactivateDoctor(doctorId);

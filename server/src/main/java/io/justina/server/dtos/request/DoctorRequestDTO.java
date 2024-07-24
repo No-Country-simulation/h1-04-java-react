@@ -58,7 +58,7 @@ public class DoctorRequestDTO {
     private String documentNumber;
 
     @Size(max = 50, message = "Street must not exceed 50 characters.")
-    @Pattern(regexp = "^[a-zA-ZÀ-ÿ\\s]+$", message = "Street should contain only letters, spaces, and numbers.")
+    @Pattern(regexp = "^[a-zA-ZÀ-ÿ0-9\\s.,'-]+$", message = "Street should contain only letters, spaces, numbers, and common punctuation.")
     private String street;
 
     @Size(max = 10, message = "Number must not exceed 10 characters.")
