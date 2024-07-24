@@ -6,7 +6,7 @@
 .backPage{
     display: flex;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 .backPage img{
     width: 40px;
@@ -47,10 +47,11 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-    background-color: #D9F2FF;
     font-weight: 500;
     padding: 15px;
     margin: 20px;
+    background-color: #EDE1FF;
+    border-radius: 5px;
 }
 .buttons {
     display: flex;
@@ -62,10 +63,11 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    background-color: #B0BEC5;
     font-weight: 500;
     width: 40%;
     padding: 10px;
+    background-color: #D9F2FF;
+    color: #0087D0;
 }
 
 
@@ -74,18 +76,20 @@
     display: flex;
     justify-content: space-around;
     margin-bottom: 16px;
+    border: 1px solid #009FF5;
+    border-radius: 5px;
 }
 .tabs button {
     flex: 1;
-    padding: 10px;
+    padding: 15px;
     cursor: pointer;
     font-weight: 500;
 }
 .tabs .active {
-    border: 1px solid #009FF5;
-    border-radius: 10px;
     color: #009FF5;
-    transition: all .9s;
+    background-color: #D9F2FF;
+    border-radius: 10px;
+    transition: all .3s;
 }
 .content {
     padding: 10px;
