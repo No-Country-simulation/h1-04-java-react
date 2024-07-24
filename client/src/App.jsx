@@ -1,7 +1,7 @@
 import Router from "./Router/Routers.jsx";
-import "./App.css";
 import { useContext } from "react";
 import DoctorContext from "./context/DoctorContext.jsx";
+import "./App.css";
 
 function App() {
   const { authData } = useContext(DoctorContext);

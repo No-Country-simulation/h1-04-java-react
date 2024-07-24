@@ -13,6 +13,8 @@ import Treatment from "../Components/Patient/Treatment/Treatment.jsx";
 import NewTurn from "../Components/Patient/Turn/NewTurn/NewTurn.jsx";
 import TurnCalendar from "../Components/Patient/Turn/TurnCalendar/TurnCalendar.jsx";
 import ProfileConfiguration from "../Components/Patient/ProfileConfiguration/ProfileConfiguration.jsx";
+import Consultation from "../Components/Doctor/Consultation/Consultation.jsx"
+import PreviousConsultation from "../Components/Doctor/PreviousConsultation/PreviousConsultation.jsx"
 
 const Router = () => {
   return (
@@ -21,7 +23,7 @@ const Router = () => {
         <NavBar />
         <div className='flex-grow '>
           <Routes>
-            <Route exact path='/login' element={<Login />} />
+            <Route exact path='/' element={<Login />} />
             <Route exact path='/register' element={<Register />} />
 
             {/* Patient */}
@@ -31,44 +33,26 @@ const Router = () => {
             <Route exact path='/confirm-new-turn' element={<Turn />} />
             <Route exact path='/error-new-turn' element={<Turn />} />
             <Route exact path='/view-turn' element={<Turn />} />
-
+            
             <Route exact path='/treatments' element={<Treatments />} />
             <Route exact path='/treatment-treatment' element={<Treatment />} />
             <Route exact path='/treatment-studies' element={<Treatment />} />
             <Route exact path='/treatment-nutrition' element={<Treatment />} />
-            <Route
-              exact
-              path='/treatment-physical-activity'
-              element={<Treatment />}
-            />
-            <Route
-              exact
-              path='/treatment-clinical-history'
-              element={<Treatment />}
-            />
+            <Route exact path='/treatment-physical-activity' element={<Treatment />} />
+            <Route exact path='/treatment-clinical-history' element={<Treatment />} />
             <Route exact path='/treatment-medication' element={<Treatment />} />
             <Route exact path='/treatment-psychology' element={<Treatment />} />
-            <Route
-              exact
-              path='/treatment-social-work'
-              element={<Treatment />}
-            />
-            <Route
-              exact
-              path='/treatment-physiotherapy'
-              element={<Treatment />}
-            />
+            <Route exact path='/treatment-social-work' element={<Treatment />} />
+            <Route exact path='/treatment-physiotherapy' element={<Treatment />} />
             <Route exact path='/treatment-others' element={<Treatment />} />
-
-            <Route
-              exact
-              path='/profile-configuration'
-              element={<ProfileConfiguration />}
-            />
+            
+            <Route exact path='/profile-configuration' element={<ProfileConfiguration />} />
 
             {/* Doctor */}
             <Route exact path='/doctor' element={<HomeDoctor />} />
             <Route exact path='/doctorPatient' element={<Patients />} />
+            <Route exact path='/previous-consultation' element={<PreviousConsultation />} />
+            <Route exact path='/consultation' element={<Consultation />} />
 
             <Route path='*' element={<Error404 />} />
           </Routes>

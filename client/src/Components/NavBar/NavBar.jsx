@@ -61,7 +61,7 @@ const NavBar = () => {
                 />
                 Adherencia <span className='badge ml-auto'>2</span>
               </a>
-              <a href='/login' className='flex items-center' onClick={logout}>
+              <a href='/' className='flex items-center' onClick={logout}>
                 <img src={exitIcon} alt='salir' className='w-6 h-6 mr-2' />
                 Salir
               </a>

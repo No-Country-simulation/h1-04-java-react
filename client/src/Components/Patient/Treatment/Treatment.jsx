@@ -1,8 +1,8 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { treatmentData } from "./data.js"
 import { useState } from "react";
-import arrowLeft from "../../../Assets/Imgs/arrowLeft.png"
-import arrowRight from "../../../Assets/Imgs/arrowRight.png"
+import arrowLeft from "../../../Assets/Imgs/otraArrowLeft.png"
+import arrowRight from "../../../Assets/Imgs/anotherArrowRight.png"
 import PlanTreatment from "./Plans/PlanTreatment.jsx";
 import PlanStudies from "./Plans/PlanStudies.jsx";
 import PlanNutrition from "./Plans/PlanNutrition/PlanNutrition.jsx";
