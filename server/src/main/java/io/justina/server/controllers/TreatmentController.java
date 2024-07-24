@@ -1,6 +1,7 @@
 package io.justina.server.controllers;
 
 import io.justina.server.dtos.request.AddMedicalPrescriptionRequestDTO;
+import io.justina.server.dtos.request.CreateTreatmentDTO;
 import io.justina.server.dtos.request.TreatmentRequestDTO;
 import io.justina.server.dtos.response.TreatmentResponseDTO;
 import io.justina.server.exceptions.MedicalPrescriptionAlreadyAssignedException;
@@ -26,12 +27,12 @@ public class TreatmentController {
     @Autowired
     private TreatmentService treatmentService;
 
-    @PostMapping("/createTreatment")
-    @Operation(summary = "Create a treatment", description = "Creates a new treatment")
-    public ResponseEntity<Map<String, Object>> createTreatment(@Valid @RequestBody TreatmentRequestDTO treatmentRequestDTO) {
+    @PostMapping("/addTreatmentToPatient")
+    @Operation(summary = "Create and associate treatment with a patient", description = "Creates a new treatment and associates it with an existing patient by ID")
+    public ResponseEntity<Map<String, Object>> createTreatmentAndAssociateWithPatient(@Valid @RequestBody CreateTreatmentDTO createTreatmentDTO) {
         Map<String, Object> response = new HashMap<>();
         try {
-            TreatmentResponseDTO newTreatmentResponse = treatmentService.createTreatment(treatmentRequestDTO);
+            TreatmentResponseDTO newTreatmentResponse = treatmentService.createTreatmentAndAssociateWithPatient(createTreatmentDTO);
             response.put("treatment", newTreatmentResponse);
             return ResponseEntity.status(HttpStatus.CREATED).body(response);
         } catch (Exception e) {

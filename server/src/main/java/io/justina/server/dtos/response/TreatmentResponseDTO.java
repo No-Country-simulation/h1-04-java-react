@@ -20,6 +20,7 @@ public class TreatmentResponseDTO {
     private LocalDate startDate;
     private Boolean active;
     private List<MedicalPrescription> medicalPrescriptions;
+    private Long patientId;
 
     public TreatmentResponseDTO(Treatment treatment) {
         this.id = treatment.getId();
@@ -28,6 +29,7 @@ public class TreatmentResponseDTO {
         this.startDate = treatment.getStartDate();
         this.active = treatment.getActive();
         this.medicalPrescriptions = treatment.getMedicalPrescriptions();
+        this.patientId = treatment.getPatient().getId();
     }
 
 }
