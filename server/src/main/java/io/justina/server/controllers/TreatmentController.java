@@ -68,7 +68,6 @@ public class TreatmentController {
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             response.put("message", "Internal server error");
-            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }

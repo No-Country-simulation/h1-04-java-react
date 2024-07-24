@@ -12,6 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -23,6 +24,9 @@ public class DataLoaderPatient implements CommandLineRunner {
 
     @Autowired
     private PatientRepository patientRepository;
+
+    @Autowired
+    private TreatmentRepository treatmentRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -54,14 +58,19 @@ public class DataLoaderPatient implements CommandLineRunner {
         Institution defaultInstitution = institutionRepository.findByName("JUSTINA_IO")
                 .orElseThrow(() -> new RuntimeException("Institution JUSTINA_IO not found"));
 
-        createPatientUser("juan@patient.com", "Juan", "Perez", patientRole, "DNI", "1236645678", "Calle Corrientes", "1234", "San Nicolás", "CABA", "Buenos Aires", "1043", "+541112345678", LocalDate.of(1985, 5, 15), financier, defaultInstitution, List.of("Hipertensión", "Diabetes tipo 2"), List.of("Operación de apendicitis en 2010", "Tratamiento de quimioterapia en 2015"), BloodType.O_POSITIVE, CivilStatus.SINGLE, 2, "No", "María Perez", "+549112345678");
-        createPatientUser("maria@patient.com", "Maria", "Lopez", patientRole, "DNI", "2366456789", "Av. Santa Fe", "5678", "Palermo", "CABA", "Buenos Aires", "1425", "+541198765432", LocalDate.of(1990, 3, 22), financier, defaultInstitution, List.of("Asma"), List.of("Neumonía en 2018", "Cirugía de rodilla en 2019"), BloodType.A_NEGATIVE, CivilStatus.MARRIED, 1, "No", "Carlos Lopez", "+5491198765432");
-        createPatientUser("carlos@patient.com", "Carlos", "Gomez", patientRole, "DNI", "3466567890", "Calle Florida", "987", "Retiro", "CABA", "Buenos Aires", "1005", "+541176543210", LocalDate.of(1978, 8, 30), financier, defaultInstitution, List.of("Enfermedad celíaca"), List.of("Alergia a los mariscos", "Hospitalización por gastroenteritis en 2020"), BloodType.B_POSITIVE, CivilStatus.DIVORCED, 0, "No", "Ana Gomez", "+5491176543210");
-        createPatientUser("ana@patient.com", "Ana", "Martinez", patientRole, "DNI", "4566678901", "Av. Callao", "456", "Recoleta", "CABA", "Buenos Aires", "1022", "+541165432198", LocalDate.of(1982, 12, 10), financier, defaultInstitution, List.of("Artritis reumatoide"), List.of("Fractura de brazo en 2016", "Tratamiento de fisioterapia en 2017"), BloodType.O_NEGATIVE, CivilStatus.WIDOWED, 3, "Sí", "Miguel Martinez", "+5491165432198");
-        createPatientUser("jose@patient.com", "Jose", "Fernandez", patientRole, "DNI", "5666789012", "Av. Belgrano", "789", "Monserrat", "CABA", "Buenos Aires", "1092", "+541154321987", LocalDate.of(1975, 1, 5), financier, defaultInstitution, List.of("Hipotiroidismo"), List.of("Cirugía de tiroides en 2019", "Tratamiento de radioterapia en 2020"), BloodType.AB_POSITIVE, CivilStatus.SINGLE, 0, "No", "Laura Fernandez", "+5491154321987");
+        List<Treatment> treatments = treatmentRepository.findAll();
+        if (treatments.size() < 10) {
+            throw new RuntimeException("No se encontraron suficientes tratamientos para asignar a los pacientes");
+        }
+
+        createPatientUser("juan@patient.com", "Juan", "Perez", patientRole, "DNI", "1236645678", "Calle Corrientes", "1234", "San Nicolás", "CABA", "Buenos Aires", "1043", "+541112345678", LocalDate.of(1985, 5, 15), financier, defaultInstitution, List.of("Hipertensión", "Diabetes tipo 2"), List.of("Operación de apendicitis en 2010", "Tratamiento de quimioterapia en 2015"), BloodType.O_POSITIVE, CivilStatus.SINGLE, 2, "No", "María Perez", "+549112345678", treatments.subList(0, 2));
+        createPatientUser("maria@patient.com", "Maria", "Lopez", patientRole, "DNI", "2366456789", "Av. Santa Fe", "5678", "Palermo", "CABA", "Buenos Aires", "1425", "+541198765432", LocalDate.of(1990, 3, 22), financier, defaultInstitution, List.of("Asma"), List.of("Neumonía en 2018", "Cirugía de rodilla en 2019"), BloodType.A_NEGATIVE, CivilStatus.MARRIED, 1, "No", "Carlos Lopez", "+5491198765432", treatments.subList(2, 4));
+        createPatientUser("carlos@patient.com", "Carlos", "Gomez", patientRole, "DNI", "3466567890", "Calle Florida", "987", "Retiro", "CABA", "Buenos Aires", "1005", "+541176543210", LocalDate.of(1978, 8, 30), financier, defaultInstitution, List.of("Enfermedad celíaca"), List.of("Alergia a los mariscos", "Hospitalización por gastroenteritis en 2020"), BloodType.B_POSITIVE, CivilStatus.DIVORCED, 0, "No", "Ana Gomez", "+5491176543210", treatments.subList(4, 6));
+        createPatientUser("ana@patient.com", "Ana", "Martinez", patientRole, "DNI", "4566678901", "Av. Callao", "456", "Recoleta", "CABA", "Buenos Aires", "1022", "+541165432198", LocalDate.of(1982, 12, 10), financier, defaultInstitution, List.of("Artritis reumatoide"), List.of("Fractura de brazo en 2016", "Tratamiento de fisioterapia en 2017"), BloodType.O_NEGATIVE, CivilStatus.WIDOWED, 3, "Sí", "Miguel Martinez", "+5491165432198", treatments.subList(6, 8));
+        createPatientUser("jose@patient.com", "Jose", "Fernandez", patientRole, "DNI", "5666789012", "Av. Belgrano", "789", "Monserrat", "CABA", "Buenos Aires", "1092", "+541154321987", LocalDate.of(1975, 1, 5), financier, defaultInstitution, List.of("Hipotiroidismo"), List.of("Cirugía de tiroides en 2019", "Tratamiento de radioterapia en 2020"), BloodType.AB_POSITIVE, CivilStatus.SINGLE, 0, "No", "Laura Fernandez", "+5491154321987", treatments.subList(8, 10));
     }
 
-    private void createPatientUser(String email, String firstName, String lastName, Role patientRole, String documentType, String documentNumber, String street, String number, String district, String city, String province, String postalCode, String phone, LocalDate birthDate, Financier financier, Institution institution, List<String> pathologies, List<String> medicalHistory, BloodType bloodType, CivilStatus civilStatus, Integer children, String crossTransplant, String tutorFullName, String tutorPhone) {
+    private void createPatientUser(String email, String firstName, String lastName, Role patientRole, String documentType, String documentNumber, String street, String number, String district, String city, String province, String postalCode, String phone, LocalDate birthDate, Financier financier, Institution institution, List<String> pathologies, List<String> medicalHistory, BloodType bloodType, CivilStatus civilStatus, Integer children, String crossTransplant, String tutorFullName, String tutorPhone, List<Treatment> treatments) {
         if (userRepository.existsByEmail(email)) {
             return;
         }
@@ -108,8 +117,20 @@ public class DataLoaderPatient implements CommandLineRunner {
                 .tutorFullName(tutorFullName)
                 .tutorPhone(tutorPhone)
                 .financier(financier)
+                .treatments(new ArrayList<>())
                 .build();
-        patientRepository.save(patient);
+
+        for (Treatment treatment : treatments) {
+            Treatment savedTreatment = treatmentRepository.findById(treatment.getId())
+                    .orElseThrow(() -> new RuntimeException("Treatment not found with id: " + treatment.getId()));
+
+            savedTreatment.setPatient(patient);
+            treatmentRepository.save(savedTreatment);
+
+            patient.getTreatments().add(savedTreatment);
+        }
+
+        patient = patientRepository.save(patient);
     }
 
 }

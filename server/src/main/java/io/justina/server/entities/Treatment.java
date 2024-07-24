@@ -1,5 +1,6 @@
 package io.justina.server.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
@@ -13,7 +14,6 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 public class Treatment {
@@ -35,11 +35,12 @@ public class Treatment {
     private Boolean active;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "treatment_id")
     private List<MedicalPrescription> medicalPrescriptions;
 
     @ManyToOne
     @JoinColumn(name = "patient_id")
-    @JsonIgnore
+    @JsonBackReference
     private Patient patient;
 
 }
