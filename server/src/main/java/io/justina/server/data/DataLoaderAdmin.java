@@ -11,7 +11,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.time.LocalDate;
-
 @Component
 @Order(10)
 public class DataLoaderAdmin implements CommandLineRunner {
@@ -84,7 +83,5 @@ public class DataLoaderAdmin implements CommandLineRunner {
 
         userRepository.save(user);
     }
-
 }
-
 
