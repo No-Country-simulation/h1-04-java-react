@@ -104,6 +104,23 @@ public class PatientController {
         }
     }
 
+    @PutMapping("/addMedicalHistory/{patientId}")
+    @Operation(summary = "Add medical history entry", description = "Add a new entry to the medical history of an existing patient by ID")
+    public ResponseEntity<Map<String, Object>> addMedicalHistory(@PathVariable Long patientId, @Valid @RequestBody AddMedicalHistoryDTO addMedicalHistoryDTO) {
+        Map<String, Object> response = new HashMap<>();
+        try {
+            PatientResponseDTO updatedPatient = patientService.addMedicalHistory(patientId, addMedicalHistoryDTO);
+            response.put("patient", updatedPatient);
+            return ResponseEntity.ok(response);
+        } catch (PatientNotFoundException e) {
+            response.put("message", "Patient not found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+        } catch (Exception e) {
+            response.put("message", "Internal server error");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
+    }
+
     @PutMapping("/updateMedicalHistory/{patientId}")
     @Operation(summary = "Update medical history", description = "Update medical history of an existing patient by ID")
     public ResponseEntity<Map<String, Object>> updateMedicalHistory(@PathVariable Long patientId, @Valid @RequestBody MedicalHistoryUpdateDTO medicalHistoryUpdateDTO) {
@@ -121,12 +138,12 @@ public class PatientController {
         }
     }
 
-    @PutMapping("/updatePathologies/{patientId}")
-    @Operation(summary = "Update pathologies", description = "Update pathologies of an existing patient by ID")
-    public ResponseEntity<Map<String, Object>> updatePathologies(@PathVariable Long patientId, @Valid @RequestBody PathologiesUpdateDTO pathologiesUpdateDTO) {
+    @PutMapping("/addPathology/{patientId}")
+    @Operation(summary = "Add a pathology", description = "Add a new pathology to the existing list of pathologies for a patient by ID")
+    public ResponseEntity<Map<String, Object>> addPathology(@PathVariable Long patientId, @Valid @RequestBody AddPathologyDTO addPathologyDTO) {
         Map<String, Object> response = new HashMap<>();
         try {
-            PatientResponseDTO updatedPatient = patientService.updatePathologies(patientId, pathologiesUpdateDTO);
+            PatientResponseDTO updatedPatient = patientService.addPathology(patientId, addPathologyDTO);
             response.put("patient", updatedPatient);
             return ResponseEntity.ok(response);
         } catch (PatientNotFoundException e) {
@@ -138,12 +155,12 @@ public class PatientController {
         }
     }
 
-    @PostMapping("/addTreatment/{patientId}")
-    @Operation(summary = "Add treatment to patient", description = "Add a new treatment to an existing patient by ID")
-    public ResponseEntity<Map<String, Object>> addTreatmentToPatient(@PathVariable Long patientId, @Valid @RequestBody TreatmentRequestDTO treatmentRequestDTO) {
+    @PutMapping("/updatePathologies/{patientId}")
+    @Operation(summary = "Update pathologies", description = "Update pathologies of an existing patient by ID")
+    public ResponseEntity<Map<String, Object>> updatePathologies(@PathVariable Long patientId, @Valid @RequestBody PathologiesUpdateDTO pathologiesUpdateDTO) {
         Map<String, Object> response = new HashMap<>();
         try {
-            PatientResponseDTO updatedPatient = patientService.addTreatmentToPatient(patientId, treatmentRequestDTO);
+            PatientResponseDTO updatedPatient = patientService.updatePathologies(patientId, pathologiesUpdateDTO);
             response.put("patient", updatedPatient);
             return ResponseEntity.ok(response);
         } catch (PatientNotFoundException e) {

@@ -12,9 +12,10 @@ public interface PatientService {
     List<PatientResponseDTO> getAllPatients();
     PatientResponseDTO updatePatient(Long patientId, PatientUpdateDTO patientUpdateDTO);
     PatientResponseDTO uploadPatientFile(Long patientId, MultipartFile file);
+    PatientResponseDTO addMedicalHistory(Long patientId, AddMedicalHistoryDTO addMedicalHistoryDTO);
     PatientResponseDTO updateMedicalHistory(Long patientId, MedicalHistoryUpdateDTO medicalHistoryUpdateDTO);
+    PatientResponseDTO addPathology(Long patientId, AddPathologyDTO pathologyAddDTO);
     PatientResponseDTO updatePathologies(Long patientId, PathologiesUpdateDTO pathologiesUpdateDTO);
-    PatientResponseDTO addTreatmentToPatient(Long patientId, TreatmentRequestDTO treatmentRequestDTO);
     void deactivatePatient(Long patientId);
 
 }

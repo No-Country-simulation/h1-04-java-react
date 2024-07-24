@@ -159,6 +159,22 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
+    public PatientResponseDTO addMedicalHistory(Long patientId, AddMedicalHistoryDTO addMedicalHistoryDTO) {
+        Patient patient = patientRepository.findById(patientId)
+                .orElseThrow(() -> new PatientNotFoundException("Patient not found"));
+
+        List<String> medicalHistory = patient.getMedicalHistory();
+        if (medicalHistory == null) {
+            medicalHistory = new ArrayList<>();
+        }
+        medicalHistory.add(addMedicalHistoryDTO.getMedicalHistoryEntry());
+
+        patient.setMedicalHistory(medicalHistory);
+        patient = patientRepository.save(patient);
+        return new PatientResponseDTO(patient);
+    }
+
+    @Override
     public PatientResponseDTO updateMedicalHistory(Long patientId, MedicalHistoryUpdateDTO medicalHistoryUpdateDTO) {
         Patient patient = patientRepository.findById(patientId)
                 .orElseThrow(() -> new PatientNotFoundException("Patient not found"));
@@ -169,33 +185,25 @@ public class PatientServiceImpl implements PatientService {
         return new PatientResponseDTO(patient);
     }
 
-    public PatientResponseDTO updatePathologies(Long patientId, PathologiesUpdateDTO pathologiesUpdateDTO) {
+    @Override
+    public PatientResponseDTO addPathology(Long patientId, AddPathologyDTO pathologyAddDTO) {
         Patient patient = patientRepository.findById(patientId)
                 .orElseThrow(() -> new PatientNotFoundException("Patient not found"));
 
-        patient.setPathologies(pathologiesUpdateDTO.getPathologies());
+        if (patient.getPathologies() == null) {
+            patient.setPathologies(new ArrayList<>());
+        }
+        patient.getPathologies().add(pathologyAddDTO.getPathology());
 
         patient = patientRepository.save(patient);
         return new PatientResponseDTO(patient);
     }
 
-    @Override
-    public PatientResponseDTO addTreatmentToPatient(Long patientId, TreatmentRequestDTO treatmentRequestDTO) {
+    public PatientResponseDTO updatePathologies(Long patientId, PathologiesUpdateDTO pathologiesUpdateDTO) {
         Patient patient = patientRepository.findById(patientId)
                 .orElseThrow(() -> new PatientNotFoundException("Patient not found"));
 
-        Treatment treatment = Treatment.builder()
-                .treatmentName(treatmentRequestDTO.getTreatmentName())
-                .indications(treatmentRequestDTO.getIndications())
-                .startDate(LocalDate.now())
-                .active(true)
-                .patient(patient)
-                .build();
-
-        if (patient.getTreatments() == null) {
-            patient.setTreatments(new ArrayList<>());
-        }
-        patient.getTreatments().add(treatment);
+        patient.setPathologies(pathologiesUpdateDTO.getPathologies());
 
         patient = patientRepository.save(patient);
         return new PatientResponseDTO(patient);
