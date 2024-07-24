@@ -12,6 +12,7 @@ public class LoginResponseDTO {
 
     String token;
     String role;
+    Long id;
     String message;
 
 }

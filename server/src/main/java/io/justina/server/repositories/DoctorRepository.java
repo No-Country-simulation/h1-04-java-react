@@ -1,6 +1,7 @@
 package io.justina.server.repositories;
 
 import io.justina.server.entities.Doctor;
+import io.justina.server.entities.User;
 import io.justina.server.enumerations.Specialty;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -15,4 +16,7 @@ public interface DoctorRepository extends JpaRepository<Doctor, Long> {
     @Query("SELECT d FROM Doctor d JOIN d.specialties s WHERE s IN :specialties")
     List<Doctor> findDoctorsBySpecialties(@Param("specialties") Set<Specialty> specialties);
 
+    Doctor findByUser(User user);
+
 }
+
