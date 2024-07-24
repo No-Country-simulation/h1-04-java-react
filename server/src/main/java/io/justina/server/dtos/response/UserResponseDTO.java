@@ -22,6 +22,7 @@ public class UserResponseDTO {
     private String phone;
     private String institutionName;
     private String role;
+    private Boolean isActive;
     private Document document;
     private Address address;
 
@@ -34,6 +35,7 @@ public class UserResponseDTO {
         this.phone = user.getPhone();
         this.institutionName = user.getInstitution().getName();
         this.role = user.getRole().getName();
+        this.isActive = user.getIsActive();
         this.document = user.getDocument();
         this.address = user.getAddress();
     }

@@ -20,31 +20,31 @@ public class PatientResponseDTO {
     private String bloodType;
     private String civilStatus;
     private Integer children;
+    private String financierName;
     private String crossTransplant;
     private String tutorFullName;
     private String tutorPhone;
     private List<byte[]> file;
     private List<Treatment> treatments;
     private List<Appointment> appointments;
-    private User user;
-    private Financier financier;
+    private UserResponseDTO user;
 
     public PatientResponseDTO(Patient patient) {
         this.id = patient.getId();
-        this.medicalHistory = new ArrayList<>(patient.getMedicalHistory());
-        this.pathologies = new ArrayList<>(patient.getPathologies());
+        this.medicalHistory = patient.getMedicalHistory() != null ? new ArrayList<>(patient.getMedicalHistory()) : new ArrayList<>();
+        this.pathologies = patient.getPathologies() != null ? new ArrayList<>(patient.getPathologies()) : new ArrayList<>();
         this.transplanted = patient.getTransplanted();
-        this.bloodType = patient.getBloodType().name();
-        this.civilStatus = patient.getCivilStatus().name();
+        this.bloodType = patient.getBloodType() != null ? patient.getBloodType().name() : null;
+        this.civilStatus = patient.getCivilStatus() != null ? patient.getCivilStatus().name() : null;
         this.children = patient.getChildren();
+        this.financierName = patient.getFinancier() != null ? patient.getFinancier().getName() : null;
         this.crossTransplant = patient.getCrossTransplant();
         this.tutorFullName = patient.getTutorFullName();
         this.tutorPhone = patient.getTutorPhone();
-        this.file = patient.getFiles();
-        this.treatments = new ArrayList<>(patient.getTreatments());
-        this.appointments = new ArrayList<>(patient.getAppointments());
-        this.user = patient.getUser();
-        this.financier = patient.getFinancier();
+        this.file = patient.getFiles() != null ? new ArrayList<>(patient.getFiles()) : new ArrayList<>();
+        this.treatments = patient.getTreatments() != null ? new ArrayList<>(patient.getTreatments()) : new ArrayList<>();
+        this.appointments = patient.getAppointments() != null ? new ArrayList<>(patient.getAppointments()) : new ArrayList<>();
+        this.user = new UserResponseDTO(patient.getUser());
     }
 
 }
