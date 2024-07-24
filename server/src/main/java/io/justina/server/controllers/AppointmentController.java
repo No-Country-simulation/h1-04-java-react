@@ -2,6 +2,7 @@ package io.justina.server.controllers;
 
 import io.justina.server.dtos.request.AppointmentRequestDTO;
 import io.justina.server.dtos.response.AppointmentResponseDTO;
+import io.justina.server.exceptions.ConflictException;
 import io.justina.server.exceptions.ResourceNotFoundException;
 import io.justina.server.services.AppointmentService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -12,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,16 +28,23 @@ public class AppointmentController {
 
     @PostMapping("/createAppointment")
     @Operation(summary = "Create a new appointment", description = "Creates a new appointment in the system")
-    public ResponseEntity<AppointmentResponseDTO> createAppointment(@Valid @RequestBody AppointmentRequestDTO appointmentRequestDTO) {
+    public ResponseEntity<Map<String, String>> createAppointment(@Valid @RequestBody AppointmentRequestDTO appointmentRequestDTO) {
+        Map<String, String> response = new HashMap<>();
         try {
             AppointmentResponseDTO createdAppointment = appointmentService.createAppointment(appointmentRequestDTO);
-            return ResponseEntity.status(HttpStatus.CREATED).body(createdAppointment);
+            return ResponseEntity.status(HttpStatus.CREATED).body(Collections.singletonMap("message", "Appointment created successfully"));
         } catch (ResourceNotFoundException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            response.put("message", "Doctor or Patient not found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+        } catch (ConflictException e) {
+            response.put("message", "The selected time slot is not available for the doctor or the patient already has an appointment at that time.");
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(response);
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+            response.put("message", "Internal server error");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
+
 
     @PutMapping("/updateAppointment/{appointmentId}")
     @Operation(summary = "Update an appointment", description = "Update information of an existing appointment by ID")
