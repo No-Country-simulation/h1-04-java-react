@@ -245,6 +245,7 @@
    <img src="https://github.com/user-attachments/assets/24a3a6c0-4932-4972-9063-a4f552e28351" alt="mini" width="780" height="310">
 </div>
 
+<br>
 
 <div align='center'>
   <h2>🛠️ Tecnologías Utilizadas ⚡</h2>
@@ -297,24 +298,39 @@
 <br>
 
 <div align='center'>
-  <b>Swagger:</b>
-    <a href="https://justina-n2nb.onrender.com/swagger-ui/index.html#/" target="_blank">[ Link a Swagger UI ]</a>
+  <h2>🚀Swagger:🔥</h2>
 </div>
 
-  <div align='center'>
-   <img src="" alt="mini" width="680" height="1277">
+<div align='center'>
+  <b>🔸 Documentación de los endpoints en Swagger UI 🧾:</b>
+    <a href="https://justina-n2nb.onrender.com/swagger-ui/index.html#/" target="_blank">[ Link a Swagger UI ]</a>
 </div>
 
 <br>
 <br>
 
 <div align='center'>
-  <h2> Diagrama </h2>
-  </div>
-
-  <div align='center'>
-   <img src="" alt="mini" width="1063" height="563">
+  <h2>📊Diagrama Entidad Relacion:📈</h2>
 </div>
+
+<div align='center'>
+  <b>🔸 Link al Drive con el PDF del diagrama 💡:</b>
+    <a href="https://drive.google.com/file/d/1EWk72gLBysvzqzxzEhsiv4TPakScYo5L/view?usp=sharing" target="_blank">[ Link al Diagrama ]</a>
+</div>
+
+  <br>
+  <br>
+
+<div align='center'>
+  <h2> 🎆 Agradecimientos 🎇 </h2>
+</div>
+
+<div align='center'>
+  <a href="https://www.nocountry.tech/" target="_blank" rel="noopener">
+    <img src="https://github.com/MatiasNicolasAcevedo/s13-21-ft-java/assets/109118183/c360f832-5983-4437-bbc7-7a4afe659302" alt="mini" width="343" height="193">
+  </a>
+</div>
+
 
 # h1-04-java-react
 Justina.io
