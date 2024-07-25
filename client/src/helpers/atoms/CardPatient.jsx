@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function CardPatient(props) {
   return (
-    <Link to={"/treatments"}>
+    <Link to={"/previous-consultation"}>
       <div className='flex items-center w-full'>
         <div className=' text-gray-500 border-l-2 border-gray-800 pl-5'>
           {props.time}

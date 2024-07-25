@@ -13,56 +13,253 @@ import Treatment from "../Components/Patient/Treatment/Treatment.jsx";
 import NewTurn from "../Components/Patient/Turn/NewTurn/NewTurn.jsx";
 import TurnCalendar from "../Components/Patient/Turn/TurnCalendar/TurnCalendar.jsx";
 import ProfileConfiguration from "../Components/Patient/ProfileConfiguration/ProfileConfiguration.jsx";
-import Consultation from "../Components/Doctor/Consultation/Consultation.jsx"
-import PreviousConsultation from "../Components/Doctor/PreviousConsultation/PreviousConsultation.jsx"
+import Consultation from "../Components/Doctor/Consultation/Consultation.jsx";
+import PreviousConsultation from "../Components/Doctor/PreviousConsultation/PreviousConsultation.jsx";
 import Calendar from "../Components/Doctor/Calendar/Calendar.jsx";
 import Recipe from "../Components/Doctor/Recipe/Recipe.jsx";
+
+const PatientLayout = ({ children }) => (
+  <div className='flex flex-col min-h-screen bg-white'>
+    <NavBar />
+    <div className='flex-grow '>{children}</div>
+    <Footer />
+  </div>
+);
+
+const DoctorLayout = ({ children }) => (
+  <div className='flex flex-col min-h-screen bg-white'>
+    <div className='flex-grow '>{children}</div>
+  </div>
+);
 
 const Router = () => {
   return (
     <BrowserRouter>
-      <div className='flex flex-col min-h-screen bg-white'>
-        <NavBar />
-        <div className='flex-grow '>
-          <Routes>
-            <Route exact path='/' element={<Login />} />
-            <Route exact path='/register' element={<Register />} />
+      <Routes>
+        <Route
+          exact
+          path='/'
+          element={
+            <PatientLayout>
+              <Login />
+            </PatientLayout>
+          }
+        />
+        <Route exact path='/register' element={<Register />} />
 
-            {/* Patient */}
-            <Route exact path='/patient' element={<HomePatient />} />
-            <Route exact path='/turn-calendar' element={<TurnCalendar />} />
-            <Route exact path='/new-turn' element={<NewTurn />} />
-            <Route exact path='/confirm-new-turn' element={<Turn />} />
-            <Route exact path='/error-new-turn' element={<Turn />} />
-            <Route exact path='/view-turn' element={<Turn />} />
-            
-            <Route exact path='/treatments' element={<Treatments />} />
-            <Route exact path='/treatment-treatment' element={<Treatment />} />
-            <Route exact path='/treatment-studies' element={<Treatment />} />
-            <Route exact path='/treatment-nutrition' element={<Treatment />} />
-            <Route exact path='/treatment-physical-activity' element={<Treatment />} />
-            <Route exact path='/treatment-clinical-history' element={<Treatment />} />
-            <Route exact path='/treatment-medication' element={<Treatment />} />
-            <Route exact path='/treatment-psychology' element={<Treatment />} />
-            <Route exact path='/treatment-social-work' element={<Treatment />} />
-            <Route exact path='/treatment-physiotherapy' element={<Treatment />} />
-            <Route exact path='/treatment-others' element={<Treatment />} />
-            
-            <Route exact path='/profile-configuration' element={<ProfileConfiguration />} />
+        {/* Patient */}
+        <Route
+          exact
+          path='/patient'
+          element={
+            <PatientLayout>
+              <HomePatient />
+            </PatientLayout>
+          }
+        />
+        <Route
+          exact
+          path='/turn-calendar'
+          element={
+            <PatientLayout>
+              <TurnCalendar />
+            </PatientLayout>
+          }
+        />
+        <Route
+          exact
+          path='/new-turn'
+          element={
+            <PatientLayout>
+              <NewTurn />
+            </PatientLayout>
+          }
+        />
+        <Route
+          exact
+          path='/confirm-new-turn'
+          element={
+            <PatientLayout>
+              <Turn />
+            </PatientLayout>
+          }
+        />
+        <Route
+          exact
+          path='/error-new-turn'
+          element={
+            <PatientLayout>
+              <Turn />
+            </PatientLayout>
+          }
+        />
+        <Route
+          exact
+          path='/view-turn'
+          element={
+            <PatientLayout>
+              <Turn />
+            </PatientLayout>
+          }
+        />
+        <Route
+          exact
+          path='/treatments'
+          element={
+            <PatientLayout>
+              <Treatments />
+            </PatientLayout>
+          }
+        />
+        <Route
+          exact
+          path='/treatment-treatment'
+          element={
+            <PatientLayout>
+              <Treatment />
+            </PatientLayout>
+          }
+        />
+        <Route
+          exact
+          path='/treatment-studies'
+          element={
+            <PatientLayout>
+              <Treatment />
+            </PatientLayout>
+          }
+        />
+        <Route
+          exact
+          path='/treatment-nutrition'
+          element={
+            <PatientLayout>
+              <Treatment />
+            </PatientLayout>
+          }
+        />
+        <Route
+          exact
+          path='/treatment-physical-activity'
+          element={
+            <PatientLayout>
+              <Treatment />
+            </PatientLayout>
+          }
+        />
+        <Route
+          exact
+          path='/treatment-clinical-history'
+          element={
+            <PatientLayout>
+              <Treatment />
+            </PatientLayout>
+          }
+        />
+        <Route
+          exact
+          path='/treatment-medication'
+          element={
+            <PatientLayout>
+              <Treatment />
+            </PatientLayout>
+          }
+        />
+        <Route
+          exact
+          path='/treatment-psychology'
+          element={
+            <PatientLayout>
+              <Treatment />
+            </PatientLayout>
+          }
+        />
+        <Route
+          exact
+          path='/treatment-social-work'
+          element={
+            <PatientLayout>
+              <Treatment />
+            </PatientLayout>
+          }
+        />
+        <Route
+          exact
+          path='/treatment-physiotherapy'
+          element={
+            <PatientLayout>
+              <Treatment />
+            </PatientLayout>
+          }
+        />
+        <Route
+          exact
+          path='/treatment-others'
+          element={
+            <PatientLayout>
+              <Treatment />
+            </PatientLayout>
+          }
+        />
+        <Route
+          exact
+          path='/profile-configuration'
+          element={
+            <PatientLayout>
+              <ProfileConfiguration />
+            </PatientLayout>
+          }
+        />
 
-            {/* Doctor */}
-            <Route exact path='/doctor' element={<HomeDoctor />} />
-            <Route exact path='/doctorPatient' element={<Patients />} />
-            <Route exact path='/previous-consultation' element={<PreviousConsultation />} />
-            <Route exact path='/consultation' element={<Consultation />} />
-            <Route exact path='/doctorCalendar' element={<Calendar />} />
-            <Route exact path='/doctorRecipe' element={<Recipe />} />
+        {/* Doctor */}
+        <Route
+          exact
+          path='/doctorPatient'
+          element={
+            <DoctorLayout>
+              <Patients />
+            </DoctorLayout>
+          }
+        />
+        <Route
+          exact
+          path='/previous-consultation'
+          element={
+            <DoctorLayout>
+              <PreviousConsultation />
+            </DoctorLayout>
+          }
+        />
+        <Route
+          exact
+          path='/consultation'
+          element={
+            <DoctorLayout>
+              <Consultation />
+            </DoctorLayout>
+          }
+        />
+        <Route
+          exact
+          path='/doctorCalendar'
+          element={
+            <DoctorLayout>
+              <Calendar />
+            </DoctorLayout>
+          }
+        />
+        <Route
+          exact
+          path='/doctorRecipe'
+          element={
+            <DoctorLayout>
+              <Recipe />
+            </DoctorLayout>
+          }
+        />
 
-            <Route path='*' element={<Error404 />} />
-          </Routes>
-        </div>
-        <Footer />
-      </div>
+        <Route path='*' element={<Error404 />} />
+      </Routes>
     </BrowserRouter>
   );
 };
