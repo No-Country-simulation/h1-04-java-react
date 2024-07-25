@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { login as loginService } from "../../services/authService";
 import Alert from "../../helpers/atoms/Alert";
 import InputComponent from "../../helpers/atoms/InputComponent";
@@ -57,7 +57,7 @@ const Login = () => {
   };
 
   return (
-    <div className='flex flex-col items-center justify-center px-6 pb-8 mx-auto lg:py-0'>
+    <div className='flex flex-col items-center justify-center px-6 mx-auto mb-10 lg:py-0'>
       <div className='w-full mt-10 flex flex-col items-center gap-10'>
         <a href='/' className='text-2xl font-semibold text-gray-900'>
           <img
@@ -68,7 +68,18 @@ const Login = () => {
             alt='logo'
           />
         </a>
-
+        <div className='flex gap-7'>
+          <Link to={"/doctorPatient"}>
+            <button className='shadow w-32 bg-blue-300 text-white py-2 rounded'>
+              Doctor
+            </button>
+          </Link>
+          <Link to={"/patient"}>
+            <button className='shadow w-32 bg-blue-300 text-white py-2 rounded'>
+              Paciente
+            </button>
+          </Link>
+        </div>
         <div className='w-full max-w-md bg-white rounded-lg border shadow-sm'>
           <div className='p-7 space-y-5'>
             <h1 className='text-2xl font-bold leading-tight tracking-tight text-gray-900'>
@@ -125,7 +136,7 @@ const Login = () => {
                   Login
                 </ButtonComponent>
 
-                <ButtonComponent
+                {/* <ButtonComponent
                   theme='secondary'
                   to='/registro'
                   disabled={isLoading}
@@ -133,7 +144,7 @@ const Login = () => {
                 >
                   <IconComponent name='bx:bxs-user-plus' className='w-5 h-5' />
                   Register
-                </ButtonComponent>
+                </ButtonComponent> */}
               </div>
             </form>
           </div>

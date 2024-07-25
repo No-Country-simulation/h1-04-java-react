@@ -17,7 +17,7 @@ const Consultation = () => {
     const handleSubmitNotes = () =>{
         setNotes(currentNotes)
         setCurrentNotes("")
-        navigate('/doctor-query-completion');
+        navigate('/query-completion');
     }
 
     return (
