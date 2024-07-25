@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom"
-import { useState } from "react"
+import { useContext, useState } from "react"
+import DoctorContext from "../../../context/DoctorContext";
 import arrowLeft from "../../../Assets/Imgs/anotherArrowLeft.png"
 import profileDoctor from "../../../Assets/Imgs/profileDoctor.png"
 import tratamiento from "../../../Assets/Imgs/tratamiento.png"
@@ -8,7 +9,16 @@ import "./consultation.css"
 
 const Consultation = () => {
     const [isFocused, setIsFocused] = useState(false);
-    const navigate = useNavigate()
+    const [currentNotes, setCurrentNotes] = useState("");
+
+    const navigate = useNavigate();
+    const { setNotes } = useContext(DoctorContext);
+
+    const handleSubmitNotes = () =>{
+        setNotes(currentNotes)
+        setCurrentNotes("")
+        navigate('/doctor-query-completion');
+    }
 
     return (
         <div className="consultation">
@@ -48,13 +58,16 @@ const Consultation = () => {
             
             <section className="writeText">
                 <p>Notas</p>
-                <textarea name="text" id="text" className={isFocused ? "focused" : ""} onFocus={() => setIsFocused(true)} onBlur={() => setIsFocused(false)}></textarea>
+                <textarea name="text" id="text" className={isFocused ? "focused" : ""}
+                    onFocus={() => setIsFocused(true)} onBlur={() => setIsFocused(false)}
+                    onChange={(e) => setCurrentNotes(e.target.value)} value={currentNotes}
+                />
                 <div>
                     <img src={speak} alt="Hablar" />
                 </div>
             </section>
             
-            <button id="start-consultation">Finalizar consulta</button>
+            <button id="start-consultation" onClick={handleSubmitNotes}>Finalizar consulta</button>
         </div>
     )
 }

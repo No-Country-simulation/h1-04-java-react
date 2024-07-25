@@ -1,0 +1,55 @@
+.query-completion {
+    margin: 20px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.queryNotes{
+    box-shadow: 0px 0px 3px #1616168a;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.queryNotes h2{
+    font-weight: 500;
+}
+.queryNotes p{
+    margin-top: 5px;
+}
+
+.footer-query-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-query-buttons button {
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #A5D6A7;
+    font-weight: 500;
+    width: 100%;
+    margin-top: 15px;
+}
+
+
+.writeTextQuery{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.writeTextQuery textarea{
+    width: 100%;
+    height: 7vh;
+    border: solid 2px #383838;
+    padding: 10px;
+    border-radius: 5px;
+    resize: none;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.writeTextQuery textarea.focused {
+    border-color: #007bff;
+}
