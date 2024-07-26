@@ -11,7 +11,8 @@
 <h1 align='center'>📑 Descripción del Proyecto: Justina.io 🌈</h1>
 
 <div align="center">
-  <p>Estamos orgullosos de lanzar Justina.io, una plataforma comprometida en ayudar a todos los que podamos. Con 7 funcionalidades principales, Justina.io facilita y mejora el proceso de donación y tratamiento médico.
+  <p>
+   Justina.io nace con la misión de apoyar a la mayor cantidad de personas posible. Con 7 funcionalidades clave, esta plataforma transforma y agiliza el proceso de donación y atención médica.
   </p>
 </div>
 
@@ -39,8 +40,9 @@
       2️⃣ Gestión de Usuarios y Roles: 👥 <br> Control total sobre la obtención, actualización y eliminación de usuarios, así como la gestión de documentos e imágenes asociadas. Además, contamos con un sistema de roles para identificar el tipo de usuario que inicia sesión, ya sea administrador, médico o paciente.
       </p>
  <p>
-      3️⃣ Gestión de Doctores y Pacientes: 🩺 <br> Facilita la creación, obtención y actualización de información de doctores y pacientes, incluyendo la capacidad de subir archivos y mantener un historial médico detallado.
-      </p>
+      3️⃣ Gestión de Doctores y Pacientes: 🩺 <br> 
+      Facilita la creación, obtención y actualización de información de doctores y pacientes, incluyendo la capacidad de subir archivos, mantener un historial médico detallado, y descargar la historia clínica para tenerla disponible en todo momento.
+    </p>
  <p>
       4️⃣ Tratamientos y Prescripciones Médicas: 💊 <br> Manejo integral de la creación y asociación de tratamientos con pacientes, así como la gestión de prescripciones médicas.
 </p>
