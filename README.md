@@ -21,7 +21,7 @@
 <h2 align="center">¿Qué es Justina.io? 💡</h2>
 
 <div align="center">
-  <p>Justina.io es un sistema integral y altamente seguro que facilita la gestión y coordinación en torno a la donación de órganos y la atención médica. Nuestro MVP está orientado a brindar una solución efectiva para conectar a pacientes, doctores, laboratorios, financiadores, instituciones y usuarios, de manera que podamos facilitar el proceso de donación y tratamiento médico integral. 💉🔬
+  <p>Justina.io es un sistema integral y altamente seguro que facilita la gestión y coordinación en torno a la donación de órganos y la atención médica. Nuestro MVP🏆 está orientado a brindar una solución efectiva para conectar a pacientes, doctores, laboratorios, financiadores, instituciones y usuarios, de manera que podamos facilitar el proceso de donación y tratamiento médico integral. 💉🔬
   </p>
 </div>
 
