@@ -12,7 +12,7 @@
 
 <div align="center">
   <p>
-   Justina.io nace con la misión de apoyar a la mayor cantidad de personas posible. Con 7 funcionalidades clave, esta plataforma transforma y agiliza el proceso de donación y atención médica.
+   Justina.io nace con la misión de ayudar a la mayor cantidad de personas posible. Con 7 funcionalidades clave, esta plataforma transforma y agiliza el proceso de donación y atención médica.
   </p>
 </div>
 
@@ -33,27 +33,27 @@
 
 <div align='center'>
     <p>
-      1️⃣ Seguridad y Protección de Datos: 🔒 <br>
+      🔸 1- Seguridad y Protección de Datos: 🔒 <br>
       Un robusto sistema de autenticación basado en tokens y encriptación de datos para garantizar la máxima seguridad y privacidad de la información de los usuarios.
       </p>
  <p>
-      2️⃣ Gestión de Usuarios y Roles: 👥 <br> Control total sobre la obtención, actualización y eliminación de usuarios, así como la gestión de documentos e imágenes asociadas. Además, contamos con un sistema de roles para identificar el tipo de usuario que inicia sesión, ya sea administrador, médico o paciente.
+      🔸 2- Gestión de Usuarios y Roles: 👥 <br> Control total sobre la obtención, actualización y eliminación de usuarios, así como la gestión de documentos e imágenes asociadas. Además, contamos con un sistema de roles para identificar el tipo de usuario que inicia sesión, ya sea administrador, médico o paciente.
       </p>
  <p>
-      3️⃣ Gestión de Doctores y Pacientes: 🩺 <br> 
+      🔸 3- Gestión de Doctores y Pacientes: 🩺 <br> 
       Facilita la creación, obtención y actualización de información de doctores y pacientes, incluyendo la capacidad de subir archivos, mantener un historial médico detallado, y descargar la historia clínica para tenerla disponible en todo momento.
     </p>
  <p>
-      4️⃣ Tratamientos y Prescripciones Médicas: 💊 <br> Manejo integral de la creación y asociación de tratamientos con pacientes, así como la gestión de prescripciones médicas.
+      🔸 4- Tratamientos y Prescripciones Médicas: 💊 <br> Manejo integral de la creación y asociación de tratamientos con pacientes, así como la gestión de prescripciones médicas.
 </p>
  <p>
-      5️⃣ Medicamentos y Laboratorios: 🏥 <br> Administración eficiente de medicamentos y laboratorios, incluyendo su creación, actualización y desactivación.
+      🔸 5- Medicamentos y Laboratorios: 🏥 <br> Administración eficiente de medicamentos y laboratorios, incluyendo su creación, actualización y desactivación.
       </p>
  <p>
-      6️⃣ Financiadores e Instituciones: 💵 <br> Gestión de financiadores e instituciones relacionadas con el sistema, asegurando una coordinación efectiva.
+      🔸 6- Financiadores e Instituciones: 💵 <br> Gestión de financiadores e instituciones relacionadas con el sistema, asegurando una coordinación efectiva.
       </p>
  <p>
-      7️⃣ Citas Médicas: 📅 <br> Facilita la creación, actualización y gestión de citas médicas, con la capacidad de recuperar citas específicas por doctor o paciente.
+      🔸 7- Citas Médicas: 📅 <br> Facilita la creación, actualización y gestión de citas médicas, con la capacidad de recuperar citas específicas por doctor o paciente.
       </p>
 </div>
 
@@ -79,8 +79,8 @@
 </div>
 
 <div align='center'>
-  <b>💗 Link a Justina.io 🌍</b>
-    <a href="https://hackaton-no-country.vercel.app/">[ Justina.io ]</a>
+  <b>💗 Pagina web Justina.io 🌍</b>
+    <a href="https://hackaton-no-country.vercel.app/">[ Link a Justina.io ]</a>
 </div>
 
 <br>
@@ -117,7 +117,7 @@
         <a href="https://www.linkedin.com/in/diego-gonzalez-7937aa16/" target="_blank" rel="author">
           <img width="110" src="https://github.com/MatiasNicolasAcevedo/s13-21-ft-java/assets/109118183/f55014d5-6116-400d-81ce-f20c5a9c67d0"/>
         </a>
-          <h4 style="margin-top: 1rem;">Diego Gonzalez</h4>
+          <h4 style="margin-top: 1rem;">Diego <br>Gonzalez</h4>
         <div style='display: flex; flex-direction: column'>
           <a href="https://www.linkedin.com/in/diego-gonzalez-7937aa16/" target="_blank">
             <img style='width:8rem' src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white="/>
@@ -131,7 +131,7 @@
         <a href="https://www.linkedin.com/in/yosmarli-parica-1156461a2/" target="_blank" rel="author">
             <img width="110" src="https://media.licdn.com/dms/image/D4D35AQGUM1p4R6W3mQ/profile-framedphoto-shrink_800_800/0/1710174196054?e=1722636000&v=beta&t=aEueclBqF8yaeCc_q-cA9LWlkjAiDiMoe-DaH3N4Ltg"/>
         </a>
-            <h4 style="margin-top: 1rem;">Yosmarli Parica</h4>
+            <h4 style="margin-top: 1rem;">Yosmarli <br>Parica</h4>
         <div style='display: flex; flex-direction: column'>
           <a href="https://www.linkedin.com/in/yosmarli-parica-1156461a2/" target="_blank">
             <img style='width:8rem' src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white="/>
@@ -145,7 +145,7 @@
         <a href="https://www.linkedin.com/in/cynthia-olocco-141081295/" target="_blank" rel="author">
           <img width="110" src="https://media.licdn.com/dms/image/D4D35AQGtOGNUhun4rA/profile-framedphoto-shrink_800_800/0/1705974369420?e=1722636000&v=beta&t=z2PxE5sw3OSofzxrVArL5nNsXiQJdHE8GLjNqZHjveA"/>
         </a>
-          <h4 style="margin-top: 1rem;">Cynthia Olocco</h4>
+          <h4 style="margin-top: 1rem;">Cynthia <br>Olocco</h4>
         <div style='display: flex; flex-direction: column'>
           <a href="https://www.linkedin.com/in/cynthia-olocco-141081295/" target="_blank">
             <img style='width:8rem' src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white="/>
@@ -159,7 +159,7 @@
         <a href="https://www.linkedin.com/in/lisandroarguello/" target="_blank" rel="author">
           <img width="110" src="https://media.licdn.com/dms/image/D4D03AQHSc_bGxgB7Mg/profile-displayphoto-shrink_800_800/0/1708989057068?e=1727308800&v=beta&t=Qma-1GlogwbGkO22ZdonihmUGpKBNbk-IbmdOtiEUd0"/>
         </a>
-          <h4 style="margin-top: 1rem;">Lisandro Argüello</h4>
+          <h4 style="margin-top: 1rem;">Lisandro <br>Argüello</h4>
         <div style='display: flex; flex-direction: column'>
           <a href="https://www.linkedin.com/in/lisandroarguello/" target="_blank">
             <img style='width:8rem' src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white="/>
@@ -178,7 +178,7 @@
         <a href="https://www.linkedin.com/in/facundomarcobacigalupo/" target="_blank" rel="author">
           <img width="110" src="https://media.licdn.com/dms/image/D4D35AQHsgNvGvxuR2g/profile-framedphoto-shrink_800_800/0/1700695322101?e=1722636000&v=beta&t=7SCBF1MmESBKBkMrq5XoO5HsqTo4OgMt_FrtdUIk1uQ"/>
         </a>
-          <h4 style="margin-top: 1rem;">Facundo Marco</br>Bacigalupo</h4>
+          <h4 style="margin-top: 1rem;">Facundo <br>Bacigalupo</h4>
           <div style='display: flex; flex-direction: column'>
           <a href="https://www.linkedin.com/in/facundomarcobacigalupo/" target="_blank">
             <img style='width:8rem' src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white="/>
@@ -189,12 +189,12 @@
     <td align='center'>
       <div>
        <h4>Frontend</h4>
-        <a href="https://www.linkedin.com" target="_blank" rel="author">
-          <img width="110" src="https://ca.slack-edge.com/T02KS88FB0E-U064N6EEK6V-55792368ef2a-512"/>
+        <a href="https://www.linkedin.com/in/camilomartinez01/" target="_blank" rel="author">
+          <img width="110" src="https://media.licdn.com/dms/image/D4E35AQHcXcpH41ljFA/profile-framedphoto-shrink_800_800/0/1720022208619?e=1722639600&v=beta&t=0dTbfvSpzcAYN3b2vHQnfvXBgBtOmuGJ3SMpQWY8c_s"/>
         </a>
-          <h4 style="margin-top: 1rem;">Juan Camilo </br>Martinez Rivera</h4>
+          <h4 style="margin-top: 1rem;">Camilo <br>Martinez</h4>
         <div>
-          <a href="https://www.linkedin.com" target="_blank">
+          <a href="https://www.linkedin.com/in/camilomartinez01/" target="_blank">
             <img style='width:8rem' src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white="/>
           </a>
         </div>
@@ -220,7 +220,7 @@
         <a href="https://porfolio-matias-acevedo.web.app/" target="_blank" rel="author">
           <img width="110" src="https://avatars.githubusercontent.com/u/109118183?v=4"/>
         </a>
-          <h4 style="margin-top: 1rem;">Matias Nicolas <br>Acevedo</h4>
+          <h4 style="margin-top: 1rem;">Matias <br>Acevedo</h4>
         <div style='display: flex; flex-direction: column'>
           <a href="https://www.linkedin.com/in/matias-nicolas-acevedo/" target="_blank">
             <img style='width:8rem' src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white="/>
@@ -238,15 +238,8 @@
 </div>
 
 <div align='center'>
-   <img src="https://github.com/user-attachments/assets/24a3a6c0-4932-4972-9063-a4f552e28351" alt="mini" width="780" height="310">
-</div>
-
-<div align='center'>
-   <img src="https://github.com/user-attachments/assets/24a3a6c0-4932-4972-9063-a4f552e28351" alt="mini" width="780" height="310">
-</div>
-
-<div align='center'>
-   <img src="https://github.com/user-attachments/assets/24a3a6c0-4932-4972-9063-a4f552e28351" alt="mini" width="780" height="310">
+   <img src="https://github.com/user-attachments/assets/fabf69a8-43eb-4fb7-86a0-815ffa574794" alt="mini" >
+   <img src="https://github.com/user-attachments/assets/40751e74-8adc-4415-b4d9-0caffd8adaba" alt="mini" >
 </div>
 
 <br>
