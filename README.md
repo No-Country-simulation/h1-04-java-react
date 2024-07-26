@@ -3,7 +3,7 @@
   <!-- PROJECT LOGO -->
   <div align='center'>
     <a href="https://hackaton-no-country.vercel.app/" target="_blank">
-      <img src="https://github.com/user-attachments/assets/1ba644e2-22d3-4567-ad16-2e0e76603ef9" alt="Banner" width="576" height="432">
+      <img src="https://github.com/user-attachments/assets/1ba644e2-22d3-4567-ad16-2e0e76603ef9" alt="Banner" width="403" height="302">
     </a>
   </div> 
 
@@ -73,11 +73,21 @@
 
 <br>
 <div align='center'>
+  <h2>🌐 Deploy Frontend 🌟</h2>
+</div>
+
+<div align='center'>
+  <b>💗 Link a Justina.io 🌍</b>
+    <a href="https://hackaton-no-country.vercel.app/">[ Justina.io ]</a>
+</div>
+
+<br>
+<div align='center'>
   <h2>🎨 Diseño 🎨</h2>
 </div>
 
 <div align='center'>
-  <b>🌈 Diseño en Figma 🖌️:</b>
+  <b>🌈 Diseño en Figma 🖌️</b>
     <a href="https://www.figma.com/design/JqCxyf2Hfotlruh2glaqN6/Hackaton-Justina?node-id=25-18&t=EXq6OcZmI87kUmG0-1" target="_blank">[ Link al Diseño Figma ]</a>
 </div>
 
@@ -101,12 +111,11 @@
   <tr>
     <td align='center'>
       <div>
+       <h4>Team Leader</h4>
         <a href="https://www.linkedin.com/in/diego-gonzalez-7937aa16/" target="_blank" rel="author">
           <img width="110" src="https://github.com/MatiasNicolasAcevedo/s13-21-ft-java/assets/109118183/f55014d5-6116-400d-81ce-f20c5a9c67d0"/>
         </a>
-        <a href="https://www.linkedin.com/in/diego-gonzalez-7937aa16/" target="_blank" rel="author">
-          <h4 style="margin-top: 1rem;">Diego Gonzalez</br><small>UX-UI</small></h4>
-        </a>
+          <h4 style="margin-top: 1rem;">Diego Gonzalez</h4>
         <div style='display: flex; flex-direction: column'>
           <a href="https://www.linkedin.com/in/diego-gonzalez-7937aa16/" target="_blank">
             <img style='width:8rem' src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white="/>
@@ -116,14 +125,13 @@
     </td>
     <td align='center'>
       <div>
-        <a href="https://www.linkedin.com" target="_blank" rel="author">
-            <img width="110" src="https://github.com/user-attachments/assets/59e09368-929f-4425-9723-828509bbe580"/>
+       <h4>QA Tester</h4>
+        <a href="https://www.linkedin.com/in/yosmarli-parica-1156461a2/" target="_blank" rel="author">
+            <img width="110" src="https://media.licdn.com/dms/image/D4D35AQGUM1p4R6W3mQ/profile-framedphoto-shrink_800_800/0/1710174196054?e=1722636000&v=beta&t=aEueclBqF8yaeCc_q-cA9LWlkjAiDiMoe-DaH3N4Ltg"/>
         </a>
-        <a href="https://www.linkedin.com" target="_blank" rel="author">
-            <h4 style="margin-top: 1rem;">Nombre Apellido</br><small>Mi Rol</small></h4>
-        </a>
+            <h4 style="margin-top: 1rem;">Yosmarli Parica</h4>
         <div style='display: flex; flex-direction: column'>
-          <a href="https://www.linkedin.com" target="_blank">
+          <a href="https://www.linkedin.com/in/yosmarli-parica-1156461a2/" target="_blank">
             <img style='width:8rem' src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white="/>
           </a>
         </div>
@@ -131,14 +139,13 @@
     </td>
     <td align='center'>
       <div>
-        <a href="https://www.linkedin.com" target="_blank" rel="author">
-          <img width="110" src="https://github.com/user-attachments/assets/59e09368-929f-4425-9723-828509bbe580"/>
+       <h4>Diseño UX/UI</h4>
+        <a href="https://www.linkedin.com/in/cynthia-olocco-141081295/" target="_blank" rel="author">
+          <img width="110" src="https://media.licdn.com/dms/image/D4D35AQGtOGNUhun4rA/profile-framedphoto-shrink_800_800/0/1705974369420?e=1722636000&v=beta&t=z2PxE5sw3OSofzxrVArL5nNsXiQJdHE8GLjNqZHjveA"/>
         </a>
-        <a href="https://www.linkedin.com" target="_blank" rel="author">
-          <h4 style="margin-top: 1rem;">Nombre Apellido</br><small>Mi Rol</small></h4>
-        </a>
+          <h4 style="margin-top: 1rem;">Cynthia Olocco</h4>
         <div style='display: flex; flex-direction: column'>
-          <a href="https://www.linkedin.com" target="_blank">
+          <a href="https://www.linkedin.com/in/cynthia-olocco-141081295/" target="_blank">
             <img style='width:8rem' src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white="/>
           </a>
         </div>
@@ -146,14 +153,13 @@
     </td>
     <td align='center'>
       <div>
-        <a href="https://www.linkedin.com" target="_blank" rel="author">
-          <img width="110" src="https://github.com/user-attachments/assets/59e09368-929f-4425-9723-828509bbe580"/>
+       <h4>Diseño UX/UI</h4>
+        <a href="https://www.linkedin.com/in/lisandroarguello/" target="_blank" rel="author">
+          <img width="110" src="https://media.licdn.com/dms/image/D4D03AQHSc_bGxgB7Mg/profile-displayphoto-shrink_800_800/0/1708989057068?e=1727308800&v=beta&t=Qma-1GlogwbGkO22ZdonihmUGpKBNbk-IbmdOtiEUd0"/>
         </a>
-        <a href="https://www.linkedin.com" target="_blank" rel="author">
-          <h4 style="margin-top: 1rem;">Nombre Apellido</br><small>Mi Rol</small></h4>
-        </a>
+          <h4 style="margin-top: 1rem;">Lisandro Argüello</h4>
         <div style='display: flex; flex-direction: column'>
-          <a href="https://www.linkedin.com" target="_blank">
+          <a href="https://www.linkedin.com/in/lisandroarguello/" target="_blank">
             <img style='width:8rem' src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white="/>
           </a>
         </div>
@@ -165,14 +171,27 @@
 <table align='center'>
   <tr>
     <td align='center'>
-      <div>
-        <a href="https://www.linkedin.com" target="_blank" rel="author">
-          <img width="110" src="https://github.com/user-attachments/assets/59e09368-929f-4425-9723-828509bbe580"/>
+      <div>   
+       <h4>Frontend</h4>
+        <a href="https://www.linkedin.com/in/facundomarcobacigalupo/" target="_blank" rel="author">
+          <img width="110" src="https://media.licdn.com/dms/image/D4D35AQHsgNvGvxuR2g/profile-framedphoto-shrink_800_800/0/1700695322101?e=1722636000&v=beta&t=7SCBF1MmESBKBkMrq5XoO5HsqTo4OgMt_FrtdUIk1uQ"/>
         </a>
-        <a href="https://www.linkedin.com" target="_blank" rel="author">
-          <h4 style="margin-top: 1rem;">Nombre Apellido</br><small>Mi Rol</small></h4>
-        </a>
+          <h4 style="margin-top: 1rem;">Facundo Marco</br>Bacigalupo</h4>
           <div style='display: flex; flex-direction: column'>
+          <a href="https://www.linkedin.com/in/facundomarcobacigalupo/" target="_blank">
+            <img style='width:8rem' src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white="/>
+          </a>
+        </div>
+      </div>
+    </td>
+    <td align='center'>
+      <div>
+       <h4>Frontend</h4>
+        <a href="https://www.linkedin.com" target="_blank" rel="author">
+          <img width="110" src="https://ca.slack-edge.com/T02KS88FB0E-U064N6EEK6V-55792368ef2a-512"/>
+        </a>
+          <h4 style="margin-top: 1rem;">Juan Camilo </br>Martinez Rivera</h4>
+        <div>
           <a href="https://www.linkedin.com" target="_blank">
             <img style='width:8rem' src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white="/>
           </a>
@@ -181,27 +200,11 @@
     </td>
     <td align='center'>
       <div>
-        <a href="https://www.linkedin.com" target="_blank" rel="author">
-          <img width="110" src="https://github.com/user-attachments/assets/59e09368-929f-4425-9723-828509bbe580"/>
-        </a>
-        <a href="https://www.linkedin.com" target="_blank" rel="author">
-          <h4 style="margin-top: 1rem;">Nombre Apellido</br><small>Mi Rol</small></h4>
-        </a>
-        <div style='display: flex; flex-direction: column'>
-          <a href="https://www.linkedin.com" target="_blank">
-            <img style='width:8rem' src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white="/>
-          </a>
-        </div>
-      </div>
-    </td>
-    <td align='center'>
-      <div>
+       <h4>Backend</h4>
         <a href="https://www.linkedin.com/in/valeriedramosg/" target="_blank" rel="author">
           <img width="110" src="https://avatars.githubusercontent.com/u/129791003?v=4"/>
         </a>
-        <a href="https://www.linkedin.com/in/valeriedramosg/" target="_blank" rel="author">
-          <h4 style="margin-top: 1rem;">Valerie Ramos</br><small>Back-End</small></h4>
-        </a>
+          <h4 style="margin-top: 1rem;">Valerie <br>Ramos</h4>
         <div style='display: flex; flex-direction: column'>
           <a href="https://www.linkedin.com/in/valeriedramosg/" target="_blank">
             <img style='width:8rem' src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white="/>
@@ -211,12 +214,11 @@
     </td>
     <td align='center'>
       <div>
+       <h4>Backend</h4>
         <a href="https://porfolio-matias-acevedo.web.app/" target="_blank" rel="author">
           <img width="110" src="https://avatars.githubusercontent.com/u/109118183?v=4"/>
         </a>
-        <a href="https://porfolio-matias-acevedo.web.app/" target="_blank" rel="author">
-          <h4 style="margin-top: 1rem;">Matias Acevedo</br><small>Back-End</small></h4>
-        </a>
+          <h4 style="margin-top: 1rem;">Matias Nicolas <br>Acevedo</h4>
         <div style='display: flex; flex-direction: column'>
           <a href="https://www.linkedin.com/in/matias-nicolas-acevedo/" target="_blank">
             <img style='width:8rem' src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white="/>
@@ -257,6 +259,8 @@
 
   <div align='center'>
 
+![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white) 
+![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 ![React](https://img.shields.io/static/v1?style=for-the-badge&message=React&color=222222&logo=React&logoColor=61DAFB&label=)
 ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
@@ -278,6 +282,7 @@
 ![Hibernate](https://img.shields.io/badge/Hibernate-59666C?style=for-the-badge&logo=Hibernate&logoColor=white)
 ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white) 
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+![Cloudinary](https://img.shields.io/badge/Cloudinary-3448C5?style=for-the-badge&logo=Cloudinary&logoColor=white)
 ![Render](https://img.shields.io/badge/Render-%46E3B7.svg?style=for-the-badge&logo=render&logoColor=white)
 ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
 ![Swagger](https://img.shields.io/badge/-Swagger-%23Clojure?style=for-the-badge&logo=swagger&logoColor=white)
@@ -331,29 +336,3 @@
   </a>
 </div>
 
-
-# h1-04-java-react
-Justina.io
-
-:star2: Equipo: h1-04-java-react :star2:
-
-:small_blue_diamond:TL: <br>
-  :beginner:Diego Gonzalez
-
-:small_blue_diamond:PM:<br>
-  :beginner:Dario Romero
-
-:small_blue_diamond:QA:<br>
-  :beginner:Yosmarli Parica
-
-:small_blue_diamond:UX/UI:<br>
-  :beginner:Cynthia Olocco<br>
-  :beginner:Lisandro Argüello
-
-:small_blue_diamond:Front:<br>
-  :beginner:Facundo Marco Bacigalupo<br>
-  :beginner:Juan Camilo Martinez Rivera
-
-:small_blue_diamond:Back:<br>
-  :beginner:Matias Nicolas Acevedo<br>
-  :beginner:Valerie Ramos
