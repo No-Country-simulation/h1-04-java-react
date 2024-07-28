@@ -44,7 +44,7 @@ const Admin = () => {
     <div className="flex min-h-screen">
       {/* Sidebar */}
       <aside className={`w-64 bg-white text-black flex flex-col fixed top-0 left-0 h-full z-50 transform ${sidebarOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0 transition-transform duration-200 ease-in-out p-4`}>
-        <div className="flex justify-center mb-6">
+        <div className="flex justify-center mb-6 md:mt-4">
           <img className='w-40' src={Logo} alt="logo-justina" />
         </div>
         

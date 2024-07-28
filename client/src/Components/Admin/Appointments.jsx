@@ -17,13 +17,13 @@ const Appointments = () => {
   return (
     <div className="p-4">
       <div className="overflow-auto">
-        <div className="grid grid-cols-[auto_repeat(7,_minmax(0,_1fr))] grid-rows-[auto_repeat(12,_auto)] gap-1 min-w-max">
+        <div className="grid grid-cols-[auto_repeat(7,_minmax(0,_1fr))] grid-rows-[auto_repeat(12,_auto)] gap-3 min-w-max">
           {/* Header con los días de la semana */}
           <div className="p-2"></div>
           {daysOfWeek.map(day => (
-            <div 
-              key={day} 
-              className="w-40 h-12 bg-white rounded-tr-md rounded-br-md shadow border-l-2 border-[#bdc112] flex items-center justify-center text-center font-semibold"
+            <div
+              key={day}
+              className="w-40 h-12 bg-white rounded-tr-md rounded-br-md shadow border-l-2 border-[#bdc112] flex items-center justify-start text-right text-[#4d5e80] font-semibold pl-3"
             >
               {day}
             </div>
@@ -32,13 +32,13 @@ const Appointments = () => {
           {/* Columnas de horarios */}
           {hours.map((hour, index) => (
             <React.Fragment key={index}>
-              <div className="bg-gray-100 p-2 text-right font-semibold">
+              <div className="h-[70px] px-2.5 py-5 border-l-2 border-[#009ff5] font-semibold justify-center items-center gap-2.5 inline-flex">
                 {parseInt(hour.split(':')[0], 10) < 12 ? `${hour} AM` : `${hour} PM`}
               </div>
 
               {/* Columna de turnos para cada día */}
               {daysOfWeek.map((day, dayIndex) => (
-                <div key={dayIndex} className="border p-2 h-20">
+                <div key={dayIndex} className="border p-2 h-20 flex items-center">
                   {/* Mostrar los turnos obtenidos del backend */}
                   {appointments
                     .filter(appointment => appointment.day === day && appointment.hour === hour)
