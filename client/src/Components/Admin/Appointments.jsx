@@ -5,7 +5,6 @@ const Appointments = () => {
 
   useEffect(() => {
     // Lógica para obtener los turnos desde el backend
-    // Reemplaza esta URL con la URL real de tu API
     fetch('http://localhost:4000/api/appointments')
       .then(response => response.json())
       .then(data => setAppointments(data))
@@ -17,28 +16,29 @@ const Appointments = () => {
 
   return (
     <div className="p-4">
-      <h2 className="text-xl font-bold mb-4">Turnos</h2>
       <div className="overflow-auto">
-        <div className="grid grid-cols-8 gap-4 min-w-max space-x-4">
+        <div className="grid grid-cols-[auto_repeat(7,_minmax(0,_1fr))] grid-rows-[auto_repeat(12,_auto)] gap-1 min-w-max">
           {/* Header con los días de la semana */}
-          <div className="bg-gray-200 p-2"></div>
+          <div className="p-2"></div>
           {daysOfWeek.map(day => (
             <div 
               key={day} 
-              className="w-40 h-12 bg-white rounded-tr-md rounded-br-md shadow border-l-2 border-[#bdc112] flex items-center justify-center text-center font-semibold mx-2"
+              className="w-40 h-12 bg-white rounded-tr-md rounded-br-md shadow border-l-2 border-[#bdc112] flex items-center justify-center text-center font-semibold"
             >
               {day}
             </div>
           ))}
 
-          {/* Columnas de horarios y turnos */}
+          {/* Columnas de horarios */}
           {hours.map((hour, index) => (
             <React.Fragment key={index}>
-              {/* Columna de horas */}
-              <div className="bg-gray-100 p-2 text-right font-semibold">{hour}</div>
+              <div className="bg-gray-100 p-2 text-right font-semibold">
+                {parseInt(hour.split(':')[0], 10) < 12 ? `${hour} AM` : `${hour} PM`}
+              </div>
+
               {/* Columna de turnos para cada día */}
               {daysOfWeek.map((day, dayIndex) => (
-                <div key={dayIndex} className="border p-2 h-20 min-w-max">
+                <div key={dayIndex} className="border p-2 h-20">
                   {/* Mostrar los turnos obtenidos del backend */}
                   {appointments
                     .filter(appointment => appointment.day === day && appointment.hour === hour)

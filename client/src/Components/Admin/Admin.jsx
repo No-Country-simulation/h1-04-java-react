@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FaBars, FaCalendarAlt, FaUser, FaUserMd, FaExchangeAlt, FaCog, FaSignOutAlt } from 'react-icons/fa'; // Importa los íconos necesarios
+import { FaBars, FaCalendarAlt, FaUser, FaUserMd, FaExchangeAlt, FaCog, FaSignOutAlt } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import Appointments from './Appointments';
 import Patients from './Patients';
@@ -41,9 +41,9 @@ const Admin = () => {
   };
 
   return (
-    <div className="flex h-screen">
+    <div className="flex min-h-screen">
       {/* Sidebar */}
-      <aside className={`w-64 bg-white text-black flex flex-col absolute md:relative transform ${sidebarOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0 transition-transform duration-200 ease-in-out p-4`}>
+      <aside className={`w-64 bg-white text-black flex flex-col fixed top-0 left-0 h-full z-50 transform ${sidebarOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0 transition-transform duration-200 ease-in-out p-4`}>
         <div className="flex justify-center mb-6">
           <img className='w-40' src={Logo} alt="logo-justina" />
         </div>
@@ -69,12 +69,12 @@ const Admin = () => {
       </aside>
 
       {/* Mobile Menu Button */}
-      <button className="md:hidden w-10 h-10 absolute top-3 left-1 bg-white flex items-center justify-center" onClick={() => setSidebarOpen(!sidebarOpen)}>
+      <button className="md:hidden w-10 h-10 fixed top-3 left-1 bg-white flex items-center justify-center z-50" onClick={() => setSidebarOpen(!sidebarOpen)}>
         <FaBars />
       </button>
 
       {/* Main Content */}
-      <main className="flex-1 bg-gray-100 p-6">
+      <main className="flex-1 bg-gray-100 p-6 md:ml-64"> {/* Aca necesito que cuando el break point sea mobile el ml-64 este en 0 */}
         {renderComponent()}
       </main>
     </div>
