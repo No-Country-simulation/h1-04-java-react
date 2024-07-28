@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { FaBars } from 'react-icons/fa';
+import { FaBars, FaCalendarAlt, FaUser, FaUserMd, FaExchangeAlt, FaCog, FaSignOutAlt } from 'react-icons/fa'; // Importa los íconos necesarios
+import { useNavigate } from 'react-router-dom';
 import Appointments from './Appointments';
 import Patients from './Patients';
 import Doctors from './Doctors';
@@ -11,10 +12,15 @@ import './admin.css';
 const Admin = () => {
   const [activeComponent, setActiveComponent] = useState('Appointments');
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const navigate = useNavigate();
 
   const handleMenuClick = (component) => {
     setActiveComponent(component);
-    setSidebarOpen(false); // Cierra el menú después de seleccionar una opción
+    setSidebarOpen(false);
+  };
+
+  const handleLogout = () => {
+    navigate('/');
   };
 
   const renderComponent = () => {
@@ -42,11 +48,24 @@ const Admin = () => {
           <img className='w-40' src={Logo} alt="logo-justina" />
         </div>
         
-        <button className="p-4 hover:bg-[#d9f2ff] hover:text-[#0087d0]" onClick={() => handleMenuClick('Appointments')}>Turnos</button>
-        <button className="p-4 hover:bg-[#d9f2ff] hover:text-[#0087d0]" onClick={() => handleMenuClick('Patients')}>Pacientes</button>
-        <button className="p-4 hover:bg-[#d9f2ff] hover:text-[#0087d0]" onClick={() => handleMenuClick('Doctors')}>Médicos</button>
-        <button className="p-4 hover:bg-[#d9f2ff] hover:text-[#0087d0]" onClick={() => handleMenuClick('CrossTransplant')}>Transplante Cruzado</button>
-        <button className="p-4 hover:bg-[#d9f2ff] hover:text-[#0087d0]" onClick={() => handleMenuClick('Settings')}>Configuración</button>
+        <button className="flex items-center p-4 pl-6 hover:bg-[#d9f2ff] hover:text-[#0087d0]" onClick={() => handleMenuClick('Appointments')}>
+          <FaCalendarAlt className="mr-2" /> Turnos
+        </button>
+        <button className="flex items-center p-4 pl-6 hover:bg-[#d9f2ff] hover:text-[#0087d0]" onClick={() => handleMenuClick('Patients')}>
+          <FaUser className="mr-2" /> Pacientes
+        </button>
+        <button className="flex items-center p-4 pl-6 hover:bg-[#d9f2ff] hover:text-[#0087d0]" onClick={() => handleMenuClick('Doctors')}>
+          <FaUserMd className="mr-2" /> Médicos
+        </button>
+        <button className="flex items-center p-4 pl-6 hover:bg-[#d9f2ff] hover:text-[#0087d0]" onClick={() => handleMenuClick('CrossTransplant')}>
+          <FaExchangeAlt className="mr-2" /> Transplante Cruzado
+        </button>
+        <button className="flex items-center p-4 pl-6 hover:bg-[#d9f2ff] hover:text-[#0087d0]" onClick={() => handleMenuClick('Settings')}>
+          <FaCog className="mr-2" /> Configuración
+        </button>
+        <button className="flex items-center p-4 pl-6 hover:bg-[#fde0e0] hover:text-red-600 mt-4" onClick={handleLogout}>
+          <FaSignOutAlt className="mr-2" /> Cerrar Sesión
+        </button>
       </aside>
 
       {/* Mobile Menu Button */}
