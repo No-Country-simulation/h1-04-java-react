@@ -79,7 +79,7 @@ const Patients = () => {
               <th className="py-2 px-4 text-left">Nombre</th>
               <th className="py-2 px-4 text-left">Email</th>
               <th className="py-2 px-4 text-left">Teléfono</th>
-              <th className="py-2 px-4 text-left">Nro Documento</th>
+              <th className="py-2 px-4 text-left min-w-40">Nro Documento</th>
               <th className="py-2 px-4 text-left">Obra Social</th>
               <th className="py-2 px-4 text-left">Activo</th>
               <th className="py-2 px-4 text-left">Acciones</th>
