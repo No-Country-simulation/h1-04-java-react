@@ -79,6 +79,11 @@ const Login = () => {
               Paciente
             </button>
           </Link>
+          <Link to={"/admin"}>
+            <button className='shadow w-32 bg-blue-300 text-white py-2 rounded'>
+              Admin
+            </button>
+          </Link>
         </div>
         <div className='w-full max-w-md bg-white rounded-lg border shadow-sm'>
           <div className='p-7 space-y-5'>
