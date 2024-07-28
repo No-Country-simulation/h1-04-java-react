@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NavBar from "../Components/NavBar/NavBar.jsx";
 import Footer from "../Components/Footer/Footer.jsx";
 import Login from "../Components/Login/Login.jsx";
-import Register from "../Components/Register/Register.jsx";
+import Admin from "../Components/Admin/Admin.jsx";
 import Error404 from "../Components/Error404/Error404.jsx";
 import HomePatient from "../Components/Patient/HomePatient/HomePaciente.jsx";
 import Patients from "../Components/Doctor/Patients/Patients.jsx";
@@ -46,7 +46,15 @@ const Router = () => {
             </PatientLayout>
           }
         />
-        <Route exact path='/register' element={<Register />} />
+
+        {/* Admin */}
+        <Route 
+        exact 
+        path='/admin' 
+        element={
+        <Admin />
+        } 
+        />
 
         {/* Patient */}
         <Route
