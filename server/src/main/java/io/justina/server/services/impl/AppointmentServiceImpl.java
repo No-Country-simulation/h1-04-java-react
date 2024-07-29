@@ -5,7 +5,8 @@ import io.justina.server.dtos.response.AppointmentResponseDTO;
 import io.justina.server.entities.Appointment;
 import io.justina.server.entities.Doctor;
 import io.justina.server.entities.Patient;
-import io.justina.server.exceptions.ConflictException;
+import io.justina.server.exceptions.DoctorNotAvailableException;
+import io.justina.server.exceptions.PatientNotAvailableException;
 import io.justina.server.exceptions.ResourceNotFoundException;
 import io.justina.server.repositories.AppointmentRepository;
 import io.justina.server.repositories.DoctorRepository;
@@ -39,12 +40,12 @@ public class AppointmentServiceImpl implements AppointmentService {
 
         boolean doctorAvailable = !appointmentRepository.existsByDoctorAndAppointmentDayAndAppointmentHour(doctor, request.getAppointmentDay(), request.getAppointmentHour());
         if (!doctorAvailable) {
-            throw new ConflictException("The doctor is not available at the selected time.");
+            throw new DoctorNotAvailableException("The doctor is not available at the selected time.");
         }
 
         boolean patientHasAppointment = appointmentRepository.existsByPatientAndAppointmentDayAndAppointmentHour(patient, request.getAppointmentDay(), request.getAppointmentHour());
         if (patientHasAppointment) {
-            throw new ConflictException("The patient already has an appointment at the selected time.");
+            throw new PatientNotAvailableException("The patient already has an appointment at the selected time.");
         }
 
         Appointment appointment = Appointment.builder()
@@ -112,5 +113,14 @@ public class AppointmentServiceImpl implements AppointmentService {
         List<Appointment> appointments = appointmentRepository.findByPatientId(patientId);
         return appointments.stream().map(AppointmentResponseDTO::new).collect(Collectors.toList());
     }
+
+    @Override
+    public List<AppointmentResponseDTO> getAllAppointments() {
+        List<Appointment> appointments = appointmentRepository.findAll();
+        return appointments.stream()
+                .map(AppointmentResponseDTO::new)
+                .collect(Collectors.toList());
+    }
+
 
 }

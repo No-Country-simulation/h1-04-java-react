@@ -3,6 +3,8 @@ package io.justina.server.controllers;
 import io.justina.server.dtos.request.AppointmentRequestDTO;
 import io.justina.server.dtos.response.AppointmentResponseDTO;
 import io.justina.server.exceptions.ConflictException;
+import io.justina.server.exceptions.DoctorNotAvailableException;
+import io.justina.server.exceptions.PatientNotAvailableException;
 import io.justina.server.exceptions.ResourceNotFoundException;
 import io.justina.server.services.AppointmentService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -12,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -36,15 +37,17 @@ public class AppointmentController {
         } catch (ResourceNotFoundException e) {
             response.put("message", "Doctor or Patient not found");
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
-        } catch (ConflictException e) {
-            response.put("message", "The selected time slot is not available for the doctor or the patient already has an appointment at that time.");
+        } catch (DoctorNotAvailableException e) {
+            response.put("message", e.getMessage());
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(response);
+        } catch (PatientNotAvailableException e) {
+            response.put("message", e.getMessage());
             return ResponseEntity.status(HttpStatus.CONFLICT).body(response);
         } catch (Exception e) {
             response.put("message", "Internal server error");
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
-
 
     @PutMapping("/updateAppointment/{appointmentId}")
     @Operation(summary = "Update an appointment", description = "Update information of an existing appointment by ID")
@@ -105,6 +108,17 @@ public class AppointmentController {
     public ResponseEntity<List<AppointmentResponseDTO>> getAppointmentsByPatientId(@PathVariable Long patientId) {
         try {
             List<AppointmentResponseDTO> appointments = appointmentService.getAppointmentsByPatientId(patientId);
+            return ResponseEntity.ok(appointments);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
+    }
+
+    @GetMapping("/getAll")
+    @Operation(summary = "Get all appointments", description = "Retrieve a list of all appointments")
+    public ResponseEntity<List<AppointmentResponseDTO>> getAllAppointments() {
+        try {
+            List<AppointmentResponseDTO> appointments = appointmentService.getAllAppointments();
             return ResponseEntity.ok(appointments);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
