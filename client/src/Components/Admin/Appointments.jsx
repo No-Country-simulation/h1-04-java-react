@@ -4,11 +4,32 @@ const Appointments = () => {
   const [appointments, setAppointments] = useState([]);
 
   useEffect(() => {
-    // Lógica para obtener los turnos desde el backend
-    fetch('http://localhost:4000/api/appointments')
-      .then(response => response.json())
-      .then(data => setAppointments(data))
-      .catch(error => console.error('Error fetching appointments:', error));
+    // Datos hardcodeados
+    const hardcodedAppointments = [
+      { id: 1, day: 'Lunes', hour: '09:00', doctorName: 'Dr. Juan Pérez', patientName: 'Ana Gómez', appointmentType: 'Consulta' },
+      { id: 2, day: 'Lunes', hour: '11:00', doctorName: 'Dr. María López', patientName: 'Carlos Fernández', appointmentType: 'Seguimiento' },
+      { id: 3, day: 'Lunes', hour: '07:00', doctorName: 'Dr. Pedro García', patientName: 'Laura Martínez', appointmentType: 'Laboratorio' },
+      { id: 4, day: 'Martes', hour: '10:00', doctorName: 'Dr. Elena Ruiz', patientName: 'Miguel Rodríguez', appointmentType: 'Consulta' },
+      { id: 5, day: 'Martes', hour: '13:00', doctorName: 'Dr. Ricardo Sánchez', patientName: 'Lucía Morales', appointmentType: 'Psicoterapia' },
+      { id: 6, day: 'Martes', hour: '16:00', doctorName: 'Dr. Juan Pérez', patientName: 'Ana Gómez', appointmentType: 'Laboratorio' },
+      { id: 7, day: 'Miércoles', hour: '09:00', doctorName: 'Dr. María López', patientName: 'Carlos Fernández', appointmentType: 'Cirugía' },
+      { id: 8, day: 'Miércoles', hour: '11:00', doctorName: 'Dr. Pedro García', patientName: 'Laura Martínez', appointmentType: 'Seguimiento' },
+      { id: 9, day: 'Miércoles', hour: '14:00', doctorName: 'Dr. Elena Ruiz', patientName: 'Miguel Rodríguez', appointmentType: 'Consulta a distancia' },
+      { id: 10, day: 'Jueves', hour: '10:00', doctorName: 'Dr. Ricardo Sánchez', patientName: 'Lucía Morales', appointmentType: 'Consulta' },
+      { id: 11, day: 'Jueves', hour: '13:00', doctorName: 'Dr. Juan Pérez', patientName: 'Ana Gómez', appointmentType: 'Cirugía' },
+      { id: 12, day: 'Jueves', hour: '07:00', doctorName: 'Dr. María López', patientName: 'Carlos Fernández', appointmentType: 'Laboratorio' },
+      { id: 13, day: 'Viernes', hour: '09:00', doctorName: 'Dr. Pedro García', patientName: 'Laura Martínez', appointmentType: 'Consulta' },
+      { id: 14, day: 'Viernes', hour: '12:00', doctorName: 'Dr. Elena Ruiz', patientName: 'Miguel Rodríguez', appointmentType: 'Psicoterapia' },
+      { id: 15, day: 'Viernes', hour: '16:00', doctorName: 'Dr. Ricardo Sánchez', patientName: 'Lucía Morales', appointmentType: 'Cirugía' },
+      { id: 16, day: 'Sábado', hour: '08:00', doctorName: 'Dr. Juan Pérez', patientName: 'Ana Gómez', appointmentType: 'Consulta' },
+      { id: 17, day: 'Sábado', hour: '10:00', doctorName: 'Dr. María López', patientName: 'Carlos Fernández', appointmentType: 'Seguimiento' },
+      { id: 18, day: 'Sábado', hour: '14:00', doctorName: 'Dr. Pedro García', patientName: 'Laura Martínez', appointmentType: 'Laboratorio' },
+      { id: 19, day: 'Domingo', hour: '09:00', doctorName: 'Dr. Elena Ruiz', patientName: 'Miguel Rodríguez', appointmentType: 'Cirugía' },
+      { id: 20, day: 'Domingo', hour: '11:00', doctorName: 'Dr. Ricardo Sánchez', patientName: 'Lucía Morales', appointmentType: 'Psicoterapia' },
+      { id: 21, day: 'Domingo', hour: '13:00', doctorName: 'Dr. Juan Pérez', patientName: 'Ana Gómez', appointmentType: 'Laboratorio' }
+    ];
+
+    setAppointments(hardcodedAppointments);
   }, []);
 
   const daysOfWeek = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
@@ -23,7 +44,7 @@ const Appointments = () => {
           {daysOfWeek.map(day => (
             <div
               key={day}
-              className="w-40 h-12 bg-white rounded-tr-md rounded-br-md shadow border-l-2 border-[#bdc112] flex items-center justify-start text-right text-[#4d5e80] font-semibold pl-3"
+              className="w-48 h-12 bg-white rounded-tr-md rounded-br-md shadow border-l-2 border-[#bdc112] flex items-center justify-start text-right text-[#4d5e80] font-semibold pl-3"
             >
               {day}
             </div>
@@ -39,12 +60,14 @@ const Appointments = () => {
               {/* Columna de turnos para cada día */}
               {daysOfWeek.map((day, dayIndex) => (
                 <div key={dayIndex} className="border p-2 h-20 flex items-center">
-                  {/* Mostrar los turnos obtenidos del backend */}
+                  {/* Mostrar los turnos hardcodeados */}
                   {appointments
                     .filter(appointment => appointment.day === day && appointment.hour === hour)
                     .map(filteredAppointment => (
-                      <div key={filteredAppointment.id} className="bg-blue-200 p-2 mb-2 rounded">
-                        {filteredAppointment.patientName}
+                      <div key={filteredAppointment.id} className="bg-[#f9ddfa] w-full h-full rounded font-semibold text-gray-600 text-sm">
+                        <div>Medico: {filteredAppointment.doctorName}</div>
+                        <div>Paciente: {filteredAppointment.patientName}</div>
+                        <div>Turno: {filteredAppointment.appointmentType}</div>
                       </div>
                     ))}
                 </div>

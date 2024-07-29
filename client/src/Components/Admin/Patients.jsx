@@ -4,11 +4,11 @@ import { FaSearch } from 'react-icons/fa'; // Importa el ícono de lupa
 const Patients = () => {
   // Datos hardcodeados
   const initialPatients = [
-    { id: 1, name: 'Juan Pérez', email: 'juan.perez@example.com', phone: '123-456-7890', docNumber: '12345678', insurance: 'Obra Social A', active: true },
-    { id: 2, name: 'Ana Gómez', email: 'ana.gomez@example.com', phone: '098-765-4321', docNumber: '87654321', insurance: 'Obra Social B', active: false },
-    { id: 3, name: 'María Rodríguez', email: 'maria.rodriguez@example.com', phone: '222-333-4444', docNumber: '23456789', insurance: 'Obra Social C', active: true },
-    { id: 4, name: 'Carlos Fernández', email: 'carlos.fernandez@example.com', phone: '555-666-7777', docNumber: '34567890', insurance: 'Obra Social D', active: true },
-    { id: 5, name: 'Laura Martínez', email: 'laura.martinez@example.com', phone: '888-999-0000', docNumber: '45678901', insurance: 'Obra Social E', active: false }
+    { id: 1, name: 'Juan Pérez', email: 'juan.perez@example.com', phone: '123-456-7890', docNumber: '12345678', insurance: 'OSDE', active: true },
+    { id: 2, name: 'Ana Gómez', email: 'ana.gomez@example.com', phone: '098-765-4321', docNumber: '87654321', insurance: 'Medicus', active: false },
+    { id: 3, name: 'María Rodríguez', email: 'maria.rodriguez@example.com', phone: '222-333-4444', docNumber: '23456789', insurance: 'Swiss Medical', active: true },
+    { id: 4, name: 'Carlos Fernández', email: 'carlos.fernandez@example.com', phone: '555-666-7777', docNumber: '34567890', insurance: 'Galeno', active: true },
+    { id: 5, name: 'Laura Martínez', email: 'laura.martinez@example.com', phone: '888-999-0000', docNumber: '45678901', insurance: 'Sancor Salud', active: false }
   ];
 
   const [patients, setPatients] = useState(initialPatients);
@@ -79,7 +79,6 @@ const Patients = () => {
               <th className="py-2 px-4 text-left">Nombre</th>
               <th className="py-2 px-4 text-left">Email</th>
               <th className="py-2 px-4 text-left">Teléfono</th>
-              <th className="py-2 px-4 text-left">Nro Documento</th>
               <th className="py-2 px-4 text-left">Obra Social</th>
               <th className="py-2 px-4 text-left">Activo</th>
               <th className="py-2 px-4 text-left">Acciones</th>
@@ -91,7 +90,6 @@ const Patients = () => {
                 <td className="py-2 px-4 h-full overflow-hidden whitespace-nowrap">{patient.name}</td>
                 <td className="py-2 px-4 h-full overflow-hidden whitespace-nowrap">{patient.email}</td>
                 <td className="py-2 px-4 h-full overflow-hidden whitespace-nowrap">{patient.phone}</td>
-                <td className="py-2 px-4 h-full overflow-hidden whitespace-nowrap">{patient.docNumber}</td>
                 <td className="py-2 px-4 h-full overflow-hidden whitespace-nowrap">{patient.insurance}</td>
                 <td className="py-2 px-4 h-full overflow-hidden whitespace-nowrap">{patient.active ? 'Sí' : 'No'}</td>
                 <td className="py-2 px-4 h-full flex">
