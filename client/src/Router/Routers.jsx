@@ -18,6 +18,7 @@ import PreviousConsultation from "../Components/Doctor/PreviousConsultation/Prev
 import Calendar from "../Components/Doctor/Calendar/Calendar.jsx";
 import Recipe from "../Components/Doctor/Recipe/Recipe.jsx";
 import QueryCompletion from "../Components/Doctor/QueryCompletion/QueryCompletion.jsx";
+import Landing from "../Components/Landing/Landing.jsx";
 
 const PatientLayout = ({ children }) => (
   <div className='flex flex-col min-h-screen bg-white'>
@@ -46,15 +47,11 @@ const Router = () => {
             </PatientLayout>
           }
         />
+        {/* Landing Page */}
+        <Route exact path='/landing' element={<Landing />} />
 
         {/* Admin */}
-        <Route 
-        exact 
-        path='/admin' 
-        element={
-        <Admin />
-        } 
-        />
+        <Route exact path='/admin' element={<Admin />} />
 
         {/* Patient */}
         <Route
