@@ -22,7 +22,9 @@ const CrossTransplant = () => {
       <h2 className="text-xl font-semibold mb-8">Transplante Cruzado</h2>
 
       <div className="mb-4">
-        <label htmlFor="email" className="block text-lg font-medium text-gray-700">Introduce un correo electrónico para enviar toda la documentación sobre el transplante cruzado:</label>
+        <label htmlFor="email" className="block text-lg font-medium text-gray-700">
+          Introduce un correo electrónico para enviar toda la documentación sobre el transplante cruzado:
+        </label>
         <input
           type="email"
           id="email"
@@ -36,7 +38,7 @@ const CrossTransplant = () => {
       <div className="mb-6">
         <button
           onClick={handleSendEmail}
-          className="bg-blue-500 text-white px-4 py-2 rounded-md"
+          className="bg-blue-500 text-white px-4 py-2 rounded-md transition-colors duration-300 hover:bg-blue-600"
         >
           Enviar Información
         </button>
@@ -53,7 +55,7 @@ const CrossTransplant = () => {
           href="https://docs.google.com/document/d/1e6rso6dJwnTw1SjUf-7SHkH8JYUXbMrm/edit?usp=sharing&ouid=104542491199901111562&rtpof=true&sd=true"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-500 hover:underline"
+          className="text-pink-500 hover:underline text-lg font-semibold"
         >
           Consentimiento Cruzado - Solicitud Registro
         </a>
@@ -64,7 +66,7 @@ const CrossTransplant = () => {
           href="https://www.argentina.gob.ar/sites/default/files/ley-27447.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-500 hover:underline"
+          className="text-pink-500 hover:underline text-lg font-semibold"
         >
           Ley Justina | Ley 27.447
         </a>
@@ -75,7 +77,7 @@ const CrossTransplant = () => {
           href="https://drive.google.com/file/d/1pVNibLTbfz3hADk3_1M8yB7jH7LXsAGI/view?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-500 hover:underline"
+          className="text-pink-500 hover:underline text-lg font-semibold"
         >
           Infografía sobre el Transplante Cruzado
         </a>
