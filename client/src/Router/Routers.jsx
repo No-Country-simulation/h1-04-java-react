@@ -41,9 +41,7 @@ const Router = () => {
           exact
           path='/'
           element={
-            <PatientLayout>
-              <Login />
-            </PatientLayout>
+            <Login />
           }
         />
         <Route exact path='/register' element={<Register />} />

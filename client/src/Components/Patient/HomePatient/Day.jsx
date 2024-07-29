@@ -1,7 +1,7 @@
 import PropTypes from "prop-types"
 import arrowRight from "../../../Assets/Imgs/arrowRight.png"
 
-const Day = ({activity, time, href}) => {
+const Day = ({activity, time, href, backColor}) => {
     return (
         <div className="bg-stone-300 font-bold flex justify-between p-2 m-3">
             <p className="ml-2">{activity}</p>

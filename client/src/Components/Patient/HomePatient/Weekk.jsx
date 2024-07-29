@@ -1,5 +1,5 @@
-import daysWeek from "../../../Assets/Imgs/daysWeek.png";
-import day from "../../../Assets/Imgs/urgency.png";
+import daysWeek from "../../../Assets/Imgs/daysWeekPink.png";
+import day from "../../../Assets/Imgs/dayWeekPink.png";
 
 const Week = () => {
     let today = new Date().getDay();
@@ -17,7 +17,7 @@ const Week = () => {
     return (
         <div className="flex justify-around p-4">
             {days.map(dayObj => (
-                <div key={dayObj.id} className="text-center">
+                <div key={dayObj.id} className="text-center" style={{color:"#EA526F"}}>
                     <img src={today === dayObj.id ? day : daysWeek} alt={dayObj.label} className="w-6 h-6 ml-1" />
                     <p>{dayObj.label}</p>
                 </div>
