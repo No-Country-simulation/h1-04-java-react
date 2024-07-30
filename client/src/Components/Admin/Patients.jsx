@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { FaSearch } from 'react-icons/fa'; // Importa el ícono de lupa
+import { FaSearch } from 'react-icons/fa';
+import Modal from './Modal';
 
 const Patients = () => {
-  // Datos hardcodeados
   const initialPatients = [
     { id: 1, name: 'Juan Pérez', email: 'juan.perez@example.com', phone: '123-456-7890', docNumber: '12345678', insurance: 'OSDE', active: true },
     { id: 2, name: 'Ana Gómez', email: 'ana.gomez@example.com', phone: '098-765-4321', docNumber: '87654321', insurance: 'Medicus', active: false },
@@ -13,32 +13,25 @@ const Patients = () => {
 
   const [patients, setPatients] = useState(initialPatients);
   const [searchTerm, setSearchTerm] = useState('');
+  const [showAddModal, setShowAddModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [currentPatient, setCurrentPatient] = useState(null);
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
   };
 
   const handleAddPatient = () => {
-    const newPatient = {
-      id: patients.length + 1,
-      name: 'Nuevo Paciente',
-      email: 'nuevo.paciente@example.com',
-      phone: '111-222-3333',
-      docNumber: '56789012',
-      insurance: 'Obra Social F',
-      active: true
-    };
-    setPatients([...patients, newPatient]);
+    setShowAddModal(true);
   };
 
-  const handleEditPatient = (id) => {
-    // Aquí iría la lógica para editar el paciente
-    alert(`Editar paciente con ID: ${id}`);
+  const handleEditPatient = (patient) => {
+    setCurrentPatient(patient);
+    setShowEditModal(true);
   };
 
   const handleDeletePatient = (id) => {
-    // Aquí iría la lógica para eliminar el paciente
-    alert(`Eliminar paciente con ID: ${id}`);
+    setPatients(patients.filter(patient => patient.id !== id));
   };
 
   const filteredPatients = patients.filter(patient =>
@@ -47,11 +40,11 @@ const Patients = () => {
 
   return (
     <div className="p-4 font-roboto">
-      <h2 className="text-xl font-semibold mb-4">Lista de Pacientes</h2>
+      <h2 className="text-xl font-semibold mb-4">Pacientes</h2>
 
       {/* Barra de búsqueda */}
       <div className="mb-4 flex items-center border border-[#4763e4] rounded-lg">
-        <FaSearch className="ml-2 text-black mr-2"/>
+        <FaSearch className="ml-2 text-black mr-2" />
         <input
           type="text"
           placeholder="Buscar por apellido"
@@ -65,7 +58,7 @@ const Patients = () => {
       <div className="mb-4">
         <button
           onClick={handleAddPatient}
-          className="bg-blue-500 text-white px-4 py-2 rounded flex items-center"
+          className="bg-blue-500 hover:bg-[#8bd8ff] text-white hover:text-black px-4 py-2 rounded flex items-center"
         >
           <span className="mr-2">+</span> Agregar un nuevo paciente
         </button>
@@ -76,32 +69,32 @@ const Patients = () => {
         <table className="min-w-full bg-white border border-gray-200">
           <thead>
             <tr>
-              <th className="py-2 px-4 text-left">Nombre</th>
-              <th className="py-2 px-4 text-left">Email</th>
-              <th className="py-2 px-4 text-left">Teléfono</th>
-              <th className="py-2 px-4 text-left">Obra Social</th>
-              <th className="py-2 px-4 text-left">Activo</th>
-              <th className="py-2 px-4 text-left">Acciones</th>
+              <th className="py-1 px-3 text-left">Nombre</th>
+              <th className="py-1 px-3 text-left">Email</th>
+              <th className="py-1 px-3 text-left">Teléfono</th>
+              <th className="py-1 px-3 text-left">Obra Social</th>
+              <th className="py-1 px-3 text-left">Activo</th>
+              <th className="py-1 px-3 text-left pl-7">Acciones</th>
             </tr>
           </thead>
           <tbody>
             {filteredPatients.map(patient => (
-              <tr key={patient.id} className="h-16 border border-zinc-100"> {/* Altura fija para cada fila */}
-                <td className="py-2 px-4 h-full overflow-hidden whitespace-nowrap">{patient.name}</td>
-                <td className="py-2 px-4 h-full overflow-hidden whitespace-nowrap">{patient.email}</td>
-                <td className="py-2 px-4 h-full overflow-hidden whitespace-nowrap">{patient.phone}</td>
-                <td className="py-2 px-4 h-full overflow-hidden whitespace-nowrap">{patient.insurance}</td>
-                <td className="py-2 px-4 h-full overflow-hidden whitespace-nowrap">{patient.active ? 'Sí' : 'No'}</td>
-                <td className="py-2 px-4 h-full flex">
+              <tr key={patient.id} className="h-12 border border-zinc-100 justify-center items-center">
+                <td className="py-1 px-3 h-full overflow-hidden whitespace-nowrap">{patient.name}</td>
+                <td className="py-1 px-3 h-full overflow-hidden whitespace-nowrap">{patient.email}</td>
+                <td className="py-1 px-3 h-full overflow-hidden whitespace-nowrap">{patient.phone}</td>
+                <td className="py-1 px-3 h-full overflow-hidden whitespace-nowrap">{patient.insurance}</td>
+                <td className="py-1 px-3 h-full overflow-hidden whitespace-nowrap">{patient.active ? 'Sí' : 'No'}</td>
+                <td className="py-1 px-3 h-full flex flex-row justify-center items-center">
                   <button
-                    onClick={() => handleEditPatient(patient.id)}
-                    className="p-2 mx-1 rounded-md border border-[#0087d0] text-[#0087d0] flex justify-center items-center hover:bg-[#f0faff]"
+                    onClick={() => handleEditPatient(patient)}
+                    className="p-1 mx-1 rounded-md border border-[#0087d0] text-[#0087d0] flex justify-center items-center hover:bg-[#f0faff]"
                   >
                     <div className="w-16 text-base font-normal leading-normal tracking-wide">Editar</div>
                   </button>
                   <button
                     onClick={() => handleDeletePatient(patient.id)}
-                    className="p-2 mx-1 rounded-md border bg-[#e4626f] border-[#e4626f] text-white hover:text-red-600 flex justify-center items-center hover:bg-[#fde0e0]"
+                    className="p-1 mx-1 rounded-md border bg-[#e4626f] border-[#e4626f] text-white hover:text-red-600 flex justify-center items-center hover:bg-[#fde0e0]"
                   >
                     <div className="w-16 text-base font-normal leading-normal tracking-wide">Eliminar</div>
                   </button>
@@ -111,6 +104,24 @@ const Patients = () => {
           </tbody>
         </table>
       </div>
+
+      {showAddModal && (
+        <Modal onClose={() => setShowAddModal(false)}>
+          <h2 className="text-lg font-semibold mb-4">Agregar Paciente</h2>
+          {/* Formulario de agregar paciente */}
+          {/* Completar con los inputs necesarios */}
+          <button onClick={() => setShowAddModal(false)} className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Cerrar</button>
+        </Modal>
+      )}
+
+      {showEditModal && (
+        <Modal onClose={() => setShowEditModal(false)}>
+          <h2 className="text-lg font-semibold mb-4">Editar Paciente</h2>
+          {/* Formulario de editar paciente */}
+          {/* Completar con los inputs necesarios */}
+          <button onClick={() => setShowEditModal(false)} className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Cerrar</button>
+        </Modal>
+      )}
     </div>
   );
 }
