@@ -6,6 +6,7 @@
     margin-bottom: 20px;
     font-size: 20px;
     font-weight: 700;
+    color: #25CED1;
 }
 .containerTitle img{
     width: 25px;
@@ -26,12 +27,13 @@
 
 .treatmentsStyles{
     text-align: center;
-    background-color:#D9D9D9;
-    color: #000000;
     font-weight: 700;
     padding: 17px;
     flex: 1 1 calc(33.333% - 20px);
     box-sizing: border-box;
+    color: #EA526F;
+    border: 2px solid #EA526F;
+    border-radius: 20px;
 }
 
 .treatmentsStyles img{
@@ -43,13 +45,13 @@
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
     .treatmentsStyles {
         flex: 1 1 calc(50% - 20px); /* Dos elementos por fila en pantallas medianas */
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 380px) {
     .treatmentsStyles {
         flex: 1 1 calc(100% - 20px); /* Un elemento por fila en pantallas pequeñas */
     }

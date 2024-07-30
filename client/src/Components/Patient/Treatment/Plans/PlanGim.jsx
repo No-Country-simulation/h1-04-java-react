@@ -73,6 +73,10 @@ const PlanGim = () => {
                     </div>
                     <p>¿Por qué te sentiste así?</p>
                     <textarea name="text" id="text"></textarea>
+                    <div className="feedBackButtons">
+                        <button>Cancelar</button>
+                        <button>Confirmar</button>
+                    </div>
                 </section>
             </div>
             

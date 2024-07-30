@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NavBar from "../Components/NavBar/NavBar.jsx";
 import Footer from "../Components/Footer/Footer.jsx";
 import Login from "../Components/Login/Login.jsx";
-import Admin from "../Components/Admin/Admin.jsx";
+import Register from "../Components/Register/Register.jsx";
 import Error404 from "../Components/Error404/Error404.jsx";
 import HomePatient from "../Components/Patient/HomePatient/HomePaciente.jsx";
 import Patients from "../Components/Doctor/Patients/Patients.jsx";
@@ -18,6 +18,7 @@ import PreviousConsultation from "../Components/Doctor/PreviousConsultation/Prev
 import Calendar from "../Components/Doctor/Calendar/Calendar.jsx";
 import Recipe from "../Components/Doctor/Recipe/Recipe.jsx";
 import QueryCompletion from "../Components/Doctor/QueryCompletion/QueryCompletion.jsx";
+import Admin from "../Components/Admin/Admin.jsx";
 
 const PatientLayout = ({ children }) => (
   <div className='flex flex-col min-h-screen bg-white'>
@@ -44,15 +45,7 @@ const Router = () => {
             <Login />
           }
         />
-
-        {/* Admin */}
-        <Route 
-        exact 
-        path='/admin' 
-        element={
-        <Admin />
-        } 
-        />
+        <Route exact path='/register' element={<Register />} />
 
         {/* Patient */}
         <Route
@@ -270,6 +263,17 @@ const Router = () => {
           element={
             <DoctorLayout>
               <Recipe />
+            </DoctorLayout>
+          }
+        />
+
+        {/* Admin */}
+        <Route
+          exact
+          path='/admin'
+          element={
+            <DoctorLayout>
+              <Admin />
             </DoctorLayout>
           }
         />

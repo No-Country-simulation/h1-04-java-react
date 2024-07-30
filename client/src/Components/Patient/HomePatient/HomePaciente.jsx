@@ -1,6 +1,11 @@
 import imgUser from "../../../Assets/Imgs/pepita.png"
 import Week from "./Weekk.jsx";
 import Day from "./Day.jsx";
+import turno from "../../../Assets/Imgs/calendar.png"
+import nutricion from "../../../Assets/Imgs/nutricion.png"
+import medicacion from "../../../Assets/Imgs/medicacion.png"
+import studies from "../../../Assets/Imgs/studies.png"
+import gim from "../../../Assets/Imgs/gim.png"
 import "./homePaciente.css"
 
 const HomePatient = () => {
@@ -19,18 +24,13 @@ const HomePatient = () => {
         <Week />
       </div>
       
-      <div className="today">
+      <div>
         <h2 className="font-bold text-xl	ml-5">Mi día</h2>
-        <div className="flex justify-around">
-          <p>Actividad</p>
-          <p>Horarios</p>
-        </div>
-        <Day activity={"Desayuno"} time={"8:30 hs."} href={'/treatment-nutrition'} backColor="" />
-        <Day activity={"Medicación"} time={"10:30 hs."} href={'/treatment-medication'} backColor="" />
-        <Day activity={"Turno Médico"} time={"10:30 hs."} href={'/treatments'} backColor="" />
-        <Day activity={"Almuerzo"} time={"12:30 hs."} href={'/treatment-nutrition'} backColor="" />
-        <Day activity={"Actividad  Física"} time={"16:00 hs."} href={'/treatment-physical-activity'} backColor="" />
-        <Day activity={"Diálisis"} time={"18:00 hs."} href={'/treatments'} backColor="" />
+        <Day image={nutricion} activity={"Desayuno"} time={"8:30 hs."} href={'/treatment-nutrition'} backColor="#EA526F" />
+        <Day image={medicacion} activity={"Medicación"} time={"9:00 hs."} href={'/treatment-medication'} backColor="#21BABD" />
+        <Day image={turno} activity={"Turno al Médico: Control"} time={"9:00 hs."} href={'/treatments'} backColor="#21BABD" />
+        <Day image={studies} activity={"Laboratorio/Estudio"} time={"10:00 hs."} href={'/treatment-studies'} backColor="#21BABD" />
+        <Day image={gim} activity={"Actividad  Física"} time={"11:30 hs."} href={'/treatment-physical-activity'} backColor="#FF8A5B" />
       </div>
     </section>
   )

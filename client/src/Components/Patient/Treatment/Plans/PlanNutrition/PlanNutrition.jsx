@@ -118,7 +118,7 @@ const PlanNutrition = ({ type }) => {
                         
                         <article className="details">
                             <div className="detailsTitle">
-                                <p>{ type }</p>
+                                <h1>{ type }</h1>
                                 <p>387</p>
                             </div>
                             <p className="recommendation">Recomendado: 30% de tu ingesta diaria (503 kcal)</p>
@@ -153,6 +153,10 @@ const PlanNutrition = ({ type }) => {
                         </div>
                         <p>¿Por qué te sentiste así?</p>
                         <textarea name="text" id="text"></textarea>
+                        <div className="feedBackButtons">
+                            <button>Cancelar</button>
+                            <button>Confirmar</button>
+                        </div>
                     </section>
                 </article>
             </div>
