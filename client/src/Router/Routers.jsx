@@ -19,6 +19,9 @@ import Calendar from "../Components/Doctor/Calendar/Calendar.jsx";
 import Recipe from "../Components/Doctor/Recipe/Recipe.jsx";
 import QueryCompletion from "../Components/Doctor/QueryCompletion/QueryCompletion.jsx";
 import Landing from "../Components/Landing/Landing.jsx";
+import DoctorFooter from "../Components/Doctor/DoctorFooter/DoctorFooter.jsx";
+import DoctorHeader from "../Components/Doctor/DoctorHeader/DoctorHeader.jsx";
+import DoctorConfiguration from "../Components/Doctor/DoctorConfiguration/DoctorConfiguration.jsx";
 
 const PatientLayout = ({ children }) => (
   <div className='flex flex-col min-h-screen bg-white'>
@@ -31,7 +34,7 @@ const PatientLayout = ({ children }) => (
 const DoctorLayout = ({ children }) => (
   <div className='flex flex-col min-h-screen bg-white'>
     <div className='flex-grow '>{children}</div>
-    <Footer />
+    <DoctorFooter />
   </div>
 );
 
@@ -50,10 +53,8 @@ const Router = () => {
         />
         {/* Landing Page */}
         <Route exact path='/landing' element={<Landing />} />
-
         {/* Admin */}
         <Route exact path='/admin' element={<Admin />} />
-
         {/* Patient */}
         <Route
           exact
@@ -217,7 +218,6 @@ const Router = () => {
             </PatientLayout>
           }
         />
-
         {/* Doctor */}
         <Route
           exact
@@ -225,6 +225,15 @@ const Router = () => {
           element={
             <DoctorLayout>
               <Patients />
+            </DoctorLayout>
+          }
+        />
+        <Route
+          exact
+          path='/doctorConfiguration'
+          element={
+            <DoctorLayout>
+              <DoctorConfiguration />
             </DoctorLayout>
           }
         />
@@ -273,7 +282,6 @@ const Router = () => {
             </DoctorLayout>
           }
         />
-
         <Route path='*' element={<Error404 />} />
       </Routes>
     </BrowserRouter>
