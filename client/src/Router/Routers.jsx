@@ -3,6 +3,10 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NavBar from "../Components/NavBar/NavBar.jsx";
 import Footer from "../Components/Footer/Footer.jsx";
 import Login from "../Components/Login/Login.jsx";
+<<<<<<< HEAD
+=======
+import Admin from "../Components/Admin/Admin.jsx";
+>>>>>>> ed4b48c1c2986860cdd567bb1ada88cf6ef2b563
 import Error404 from "../Components/Error404/Error404.jsx";
 import HomePatient from "../Components/Patient/HomePatient/HomePaciente.jsx";
 import Patients from "../Components/Doctor/Patients/Patients.jsx";
@@ -19,8 +23,6 @@ import Recipe from "../Components/Doctor/Recipe/Recipe.jsx";
 import QueryCompletion from "../Components/Doctor/QueryCompletion/QueryCompletion.jsx";
 import Landing from "../Components/Landing/Landing.jsx";
 import DoctorFooter from "../Components/Doctor/DoctorFooter/DoctorFooter.jsx";
-import DoctorConfiguration from "../Components/Doctor/DoctorConfiguration/DoctorConfiguration.jsx";
-import Admin from "../Components/Admin/Admin.jsx"
 
 const PatientLayout = ({ children }) => (
   <div className='flex flex-col min-h-screen bg-white'>
@@ -45,7 +47,9 @@ const Router = () => {
           exact
           path='/'
           element={
-            <Login />
+            <PatientLayout>
+              <Login />
+            </PatientLayout>
           }
         />
         {/* Landing Page */}
@@ -231,7 +235,7 @@ const Router = () => {
           path='/doctorConfiguration'
           element={
             <DoctorLayout>
-              <DoctorConfiguration />
+              <ProfileConfiguration />
             </DoctorLayout>
           }
         />

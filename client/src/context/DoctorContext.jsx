@@ -23,25 +23,30 @@ export const DoctorProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const getDoctors = async () => {
-      try {
-        const data = await fetchDoctors();
-        setDoctors(data);
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    getDoctors();
-
     // Restaurar authData desde localStorage
     const storedAuthData = localStorage.getItem("authData");
     if (storedAuthData) {
       setAuthData(JSON.parse(storedAuthData));
     }
   }, []);
+
+  useEffect(() => {
+    if (authData) {
+      const getDoctors = async () => {
+        setLoading(true);
+        try {
+          const data = await fetchDoctors(authData.token);
+          setDoctors(data);
+        } catch (error) {
+          setError(error.message);
+        } finally {
+          setLoading(false);
+        }
+      };
+
+      getDoctors();
+    }
+  }, [authData]);
 
   return (
     <DoctorContext.Provider

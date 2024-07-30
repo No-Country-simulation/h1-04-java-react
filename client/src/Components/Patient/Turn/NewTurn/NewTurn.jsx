@@ -73,7 +73,6 @@ const NewTurn = () => {
     error: doctorError,
     authData,
   } = useContext(DoctorContext);
-
   const uniqueSpecialties =
     doctors && doctors.doctors
       ? Array.from(
@@ -203,7 +202,7 @@ const NewTurn = () => {
                   className='mr-2'
                   onChange={() => setSelectedEspecialidad(esp)}
                 />
-                <label>{esp}</label>
+                <label htmlFor={`especialidad-${index}`}>{esp}</label>
               </div>
             ))}
           </div>
@@ -248,7 +247,7 @@ const NewTurn = () => {
                     className='mr-2'
                     onChange={() => setSelectedProfesional(prof)}
                   />
-                  <label>{prof}</label>
+                  <label htmlFor={`profesional-${index}`}>{prof}</label>
                 </div>
               ))}
           </div>
@@ -296,7 +295,7 @@ const NewTurn = () => {
                     className='mr-2'
                     onChange={() => setSelectedTipoCita(tipo)}
                   />
-                  <label>{tipo}</label>
+                  <label htmlFor={`tipoCita-${index}`}>{tipo}</label>
                 </div>
               ))}
           </div>
@@ -324,9 +323,7 @@ const NewTurn = () => {
                 >
                   {day}
                 </button>
-              ) : (
-                <></>
-              )
+              ) : null
             )}
           </div>
         </div>

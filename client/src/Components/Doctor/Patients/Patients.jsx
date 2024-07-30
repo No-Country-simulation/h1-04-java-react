@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import CardPatient from "../../../helpers/atoms/CardPatient";
+import DoctorContext from "../../../context/DoctorContext";
+import { getAppointmentByDoctor } from "../../../services/appointmentService";
 
 const CalendarPage = () => {
   const getFormattedDate = (date) => {
@@ -16,11 +18,41 @@ const CalendarPage = () => {
     return newDate;
   });
 
-  const events = Array(6).fill({
-    time: "8:00 AM",
-    description: "Event has been scheduled",
-    date: "Sunday, December",
-  });
+  const [appointments, setAppointments] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [authLoading, setAuthLoading] = useState(true);
+
+  const { authData } = useContext(DoctorContext);
+
+  useEffect(() => {
+    if (authData) {
+      setAuthLoading(false);
+    }
+  }, [authData]);
+
+  useEffect(() => {
+    const fetchAppointments = async () => {
+      if (!authLoading) {
+        try {
+          const data = await getAppointmentByDoctor(
+            authData.token,
+            authData.id
+          );
+          setAppointments(data);
+        } catch (err) {
+          setError(err.message);
+        } finally {
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchAppointments();
+  }, [authLoading, authData]);
+
+  if (loading || authLoading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
 
   return (
     <div className='p-4 flex flex-col'>
@@ -46,14 +78,19 @@ const CalendarPage = () => {
       </div>
 
       <div className='mt-4'>
-        {events.map((event, index) => (
-          <CardPatient
-            time={event.time}
-            key={index}
-            description={event.description}
-            date={event.date}
-          />
-        ))}
+        {appointments.length > 0 ? (
+          appointments.map((appointment) => (
+            <CardPatient
+              key={appointment.appointmentId}
+              time={appointment.appointmentHour}
+              name={appointment.fullnamePatient}
+              description={appointment.typeOfAppointment}
+              date={appointment.appointmentDay}
+            />
+          ))
+        ) : (
+          <p>No appointments found</p>
+        )}
       </div>
     </div>
   );
