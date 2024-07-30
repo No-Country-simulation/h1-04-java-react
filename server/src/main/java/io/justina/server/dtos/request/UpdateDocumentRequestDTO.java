@@ -17,9 +17,7 @@ public class UpdateDocumentRequestDTO {
     @Size(max = 20, message = "Document type must not exceed 20 characters.")
     private String documentType;
 
-    @NotBlank(message = "Document number is required.")
-    @Size(max = 20, message = "Document number must not exceed 20 characters.")
-    @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "Document number should contain only letters and numbers.")
+    @Pattern(regexp = "^\\d{8}$", message = "Document number must contain exactly 8 digits.")
     private String documentNumber;
 
 }
