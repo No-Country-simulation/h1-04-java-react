@@ -4,6 +4,8 @@ import io.justina.server.dtos.request.*;
 import io.justina.server.dtos.response.PatientResponseDTO;
 import io.justina.server.entities.*;
 import io.justina.server.enumerations.DocumentType;
+import io.justina.server.exceptions.DocumentNumberAlreadyExistsException;
+import io.justina.server.exceptions.EmailAlreadyExistsException;
 import io.justina.server.exceptions.PatientNotFoundException;
 import io.justina.server.exceptions.RegistrationException;
 import io.justina.server.repositories.*;
@@ -43,6 +45,14 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public PatientResponseDTO createPatient(PatientRequestDTO patientRequestDTO) {
+        if (patientRepository.existsByEmail(patientRequestDTO.getEmail())) {
+            throw new EmailAlreadyExistsException("Email already exists.");
+        }
+
+        if (patientRepository.existsByDocumentNumber(patientRequestDTO.getDocumentNumber())) {
+            throw new DocumentNumberAlreadyExistsException("Document number already exists.");
+        }
+
         try {
             Role patientRole = roleRepository.findByName("PATIENT")
                     .orElseThrow(() -> new RuntimeException("Role PATIENT not found"));

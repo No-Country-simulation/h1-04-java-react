@@ -2,6 +2,8 @@ package io.justina.server.controllers;
 
 import io.justina.server.dtos.request.*;
 import io.justina.server.dtos.response.PatientResponseDTO;
+import io.justina.server.exceptions.DocumentNumberAlreadyExistsException;
+import io.justina.server.exceptions.EmailAlreadyExistsException;
 import io.justina.server.exceptions.PatientNotFoundException;
 import io.justina.server.services.PatientService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -25,6 +27,7 @@ public class PatientController {
 
     @Autowired
     private PatientService patientService;
+
     @PostMapping("/create")
     @Operation(summary = "Create a new patient", description = "Creates a new patient in the system")
     public ResponseEntity<Map<String, Object>> createPatient(@Valid @RequestBody PatientRequestDTO patientRequestDTO, BindingResult bindingResult) {
@@ -42,6 +45,12 @@ public class PatientController {
             response.put("message", "Patient successfully registered");
             response.put("patient", createdPatient);
             return ResponseEntity.status(HttpStatus.CREATED).body(response);
+        } catch (EmailAlreadyExistsException e) {
+            response.put("message", e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        } catch (DocumentNumberAlreadyExistsException e) {
+            response.put("message", e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         } catch (RuntimeException e) {
             response.put("message", e.getMessage());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
