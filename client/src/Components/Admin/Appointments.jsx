@@ -78,7 +78,7 @@ const Appointments = () => {
                     .map(filteredAppointment => (
                       <div 
                         key={filteredAppointment.id} 
-                        className="bg-white flex flex-row w-full h-5/6 justify-start items-center border rounded-md font-semibold text-gray-600 text-xs px-2 cursor-pointer"
+                        className="bg-white flex flex-row w-full h-5/6 justify-start items-center border rounded-md font-semibold text-gray-600 text-xs px-2 cursor-pointer shadow"
                         onClick={() => handleClick(filteredAppointment)}
                       >
                         <div className="flex-shrink-0 mr-2">
