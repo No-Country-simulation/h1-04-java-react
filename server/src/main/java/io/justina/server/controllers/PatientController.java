@@ -10,11 +10,13 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("v1/api/patients")
@@ -23,15 +25,26 @@ public class PatientController {
 
     @Autowired
     private PatientService patientService;
-
     @PostMapping("/create")
     @Operation(summary = "Create a new patient", description = "Creates a new patient in the system")
-    public ResponseEntity<Map<String, Object>> createPatient(@Valid @RequestBody PatientRequestDTO patientRequestDTO) {
+    public ResponseEntity<Map<String, Object>> createPatient(@Valid @RequestBody PatientRequestDTO patientRequestDTO, BindingResult bindingResult) {
         Map<String, Object> response = new HashMap<>();
+        if (bindingResult.hasErrors()) {
+            List<String> errors = bindingResult.getAllErrors().stream()
+                    .map(objectError -> objectError.getDefaultMessage())
+                    .collect(Collectors.toList());
+            response.put("message", String.join(", ", errors));
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        }
+
         try {
             PatientResponseDTO createdPatient = patientService.createPatient(patientRequestDTO);
+            response.put("message", "Patient successfully registered");
             response.put("patient", createdPatient);
             return ResponseEntity.status(HttpStatus.CREATED).body(response);
+        } catch (RuntimeException e) {
+            response.put("message", e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         } catch (Exception e) {
             response.put("message", "Internal server error");
             e.printStackTrace();
@@ -70,6 +83,23 @@ public class PatientController {
         }
     }
 
+    @GetMapping("/getPatientFiles/{patientId}")
+    @Operation(summary = "Get patient files", description = "Retrieve a list of files associated with a patient by ID")
+    public ResponseEntity<Map<String, Object>> getPatientFiles(@PathVariable Long patientId) {
+        Map<String, Object> response = new HashMap<>();
+        try {
+            List<String> files = patientService.getPatientFiles(patientId);
+            response.put("files", files);
+            return ResponseEntity.ok(response);
+        } catch (PatientNotFoundException e) {
+            response.put("message", "Patient not found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+        } catch (Exception e) {
+            response.put("message", "Internal server error");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
+    }
+
     @PutMapping("/updatePatient/{patientId}")
     @Operation(summary = "Update a patient", description = "Update information of an existing patient by ID")
     public ResponseEntity<Map<String, Object>> updatePatient(@PathVariable Long patientId, @Valid @RequestBody PatientUpdateDTO patientUpdateDTO) {
@@ -92,8 +122,8 @@ public class PatientController {
     public ResponseEntity<Map<String, Object>> uploadPatientFile(@PathVariable Long patientId, @RequestParam("file") MultipartFile file) {
         Map<String, Object> response = new HashMap<>();
         try {
-            PatientResponseDTO updatedPatient = patientService.uploadPatientFile(patientId, file);
-            response.put("patient", updatedPatient);
+            patientService.uploadPatientFile(patientId, file);
+            response.put("message", "File uploaded successful");
             return ResponseEntity.ok(response);
         } catch (PatientNotFoundException e) {
             response.put("message", "Patient not found");

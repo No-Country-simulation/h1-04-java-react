@@ -24,7 +24,6 @@ public class PatientResponseDTO {
     private String crossTransplant;
     private String tutorFullName;
     private String tutorPhone;
-    private List<byte[]> file;
     private List<Treatment> treatments;
     private List<Appointment> appointments;
     private UserResponseDTO user;
@@ -41,7 +40,6 @@ public class PatientResponseDTO {
         this.crossTransplant = patient.getCrossTransplant();
         this.tutorFullName = patient.getTutorFullName();
         this.tutorPhone = patient.getTutorPhone();
-        this.file = patient.getFiles() != null ? new ArrayList<>(patient.getFiles()) : new ArrayList<>();
         this.treatments = patient.getTreatments() != null ? new ArrayList<>(patient.getTreatments()) : new ArrayList<>();
         this.appointments = patient.getAppointments() != null ? new ArrayList<>(patient.getAppointments()) : new ArrayList<>();
         this.user = new UserResponseDTO(patient.getUser());

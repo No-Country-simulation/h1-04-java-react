@@ -10,6 +10,7 @@ public interface PatientService {
     PatientResponseDTO createPatient(PatientRequestDTO patientRequestDTO);
     PatientResponseDTO getPatientById(Long patientId);
     List<PatientResponseDTO> getAllPatients();
+    List<String> getPatientFiles(Long patientId);
     PatientResponseDTO updatePatient(Long patientId, PatientUpdateDTO patientUpdateDTO);
     PatientResponseDTO uploadPatientFile(Long patientId, MultipartFile file);
     PatientResponseDTO addMedicalHistory(Long patientId, AddMedicalHistoryDTO addMedicalHistoryDTO);

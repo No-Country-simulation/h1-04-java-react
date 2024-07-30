@@ -45,6 +45,7 @@ public class DoctorController {
         try {
             DoctorResponseDTO createdDoctor = doctorService.createDoctor(doctorRequestDTO);
             response.put("message", "Doctor successful registration");
+            response.put("patient", createdDoctor);
             return ResponseEntity.status(HttpStatus.CREATED).body(response);
         } catch (LicenceNumberAlreadyExistsException e) {
             response.put("message", e.getMessage());

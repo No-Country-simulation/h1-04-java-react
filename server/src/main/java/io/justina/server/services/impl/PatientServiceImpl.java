@@ -13,8 +13,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -51,7 +51,7 @@ public class PatientServiceImpl implements PatientService {
                     .orElseThrow(() -> new RuntimeException("Financier not found"));
 
             Institution noCountryInstitution = institutionRepository.findByName("NO_COUNTRY")
-                    .orElseThrow(() -> new RegistrationException("Institution NO_COUNTRY not found"));
+                    .orElseThrow(() -> new RuntimeException("Institution NO_COUNTRY not found"));
 
             Document document = Document.builder()
                     .documentType(DocumentType.valueOf(patientRequestDTO.getDocumentType()))
@@ -105,10 +105,22 @@ public class PatientServiceImpl implements PatientService {
         }
     }
 
+
     @Override
     public List<PatientResponseDTO> getAllPatients() {
         return patientRepository.findAll().stream()
                 .map(PatientResponseDTO::new)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<String> getPatientFiles(Long patientId) {
+        Patient patient = patientRepository.findById(patientId)
+                .orElseThrow(() -> new PatientNotFoundException("Patient not found"));
+
+        // Convertir los archivos a base64 para poder enviarlos en la respuesta
+        return patient.getFiles().stream()
+                .map(fileBytes -> Base64.getEncoder().encodeToString(fileBytes))
                 .collect(Collectors.toList());
     }
 
