@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import arrowLeft from "../../../Assets/Imgs/anotherArrowLeft.png";
 import { useNavigate } from "react-router-dom";

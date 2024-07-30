@@ -1,6 +1,4 @@
-import React from "react";
 import home from "../../../Assets/Imgs/home.png";
-import urgency from "../../../Assets/Imgs/urgency.png";
 import settings from "../../../Assets/Imgs/settings.png";
 import { Link } from "react-router-dom";
 

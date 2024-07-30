@@ -1,6 +1,6 @@
-import React from "react";
 import Calendar from "../../../helpers/atoms/Calendar";
 import Dates from "./Dates";
+import DoctorHeader from "../DoctorHeader/DoctorHeader";
 
 export default function CalendarDoctor() {
   const times = [
@@ -22,8 +22,10 @@ export default function CalendarDoctor() {
   ];
   return (
     <div className='mt-2 flex flex-col items-center'>
+      <DoctorHeader text={"Proxima consulta"} />
+      
       <Calendar />
-
+      
       <div className='flex flex-wrap justify-center mt-5 md:w-1/2  gap-2'>
         {times.map((time, index) => (
           <Dates time={time} key={index} />

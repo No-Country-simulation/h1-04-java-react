@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import InputComponent from "../../../helpers/atoms/InputComponent";
 import EndButton from "../../../helpers/atoms/EndButton";
 import SuccesModal from "../../Modals/SucessModal";
+import DoctorHeader from "../DoctorHeader/DoctorHeader";
 
 export default function Recipe() {
   const [showVerificando, setShowVerificando] = useState(false);
@@ -9,6 +10,7 @@ export default function Recipe() {
   return (
     <div className=' flex flex-col justify-center items-center px-4 pt-5'>
       <div className='md:w-1/2 w-full gap-y-3 flex flex-col'>
+        <DoctorHeader text={"Receta medica"} />
         <InputComponent label={"Remedio"} />
         <InputComponent label={"Tamaño del medicamento"} />
         <InputComponent label={"Dosis"} />
