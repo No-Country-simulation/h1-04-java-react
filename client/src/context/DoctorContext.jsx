@@ -43,10 +43,18 @@ export const DoctorProvider = ({ children }) => {
     }
   }, []);
 
-
   return (
     <DoctorContext.Provider
-      value={{ doctors, loading, error, authData, login, logout, notes, setNotes }}
+      value={{
+        doctors,
+        loading,
+        error,
+        authData,
+        login,
+        logout,
+        notes,
+        setNotes,
+      }}
     >
       {children}
     </DoctorContext.Provider>
