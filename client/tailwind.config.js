@@ -6,6 +6,13 @@ export default {
       backgroundImage: {
         pattern: "url('/img/pattern.webp')",
       },
+      colors: {
+        primary: '#EA526F',
+        secondary: '#25CED1',
+        orangeColor: '#FF8A5B',
+        beigeColor: '#FCEADE'
+
+      },
     },
   },
   plugins: [],

@@ -3,10 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NavBar from "../Components/NavBar/NavBar.jsx";
 import Footer from "../Components/Footer/Footer.jsx";
 import Login from "../Components/Login/Login.jsx";
-<<<<<<< HEAD
-=======
 import Admin from "../Components/Admin/Admin.jsx";
->>>>>>> ed4b48c1c2986860cdd567bb1ada88cf6ef2b563
 import Error404 from "../Components/Error404/Error404.jsx";
 import HomePatient from "../Components/Patient/HomePatient/HomePaciente.jsx";
 import Patients from "../Components/Doctor/Patients/Patients.jsx";
@@ -43,15 +40,7 @@ const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          exact
-          path='/'
-          element={
-            <PatientLayout>
-              <Login />
-            </PatientLayout>
-          }
-        />
+        <Route exact path='/' element={<Login />} />
         {/* Landing Page */}
         <Route exact path='/landing' element={<Landing />} />
         {/* Admin */}
@@ -287,31 +276,21 @@ const Router = () => {
         <Route
           exact
           path='/patientLists'
-          element={
-            <DoctorLayout>
-              {/* <patientLists /> HACER */}
-            </DoctorLayout>
-          }
+          element={<DoctorLayout>{/* <patientLists /> HACER */}</DoctorLayout>}
         />
         <Route
           exact
           path='/patientRecord'
-          element={
-            <DoctorLayout>
-              {/* <patientRecord /> HACER */}
-            </DoctorLayout>
-          }
+          element={<DoctorLayout>{/* <patientRecord /> HACER */}</DoctorLayout>}
         />
         <Route
           exact
           path='/medicalHistory'
           element={
-            <DoctorLayout>
-              {/* <medicalHistory /> HACER */}
-            </DoctorLayout>
+            <DoctorLayout>{/* <medicalHistory /> HACER */}</DoctorLayout>
           }
         />
-        
+
         <Route path='*' element={<Error404 />} />
       </Routes>
     </BrowserRouter>
