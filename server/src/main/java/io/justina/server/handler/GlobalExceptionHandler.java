@@ -1,5 +1,7 @@
 package io.justina.server.handler;
 
+import io.justina.server.exceptions.DocumentNumberAlreadyExistsException;
+import io.justina.server.exceptions.EmailAlreadyExistsException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -35,6 +37,20 @@ public class GlobalExceptionHandler {
             response.put("details", details);
         }
         return ResponseEntity.status(status).body(response);
+    }
+
+    @ExceptionHandler(EmailAlreadyExistsException.class)
+    public ResponseEntity<Map<String, Object>> handleEmailAlreadyExistsException(EmailAlreadyExistsException e) {
+        Map<String, Object> response = new HashMap<>();
+        response.put("message", e.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+    }
+
+    @ExceptionHandler(DocumentNumberAlreadyExistsException.class)
+    public ResponseEntity<Map<String, Object>> handleDocumentNumberAlreadyExistsException(DocumentNumberAlreadyExistsException e) {
+        Map<String, Object> response = new HashMap<>();
+        response.put("message", e.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
     }
 
 }

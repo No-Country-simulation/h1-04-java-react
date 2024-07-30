@@ -9,9 +9,7 @@ import io.justina.server.enumerations.AvailableHours;
 import io.justina.server.enumerations.Day;
 import io.justina.server.enumerations.DocumentType;
 import io.justina.server.enumerations.Specialty;
-import io.justina.server.exceptions.DoctorNotFoundException;
-import io.justina.server.exceptions.FinancierNotFoundException;
-import io.justina.server.exceptions.RegistrationException;
+import io.justina.server.exceptions.*;
 import io.justina.server.repositories.*;
 import io.justina.server.services.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +45,18 @@ public class DoctorServiceImpl implements DoctorService {
     private final String DEFAULT_PASSWORD = "12345Aa*";
 
     @Override
-    public DoctorResponseDTO createDoctor(DoctorRequestDTO doctorRequestDTO) throws RoleNotFoundException {
+    public DoctorResponseDTO createDoctor(DoctorRequestDTO doctorRequestDTO) throws RoleNotFoundException, LicenceNumberAlreadyExistsException, EmailAlreadyExistsException, DocumentNumberAlreadyExistsException {
+        if (doctorRepository.existsByLicenceNumber(doctorRequestDTO.getLicenceNumber())) {
+            throw new LicenceNumberAlreadyExistsException("Licence number already exists.");
+        }
+
+        if (doctorRepository.existsByEmail(doctorRequestDTO.getEmail())) {
+            throw new EmailAlreadyExistsException("Email already exists.");
+        }
+
+        if (doctorRepository.existsByDocumentNumber(doctorRequestDTO.getDocumentNumber())) {
+            throw new DocumentNumberAlreadyExistsException("Document number already exists.");
+        }
 
         Role doctorRole = roleRepository.findByName("DOCTOR")
                 .orElseThrow(() -> new RoleNotFoundException("Role DOCTOR not found"));
@@ -120,7 +129,6 @@ public class DoctorServiceImpl implements DoctorService {
         Doctor doctor = doctorRepository.findById(id)
                 .orElseThrow(() -> new DoctorNotFoundException("Doctor not found"));
 
-        // Actualizar campos solo si están presentes en el DTO
         if (doctorUpdateRequestDTO.getSpecialties() != null) {
             validateEnumOptions(doctorUpdateRequestDTO.getSpecialties(), Specialty.class);
             doctor.setSpecialties(doctorUpdateRequestDTO.getSpecialties());
@@ -140,7 +148,6 @@ public class DoctorServiceImpl implements DoctorService {
             doctor.setSchedule(doctorUpdateRequestDTO.getSchedule());
         }
 
-        // Guardar cambios
         doctor = doctorRepository.save(doctor);
         return new UpdateDoctorResponseDTO(doctor);
     }

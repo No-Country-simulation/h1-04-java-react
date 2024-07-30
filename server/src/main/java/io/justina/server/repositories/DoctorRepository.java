@@ -13,6 +13,16 @@ import java.util.Set;
 @Repository
 public interface DoctorRepository extends JpaRepository<Doctor, Long> {
 
+    @Query("SELECT COUNT(d) > 0 FROM Doctor d WHERE d.licenceNumber = :licenceNumber")
+    boolean existsByLicenceNumber(@Param("licenceNumber") String licenceNumber);
+
+    @Query("SELECT CASE WHEN COUNT(d) > 0 THEN true ELSE false END FROM Doctor d JOIN d.user u WHERE u.email = :email")
+    boolean existsByEmail(@Param("email") String email);
+
+    @Query("SELECT CASE WHEN COUNT(d) > 0 THEN true ELSE false END FROM Doctor d JOIN d.user u WHERE u.document.documentNumber = :documentNumber")
+    boolean existsByDocumentNumber(@Param("documentNumber") String documentNumber);
+
+
     @Query("SELECT d FROM Doctor d JOIN d.specialties s WHERE s IN :specialties")
     List<Doctor> findDoctorsBySpecialties(@Param("specialties") Set<Specialty> specialties);
 
