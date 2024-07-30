@@ -110,9 +110,7 @@ const Admin = () => {
       </button>
 
       {/* Main Content */}
-      <main className='flex-1 bg-gray-100 p-6 md:ml-64'>
-        {" "}
-        {/* Aca necesito que cuando el break point sea mobile el ml-64 este en 0 */}
+      <main className="flex-1 bg-gray-100 p-6 md:ml-64">
         {renderComponent()}
       </main>
     </div>
