@@ -40,15 +40,7 @@ const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          exact
-          path='/'
-          element={
-            <PatientLayout>
-              <Login />
-            </PatientLayout>
-          }
-        />
+        <Route exact path='/' element={<Login />} />
         {/* Landing Page */}
         <Route exact path='/landing' element={<Landing />} />
         {/* Admin */}
@@ -284,31 +276,21 @@ const Router = () => {
         <Route
           exact
           path='/patientLists'
-          element={
-            <DoctorLayout>
-              {/* <patientLists /> HACER */}
-            </DoctorLayout>
-          }
+          element={<DoctorLayout>{/* <patientLists /> HACER */}</DoctorLayout>}
         />
         <Route
           exact
           path='/patientRecord'
-          element={
-            <DoctorLayout>
-              {/* <patientRecord /> HACER */}
-            </DoctorLayout>
-          }
+          element={<DoctorLayout>{/* <patientRecord /> HACER */}</DoctorLayout>}
         />
         <Route
           exact
           path='/medicalHistory'
           element={
-            <DoctorLayout>
-              {/* <medicalHistory /> HACER */}
-            </DoctorLayout>
+            <DoctorLayout>{/* <medicalHistory /> HACER */}</DoctorLayout>
           }
         />
-        
+
         <Route path='*' element={<Error404 />} />
       </Routes>
     </BrowserRouter>

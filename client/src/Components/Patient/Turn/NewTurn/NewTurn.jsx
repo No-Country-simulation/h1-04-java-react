@@ -1,7 +1,9 @@
 import React, { useContext, useState, useEffect } from "react";
 import check from "../../../../Assets/Imgs/check.png";
 import DoctorContext from "../../../../context/DoctorContext";
+import SuccesModal from "../../../../Components/Modals/SucessModal";
 import { createAppointment } from "../../../../services/appointmentService"; // Asegúrate de usar la ruta correcta
+import { useNavigate } from "react-router-dom";
 
 const daysOfWeek = [
   "MONDAY",
@@ -47,7 +49,8 @@ const NewTurn = () => {
   const [doctor, setDoctor] = useState(null);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
-
+  const [showVerificando, setShowVerificando] = useState();
+  const navigate = useNavigate();
   const tiposCita = [
     "OFFICE_VISIT", // Consulta en el consultorio
     "FOLLOW_UP", // Seguimiento
@@ -147,10 +150,16 @@ const NewTurn = () => {
     try {
       await createAppointment(authData.token, appointmentData);
       setSuccess("Appointment created successfully!");
+      setShowVerificando(true);
     } catch (err) {
       setError(`Failed to create appointment: ${err.message}`);
     }
   };
+
+  function closeModal() {
+    setShowVerificando(false);
+    navigate("/turn-calendar");
+  }
 
   if (loading) return <div className='text-center mt-10'>Loading...</div>;
   if (doctorError)
@@ -161,7 +170,8 @@ const NewTurn = () => {
       <h2 className='text-2xl font-bold mb-4'>Turnos</h2>
 
       {/* Selección de Especialidad */}
-      <label className='block mb-4'>
+
+      <label className='block mb-4 '>
         <input
           className='peer/especialidad hidden'
           type='checkbox'
@@ -169,7 +179,7 @@ const NewTurn = () => {
           onClick={() => setIsEspecialidadOpen(!isEspecialidadOpen)}
           onChange={() => setIsEspecialidadOpen(!isEspecialidadOpen)}
         />
-        <span className='block rounded-lg bg-[#D9D9D9] px-4 shadow-lg h-8 transition-all duration-300 overflow-hidden peer-checked/especialidad:h-auto'>
+        <span className='block rounded-lg bg-beigeColor border-orangeColor border-2 text-orangeColor font-semibold px-4 shadow-lg h-8 transition-all duration-300 overflow-hidden peer-checked/especialidad:h-auto'>
           <h3 className='flex h-8 cursor-pointer items-center font-bold'>
             {selectedEspecialidad ? (
               <div className='flex justify-between items-center w-full'>
@@ -202,7 +212,7 @@ const NewTurn = () => {
                   className='mr-2'
                   onChange={() => setSelectedEspecialidad(esp)}
                 />
-                <label htmlFor={`especialidad-${index}`}>{esp}</label>
+                <label>{esp}</label>
               </div>
             ))}
           </div>
@@ -210,6 +220,7 @@ const NewTurn = () => {
       </label>
 
       {/* Selección de Profesional */}
+
       <label className='block mb-4'>
         <input
           className='peer/profesional hidden'
@@ -219,7 +230,7 @@ const NewTurn = () => {
           onChange={() => setIsProfesionalOpen(!isProfesionalOpen)}
           disabled={!selectedEspecialidad}
         />
-        <span className='block rounded-lg bg-[#D9D9D9] px-4 shadow-lg transition-all duration-300 h-8 overflow-hidden peer-checked/profesional:h-auto'>
+        <span className='block rounded-lg bg-beigeColor border-orangeColor border-2 text-orangeColor font-semibold px-4 shadow-lg transition-all duration-300 h-8 overflow-hidden peer-checked/profesional:h-auto'>
           <h3 className='flex h-8 cursor-pointer items-center font-bold'>
             {selectedProfesional ? (
               <div className='flex justify-between items-center w-full'>
@@ -247,7 +258,7 @@ const NewTurn = () => {
                     className='mr-2'
                     onChange={() => setSelectedProfesional(prof)}
                   />
-                  <label htmlFor={`profesional-${index}`}>{prof}</label>
+                  <label>{prof}</label>
                 </div>
               ))}
           </div>
@@ -264,7 +275,7 @@ const NewTurn = () => {
           onChange={() => setIsTipoCitaOpen(!isTipoCitaOpen)}
           disabled={!selectedProfesional}
         />
-        <span className='block rounded-lg bg-[#D9D9D9] px-4 shadow-lg h-8 transition-all duration-700 overflow-hidden peer-checked/tipoCita:h-auto'>
+        <span className='block rounded-lg bg-beigeColor border-orangeColor border-2 text-orangeColor font-semibold px-4 shadow-lg h-8 transition-all duration-700 overflow-hidden peer-checked/tipoCita:h-auto'>
           <h3 className='flex h-8 cursor-pointer items-center font-bold'>
             {selectedTipoCita ? (
               <div className='flex justify-between items-center w-full'>
@@ -295,7 +306,7 @@ const NewTurn = () => {
                     className='mr-2'
                     onChange={() => setSelectedTipoCita(tipo)}
                   />
-                  <label htmlFor={`tipoCita-${index}`}>{tipo}</label>
+                  <label>{tipo}</label>
                 </div>
               ))}
           </div>
@@ -313,8 +324,8 @@ const NewTurn = () => {
                   key={index}
                   className={`px-4 py-2 rounded-lg ${
                     selectedDay === day
-                      ? "bg-blue-500 text-white"
-                      : "bg-gray-200"
+                      ? "bg-secondary text-white"
+                      : "bg-beigeColor"
                   }`}
                   onClick={() => {
                     setSelectedDay(day);
@@ -337,10 +348,10 @@ const NewTurn = () => {
             {availableHours.map((hour, index) => (
               <div
                 key={index}
-                className={`px-4 py-2 rounded-lg border border-gray-300 ${
+                className={`px-4 py-2 rounded-lg border  ${
                   selectedHour === hour
-                    ? "bg-blue-500 text-white"
-                    : "bg-gray-100"
+                    ? "bg-secondary text-white"
+                    : "bg-beigeColor"
                 }`}
                 onClick={() => setSelectedHour(hour)}
               >
@@ -354,16 +365,24 @@ const NewTurn = () => {
       {/* Botón para Crear Cita */}
       {selectedHour && (
         <button
-          className='mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg'
+          className='mt-4 px-4 py-2 w-full bg-primary text-white rounded-lg'
           onClick={handleCreateAppointment}
         >
           Crear Cita
         </button>
       )}
 
+      <SuccesModal
+        title={"¡FELICITACIONES! SE AGENDO TU TURNO"}
+        text={"Te esperamos"}
+        show={showVerificando}
+        onClose={() => closeModal()}
+        check
+      />
+
       {/* Mensajes de Error o Éxito */}
-      {error && <div className='mt-4 text-red-500'>{error}</div>}
-      {success && <div className='mt-4 text-green-500'>{success}</div>}
+      {/* {error && <div className='mt-4 text-red-500'>{error}</div>}
+      {success && <div className='mt-4 text-green-500'>{success}</div>} */}
     </div>
   );
 };
