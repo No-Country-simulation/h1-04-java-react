@@ -16,7 +16,7 @@ const Treatments = () => {
         <article>
             <div className="containerTitle">
                 <img src={treatment} alt="Tratamiento" />
-                <h1>Tratamiento</h1>
+                <h1>Tratamientos</h1>
             </div>
             
             <section className="containerTreatments">

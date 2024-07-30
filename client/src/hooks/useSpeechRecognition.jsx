@@ -34,6 +34,7 @@ const useSpeechRecognition = () => {
     text,
     listening,
     startListening,
+    stopListening,
     hasRecognitionSupport: !!recognition,
   };
 };

@@ -70,7 +70,7 @@ const Treatment = () => {
                 <>
                 <article className="optionsContainer">
                     { buttons && buttons.map((but, index) => (
-                        <button key={index} className="option bg-stone-300 font-bold flex justify-between p-2" onClick={() => handleComponent(index)}>
+                        <button key={index} className="option font-bold flex justify-between p-2" onClick={() => handleComponent(index)}>
                             { but.label }
                             <img src={arrowRight} alt="arrow" className="w-6 h-6 ml-4" />
                         </button>

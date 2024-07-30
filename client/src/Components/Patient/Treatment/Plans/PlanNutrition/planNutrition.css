@@ -10,7 +10,7 @@
 
 .feedBack{
     color: #191919;
-    background-color: #D9D9D9;
+    background-color: #EA526F1A;
     padding: 10px;
     border-radius: 5px;
 }
@@ -25,7 +25,6 @@
     align-items: center;
     justify-content: space-around;
 }
-
 .feedBackImgs img{
     margin-top: 10px;
     margin-bottom: 10px;
@@ -34,7 +33,8 @@
 }
 
 .feedBack textarea{
-    background-color: #B1B1B1;
+    background-color: #EA526F;
+    color: #FFF;
     height: 40px;
     width: 100%;
     border-radius: 5px;
@@ -42,10 +42,24 @@
     resize: none;
 }
 
+.feedBackButtons{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10px;
+}
+.feedBackButtons button{
+    border-radius: 20px;
+    background-color: #EA526F;
+    padding: 10px;
+    font-weight: 700;
+}
+
 
 
 .stats{
-    background-color: #D9D9D9;
+    background-color: #25CED1;
+    color: #fff;
     padding: 10px;
     border-radius: 10px;
     display: flex;
@@ -54,26 +68,27 @@
 }
 
 .progress-bar-container {
-    width: 100%;
     background-color: #fff;
+    width: 100%;
     overflow: hidden;
     height: 10px;
     margin: 5px 0;
 }
 
 .progress-bar {
+    background-color: #095D5F;
     height: 100%;
-    background-color: #191919;
 }
 
 
 
 .details{
-    background-color: #D9D9D9;
     padding: 10px;
     border-radius: 10px;
     margin-top: 15px;
     margin-bottom: 15px;
+    border: 2px solid #25CED1;
+    border-radius: 10px;
 }
 
 .detailsTitle{
@@ -81,6 +96,7 @@
     justify-content: space-between;
     font-weight: 600;
     font-size: 18px;
+    color: #25CED1;
 }
 
 .recommendation{

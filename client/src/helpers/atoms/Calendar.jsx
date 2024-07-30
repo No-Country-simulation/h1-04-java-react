@@ -43,7 +43,7 @@ const Calendar = () => {
   calendarDays.push(week);
 
   return (
-    <div className='w-80 mx-auto  p-4 bg-white shadow-md rounded-lg'>
+    <div className='w-80 mx-auto  p-4 bg-beigeColor shadow-lg rounded-3xl mb-5 mt-5'>
       <div className='text-center font-bold text-xl mb-4'>
         {monthNames[month]} {year}
       </div>

@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import profileDoctor from "../../../Assets/Imgs/profileDoctor.png";
 import arrowLeft from "../../../Assets/Imgs/anotherArrowLeft.png";
 import "./previousConsultation.css";
+import DoctorHeader from "../DoctorHeader/DoctorHeader";
 
 const PreviousConsultation = () => {
   const [activeTab, setActiveTab] = useState("Motivo de la cita");
@@ -10,10 +11,12 @@ const PreviousConsultation = () => {
 
   return (
     <div className='previous-consultation'>
-      <button className='backPage' onClick={() => navigate(-1)}>
+      {/* <button className='backPage' onClick={() => navigate(-1)}>
         <img src={arrowLeft} alt='back' />
-        <p>Pre-Consulta</p>
-      </button>
+        <p></p>
+      </button> */}
+
+      <DoctorHeader text={"Pre-Consulta"} />
 
       <section className='boxCotent'>
         <div className='header'>

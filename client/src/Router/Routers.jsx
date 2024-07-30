@@ -19,6 +19,7 @@ import Calendar from "../Components/Doctor/Calendar/Calendar.jsx";
 import Recipe from "../Components/Doctor/Recipe/Recipe.jsx";
 import QueryCompletion from "../Components/Doctor/QueryCompletion/QueryCompletion.jsx";
 import Landing from "../Components/Landing/Landing.jsx";
+import DoctorFooter from "../Components/Doctor/DoctorFooter/DoctorFooter.jsx";
 
 const PatientLayout = ({ children }) => (
   <div className='flex flex-col min-h-screen bg-white'>
@@ -31,7 +32,7 @@ const PatientLayout = ({ children }) => (
 const DoctorLayout = ({ children }) => (
   <div className='flex flex-col min-h-screen bg-white'>
     <div className='flex-grow '>{children}</div>
-    <Footer />
+    <DoctorFooter />
   </div>
 );
 
@@ -39,21 +40,11 @@ const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          exact
-          path='/'
-          element={
-            <PatientLayout>
-              <Login />
-            </PatientLayout>
-          }
-        />
+        <Route exact path='/' element={<Login />} />
         {/* Landing Page */}
         <Route exact path='/landing' element={<Landing />} />
-
         {/* Admin */}
         <Route exact path='/admin' element={<Admin />} />
-
         {/* Patient */}
         <Route
           exact
@@ -230,6 +221,15 @@ const Router = () => {
         />
         <Route
           exact
+          path='/doctorConfiguration'
+          element={
+            <DoctorLayout>
+              <ProfileConfiguration />
+            </DoctorLayout>
+          }
+        />
+        <Route
+          exact
           path='/previous-consultation'
           element={
             <DoctorLayout>
@@ -271,6 +271,23 @@ const Router = () => {
             <DoctorLayout>
               <Recipe />
             </DoctorLayout>
+          }
+        />
+        <Route
+          exact
+          path='/patientLists'
+          element={<DoctorLayout>{/* <patientLists /> HACER */}</DoctorLayout>}
+        />
+        <Route
+          exact
+          path='/patientRecord'
+          element={<DoctorLayout>{/* <patientRecord /> HACER */}</DoctorLayout>}
+        />
+        <Route
+          exact
+          path='/medicalHistory'
+          element={
+            <DoctorLayout>{/* <medicalHistory /> HACER */}</DoctorLayout>
           }
         />
 
