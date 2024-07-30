@@ -3,31 +3,32 @@ import avatar from '../../Assets/Imgs/avatar.png';
 
 const Appointments = () => {
   const [appointments, setAppointments] = useState([]);
+  const [selectedAppointment, setSelectedAppointment] = useState(null);
 
   useEffect(() => {
-    // Datos hardcodeados
+    // Datos hardcodeados con descripciones
     const hardcodedAppointments = [
-      { id: 1, day: 'Lunes', hour: '09:00', doctorName: 'Juan Pérez', patientName: 'Ana Gómez', appointmentType: 'Consulta' },
-      { id: 2, day: 'Lunes', hour: '11:00', doctorName: 'María López', patientName: 'Carlos Fernández', appointmentType: 'Seguimiento' },
-      { id: 3, day: 'Lunes', hour: '07:00', doctorName: 'Pedro García', patientName: 'Laura Martínez', appointmentType: 'Laboratorio' },
-      { id: 4, day: 'Martes', hour: '10:00', doctorName: 'Elena Ruiz', patientName: 'Miguel Rodríguez', appointmentType: 'Consulta' },
-      { id: 5, day: 'Martes', hour: '13:00', doctorName: 'Ricardo Sánchez', patientName: 'Lucía Morales', appointmentType: 'Psicoterapia' },
-      { id: 6, day: 'Martes', hour: '16:00', doctorName: 'Juan Pérez', patientName: 'Ana Gómez', appointmentType: 'Laboratorio' },
-      { id: 7, day: 'Miércoles', hour: '09:00', doctorName: 'María López', patientName: 'Carlos Fernández', appointmentType: 'Cirugía' },
-      { id: 8, day: 'Miércoles', hour: '11:00', doctorName: 'Pedro García', patientName: 'Laura Martínez', appointmentType: 'Seguimiento' },
-      { id: 9, day: 'Miércoles', hour: '14:00', doctorName: 'Elena Ruiz', patientName: 'Miguel Rodríguez', appointmentType: 'Consulta a distancia' },
-      { id: 10, day: 'Jueves', hour: '10:00', doctorName: 'Ricardo Sánchez', patientName: 'Lucía Morales', appointmentType: 'Consulta' },
-      { id: 11, day: 'Jueves', hour: '13:00', doctorName: 'Juan Pérez', patientName: 'Ana Gómez', appointmentType: 'Cirugía' },
-      { id: 12, day: 'Jueves', hour: '07:00', doctorName: 'María López', patientName: 'Carlos Fernández', appointmentType: 'Laboratorio' },
-      { id: 13, day: 'Viernes', hour: '09:00', doctorName: 'Pedro García', patientName: 'Laura Martínez', appointmentType: 'Consulta' },
-      { id: 14, day: 'Viernes', hour: '12:00', doctorName: 'Elena Ruiz', patientName: 'Miguel Rodríguez', appointmentType: 'Psicoterapia' },
-      { id: 15, day: 'Viernes', hour: '16:00', doctorName: 'Ricardo Sánchez', patientName: 'Lucía Morales', appointmentType: 'Cirugía' },
-      { id: 16, day: 'Sábado', hour: '08:00', doctorName: 'Juan Pérez', patientName: 'Ana Gómez', appointmentType: 'Consulta' },
-      { id: 17, day: 'Sábado', hour: '10:00', doctorName: 'María López', patientName: 'Carlos Fernández', appointmentType: 'Seguimiento' },
-      { id: 18, day: 'Sábado', hour: '14:00', doctorName: 'Pedro García', patientName: 'Laura Martínez', appointmentType: 'Laboratorio' },
-      { id: 19, day: 'Domingo', hour: '09:00', doctorName: 'Elena Ruiz', patientName: 'Miguel Rodríguez', appointmentType: 'Cirugía' },
-      { id: 20, day: 'Domingo', hour: '11:00', doctorName: 'Ricardo Sánchez', patientName: 'Lucía Morales', appointmentType: 'Psicoterapia' },
-      { id: 21, day: 'Domingo', hour: '13:00', doctorName: 'Juan Pérez', patientName: 'Ana Gómez', appointmentType: 'Laboratorio' }
+      { id: 1, day: 'Lunes', hour: '09:00', doctorName: 'Juan Pérez', patientName: 'Ana Gómez', appointmentType: 'Consulta', appointmentDescription: 'Revisión general y chequeo de signos vitales.' },
+      { id: 2, day: 'Lunes', hour: '11:00', doctorName: 'María López', patientName: 'Carlos Fernández', appointmentType: 'Seguimiento', appointmentDescription: 'Control de evolución postoperatoria.' },
+      { id: 3, day: 'Lunes', hour: '07:00', doctorName: 'Pedro García', patientName: 'Laura Martínez', appointmentType: 'Laboratorio', appointmentDescription: 'Análisis de sangre y otros exámenes de laboratorio.' },
+      { id: 4, day: 'Martes', hour: '10:00', doctorName: 'Elena Ruiz', patientName: 'Miguel Rodríguez', appointmentType: 'Consulta', appointmentDescription: 'Consulta de rutina y actualización de historial médico.' },
+      { id: 5, day: 'Martes', hour: '13:00', doctorName: 'Ricardo Sánchez', patientName: 'Lucía Morales', appointmentType: 'Psicoterapia', appointmentDescription: 'Sesión de terapia para manejo de estrés.' },
+      { id: 6, day: 'Martes', hour: '16:00', doctorName: 'Juan Pérez', patientName: 'Ana Gómez', appointmentType: 'Laboratorio', appointmentDescription: 'Exámenes de laboratorio y pruebas adicionales.' },
+      { id: 7, day: 'Miércoles', hour: '09:00', doctorName: 'María López', patientName: 'Carlos Fernández', appointmentType: 'Cirugía', appointmentDescription: 'Cirugía programada para extracción de apéndice.' },
+      { id: 8, day: 'Miércoles', hour: '11:00', doctorName: 'Pedro García', patientName: 'Laura Martínez', appointmentType: 'Seguimiento', appointmentDescription: 'Revisión postoperatoria y control de puntos.' },
+      { id: 9, day: 'Miércoles', hour: '14:00', doctorName: 'Elena Ruiz', patientName: 'Miguel Rodríguez', appointmentType: 'Consulta a distancia', appointmentDescription: 'Consulta virtual para actualización de medicación.' },
+      { id: 10, day: 'Jueves', hour: '10:00', doctorName: 'Ricardo Sánchez', patientName: 'Lucía Morales', appointmentType: 'Consulta', appointmentDescription: 'Consulta de seguimiento y ajuste de tratamiento.' },
+      { id: 11, day: 'Jueves', hour: '13:00', doctorName: 'Juan Pérez', patientName: 'Ana Gómez', appointmentType: 'Cirugía', appointmentDescription: 'Cirugía menor para extracción de quiste.' },
+      { id: 12, day: 'Jueves', hour: '07:00', doctorName: 'María López', patientName: 'Carlos Fernández', appointmentType: 'Laboratorio', appointmentDescription: 'Recolección de muestras para análisis completo.' },
+      { id: 13, day: 'Viernes', hour: '09:00', doctorName: 'Pedro García', patientName: 'Laura Martínez', appointmentType: 'Consulta', appointmentDescription: 'Consulta para evaluación de síntomas recientes.' },
+      { id: 14, day: 'Viernes', hour: '12:00', doctorName: 'Elena Ruiz', patientName: 'Miguel Rodríguez', appointmentType: 'Psicoterapia', appointmentDescription: 'Sesión de terapia para ansiedad y depresión.' },
+      { id: 15, day: 'Viernes', hour: '16:00', doctorName: 'Ricardo Sánchez', patientName: 'Lucía Morales', appointmentType: 'Cirugía', appointmentDescription: 'Intervención quirúrgica para reparación de hernia.' },
+      { id: 16, day: 'Sábado', hour: '08:00', doctorName: 'Juan Pérez', patientName: 'Ana Gómez', appointmentType: 'Consulta', appointmentDescription: 'Revisión médica y control de rutina.' },
+      { id: 17, day: 'Sábado', hour: '10:00', doctorName: 'María López', patientName: 'Carlos Fernández', appointmentType: 'Seguimiento', appointmentDescription: 'Evaluación de recuperación y recomendaciones.' },
+      { id: 18, day: 'Sábado', hour: '14:00', doctorName: 'Pedro García', patientName: 'Laura Martínez', appointmentType: 'Laboratorio', appointmentDescription: 'Pruebas de laboratorio y análisis de resultados.' },
+      { id: 19, day: 'Domingo', hour: '09:00', doctorName: 'Elena Ruiz', patientName: 'Miguel Rodríguez', appointmentType: 'Cirugía', appointmentDescription: 'Cirugía de emergencia para apendicitis.' },
+      { id: 20, day: 'Domingo', hour: '11:00', doctorName: 'Ricardo Sánchez', patientName: 'Lucía Morales', appointmentType: 'Psicoterapia', appointmentDescription: 'Terapia psicológica para manejo del estrés.' },
+      { id: 21, day: 'Domingo', hour: '13:00', doctorName: 'Juan Pérez', patientName: 'Ana Gómez', appointmentType: 'Laboratorio', appointmentDescription: 'Análisis de laboratorio para control general.' }
     ];
 
     setAppointments(hardcodedAppointments);
@@ -35,6 +36,14 @@ const Appointments = () => {
 
   const daysOfWeek = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
   const hours = ['07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00'];
+
+  const handleClick = (appointment) => {
+    setSelectedAppointment(appointment);
+  };
+
+  const handleClose = () => {
+    setSelectedAppointment(null);
+  };
 
   return (
     <div className="p-4">
@@ -53,7 +62,7 @@ const Appointments = () => {
 
           {/* Columnas de horarios */}
           {hours.map((hour, index) => (
-            <React.Fragment key={index} className=''>
+            <React.Fragment key={index}>
               <div className="h-16 px-2.5  font-semibold justify-center items-center gap-2.5 inline-flex">
                 <div className='border-l-2 border-[#009ff5] h-12 justify-center items-center inline-flex pl-3'>
                   {parseInt(hour.split(':')[0], 10) < 12 ? `${hour} AM` : `${hour} PM`}
@@ -67,7 +76,11 @@ const Appointments = () => {
                   {appointments
                     .filter(appointment => appointment.day === day && appointment.hour === hour)
                     .map(filteredAppointment => (
-                      <div key={filteredAppointment.id} className="bg-white flex flex-row w-full h-5/6 justify-start items-center border rounded-md font-semibold text-gray-600 text-xs px-2">
+                      <div 
+                        key={filteredAppointment.id} 
+                        className="bg-white flex flex-row w-full h-5/6 justify-start items-center border rounded-md font-semibold text-gray-600 text-xs px-2 cursor-pointer"
+                        onClick={() => handleClick(filteredAppointment)}
+                      >
                         <div className="flex-shrink-0 mr-2">
                           <img src={avatar} alt="Avatar" className="w-10 h-10 rounded-full" />
                         </div>
@@ -84,6 +97,27 @@ const Appointments = () => {
           ))}
         </div>
       </div>
+
+      {selectedAppointment && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+          <div className="bg-white rounded-lg shadow-lg p-6 w-2/5 relative">
+            <button
+              onClick={handleClose}
+              className="absolute w-10 h-10 top-2 right-2 bg-red-600 hover:bg-red-800 text-white p-2 rounded-md"
+            >
+              X
+            </button>
+            <h2 className="text-lg font-bold mb-4">Detalles del Turno</h2>
+            <p className='font-semibold'>Día: <span className='font-normal'>{selectedAppointment.day}</span></p>
+            <p className='font-semibold'>Hora: <span className='font-normal'>{selectedAppointment.hour}</span></p>
+            <p className='font-semibold'>Médico: <span className='font-normal'>{selectedAppointment.doctorName}</span></p>
+            <p className='font-semibold'>Paciente: <span className='font-normal'>{selectedAppointment.patientName}</span></p>
+            <p className='font-semibold'>Tipo de Turno: <span className='font-normal'>{selectedAppointment.appointmentType}</span></p>
+            <p className='font-semibold'>Descripción: <span className='font-normal'>{selectedAppointment.appointmentDescription}</span></p>
+            <p className='font-semibold'>Activo: <span className='font-normal'>{selectedAppointment.isActive ? 'Sí' : 'No'}</span></p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
