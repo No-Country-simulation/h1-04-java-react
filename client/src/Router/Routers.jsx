@@ -31,6 +31,7 @@ const PatientLayout = ({ children }) => (
 const DoctorLayout = ({ children }) => (
   <div className='flex flex-col min-h-screen bg-white'>
     <div className='flex-grow '>{children}</div>
+    <Footer />
   </div>
 );
 

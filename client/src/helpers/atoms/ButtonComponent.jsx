@@ -16,7 +16,7 @@ const ButtonComponent = ({
       return "bg-gray-200 text-gray-400";
     }
     if (theme === "primary") {
-      const baseClass = "bg-primary-400 focus:ring-primary-500";
+      const baseClass = "bg-blue-400 focus:ring-primary-500";
       return `${baseClass} ${
         loading ? "text-transparent" : "hover:bg-primary-500 text-white"
       }`;

@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { login as loginService } from "../../services/authService";
 import Alert from "../../helpers/atoms/Alert";
@@ -17,13 +17,31 @@ const Login = () => {
   const [isError, setIsError] = useState(false);
   const [isNonValidAccount, setIsNonValidAccount] = useState(false);
   const navigate = useNavigate();
-  const { login } = useContext(AuthContext);
+  const { login, authData } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (authData) {
+      switch (authData.role) {
+        case "DOCTOR":
+          navigate("/doctorPatient");
+          break;
+        case "PATIENT":
+          navigate("/patient");
+          break;
+        case "ADMIN":
+          navigate("/admin");
+          break;
+        default:
+          navigate("/");
+          break;
+      }
+    }
+  }, [authData, navigate]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsLoading(true);
 
-    // Console log para verificar los datos antes de enviar la solicitud
     console.log("Email:", email);
     console.log("Password:", password);
 
@@ -35,9 +53,6 @@ const Login = () => {
       setIsNonValidAccount(false);
 
       login(data.data);
-
-      // Redirigir o navegar a home
-      navigate("/");
     } catch (error) {
       setIsLoading(false);
       if (error.message === "Invalid credentials") {
@@ -56,6 +71,20 @@ const Login = () => {
     }
   };
 
+  // Doctor account
+  function doctor() {
+    setEmail("doctor1@doctor.com");
+    setPassword("12345Aa*");
+  }
+  function patient() {
+    setEmail("juan@patient.com");
+    setPassword("12345Aa*");
+  }
+  function admin() {
+    setEmail("admin1@admin.com");
+    setPassword("12345Aa*");
+  }
+
   return (
     <div className='flex flex-col items-center justify-center px-6 mx-auto mb-10 lg:py-0'>
       <div className='w-full mt-10 flex flex-col items-center gap-10'>
@@ -68,22 +97,26 @@ const Login = () => {
             alt='logo'
           />
         </a>
-        <div className='flex gap-7'>
-          <Link to={"/doctorPatient"}>
-            <button className='shadow w-32 bg-blue-300 text-white py-2 rounded'>
-              Doctor
-            </button>
-          </Link>
-          <Link to={"/patient"}>
-            <button className='shadow w-32 bg-blue-300 text-white py-2 rounded'>
-              Paciente
-            </button>
-          </Link>
-          <Link to={"/admin"}>
-            <button className='shadow w-32 bg-blue-300 text-white py-2 rounded'>
-              Admin
-            </button>
-          </Link>
+        <div className='flex gap-1'>
+          <button
+            onClick={() => doctor()}
+            className='shadow px-4 bg-blue-300 text-white py-2 rounded'
+          >
+            Doctor
+          </button>
+
+          <button
+            onClick={() => patient()}
+            className='shadow px-4 bg-blue-300 text-white py-2 rounded'
+          >
+            Paciente
+          </button>
+          <button
+            onClick={() => admin()}
+            className='shadow px-4 bg-blue-300 text-white py-2 rounded'
+          >
+            Admin
+          </button>
         </div>
         <div className='w-full max-w-md bg-white rounded-lg border shadow-sm'>
           <div className='p-7 space-y-5'>
