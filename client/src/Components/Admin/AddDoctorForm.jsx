@@ -2,109 +2,200 @@ import { useState } from 'react';
 
 const AddDoctorForm = ({ onClose }) => {
   const [formData, setFormData] = useState({
-    name: '',
-    specialty: '',
+    nombre: '',
+    apellido: '',
     email: '',
-    phone: '',
-    docNumber: '',
-    active: false,
+    tipoDocumento: '',
+    nroDocumento: '',
+    especialidad: '',
+    nroLicencia: '',
+    diasDisponibles: '',
+    obraSocial: '',
+    fechaNacimiento: '',
+    telefono: '',
+    calle: '',
+    numero: '',
+    barrio: '',
+    ciudad: '',
+    provincia: '',
+    codigoPostal: ''
   });
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData({
-      ...formData,
-      [name]: type === 'checkbox' ? checked : value,
-    });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Aquí iría la lógica para agregar el nuevo doctor
-    onClose();
-  };
+  const isFieldEmpty = (field) => !formData[field];
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2 className="text-xl mb-4">Agregar Nuevo Médico</h2>
-      <div className="mb-4">
-        <label className="block mb-2">Nombre</label>
-        <input
-          type="text"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          className="w-full p-2 border border-gray-300 rounded"
-        />
-      </div>
-      <div className="mb-4">
-        <label className="block mb-2">Especialidad</label>
-        <input
-          type="text"
-          name="specialty"
-          value={formData.specialty}
-          onChange={handleChange}
-          className="w-full p-2 border border-gray-300 rounded"
-        />
-      </div>
-      <div className="mb-4">
-        <label className="block mb-2">Email</label>
-        <input
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          className="w-full p-2 border border-gray-300 rounded"
-        />
-      </div>
-      <div className="mb-4">
-        <label className="block mb-2">Teléfono</label>
-        <input
-          type="text"
-          name="phone"
-          value={formData.phone}
-          onChange={handleChange}
-          className="w-full p-2 border border-gray-300 rounded"
-        />
-      </div>
-      <div className="mb-4">
-        <label className="block mb-2">Número de Documento</label>
-        <input
-          type="text"
-          name="docNumber"
-          value={formData.docNumber}
-          onChange={handleChange}
-          className="w-full p-2 border border-gray-300 rounded"
-        />
-      </div>
-      <div className="mb-4">
-        <label className="flex items-center">
+    <div>
+      <h2 className="text-lg font-semibold mb-4 text-center">Agregar Doctor</h2>
+      <form>
+        <div className="grid grid-cols-3 gap-4">
           <input
-            type="checkbox"
-            name="active"
-            checked={formData.active}
+            type="text"
+            name="nombre"
+            placeholder="Nombre"
+            value={formData.nombre}
             onChange={handleChange}
-            className="mr-2"
+            className={`border p-1 text-sm rounded ${isFieldEmpty('nombre') ? 'border-red-500' : 'border-blue-500'}`}
           />
-          Activo
-        </label>
-      </div>
-      <div className="flex justify-end">
-        <button
-          type="button"
-          onClick={onClose}
-          className="bg-gray-500 text-white px-4 py-2 rounded mr-2"
-        >
-          Cancelar
-        </button>
-        <button
-          type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded"
-        >
-          Guardar
-        </button>
-      </div>
-    </form>
+          <input
+            type="text"
+            name="apellido"
+            placeholder="Apellido"
+            value={formData.apellido}
+            onChange={handleChange}
+            className={`border p-1 text-sm rounded ${isFieldEmpty('apellido') ? 'border-red-500' : 'border-blue-500'}`}
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+            className={`border p-1 text-sm rounded ${isFieldEmpty('email') ? 'border-red-500' : 'border-blue-500'}`}
+          />
+          <select
+            name="tipoDocumento"
+            value={formData.tipoDocumento}
+            onChange={handleChange}
+            className={`border p-1 text-sm rounded ${isFieldEmpty('tipoDocumento') ? 'border-red-500' : 'border-blue-500'}`}
+          >
+            <option value="">Seleccione Tipo de Documento</option>
+            <option value="DNI">DNI</option>
+            <option value="LC">LC</option>
+            <option value="LE">LE</option>
+          </select>
+          <input
+            type="text"
+            name="nroDocumento"
+            placeholder="Nro Documento"
+            maxLength="8"
+            value={formData.nroDocumento}
+            onChange={handleChange}
+            className={`border p-1 text-sm rounded ${isFieldEmpty('nroDocumento') ? 'border-red-500' : 'border-blue-500'}`}
+          />
+          <select
+            name="especialidad"
+            value={formData.especialidad}
+            onChange={handleChange}
+            className={`border p-1 text-sm rounded ${isFieldEmpty('especialidad') ? 'border-red-500' : 'border-blue-500'}`}
+          >
+            <option value="">Seleccione Especialidad</option>
+            <option value="Cardiologo">Cardiólogo</option>
+            <option value="Cirujano">Cirujano</option>
+            <option value="Psicologo">Psicólogo</option>
+          </select>
+          <input
+            type="text"
+            name="nroLicencia"
+            placeholder="Número de Licencia"
+            value={formData.nroLicencia}
+            onChange={handleChange}
+            className={`border p-1 text-sm rounded ${isFieldEmpty('nroLicencia') ? 'border-red-500' : 'border-blue-500'}`}
+          />
+          <select
+            name="diasDisponibles"
+            value={formData.diasDisponibles}
+            onChange={handleChange}
+            className={`border p-1 text-sm rounded ${isFieldEmpty('diasDisponibles') ? 'border-red-500' : 'border-blue-500'}`}
+          >
+            <option value="">Seleccione Días Disponibles</option>
+            <option value="Lunes">Lunes</option>
+            <option value="Martes">Martes</option>
+            <option value="Miercoles">Miércoles</option>
+          </select>
+          <select
+            name="obraSocial"
+            value={formData.obraSocial}
+            onChange={handleChange}
+            className={`border p-1 text-sm rounded ${isFieldEmpty('obraSocial') ? 'border-red-500' : 'border-blue-500'}`}
+          >
+            <option value="">Seleccione Obra Social</option>
+            <option value="OSDE">OSDE</option>
+            <option value="Medicus">Medicus</option>
+            <option value="Swiss Medical">Swiss Medical</option>
+            <option value="PAMI">PAMI</option>
+            <option value="No Tiene">No Tiene</option>
+          </select>
+          <input
+            type="date"
+            name="fechaNacimiento"
+            placeholder="Fecha Nacimiento"
+            value={formData.fechaNacimiento}
+            onChange={handleChange}
+            className="border p-1 text-sm rounded"
+          />
+          <input
+            type="text"
+            name="telefono"
+            placeholder="Teléfono"
+            value={formData.telefono}
+            onChange={handleChange}
+            className="border p-1 text-sm rounded"
+          />
+          <input
+            type="text"
+            name="calle"
+            placeholder="Calle / Manzana"
+            value={formData.calle}
+            onChange={handleChange}
+            className="border p-1 text-sm rounded"
+          />
+          <input
+            type="text"
+            name="numero"
+            placeholder="Número / Lote"
+            value={formData.numero}
+            onChange={handleChange}
+            className="border p-1 text-sm rounded"
+          />
+          <input
+            type="text"
+            name="barrio"
+            placeholder="Barrio"
+            value={formData.barrio}
+            onChange={handleChange}
+            className="border p-1 text-sm rounded"
+          />
+          <input
+            type="text"
+            name="ciudad"
+            placeholder="Ciudad"
+            value={formData.ciudad}
+            onChange={handleChange}
+            className="border p-1 text-sm rounded"
+          />
+          <input
+            type="text"
+            name="provincia"
+            placeholder="Provincia"
+            value={formData.provincia}
+            onChange={handleChange}
+            className="border p-1 text-sm rounded"
+          />
+          <input
+            type="text"
+            name="codigoPostal"
+            placeholder="Código Postal"
+            value={formData.codigoPostal}
+            onChange={handleChange}
+            className="border p-1 text-sm rounded"
+          />
+          <div className="flex flex-row items-center justify-evenly col-span-3">
+            <h4 className="pb-2 text-md font-base text-red-600">*Los campos en rojo son obligatorios.</h4>
+            <button type="submit" className="w-52 bg-blue-300 hover:bg-[#48c2ff] text-[#143b50] font-bold py-2 px-4 rounded border border-[#246183]">
+              Guardar
+            </button>
+            <button onClick={onClose} className="w-52 bg-red-400 hover:bg-red-600 text-red-800 hover:text-white font-bold py-2 px-4 rounded border border-[#7c232b]">
+              Cerrar
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
   );
 };
 
