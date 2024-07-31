@@ -61,7 +61,7 @@ const Consultation = () => {
 
       <section className='writeText'>
         <p>Notas</p>
-        <textarea
+        {/* <textarea
           name='text'
           id='text'
           className={isFocused ? "focused" : ""}
@@ -69,10 +69,10 @@ const Consultation = () => {
           onBlur={() => setIsFocused(false)}
           onChange={(e) => setCurrentNotes(e.target.value)}
           value={currentNotes}
-        />
-        <div>
+        /> */}
+        {/* <div>
           <img src={speak} alt='Hablar' />
-        </div>
+        </div> */}
       </section>
       <SpeechRecognition />
       <button id='start-consultation' onClick={handleSubmitNotes}>

@@ -6,9 +6,7 @@ import "./App.css";
 function App() {
   const { authData } = useContext(DoctorContext);
   console.log(authData);
-  return (
-    <Router />
-  );
+  return <Router />;
 }
 
 export default App;
