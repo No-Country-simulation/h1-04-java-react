@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import img from "../../Assets/Imgs/profileDoctor.png";
 
 export default function CardPatient(props) {
   const hourMappings = {
@@ -27,16 +28,16 @@ export default function CardPatient(props) {
   return (
     <Link to={"/previous-consultation"}>
       <div className='flex items-center w-full'>
-        <div className=' text-gray-500 border-l-2 border-gray-800 pl-5'>
+        <div className=' text-blue-400 border-l-2 border-blue-500 pl-5'>
           {formatHour(`${props.time}`)}
         </div>
 
         <div
           key={props.index}
-          className='flex w-full shadow items-center space-x-4  p-3 rounded mb-2'
+          className='flex w-full shadow-xl items-center  space-x-4  p-3 rounded mb-2'
         >
           <div className='bg-purple-300 text-white rounded-full w-10 h-10 flex items-center justify-center'>
-            Undo
+            <img src={img} alt='' />
           </div>
           <div>
             <div className='text-blue-600 '>{props.name}</div>

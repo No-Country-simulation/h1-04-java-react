@@ -12,7 +12,7 @@ const CalendarPage = () => {
   };
 
   const today = new Date();
-  const days = Array.from({ length: 6 }, (_, i) => {
+  const days = Array.from({ length: 5 }, (_, i) => {
     const newDate = new Date(today);
     newDate.setDate(today.getDate() - 1 + i);
     return newDate;
@@ -56,7 +56,7 @@ const CalendarPage = () => {
 
   return (
     <div className='p-4 flex flex-col'>
-      <button className='bg-white border-blue-400 border-2 self-end mb-3  px-3 py-1 rounded'>
+      <button className='bg-white shadow border-2 self-end mb-3  px-3 py-1 rounded'>
         Calendario
       </button>
 
@@ -68,7 +68,7 @@ const CalendarPage = () => {
               className={`px-3 py-1 rounded ${
                 index === 1
                   ? "bg-blue-400 text-white"
-                  : "bg-white border-blue-400 border-2"
+                  : "bg-white shadow-xl border-2"
               }`}
             >
               {getFormattedDate(day)}

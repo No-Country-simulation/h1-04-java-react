@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from "react";
-import { fetchDoctors } from "../services/doctorServices";
+import { fetchDoctors, getDoctorById } from "../services/doctorServices";
+import { getPatientById } from "../services/patientServices";
 
 const DoctorContext = createContext();
 
@@ -51,6 +52,39 @@ export const DoctorProvider = ({ children }) => {
     }
   }, [authData]);
 
+  // GetPatientByID
+
+  const fetchPatientById = async (id) => {
+    if (!authData) {
+      throw new Error("No authentication data available");
+    }
+    try {
+      const patientData = await getPatientById(authData.token, id);
+      return patientData;
+    } catch (error) {
+      if (error.message === "Error fetching patient data") {
+        // Token might be invalid or expired
+        logout();
+      }
+      throw error;
+    }
+  };
+  const fetchDoctorById = async (id) => {
+    if (!authData) {
+      throw new Error("No authentication data available");
+    }
+    try {
+      const doctorData = await getDoctorById(authData.token, id);
+      return doctorData;
+    } catch (error) {
+      if (error.message === "Error fetching doctor data") {
+        // Token might be invalid or expired
+        logout();
+      }
+      throw error;
+    }
+  };
+
   return (
     <DoctorContext.Provider
       value={{
@@ -62,6 +96,8 @@ export const DoctorProvider = ({ children }) => {
         logout,
         notes,
         setNotes,
+        fetchPatientById,
+        fetchDoctorById,
       }}
     >
       {children}
