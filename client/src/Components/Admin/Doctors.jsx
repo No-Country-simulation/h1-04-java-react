@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
-import Modal from './Modal';
+import ModalDoctor from './ModalDoctor';
 import AddDoctorForm from './AddDoctorForm';
 import EditDoctorForm from './EditDoctorForm';
 
@@ -109,15 +109,15 @@ const Doctors = () => {
       </div>
 
       {showAddModal && (
-        <Modal onClose={() => setShowAddModal(false)}>
+        <ModalDoctor onClose={() => setShowAddModal(false)}>
           <AddDoctorForm onClose={() => setShowAddModal(false)} />
-        </Modal>
+        </ModalDoctor>
       )}
 
       {showEditModal && (
-        <Modal onClose={() => setShowEditModal(false)}>
+        <ModalDoctor onClose={() => setShowEditModal(false)}>
           <EditDoctorForm doctor={currentDoctor} onClose={() => setShowEditModal(false)} />
-        </Modal>
+        </ModalDoctor>
       )}
     </div>
   );

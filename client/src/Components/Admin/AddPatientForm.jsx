@@ -52,10 +52,14 @@ const AddPatientForm = ({ onClose }) => {
             onChange={handleChange}
             className={`border p-1 text-sm rounded ${isFieldEmpty('dni') ? 'border-red-500' : 'border-blue-500'}`}
           >
-            <option value="">Seleccione DNI</option>
+            <option value="">Seleccione Tipo de Documento</option>
             <option value="DNI">DNI</option>
-            <option value="LC">LC</option>
             <option value="LE">LE</option>
+            <option value="LC">LC</option>
+            <option value="PASSPORT">PASAPORTE</option>
+            <option value="CUIL">CUIL</option>
+            <option value="CUIT">CUIT</option>
+            <option value="FOREIGN_ID">ID_EXTRANJERO</option>
           </select>
           <input
             type="text"
@@ -75,8 +79,15 @@ const AddPatientForm = ({ onClose }) => {
             <option value="">Seleccione Obra Social</option>
             <option value="OSDE">OSDE</option>
             <option value="Medicus">Medicus</option>
+            <option value="Galeno">Galeno</option>
+            <option value="Sancor Salud">Sancor Salud</option>
+            <option value="Federada Salud">Federada Salud</option>
+            <option value="Unión Personal">Unión Personal</option>
+            <option value="IOMA">IOMA</option>
+            <option value="PAMI">PAMI</option>
             <option value="Swiss Medical">Swiss Medical</option>
             <option value="PAMI">PAMI</option>
+            <option value="Hospital Italiano">Hospital Italiano</option>
             <option value="No Tiene">No Tiene</option>
           </select>
           <input type="text" placeholder="Teléfono" className="border p-1 text-sm rounded" />
@@ -86,14 +97,15 @@ const AddPatientForm = ({ onClose }) => {
           <input type="text" placeholder="Barrio" className="border p-1 text-sm rounded" />
           <input type="text" placeholder="Ciudad" className="border p-1 text-sm rounded" />
           <select className="border p-1 text-sm rounded">
-            <option>A+</option>
-            <option>A-</option>
-            <option>B+</option>
-            <option>B-</option>
-            <option>AB+</option>
-            <option>AB-</option>
-            <option>O+</option>
-            <option>O-</option>
+          <option value="">Seleccione Grupo Sanguíneo</option>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
           </select>
           <input type="text" placeholder="Provincia" className="border p-1 text-sm rounded" />
           <input type="text" placeholder="Código Postal" className="border p-1 text-sm rounded" />

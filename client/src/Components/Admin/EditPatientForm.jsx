@@ -45,10 +45,14 @@ const EditPatientForm = ({ patient, onClose }) => {
             onChange={handleChange}
             className={`border p-1 text-sm rounded ${isFieldEmpty('dni') ? 'border-red-500' : 'border-blue-500'}`}
           >
-            <option value="">Seleccione DNI</option>
+            <option value="">Seleccione Tipo de Documento</option>
             <option value="DNI">DNI</option>
-            <option value="LC">LC</option>
             <option value="LE">LE</option>
+            <option value="LC">LC</option>
+            <option value="PASSPORT">PASAPORTE</option>
+            <option value="CUIL">CUIL</option>
+            <option value="CUIT">CUIT</option>
+            <option value="FOREIGN_ID">ID_EXTRANJERO</option>
           </select>
           <input
             type="text"
@@ -68,8 +72,15 @@ const EditPatientForm = ({ patient, onClose }) => {
             <option value="">Seleccione Obra Social</option>
             <option value="OSDE">OSDE</option>
             <option value="Medicus">Medicus</option>
+            <option value="Galeno">Galeno</option>
+            <option value="Sancor Salud">Sancor Salud</option>
+            <option value="Federada Salud">Federada Salud</option>
+            <option value="Unión Personal">Unión Personal</option>
+            <option value="IOMA">IOMA</option>
+            <option value="PAMI">PAMI</option>
             <option value="Swiss Medical">Swiss Medical</option>
             <option value="PAMI">PAMI</option>
+            <option value="Hospital Italiano">Hospital Italiano</option>
             <option value="No Tiene">No Tiene</option>
           </select>
           <input

@@ -66,9 +66,39 @@ const EditDoctorForm = ({ doctor, onClose }) => {
             className={`border p-1 text-sm rounded ${isFieldEmpty('especialidad') ? 'border-red-500' : 'border-blue-500'}`}
           >
             <option value="">Seleccione Especialidad</option>
+            <option value="AllergyAndImmunology">Alergología e Inmunología</option>
+            <option value="Anesthesiology">Anestesiología</option>
             <option value="Cardiologo">Cardiólogo</option>
+            <option value="Cardiology">Cardiología</option>
             <option value="Cirujano">Cirujano</option>
-            <option value="Psicologo">Psicólogo</option>
+            <option value="Dermatology">Dermatología</option>
+            <option value="Endocrinology">Endocrinología</option>
+            <option value="Gastroenterology">Gastroenterología</option>
+            <option value="Geriatrics">Geriatría</option>
+            <option value="Gynecology">Ginecología</option>
+            <option value="Hematology">Hematología</option>
+            <option value="InfectiousDiseases">Enfermedades Infecciosas</option>
+            <option value="InternalMedicine">Medicina Interna</option>
+            <option value="Nephrology">Nefrología</option>
+            <option value="Neurology">Neurología</option>
+            <option value="Neurosurgery">Neurocirugía</option>
+            <option value="Nutrition">Nutrición</option>
+            <option value="Obstetrics">Obstetricia</option>
+            <option value="Oncology">Oncología</option>
+            <option value="Ophthalmology">Oftalmología</option>
+            <option value="Orthopedics">Ortopedia</option>
+            <option value="Otolaryngology">Otorrinolaringología</option>
+            <option value="Pathology">Patología</option>
+            <option value="Pediatrics">Pediatría</option>
+            <option value="PlasticSurgery">Cirugía Plástica</option>
+            <option value="Pneumonology">Neumonología</option>
+            <option value="Psychiatry">Psiquiatría</option>
+            <option value="Psychology">Psicología</option>
+            <option value="Radiology">Radiología</option>
+            <option value="Rehabilitation">Rehabilitación</option>
+            <option value="Rheumatology">Reumatología</option>
+            <option value="Surgery">Cirugía</option>
+            <option value="Urology">Urología</option>
           </select>
           <input
             type="text"
@@ -88,6 +118,10 @@ const EditDoctorForm = ({ doctor, onClose }) => {
             <option value="Lunes">Lunes</option>
             <option value="Martes">Martes</option>
             <option value="Miercoles">Miércoles</option>
+            <option value="Jueves">Jueves</option>
+            <option value="Viernes">Viernes</option>
+            <option value="Sabado">Sábado</option>
+            <option value="Domingo">Domingo</option>
           </select>
           <select
             name="obraSocial"
