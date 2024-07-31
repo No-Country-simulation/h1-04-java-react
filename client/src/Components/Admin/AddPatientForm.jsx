@@ -85,8 +85,8 @@ const AddPatientForm = ({ onClose }) => {
           </div>
 
           <div className="flex flex-col items-center justify-evenly col-span-1 col-start-3">
-          <button type="submit" className="w-52 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Guardar</button>
-          <button onClick={onClose} className="w-52 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Cerrar</button>
+          <button type="submit" className="w-52 bg-blue-300 hover:bg-[#48c2ff] text-[#143b50] font-bold py-2 px-4 rounded border border-[#246183]">Guardar</button>
+          <button onClick={onClose} className="w-52 bg-red-400 hover:bg-red-600 text-red-800 hover:text-white font-bold py-2 px-4 rounded border border-[#7c232b]">Cerrar</button>
         </div>
 
           

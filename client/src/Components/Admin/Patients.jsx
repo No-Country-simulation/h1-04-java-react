@@ -76,7 +76,7 @@ const Patients = () => {
               <th className="py-1 px-3 text-left font-semibold">Teléfono</th>
               <th className="py-1 px-3 text-left font-semibold">Obra Social</th>
               <th className="py-1 px-3 text-left font-semibold">Activo</th>
-              <th className="py-1 px-3 text-left font-semibold pl-7">Acciones</th>
+              <th className="py-1 text-center font-semibold">Acciones</th>
             </tr>
           </thead>
           <tbody>
@@ -87,18 +87,18 @@ const Patients = () => {
                 <td className="py-1 px-3 overflow-hidden whitespace-nowrap">{patient.phone}</td>
                 <td className="py-1 px-3 overflow-hidden whitespace-nowrap">{patient.insurance}</td>
                 <td className="py-1 px-3 overflow-hidden whitespace-nowrap">{patient.active ? 'Sí' : 'No'}</td>
-                <td className="py-1 px-3 flex flex-row justify-center items-center">
+                <td className="py-1 flex flex-row justify-evenly items-center">
                   <button
                     onClick={() => handleEditPatient(patient)}
                     className="p-1 mx-1 rounded-md border border-[#0087d0] text-[#0087d0] flex justify-center items-center hover:bg-[#f0faff]"
                   >
-                    <div className="w-16 text-base font-normal leading-normal tracking-wide">Editar</div>
+                    <div className="w-20 text-base font-normal leading-normal tracking-wide">Editar</div>
                   </button>
                   <button
                     onClick={() => handleDeletePatient(patient.id)}
                     className="p-1 mx-1 rounded-md border bg-[#e4626f] border-[#e4626f] text-white hover:text-red-600 flex justify-center items-center hover:bg-[#fde0e0]"
                   >
-                    <div className="w-16 text-base font-normal leading-normal tracking-wide">Eliminar</div>
+                    <div className="w-20 text-base font-normal leading-normal tracking-wide">Eliminar</div>
                   </button>
                 </td>
               </tr>
