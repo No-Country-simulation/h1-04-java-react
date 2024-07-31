@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import Modal from './Modal';
+import AddPatientForm from './AddPatientForm';
+import EditPatientForm from './EditPatientForm';
 
 const Patients = () => {
   const initialPatients = [
@@ -107,117 +109,13 @@ const Patients = () => {
 
       {showAddModal && (
         <Modal onClose={() => setShowAddModal(false)}>
-          <h2 className="text-lg font-semibold mb-4">Agregar Paciente</h2>
-          <form>
-            <div className="grid grid-cols-2 gap-4">
-              <input type="text" placeholder="Nombre" className="border p-2 rounded" />
-              <input type="text" placeholder="Apellido" className="border p-2 rounded" />
-              <input type="email" placeholder="Email" className="border p-2 rounded" />
-              <select className="border p-2 rounded">
-                <option>DNI</option>
-                <option>LC</option>
-                <option>LE</option>
-              </select>
-              <input type="text" placeholder="Nro Documento" maxLength="8" className="border p-2 rounded" />
-              <input type="date" placeholder="Fecha Nacimiento" className="border p-2 rounded" />
-              <input type="text" placeholder="Teléfono" className="border p-2 rounded" />
-              <input type="text" placeholder="Calle" className="border p-2 rounded" />
-              <input type="text" placeholder="Número" className="border p-2 rounded" />
-              <input type="text" placeholder="Barrio" className="border p-2 rounded" />
-              <input type="text" placeholder="Ciudad" className="border p-2 rounded" />
-              <input type="text" placeholder="Provincia" className="border p-2 rounded" />
-              <input type="text" placeholder="Código Postal" className="border p-2 rounded" />
-              <select className="border p-2 rounded">
-                <option>OSDE</option>
-                <option>Medicus</option>
-                <option>Swiss Medical</option>
-                <option>PAMI</option>
-              </select>
-              <select className="border p-2 rounded">
-                <option>A+</option>
-                <option>A-</option>
-                <option>B+</option>
-                <option>B-</option>
-                <option>AB+</option>
-                <option>AB-</option>
-                <option>O+</option>
-                <option>O-</option>
-              </select>
-              <select className="border p-2 rounded">
-                <option>SOLTERO</option>
-                <option>CASADO</option>
-                <option>VIUDO</option>
-                <option>DIVORCIADO</option>
-              </select>
-            </div>
-
-            <div className="mt-4">
-              <label className="block mb-2">¿Tiene Hijos?</label>
-              <select className="border p-2 rounded mb-2">
-                <option>Sí</option>
-                <option>No</option>
-              </select>
-              <input type="number" placeholder="Cantidad de Hijos" className="border p-2 rounded" />
-            </div>
-
-            <div className="mt-4">
-              <label className="block mb-2">¿Tiene Patologías previas?</label>
-              <div className="flex items-center mb-2">
-                <input type="radio" name="pathologies" value="Sí" className="mr-2" /> Sí
-                <input type="radio" name="pathologies" value="No" className="ml-4 mr-2" /> No
-              </div>
-              <textarea placeholder="Describa las patologías" className="border p-2 rounded w-full"></textarea>
-            </div>
-
-            <div className="mt-4">
-              <label className="block mb-2">¿Tiene Tratamientos Activos?</label>
-              <div className="flex items-center mb-2">
-                <input type="radio" name="treatments" value="Sí" className="mr-2" /> Sí
-                <input type="radio" name="treatments" value="No" className="ml-4 mr-2" /> No
-              </div>
-              <textarea placeholder="Describa los tratamientos" className="border p-2 rounded w-full"></textarea>
-            </div>
-
-            <div className="mt-4">
-              <label className="block mb-2">¿Actualmente está tomando alguna medicación?</label>
-              <div className="flex items-center mb-2">
-                <input type="radio" name="medication" value="Sí" className="mr-2" /> Sí
-                <input type="radio" name="medication" value="No" className="ml-4 mr-2" /> No
-              </div>
-              <textarea placeholder="Describa las medicaciones" className="border p-2 rounded w-full"></textarea>
-            </div>
-
-            <div className="mt-4">
-              <label className="block mb-2">¿Tiene Transplante?</label>
-              <div className="flex items-center mb-2">
-                <input type="radio" name="transplant" value="Sí" className="mr-2" /> Sí
-                <input type="radio" name="transplant" value="No" className="ml-4 mr-2" /> No
-              </div>
-              <textarea placeholder="Describa los transplantes" className="border p-2 rounded w-full"></textarea>
-            </div>
-
-            <div className="mt-4">
-              <label className="block mb-2">¿Tiene Tutor o encargado?</label>
-              <div className="flex items-center mb-2">
-                <input type="radio" name="guardian" value="Sí" className="mr-2" /> Sí
-                <input type="radio" name="guardian" value="No" className="ml-4 mr-2" /> No
-              </div>
-              <input type="text" placeholder="Nombre Completo Tutor" className="border p-2 rounded w-full mb-2" />
-              <input type="text" placeholder="Teléfono Tutor" className="border p-2 rounded w-full" />
-            </div>
-
-            <button type="submit" className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Guardar</button>
-          </form>
-          <button onClick={() => setShowAddModal(false)} className="mt-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Cerrar</button>
+          <AddPatientForm onClose={() => setShowAddModal(false)} />
         </Modal>
       )}
 
       {showEditModal && (
         <Modal onClose={() => setShowEditModal(false)}>
-          <h2 className="text-lg font-semibold mb-4">Editar Paciente</h2>
-          {/* Formulario de editar paciente */}
-          {/* Completar con los inputs necesarios */}
-          <button onClick={() => setShowEditModal(false)} className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Cerrar</button>
+          <EditPatientForm patient={currentPatient} onClose={() => setShowEditModal(false)} />
         </Modal>
       )}
     </div>
