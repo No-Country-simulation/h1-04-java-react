@@ -1,32 +1,90 @@
+import { useState } from 'react';
+
 const AddPatientForm = ({ onClose }) => {
+  const [formData, setFormData] = useState({
+    nombre: '',
+    apellido: '',
+    email: '',
+    dni: '',
+    nroDocumento: '',
+    obraSocial: '',
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const isFieldEmpty = (field) => !formData[field];
+
   return (
     <div>
       <h2 className="text-lg font-semibold mb-4 text-center">Agregar Paciente</h2>
       <form>
         <div className="grid grid-cols-3 gap-4">
-          <input type="text" placeholder="Nombre" className="border p-1 text-sm rounded" />
-          <input type="text" placeholder="Apellido" className="border p-1 text-sm rounded" />
-          <input type="email" placeholder="Email" className="border p-1 text-sm rounded" />
-          <select className="border p-1 text-sm rounded">
-            <option>DNI</option>
-            <option>LC</option>
-            <option>LE</option>
+          <input
+            type="text"
+            name="nombre"
+            placeholder="Nombre"
+            value={formData.nombre}
+            onChange={handleChange}
+            className={`border p-1 text-sm rounded ${isFieldEmpty('nombre') ? 'border-red-500' : 'border-blue-500'}`}
+          />
+          <input
+            type="text"
+            name="apellido"
+            placeholder="Apellido"
+            value={formData.apellido}
+            onChange={handleChange}
+            className={`border p-1 text-sm rounded ${isFieldEmpty('apellido') ? 'border-red-500' : 'border-blue-500'}`}
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+            className={`border p-1 text-sm rounded ${isFieldEmpty('email') ? 'border-red-500' : 'border-blue-500'}`}
+          />
+          <select
+            name="dni"
+            value={formData.dni}
+            onChange={handleChange}
+            className={`border p-1 text-sm rounded ${isFieldEmpty('dni') ? 'border-red-500' : 'border-blue-500'}`}
+          >
+            <option value="">Seleccione DNI</option>
+            <option value="DNI">DNI</option>
+            <option value="LC">LC</option>
+            <option value="LE">LE</option>
           </select>
-          <input type="text" placeholder="Nro Documento" maxLength="8" className="border p-1 text-sm rounded" />
-          <input type="date" placeholder="Fecha Nacimiento" className="border p-1 text-sm rounded" />
+          <input
+            type="text"
+            name="nroDocumento"
+            placeholder="Nro Documento"
+            maxLength="8"
+            value={formData.nroDocumento}
+            onChange={handleChange}
+            className={`border p-1 text-sm rounded ${isFieldEmpty('nroDocumento') ? 'border-red-500' : 'border-blue-500'}`}
+          />
+          <select
+            name="obraSocial"
+            value={formData.obraSocial}
+            onChange={handleChange}
+            className={`border p-1 text-sm rounded ${isFieldEmpty('obraSocial') ? 'border-red-500' : 'border-blue-500'}`}
+          >
+            <option value="">Seleccione Obra Social</option>
+            <option value="OSDE">OSDE</option>
+            <option value="Medicus">Medicus</option>
+            <option value="Swiss Medical">Swiss Medical</option>
+            <option value="PAMI">PAMI</option>
+            <option value="No Tiene">No Tiene</option>
+          </select>
           <input type="text" placeholder="Teléfono" className="border p-1 text-sm rounded" />
-          <input type="text" placeholder="Calle" className="border p-1 text-sm rounded" />
-          <input type="text" placeholder="Número" className="border p-1 text-sm rounded" />
+          <input type="text" placeholder="Calle / Manzana" className="border p-1 text-sm rounded" />
+          <input type="text" placeholder="Número / Lote" className="border p-1 text-sm rounded" />
+          <input type="date" placeholder="Fecha Nacimiento" className="border p-1 text-sm rounded" />
           <input type="text" placeholder="Barrio" className="border p-1 text-sm rounded" />
           <input type="text" placeholder="Ciudad" className="border p-1 text-sm rounded" />
-          <input type="text" placeholder="Provincia" className="border p-1 text-sm rounded" />
-          <input type="text" placeholder="Código Postal" className="border p-1 text-sm rounded" />
-          <select className="border p-1 text-sm rounded">
-            <option>OSDE</option>
-            <option>Medicus</option>
-            <option>Swiss Medical</option>
-            <option>PAMI</option>
-          </select>
           <select className="border p-1 text-sm rounded">
             <option>A+</option>
             <option>A-</option>
@@ -37,6 +95,8 @@ const AddPatientForm = ({ onClose }) => {
             <option>O+</option>
             <option>O-</option>
           </select>
+          <input type="text" placeholder="Provincia" className="border p-1 text-sm rounded" />
+          <input type="text" placeholder="Código Postal" className="border p-1 text-sm rounded" />
 
           <div className="col-span-1 col-start-1">
             <label className="block mb-2 text-sm">¿Tiene alguna patología?</label>
@@ -85,11 +145,12 @@ const AddPatientForm = ({ onClose }) => {
           </div>
 
           <div className="flex flex-col items-center justify-evenly col-span-1 col-start-3">
-          <button type="submit" className="w-52 bg-blue-300 hover:bg-[#48c2ff] text-[#143b50] font-bold py-2 px-4 rounded border border-[#246183]">Guardar</button>
-          <button onClick={onClose} className="w-52 bg-red-400 hover:bg-red-600 text-red-800 hover:text-white font-bold py-2 px-4 rounded border border-[#7c232b]">Cerrar</button>
-        </div>
+            <h4 className='pb-2 text-md font-base text-red-600'>*Los campos en rojo son obligatorios.</h4>
+            <button type="submit" className="w-52 bg-blue-300 hover:bg-[#48c2ff] text-[#143b50] font-bold py-2 px-4 rounded border border-[#246183]">Guardar</button>
+            <button onClick={onClose} className="w-52 bg-red-400 hover:bg-red-600 text-red-800 hover:text-white font-bold py-2 px-4 rounded border border-[#7c232b]">Cerrar</button>
+          </div>
 
-          
+
         </div>
 
       </form>
