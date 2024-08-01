@@ -1,4 +1,4 @@
-import { MdCheckCircle } from 'react-icons/md'; // Importa el icono check-circle
+import { MdCheckCircle } from 'react-icons/md';
 
 import img1 from '../../Assets/Imgs/section2-img1.png';
 import img2 from '../../Assets/Imgs/section2-img2.png';
