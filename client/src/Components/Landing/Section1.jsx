@@ -3,6 +3,7 @@ import device2 from '../../Assets/Imgs/device2.png';
 import android from '../../Assets/Imgs/vector/android.svg';
 import apple from '../../Assets/Imgs/vector/apple.svg';
 import windows from '../../Assets/Imgs/vector/windows.svg';
+import { FaDownload } from 'react-icons/fa';
 
 const Section1 = () => {
   return (
@@ -25,12 +26,12 @@ const Section1 = () => {
           </div>
           <div className="flex flex-col gap-4">
             <div className="flex gap-4">
-              <button className="w-36 h-10 p-4 bg-pink-600 rounded-md shadow-lg hover:shadow-xl text-white text-sm font-semibold leading-tight flex justify-center items-center transition-all duration-300">
-                Más Información
-              </button>
-              <button className="w-36 h-10 p-4 bg-pink-100 rounded-md shadow-lg hover:shadow-xl border-2 border-pink-600 text-gray-900 text-sm font-semibold leading-tight flex justify-center items-center opacity-80 transition-all duration-300">
-                ¡Probaló!
-              </button>
+            <div className="h-8 px-4 bg-[#ea526f] border border-[#ea526f] rounded-md flex items-center justify-between space-x-2 cursor-pointer hover:bg-[#c44559]">
+          <div className="text-white text-base font-semibold">
+            DESCARGAR
+          </div>
+          <FaDownload className="text-white" />
+        </div>
             </div>
             <div className="w-36 h-10 justify-center items-center gap-2 inline-flex">
               <img
