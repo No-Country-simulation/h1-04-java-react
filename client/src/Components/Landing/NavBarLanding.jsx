@@ -24,13 +24,13 @@ const NavBarLanding = () => {
       <div className="flex justify-between items-center space-x-6">
         <div
           onClick={handleLoginClick}
-          className="h-8 p-4 bg-white rounded-md border border-[#ea526f] flex justify-center items-center cursor-pointer hover:bg-[#ea526f] hover:text-white transition-colors"
+          className="h-8 p-4 bg-white rounded-md border border-[#ea526f] flex justify-center items-center cursor-pointer hover:bg-[#ea526f] hover:border-[#fceade] hover:text-white transition-colors"
         >
           <div className="text-[#ea526f] text-base font-semibold leading-tight hover:text-white">
             INICIAR SESIÓN
           </div>
         </div>
-        <div className="h-8 px-4 bg-[#ea526f] border border-[#ea526f] rounded-md flex items-center justify-between space-x-2 cursor-pointer hover:bg-[#c44559]">
+        <div className="h-8 px-4 bg-[#ea526f] border border-[#ea526f] rounded-md flex items-center justify-between space-x-2 cursor-pointer hover:bg-[#c44559] hover:border-[#fceade]">
           <div className="text-white text-base font-semibold">
             DESCARGAR
           </div>

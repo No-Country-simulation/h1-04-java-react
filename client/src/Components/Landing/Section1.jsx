@@ -13,7 +13,7 @@ const Section1 = () => {
         <div className="flex flex-col justify-start items-start gap-6 pt-8">
           <div className="relative flex flex-col justify-start items-start gap-6">
             <div className="relative flex flex-col">
-              <div className="text-gray-600 text-sm font-normal pb-2">
+              <div className="text-gray-600 text-sm font-normal pb-2 pl-1">
                 Un Aplicación que reinventa el futuro de la Salud
               </div>
               <div className="w-[23rem] text-teal-400 text-4xl font-semibold ">
