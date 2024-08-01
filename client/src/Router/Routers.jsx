@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NavBar from "../Components/NavBar/NavBar.jsx";
 import Footer from "../Components/Footer/Footer.jsx";
@@ -19,6 +20,11 @@ import Recipe from "../Components/Doctor/Recipe/Recipe.jsx";
 import QueryCompletion from "../Components/Doctor/QueryCompletion/QueryCompletion.jsx";
 import Landing from "../Components/Landing/Landing.jsx";
 import DoctorFooter from "../Components/Doctor/DoctorFooter/DoctorFooter.jsx";
+import PatientRecords from "../Components/Doctor/PatientRecords/PatientRecords.jsx";
+import MedicalHistory from "../Components/Doctor/PatientRecord/MedicalHistory/MedicalHistory.jsx";
+import TreatmentFollowUp from "../Components/Doctor/PatientRecord/TreatmentFollowUp/TreatmentFollowUp.jsx";
+import PatientStudy from "../Components/Doctor/PatientRecord/PatientStudy/PatientStudy.jsx";
+import PatientMedication from "../Components/Doctor/PatientRecord/PatientMedication/PatientMedication.jsx";
 import PrivateRoute from "./PrivateRoute"; // Asegúrate de importar el componente
 import DoctorConfiguration from "../Components/Doctor/DoctorConfiguration/DoctorConfiguration.jsx";
 import PatientList from "../Components/Doctor/PatientList/PatientList.jsx";
@@ -57,6 +63,7 @@ const Router = () => {
             </PrivateRoute>
           }
         />
+
         {/* Patient */}
         <Route
           exact
@@ -351,7 +358,9 @@ const Router = () => {
           path='/patientRecord'
           element={
             <PrivateRoute role='DOCTOR'>
-              <DoctorLayout>{/* <patientRecord /> HACER */}</DoctorLayout>
+              <DoctorLayout>
+                <PatientRecords />
+              </DoctorLayout>
             </PrivateRoute>
           }
         />
@@ -360,15 +369,48 @@ const Router = () => {
           path='/medicalHistory'
           element={
             <PrivateRoute role='DOCTOR'>
-              <DoctorLayout>{/* <medicalHistory /> HACER */}</DoctorLayout>
+              <DoctorLayout>
+                <MedicalHistory />
+              </DoctorLayout>
+            </PrivateRoute>
+          }
+        />
+        <Route
+          exact
+          path='/treatmentFollowUp'
+          element={
+            <PrivateRoute role='DOCTOR'>
+              <DoctorLayout>
+                <TreatmentFollowUp />
+              </DoctorLayout>
+            </PrivateRoute>
+          }
+        />
+        <Route
+          exact
+          path='/patientStudy'
+          element={
+            <PrivateRoute role='DOCTOR'>
+              <DoctorLayout>
+                <PatientStudy />
+              </DoctorLayout>
+            </PrivateRoute>
+          }
+        />
+        <Route
+          exact
+          path='/patientMedication'
+          element={
+            <PrivateRoute role='DOCTOR'>
+              <DoctorLayout>
+                <PatientMedication />
+              </DoctorLayout>
             </PrivateRoute>
           }
         />
 
         <Route path='*' element={<Error404 />} />
       </Routes>
-      {/* </div>
-      </div> */}
     </BrowserRouter>
   );
 };
