@@ -20,6 +20,11 @@ import Recipe from "../Components/Doctor/Recipe/Recipe.jsx";
 import QueryCompletion from "../Components/Doctor/QueryCompletion/QueryCompletion.jsx";
 import Landing from "../Components/Landing/Landing.jsx";
 import DoctorFooter from "../Components/Doctor/DoctorFooter/DoctorFooter.jsx";
+import PatientRecords from "../Components/Doctor/PatientRecords/PatientRecords.jsx";
+import MedicalHistory from "../Components/Doctor/PatientRecord/MedicalHistory/MedicalHistory.jsx";
+import TreatmentFollowUp from "../Components/Doctor/PatientRecord/TreatmentFollowUp/TreatmentFollowUp.jsx";
+import PatientStudy from "../Components/Doctor/PatientRecord/PatientStudy/PatientStudy.jsx";
+import PatientMedication from "../Components/Doctor/PatientRecord/PatientMedication/PatientMedication.jsx";
 
 const PatientLayout = ({ children }) => (
   <div className='flex flex-col min-h-screen bg-white'>
@@ -281,13 +286,46 @@ const Router = () => {
         <Route
           exact
           path='/patientRecord'
-          element={<DoctorLayout>{/* <patientRecord /> HACER */}</DoctorLayout>}
+          element={
+            <DoctorLayout>
+              <PatientRecords />
+            </DoctorLayout>
+            }
         />
         <Route
           exact
           path='/medicalHistory'
           element={
-            <DoctorLayout>{/* <medicalHistory /> HACER */}</DoctorLayout>
+            <DoctorLayout>
+              <MedicalHistory />
+            </DoctorLayout>
+          }
+        />
+        <Route
+          exact
+          path='/treatmentFollowUp'
+          element={
+            <DoctorLayout>
+              <TreatmentFollowUp />
+            </DoctorLayout>
+          }
+        />
+        <Route
+          exact
+          path='/patientStudy'
+          element={
+            <DoctorLayout>
+              <PatientStudy />
+            </DoctorLayout>
+          }
+        />
+        <Route
+          exact
+          path='/patientMedication'
+          element={
+            <DoctorLayout>
+              <PatientMedication />
+            </DoctorLayout>
           }
         />
 

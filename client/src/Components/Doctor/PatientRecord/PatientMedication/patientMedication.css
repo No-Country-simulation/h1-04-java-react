@@ -1,0 +1,33 @@
+.arrow-rotate {
+    transform: rotate(90deg);
+    transition: transform 0.3s ease;
+}
+
+.more-arrow-rotate {
+    transform: rotate(270deg);
+    transition: transform 0.3s ease;
+}
+
+.buttonContinue{
+    background-color: #009FF5;
+    color: #fff;
+    width: 100%;
+    padding: 10px;
+    margin-top: 30px;
+}
+
+.containerButtonEdit{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+.buttonEdit{
+    background-color: #B3E4FF;
+    color: #0087D0;
+    padding: 2px;
+    font-weight: 600;
+    border-radius: 5px;
+    width: 150px;
+    text-align: center;
+    margin-top: 20px;
+}
