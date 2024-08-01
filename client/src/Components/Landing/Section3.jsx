@@ -28,7 +28,7 @@ const Section3 = () => {
             <div className="text-[#1e999b] text-2xl font-semibold font-['Josefin Sans'] uppercase mb-2">
               Tratamientos
             </div>
-            <div className="text-black text-base font-semibold">
+            <div className="text-black text-base font-semibold pl-8">
               Podes visualizar procesos y resultados, accediendo a la información que necesitas.
             </div>
           </div>
@@ -43,7 +43,7 @@ const Section3 = () => {
             <div className="text-[#1e999b] text-2xl font-semibold font-['Josefin Sans'] uppercase mb-2">
               Medicación
             </div>
-            <div className="text-black text-base font-semibold">
+            <div className="text-black text-base font-semibold  pl-8">
               Podes gestionar y administrarlos, garantizando el acceso a los mismos.
             </div>
           </div>
@@ -63,7 +63,7 @@ const Section3 = () => {
             <div className="text-[#1e999b] text-2xl font-semibold font-['Josefin Sans'] uppercase mb-2">
               Estudios clínicos
             </div>
-            <div className="text-black text-base font-semibold">
+            <div className="text-black text-base font-semibold px-4">
               Visualízalos en forma completa y segura en la aplicación, en todo momento y en todo lugar.
             </div>
           </div>
@@ -91,7 +91,7 @@ const Section3 = () => {
             <div className="text-[#1e999b] text-2xl font-semibold font-['Josefin Sans'] uppercase mb-2">
               Estudios clínicos
             </div>
-            <div className="text-black text-base font-semibold">
+            <div className="text-black text-base font-semibold pr-8">
               Visualízalos en forma completa y segura en la aplicación, en todo momento y en todo lugar.
             </div>
           </div>
@@ -107,7 +107,7 @@ const Section3 = () => {
             <div className="text-[#1e999b] text-2xl font-semibold font-['Josefin Sans'] uppercase mb-2">
               Turnos médicos
             </div>
-            <div className="text-black text-base font-semibold">
+            <div className="text-black text-base font-semibold pr-8">
               Podes gestionar tus turnos desde la aplicación, de forma fácil y rápida.
             </div>
           </div>
