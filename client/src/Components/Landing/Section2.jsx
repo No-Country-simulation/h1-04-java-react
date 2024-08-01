@@ -11,7 +11,7 @@ const Section2 = () => {
           <div className="w-full text-center text-pink-500 text-2xl font-normal leading-normal tracking-wide">
             PARA PACIENTES
           </div>
-          <div className="w-full text-center text-cyan-500 text-3xl font-bold uppercase leading-tight">
+          <div className="w-full text-center text-cyan-500 text-3xl font-semibold uppercase leading-tight">
             pensada para vos
           </div>
         </div>

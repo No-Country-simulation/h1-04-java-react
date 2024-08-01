@@ -11,7 +11,7 @@ const Section5 = () => {
           <div className="w-full text-center text-pink-500 text-2xl font-normal leading-normal tracking-wide">
             PARA PROFESIONALES DE LA SALUD
           </div>
-          <div className="w-full text-center text-cyan-500 text-3xl font-bold uppercase leading-tight">
+          <div className="w-full text-center text-cyan-500 text-3xl font-semibold uppercase leading-tight">
             impulsa la innovación
           </div>
         </div>
@@ -32,8 +32,8 @@ const Section5 = () => {
               <div className="absolute left-[59px] top-[30px] text-[#232233] text-xl font-semibold font-['Josefin Sans'] uppercase leading-[30px]">
                 HISTORIA CLÍNICA
               </div>
-              <div className="absolute left-[59px] top-[72px] text-[#555555] text-base font-semibold leading-tight mr-24">
-                Accede a tu <span className="text-[#ff8a5b] font-semibold">Historia Clínica</span> en un formato amigable, fácil de usar e interpretar. También podes descargarlo en PDF para presentarlo dónde lo necesites.
+              <div className="absolute left-[59px] top-[72px] text-[#555555] text-base font-semibold leading-tight mr-20">
+              <span className="text-[#555555] text-base leading-tight">Accede y recopila datos de la </span><span className="text-[#ff8a5b] text-base leading-tight">Historia Clínica</span><span className="text-[#555555] text-base leading-tight"> en un formato amigable, fácil de usar e interpretar, en un sólo lugar, para mejorar los resultados de los tratamientos. </span>
               </div>
             </div>
             {/* Segundo elemento */}
@@ -45,8 +45,8 @@ const Section5 = () => {
               <div className="absolute left-[60px] top-[30px] text-[#232233] text-xl font-semibold font-['Josefin Sans'] uppercase leading-[30px]">
                 TURNOS MÉDICOS
               </div>
-              <div className="absolute left-[59px] top-[72px] text-[#555555] text-base font-semibold leading-tight mr-24">
-                Tus próximos <span className="text-[#ff8a5b] font-semibold">Turnos</span> se acercan o necesitas sacar un nuevo… ¿No recordás la fecha? ¿A qué hora? Estas y otras consultas, pueden gestionarse en la aplicación.
+              <div className="absolute left-[59px] top-[72px] text-[#555555] text-base font-semibold leading-tight mr-20">
+              <span className="text-[#555555] text-[15px]leading-tight">Tus próximos </span><span className="text-[#ff8a5b] text-[15px] leading-tight">Turnos</span><span className="text-[#555555] text-[15px] leading-tight"> se acercan, ¿necesitas cancelar? ¿No recordás la fecha? ¿A qué hora? Estas y otras consultas, pueden gestionarse en la aplicación.</span>
               </div>
             </div>
             {/* Tercer elemento */}
@@ -56,10 +56,10 @@ const Section5 = () => {
                 className="w-6 h-6 absolute left-[18px] top-[30px] text-[#25ced1]"
               />
               <div className="absolute left-[60px] top-[30px] text-[#232233] text-xl font-semibold font-['Josefin Sans'] uppercase leading-[30px]">
-                MEDICACIÓN
+              Tratamientos médicos
               </div>
               <div className="absolute left-[59px] top-[72px] text-[#555555] text-base font-semibold leading-tight mr-20">
-                Ya no olvidarás la hora de tus <span className="text-[#ff8a5b] font-semibold">Medicamentos</span>, la aplicación te notifica cuáles te fueron recetados, la dosis, la frecuencia y cuando solicitar tu nueva receta.
+              <span className="text-[#555555] text-base leading-tight">Podes visualizar procesos y resultados de los </span><span className="text-[#ff8a5b] text-base leading-tight">Tratamientos</span><span className="text-[#555555] text-base leading-tight">, analizando la adherencia, brindando indicaciones para mejorar la salud a nivel global</span><span className="text-[#555555] text-[15px] leading-tight">.  </span>
               </div>
             </div>
           </div>

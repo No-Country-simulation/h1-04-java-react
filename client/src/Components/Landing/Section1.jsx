@@ -16,7 +16,7 @@ const Section1 = () => {
               <div className="text-gray-600 text-sm font-normal pb-2 pl-1">
                 Un Aplicación que reinventa el futuro de la Salud
               </div>
-              <div className="w-[23rem] text-teal-400 text-4xl font-semibold ">
+              <div className="w-[26rem] text-teal-400 text-4xl font-bold ">
                 JUSTINA IO: PENSADA PARA VOS
               </div>
             </div>
