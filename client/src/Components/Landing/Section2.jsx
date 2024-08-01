@@ -24,12 +24,12 @@ const Section2 = () => {
         <div className="w-full lg:w-1/2 flex justify-center relative">
           <div className="w-full max-w-md h-[30rem] bg-pink-500/20 rounded-2xl"></div>
           <img
-            className="absolute w-[21.6rem] h-[18.7rem] rounded-[1.2rem] border-1 border-[#ea526f] left-[-3%] top-[25%]"
+            className="absolute w-[21.6rem] h-[18.7rem] rounded-[1rem] left-[-3%] top-[25%]"
             src={img1}
             alt="Placeholder"
           />
           <img
-            className="absolute w-[18.1rem] h-[17.2rem] rounded-[1.2rem] border-1 border-[#ea526f] left-[9.5rem] top-[10%] transform translate-x-[30%] -translate-y-[30%]"
+            className="absolute w-[18.1rem] h-[17.2rem] rounded-[1rem] left-[9.5rem] top-[10%] transform translate-x-[30%] -translate-y-[30%]"
             src={img2}
             alt="Placeholder"
           />
@@ -45,7 +45,7 @@ const Section2 = () => {
               <div className="absolute left-[59px] top-[30px] text-[#232233] text-xl font-semibold font-['Josefin Sans'] uppercase leading-[30px]">
                 HISTORIA CLÍNICA
               </div>
-              <div className="absolute left-[59px] top-[72px] text-[#555555] text-base font-normal font-['Outfit'] leading-tight mr-28">
+              <div className="absolute left-[59px] top-[72px] text-[#555555] text-base font-normal leading-tight mr-28">
                 Accede a tu <span className="text-[#ff8a5b] font-semibold">Historia Clínica</span> en un formato amigable, fácil de usar e interpretar. También podes descargarlo en PDF para presentarlo dónde lo necesites.
               </div>
             </div>
@@ -58,7 +58,7 @@ const Section2 = () => {
               <div className="absolute left-[60px] top-[30px] text-[#232233] text-xl font-semibold font-['Josefin Sans'] uppercase leading-[30px]">
                 TURNOS MÉDICOS
               </div>
-              <div className="absolute left-[59px] top-[72px] text-[#555555] text-base font-normal font-['Outfit'] leading-tight mr-28">
+              <div className="absolute left-[59px] top-[72px] text-[#555555] text-base font-normal leading-tight mr-28">
                 Tus próximos <span className="text-[#ff8a5b] font-semibold">Turnos</span> se acercan o necesitas sacar un nuevo… ¿No recordás la fecha? ¿A qué hora? Estas y otras consultas, pueden gestionarse en la aplicación.
               </div>
             </div>
@@ -71,7 +71,7 @@ const Section2 = () => {
               <div className="absolute left-[60px] top-[30px] text-[#232233] text-xl font-semibold font-['Josefin Sans'] uppercase leading-[30px]">
                 MEDICACIÓN
               </div>
-              <div className="absolute left-[59px] top-[72px] text-[#555555] text-base font-normal font-['Outfit'] leading-tight mr-28">
+              <div className="absolute left-[59px] top-[72px] text-[#555555] text-base font-normal leading-tight mr-28">
                 Ya no olvidarás la hora de tus <span className="text-[#ff8a5b] font-semibold">Medicamentos</span>, la aplicación te notifica cuáles te fueron recetados, la dosis, la frecuencia y cuando solicitar tu nueva receta.
               </div>
             </div>

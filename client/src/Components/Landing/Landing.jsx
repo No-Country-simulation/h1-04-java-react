@@ -6,7 +6,6 @@ import Section4 from './Section4';
 import Section5 from './Section5';
 import Section6 from './Section6';
 import Section7 from './Section7';
-import Section8 from './Section8';
 import FooterLanding from './FooterLanding';
 
 export default function Landing() {
@@ -20,7 +19,6 @@ export default function Landing() {
       <Section5 />
       <Section6 />
       <Section7 />
-      <Section8 />
       <FooterLanding />
     </div>
   );
