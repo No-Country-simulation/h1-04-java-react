@@ -2,7 +2,7 @@ import DoctorHeader from "../../DoctorHeader/DoctorHeader"
 import CardTreatmentFollowUp from "./CardTreatmentFollowUp"
 import GaugeMeter from "./GaugeMeter"
 
-const TreatmentFollowUp = () => {
+const   TreatmentFollowUp = () => {
     return (
         <section className="m-5">
             <DoctorHeader text={"Tratamiento"} />

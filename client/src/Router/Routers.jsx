@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NavBar from "../Components/NavBar/NavBar.jsx";
 import Footer from "../Components/Footer/Footer.jsx";
@@ -62,6 +63,7 @@ const Router = () => {
             </PrivateRoute>
           }
         />
+
         {/* Patient */}
         <Route
           exact

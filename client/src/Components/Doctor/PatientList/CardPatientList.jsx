@@ -4,7 +4,7 @@ import img from "../../../Assets/Imgs/doctorFooter3.png";
 
 export default function CardPatientList(props) {
   return (
-    <Link to={"/previous-consultation"}>
+    <Link to={"/patientRecord"}>
       <div className='flex items-center w-full'>
         <div
           key={props.index}

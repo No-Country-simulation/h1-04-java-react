@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import CardPatient from "../../../helpers/atoms/CardPatient";
 import DoctorContext from "../../../context/DoctorContext";
 import { getAppointmentByDoctor } from "../../../services/appointmentService";
