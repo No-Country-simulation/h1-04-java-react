@@ -21,7 +21,7 @@ export default function DoctorFooter() {
           <p>Turnos</p>
         </div>
       </Link>
-      <Link to={"/doctorConfiguration"}>
+      <Link to={"/patientLists"}>
         <div className='flex flex-grow flex-col justify-center items-center text-[#0087D0]'>
           <img className='w-6' src={img3} alt='home img' />
           <p>Pacientes</p>

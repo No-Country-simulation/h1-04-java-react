@@ -45,10 +45,12 @@ const DoctorConfiguration = () => {
   }
 
   const handlechange = (type) => {
-    if (type === "personalData") {
-      setPersonalData(!personalData);
-    } else {
-      setNotifications(!notifications);
+    if (patientData) {
+      if (type === "personalData") {
+        setPersonalData(!personalData);
+      } else {
+        setNotifications(!notifications);
+      }
     }
   };
 

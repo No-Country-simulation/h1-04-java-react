@@ -21,6 +21,7 @@ import Landing from "../Components/Landing/Landing.jsx";
 import DoctorFooter from "../Components/Doctor/DoctorFooter/DoctorFooter.jsx";
 import PrivateRoute from "./PrivateRoute"; // Asegúrate de importar el componente
 import DoctorConfiguration from "../Components/Doctor/DoctorConfiguration/DoctorConfiguration.jsx";
+import PatientList from "../Components/Doctor/PatientList/PatientList.jsx";
 
 const PatientLayout = ({ children }) => (
   <div className='flex flex-col min-h-screen bg-white'>
@@ -40,6 +41,8 @@ const DoctorLayout = ({ children }) => (
 const Router = () => {
   return (
     <BrowserRouter>
+      {/* <div className='w-full flex justify-center'>
+        <div className='w-[400px]'> */}
       <Routes>
         <Route exact path='/' element={<Login />} />
         {/* Landing Page */}
@@ -337,7 +340,9 @@ const Router = () => {
           path='/patientLists'
           element={
             <PrivateRoute role='DOCTOR'>
-              <DoctorLayout>{/* <patientLists /> HACER */}</DoctorLayout>
+              <DoctorLayout>
+                <PatientList />
+              </DoctorLayout>
             </PrivateRoute>
           }
         />
@@ -362,6 +367,8 @@ const Router = () => {
 
         <Route path='*' element={<Error404 />} />
       </Routes>
+      {/* </div>
+      </div> */}
     </BrowserRouter>
   );
 };

@@ -51,6 +51,18 @@ const CalendarPage = () => {
     fetchAppointments();
   }, [authLoading, authData]);
 
+  const groupAppointmentsByDay = (appointments) => {
+    return appointments.reduce((acc, appointment) => {
+      if (!acc[appointment.appointmentDay]) {
+        acc[appointment.appointmentDay] = [];
+      }
+      acc[appointment.appointmentDay].push(appointment);
+      return acc;
+    }, {});
+  };
+
+  const groupedAppointments = groupAppointmentsByDay(appointments);
+
   if (loading || authLoading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
 
@@ -78,15 +90,20 @@ const CalendarPage = () => {
       </div>
 
       <div className='mt-4'>
-        {appointments.length > 0 ? (
-          appointments.map((appointment) => (
-            <CardPatient
-              key={appointment.appointmentId}
-              time={appointment.appointmentHour}
-              name={appointment.fullnamePatient}
-              description={appointment.typeOfAppointment}
-              date={appointment.appointmentDay}
-            />
+        {Object.keys(groupedAppointments).length > 0 ? (
+          Object.keys(groupedAppointments).map((day) => (
+            <div key={day} className='mb-4'>
+              <h3 className='text-blue-500 font-bold'>{day}...</h3>
+              {groupedAppointments[day].map((appointment) => (
+                <CardPatient
+                  key={appointment.appointmentId}
+                  time={appointment.appointmentHour}
+                  name={appointment.fullnamePatient}
+                  description={appointment.typeOfAppointment}
+                  date={appointment.appointmentDay}
+                />
+              ))}
+            </div>
           ))
         ) : (
           <p>No appointments found</p>
