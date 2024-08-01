@@ -1,33 +1,54 @@
 import { useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import arrowRight from "../../../Assets/Imgs/arrowRight.png";
 import arrowLeft from "../../../Assets/Imgs/otraArrowLeft.png";
 import privateImg from "../../../Assets/Imgs/private.png";
 import profile from "../../../Assets/Imgs/pepitaExample.png";
 import settings from "../../../Assets/Imgs/settings.png";
-import PersonalData from "./PersonalData/PersonalData";
-import Notifications from "./Notifications/Notifications";
-import "./profileConfiguration.css";
+import PersonalData from "../../PersonalData/PersonalData";
+import Notifications from "../../Notifications/Notifications";
+
 import DoctorContext from "../../../context/DoctorContext";
 
-const ProfileConfiguration = () => {
+const DoctorConfiguration = () => {
   const [personalData, setPersonalData] = useState(false);
   const [notifications, setNotifications] = useState(false);
   const navigate = useNavigate();
-  const { logout } = useContext(DoctorContext);
+  const { logout, fetchPatientById, authData } = useContext(DoctorContext);
+  const [patientData, setPatientData] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const loadPatientData = async () => {
+      if (authData) {
+        try {
+          const data = await fetchPatientById(authData.id);
+
+          setPatientData(data.patient.user);
+          setError(null);
+        } catch (error) {
+          setError(error.message);
+          console.log(error);
+          setPatientData(null);
+        }
+      }
+    };
+
+    loadPatientData();
+  }, []);
 
   function log() {
     logout();
     navigate("/");
   }
 
-  let user = {}; //OBTENER USUARIO DEL BACKEND
-
   const handlechange = (type) => {
-    if (type == "personalData") {
-      setPersonalData(!personalData);
-    } else {
-      setNotifications(!notifications);
+    if (patientData) {
+      if (type === "personalData") {
+        setPersonalData(!personalData);
+      } else {
+        setNotifications(!notifications);
+      }
     }
   };
 
@@ -44,8 +65,10 @@ const ProfileConfiguration = () => {
           alt='Paciente img'
           className='h-28 w-28 m-auto mt-5'
         />
-        <p className='ml-3 font-bold text-lg text-center mb-10'>
-          Pepita Flores
+        <p className='font-bold text-lg text-center mb-10'>
+          {patientData
+            ? patientData.firstName + " " + patientData.lastName
+            : "Cargando..."}
         </p>
       </article>
 
@@ -60,8 +83,7 @@ const ProfileConfiguration = () => {
           </button>
           {personalData && (
             <div className='mb-5'>
-              {" "}
-              <PersonalData user={user} />{" "}
+              <PersonalData user={patientData} />
             </div>
           )}
         </div>
@@ -76,8 +98,7 @@ const ProfileConfiguration = () => {
           </button>
           {notifications && (
             <div className='mb-5'>
-              {" "}
-              <Notifications />{" "}
+              <Notifications />
             </div>
           )}
         </div>
@@ -109,4 +130,4 @@ const ProfileConfiguration = () => {
   );
 };
 
-export default ProfileConfiguration;
+export default DoctorConfiguration;

@@ -1,8 +1,10 @@
 import { useState } from 'react';
-import { FaSearch } from 'react-icons/fa'; // Importa el ícono de lupa
+import { FaSearch } from 'react-icons/fa';
+import ModalDoctor from './ModalDoctor';
+import AddDoctorForm from './AddDoctorForm';
+import EditDoctorForm from './EditDoctorForm';
 
 const Doctors = () => {
-  // Datos hardcodeados
   const initialDoctors = [
     { id: 1, name: 'Juan Pérez', specialty: 'Cardiología', email: 'juan.perez@example.com', phone: '123-456-7890', docNumber: '12345678', active: true },
     { id: 2, name: 'Ana Gómez', specialty: 'Gastroenterología', email: 'ana.gomez@example.com', phone: '098-765-4321', docNumber: '87654321', active: false },
@@ -13,32 +15,25 @@ const Doctors = () => {
 
   const [doctors, setDoctors] = useState(initialDoctors);
   const [searchTerm, setSearchTerm] = useState('');
+  const [showAddModal, setShowAddModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [currentDoctor, setCurrentDoctor] = useState(null);
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
   };
 
   const handleAddDoctor = () => {
-    const newDoctor = {
-      id: doctors.length + 1,
-      name: 'Nuevo Médico',
-      specialty: 'Especialidad',
-      email: 'nuevo.medico@example.com',
-      phone: '111-222-3333',
-      docNumber: '56789012',
-      active: true
-    };
-    setDoctors([...doctors, newDoctor]);
+    setShowAddModal(true);
   };
 
-  const handleEditDoctor = (id) => {
-    // Aquí iría la lógica para editar el médico
-    alert(`Editar médico con ID: ${id}`);
+  const handleEditDoctor = (doctor) => {
+    setCurrentDoctor(doctor);
+    setShowEditModal(true);
   };
 
   const handleDeleteDoctor = (id) => {
-    // Aquí iría la lógica para eliminar el médico
-    alert(`Eliminar médico con ID: ${id}`);
+    setDoctors(doctors.filter(doctor => doctor.id !== id));
   };
 
   const filteredDoctors = doctors.filter(doctor =>
@@ -48,7 +43,7 @@ const Doctors = () => {
 
   return (
     <div className="p-4 font-roboto">
-      <h2 className="text-xl font-semibold mb-4">Lista de Médicos</h2>
+      <h2 className="text-xl font-semibold mb-4">Médicos</h2>
 
       {/* Barra de búsqueda */}
       <div className="mb-4 flex items-center border border-[#4763e4] rounded-lg">
@@ -66,9 +61,9 @@ const Doctors = () => {
       <div className="mb-4">
         <button
           onClick={handleAddDoctor}
-          className="bg-blue-500 text-white px-4 py-2 rounded flex items-center"
+          className="bg-blue-500 hover:bg-[#d9f2ff] text-white hover:text-[#0087d0] hover:border-[#0087d0] border border-[#4763e4] px-4 py-2 rounded flex items-center"
         >
-          <span className="mr-2">+</span> Agregar un nuevo Médico
+          <span className="mr-2">+</span> Agregar un nuevo médico
         </button>
       </div>
 
@@ -77,34 +72,34 @@ const Doctors = () => {
         <table className="min-w-full bg-white border border-gray-200">
           <thead>
             <tr>
-              <th className="py-2 px-4 text-left">Nombre</th>
-              <th className="py-2 px-4 text-left">Especialidad</th>
-              <th className="py-2 px-4 text-left">Email</th>
-              <th className="py-2 px-4 text-left">Teléfono</th>
-              <th className="py-2 px-4 text-left">Activo</th>
-              <th className="py-2 px-4 text-left">Acciones</th>
+              <th className="py-1 px-3 text-left font-semibold">Nombre</th>
+              <th className="py-1 px-3 text-left font-semibold">Especialidad</th>
+              <th className="py-1 px-3 text-left font-semibold">Email</th>
+              <th className="py-1 px-3 text-left font-semibold">Teléfono</th>
+              <th className="py-1 px-3 text-left font-semibold">Activo</th>
+              <th className="py-1 text-center font-semibold">Acciones</th>
             </tr>
           </thead>
           <tbody>
             {filteredDoctors.map(doctor => (
-              <tr key={doctor.id} className="h-16 border border-zinc-100"> {/* Altura fija para cada fila */}
-                <td className="py-2 px-4 h-full overflow-hidden whitespace-nowrap">{doctor.name}</td>
-                <td className="py-2 px-4 h-full overflow-hidden whitespace-nowrap">{doctor.specialty}</td>
-                <td className="py-2 px-4 h-full overflow-hidden whitespace-nowrap">{doctor.email}</td>
-                <td className="py-2 px-4 h-full overflow-hidden whitespace-nowrap">{doctor.phone}</td>
-                <td className="py-2 px-4 h-full overflow-hidden whitespace-nowrap">{doctor.active ? 'Sí' : 'No'}</td>
-                <td className="py-2 px-4 h-full flex">
+              <tr key={doctor.id} className="h-8 border border-zinc-100 justify-center items-center text-sm">
+                <td className="py-1 px-3 overflow-hidden whitespace-nowrap">{doctor.name}</td>
+                <td className="py-1 px-3 overflow-hidden whitespace-nowrap">{doctor.specialty}</td>
+                <td className="py-1 px-3 overflow-hidden whitespace-nowrap">{doctor.email}</td>
+                <td className="py-1 px-3 overflow-hidden whitespace-nowrap">{doctor.phone}</td>
+                <td className="py-1 px-3 overflow-hidden whitespace-nowrap">{doctor.active ? 'Sí' : 'No'}</td>
+                <td className="py-1 flex flex-row justify-evenly items-center">
                   <button
-                    onClick={() => handleEditDoctor(doctor.id)}
-                    className="p-2 mx-1 rounded-md border border-[#0087d0] text-[#0087d0] flex justify-center items-center hover:bg-[#f0faff]"
+                    onClick={() => handleEditDoctor(doctor)}
+                    className="p-1 mx-1 rounded-md border border-[#0087d0] text-[#0087d0] flex justify-center items-center hover:bg-[#f0faff]"
                   >
-                    <div className="w-16 text-base font-normal leading-normal tracking-wide">Editar</div>
+                    <div className="w-20 text-base font-normal leading-normal tracking-wide">Editar</div>
                   </button>
                   <button
                     onClick={() => handleDeleteDoctor(doctor.id)}
-                    className="p-2 mx-1 rounded-md border bg-[#e4626f] border-[#e4626f] text-white hover:text-red-600 flex justify-center items-center hover:bg-[#fde0e0]"
+                    className="p-1 mx-1 rounded-md border bg-[#e4626f] border-[#e4626f] text-white hover:text-red-600 flex justify-center items-center hover:bg-[#fde0e0]"
                   >
-                    <div className="w-16 text-base font-normal leading-normal tracking-wide">Eliminar</div>
+                    <div className="w-20 text-base font-normal leading-normal tracking-wide">Eliminar</div>
                   </button>
                 </td>
               </tr>
@@ -112,9 +107,20 @@ const Doctors = () => {
           </tbody>
         </table>
       </div>
+
+      {showAddModal && (
+        <ModalDoctor onClose={() => setShowAddModal(false)}>
+          <AddDoctorForm onClose={() => setShowAddModal(false)} />
+        </ModalDoctor>
+      )}
+
+      {showEditModal && (
+        <ModalDoctor onClose={() => setShowEditModal(false)}>
+          <EditDoctorForm doctor={currentDoctor} onClose={() => setShowEditModal(false)} />
+        </ModalDoctor>
+      )}
     </div>
   );
 }
 
 export default Doctors;
-
