@@ -40,7 +40,7 @@ const Section2 = () => {
             <div className="w-full h-40 relative">
               <div className="absolute inset-0 bg-white rounded-[10px] shadow border-2 border-[#25ced1]"></div>
               <MdCheckCircle
-                className="w-6 h-6 absolute left-[18px] top-[30px] text-[#25ced1]"
+                className="w-6 h-6 absolute left-[18px] top-[35px] text-[#25ced1]"
               />
               <div className="absolute left-[59px] top-[30px] text-[#232233] text-xl font-semibold font-['Josefin Sans'] uppercase leading-[30px]">
                 HISTORIA CLÍNICA
@@ -53,7 +53,7 @@ const Section2 = () => {
             <div className="w-full h-40 relative">
               <div className="absolute inset-0 bg-white rounded-[10px] shadow border-2 border-[#25ced1]"></div>
               <MdCheckCircle
-                className="w-6 h-6 absolute left-[18px] top-[30px] text-[#25ced1]"
+                className="w-6 h-6 absolute left-[18px] top-[35px] text-[#25ced1]"
               />
               <div className="absolute left-[60px] top-[30px] text-[#232233] text-xl font-semibold font-['Josefin Sans'] uppercase leading-[30px]">
                 TURNOS MÉDICOS
@@ -66,7 +66,7 @@ const Section2 = () => {
             <div className="w-full h-40 relative">
               <div className="absolute inset-0 bg-white rounded-[10px] shadow border-2 border-[#25ced1]"></div>
               <MdCheckCircle
-                className="w-6 h-6 absolute left-[18px] top-[30px] text-[#25ced1]"
+                className="w-6 h-6 absolute left-[18px] top-[35px] text-[#25ced1]"
               />
               <div className="absolute left-[60px] top-[30px] text-[#232233] text-xl font-semibold font-['Josefin Sans'] uppercase leading-[30px]">
                 MEDICACIÓN

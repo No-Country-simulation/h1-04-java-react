@@ -1,18 +1,27 @@
 
 const Section7 = () => {
   return (
-    <div className="w-full py-16 flex flex-col items-center bg-white">
+    <div className="w-full py-24 flex flex-col items-center bg-white">
       {/* Título y descripción */}
-      <div className="text-center mb-10">
-        <div className="w-full text-center text-cyan-500 text-3xl font-semibold uppercase leading-tight">
+      <div className="text-center mb-16">
+        <div className="w-full text-center text-cyan-500 text-3xl font-semibold uppercase leading-tight mb-10">
           Sobre la campaña de Justina
         </div>
-        <p className="text-[#555555] text-base md:text-lg font-normal font-['Outfit'] leading-tight max-w-3xl mx-auto">
-          4 de julio del 2018, se enciende el cartel de la Cámara de Diputados de la Nación, y el capicúa dibuja la sonrisa en los millones de argentinos que comienzan a estar protegidos por la <span className="underline">#LeyJustina</span> aprobada por unanimidad!
+        <p className="text-[#555555] text-base font-semibold leading-tight max-w-2xl mx-auto">
+          4 de julio del 2018, se enciende el cartel de la Cámara de Diputados de la Nación, y el capicúa dibuja la sonrisa en los millones de argentinos que comienzan a estar protegidos por la 
+          <a 
+            href="https://www.argentina.gob.ar/sites/default/files/ley-27447.pdf" 
+            className="underline text-[#555555] hover:text-[#ff4900] cursor-pointer mx-1" 
+            target="_blank" 
+            rel="noopener noreferrer"
+          >
+            #LeyJustina
+          </a> 
+          aprobada por unanimidad!
         </p>
       </div>
       {/* Tarjetas */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-screen-lg mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-screen-lg mx-auto pb-8">
         {/* Tarjeta 1 */}
         <div className="relative bg-white rounded-lg shadow-lg overflow-hidden">
           <img className="w-full h-56 object-cover" src="https://via.placeholder.com/370x227" alt="Ley Justina" />
