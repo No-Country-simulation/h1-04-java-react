@@ -6,7 +6,7 @@ import windows from '../../Assets/Imgs/vector/windows.svg';
 
 const Section1 = () => {
   return (
-    <div className="w-full max-w-screen-lg mx-auto px-4 py-16">
+    <div className="w-full max-w-screen-lg mx-auto px-4 py-16 bg-white">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Columna Izquierda */}
         <div className="flex flex-col justify-start items-start gap-6 pt-8">

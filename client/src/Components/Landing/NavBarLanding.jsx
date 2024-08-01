@@ -2,7 +2,7 @@ import { FaDownload } from 'react-icons/fa';
 
 const NavBarLanding = () => {
   return (
-    <div className="w-full max-w-screen-xl h-12 mt-6 bg-[#fceade] rounded-md shadow-md flex justify-between items-center px-8 mx-auto sticky top-6 z-50">
+    <div className="w-full max-w-screen-xl h-12 bg-[#fceade] rounded-md shadow-md flex justify-between items-center px-8 mx-auto sticky top-6 z-50">
       <div className="flex justify-between items-center space-x-8">
         <button className="text-[#232233] text-lg font-semibold hover:underline uppercase leading-relaxed hover:text-[#ff4900] cursor-pointer">
           JUSTINA.IO

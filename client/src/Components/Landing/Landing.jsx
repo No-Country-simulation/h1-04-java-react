@@ -11,7 +11,7 @@ import FooterLanding from './FooterLanding';
 
 export default function Landing() {
   return (
-    <div className="w-full">
+    <div className="w-full bg-white">
       <NavBarLanding />
       <Section1 />
       <Section2 />
