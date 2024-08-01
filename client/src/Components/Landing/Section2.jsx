@@ -11,11 +11,11 @@ const Section2 = () => {
           <div className="w-full text-center text-pink-500 text-2xl font-normal leading-normal tracking-wide">
             PARA PACIENTES
           </div>
-          <div className="w-full text-center text-cyan-500 text-4xl font-bold uppercase leading-tight">
+          <div className="w-full text-center text-cyan-500 text-3xl font-bold uppercase leading-tight">
             pensada para vos
           </div>
         </div>
-        <div className="w-full text-center text-gray-800 text-base font-semibold leading-tight">
+        <div className="w-full text-center text-gray-700 text-base font-semibold leading-tight">
           Te presentamos una aplicación que te acompaña en el antes, el durante y el después de tu trasplante, brindándote toda la información y permitiéndote que te involucres de una manera activa en el cuidado de tu salud, para garantizar tu bienestar durante tu tratamiento.
         </div>
       </div>

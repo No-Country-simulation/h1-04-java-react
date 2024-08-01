@@ -9,31 +9,18 @@ const Section5 = () => {
       <div className="w-full max-w-xl flex flex-col items-center gap-6">
         <div className="flex flex-col items-center gap-3">
           <div className="w-full text-center text-pink-500 text-2xl font-normal leading-normal tracking-wide">
-            PARA PACIENTES
+            PARA PROFESIONALES DE LA SALUD
           </div>
-          <div className="w-full text-center text-cyan-500 text-4xl font-bold uppercase leading-tight">
-            pensada para vos
+          <div className="w-full text-center text-cyan-500 text-3xl font-bold uppercase leading-tight">
+            impulsa la innovación
           </div>
         </div>
-        <div className="w-full text-center text-gray-800 text-base font-semibold leading-tight">
-          Te presentamos una aplicación que te acompaña en el antes, el durante y el después de tu trasplante, brindándote toda la información y permitiéndote que te involucres de una manera activa en el cuidado de tu salud, para garantizar tu bienestar durante tu tratamiento.
+        <div className="w-[98%] text-center text-gray-700 text-base font-semibold leading-tight">
+          Justina.IO es una plataforma sanitaria creada a partir de tecnologías conectadas y herramientas inteligentes, para lograr la unificación de datos, que permiten conectar al paciente con el profesional de la salud, acelerando la comunicación y perfeccionando las operaciones, con el objetivo de influir en los resultados de salud, mejorando el bienestar del paciente.
         </div>
       </div>
       {/* Segunda parte */}
       <div className="w-full max-w-6xl flex flex-col lg:flex-row items-center gap-6 mt-20">
-        <div className="w-full lg:w-1/2 flex justify-center relative">
-          <div className="w-full max-w-md h-[30rem] bg-pink-500/20 rounded-2xl"></div>
-          <img
-            className="absolute w-[21.6rem] h-[18.7rem] rounded-[1rem] left-[-3%] top-[25%]"
-            src={img1}
-            alt="Placeholder"
-          />
-          <img
-            className="absolute w-[18.1rem] h-[17.2rem] rounded-[1rem] left-[9.5rem] top-[10%] transform translate-x-[30%] -translate-y-[30%]"
-            src={img2}
-            alt="Placeholder"
-          />
-        </div>
         <div className="w-full lg:w-1/2 flex flex-col items-center gap-10">
           {/* Primer elemento */}
           <div className="w-full max-w-[570px] h-[560px] flex flex-col gap-10">
@@ -76,6 +63,19 @@ const Section5 = () => {
               </div>
             </div>
           </div>
+        </div>
+        <div className="w-full lg:w-1/2 flex justify-center relative">
+          <div className="w-full max-w-md h-[30rem] bg-pink-500/20 rounded-2xl"></div>
+          <img
+            className="absolute w-[21.6rem] h-[18.7rem] rounded-[1rem] left-[-3%] top-[25%]"
+            src={img1}
+            alt="Placeholder"
+          />
+          <img
+            className="absolute w-[18.1rem] h-[17.2rem] rounded-[1rem] left-[9.5rem] top-[10%] transform translate-x-[30%] -translate-y-[30%]"
+            src={img2}
+            alt="Placeholder"
+          />
         </div>
       </div>
     </div>
