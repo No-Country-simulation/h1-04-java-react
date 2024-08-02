@@ -36,19 +36,25 @@ const Section4 = () => {
       <div className="w-7/12 relative">
         <CarouselProvider
           naturalSlideWidth={100}
-          naturalSlideHeight={100}
+          naturalSlideHeight={125}
           totalSlides={images.length}
           visibleSlides={2}
-          infinite
-          isIntrinsicHeight
-          dragEnabled={false} // Desactiva el arrastre si no es necesario
-          interval={5000} // Tiempo de transición en ms
-          className="h-full"
+          interval={3000}  // Intervalo de 3 segundos
+          isPlaying={true}  // Habilitar el avance automático
+          className="h-[35rem]"
         >
-          <Slider className="h-[90%] py-14 my-1 px-8">
+          <Slider className="h-[90%] py-14 my-1 px-4">
             {images.map((image, index) => (
-              <Slide key={index} className="w-full h-[90%] ">
-                <img className="w-[22rem] h-[30rem] object-cover" src={image} alt={`Slide ${index + 1}`} />
+              <Slide key={index}>
+                  <div className="flex flex-col justify-start items-center gap-7 mr-8">
+                    <div className="w-[22rem] h-full ">
+                      <img
+                        className="w-[22rem] h-full object-cover absolute"
+                        src={image}  // Usa `image` en lugar de `images`
+                        alt={`image${index + 1}`}
+                      />
+                    </div>
+                  </div>
               </Slide>
             ))}
           </Slider>
