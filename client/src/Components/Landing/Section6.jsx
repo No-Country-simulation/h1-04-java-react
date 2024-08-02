@@ -5,34 +5,36 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import "pure-react-carousel/dist/react-carousel.es.css";
 import item from '../../Assets/Imgs/vector/section6-carousel-item.svg';
 import img1 from '../../Assets/Imgs/carousel-img1.png';
+import img2 from '../../Assets/Imgs/carousel-img2.png';
+import img3 from '../../Assets/Imgs/carousel-img3.png';
 
 const testimonials = [
   {
     quote: "«La aplicación me encantó, me ayudo un montón»",
     description: "La comunicación con mi medico es mucho más fácil y rápida. A su vez, me notifica todo a tiempo para tomar mis medicinas y no olvidarme de mis comidas, controles médicos y medicación. Me encanta, muchas gracias por ayudarme.",
-    user: "Flor",
-    age: "16 años",
+    user: "Malena",
+    age: "19 años",
     location: "Buenos Aires",
     image: img1,
-    condition: "Paciente con enfermedad pulmonar obstructiva crónica (EPOC)",
+    condition: "Paciente con Fibrosis Quística",
   },
   {
-    quote: "«La app es increíble y fácil de usar»",
-    description: "No solo es fácil de usar, sino que también ofrece muchas funciones útiles que mejoran mi experiencia de usuario. La recomiendo encarecidamente.",
-    user: "Lucas",
-    age: "29 años",
-    location: "CABA",
-    image: "https://via.placeholder.com/441x359",
-    condition: "Paciente con diabetes tipo 1",
-  },
-  {
-    quote: "«Una herramienta esencial para mi día a día»",
-    description: "Me ayuda a mantenerme al tanto de mis medicaciones y citas médicas. La interfaz es intuitiva y los recordatorios son muy útiles.",
-    user: "Ana",
-    age: "45 años",
+    quote: "«La aplicación me encantó, me ayudo un montón»",
+    description: "La aplicación me ayuda para no olvidarme cuándo tengo mis turnos, los horarios de la medicación, también me brinda las indicaciones para saber cómo cocinar, hacer mis ejercicios... Es super fácil de usar. ¡Me encanta!",
+    user: "Florencia",
+    age: "20 años",
     location: "Rosario",
-    image: "https://via.placeholder.com/441x359",
-    condition: "Paciente con hipertensión",
+    image: img2,
+    condition: "Paciente con Fibrosis Quística",
+  },
+  {
+    quote: "«Muchas gracias Justina ayudarme a mejorar mi salud»",
+    description: "La aplicación me brinda toda la información que necesito para enfrentar mi enfermedad y, a mejorar mi salud y calidad de vida. Muchas gracias.",
+    user: "Brenda",
+    age: "33 años",
+    location: "Córdoba",
+    image: img3,
+    condition: "Paciente con Insuficiencia Renal Crónica",
   },
 ];
 
