@@ -3,8 +3,8 @@ import urgency from "../../Assets/Imgs/buttonFooter.png";
 import settings from "../../Assets/Imgs/settings.png";
 import turno from "../../Assets/Imgs/calendar.png";
 import treatment from "../../Assets/Imgs/treatment.png";
-import "./footer.css";
 import { Link } from "react-router-dom";
+import "./footer.css";
 
 const Footer = () => {
   return (

@@ -29,7 +29,7 @@
     text-align: center;
     font-weight: 700;
     padding: 17px;
-    flex: 1 1 calc(33.333% - 20px);
+    flex: 1 1 calc(50% - 20px);
     box-sizing: border-box;
     color: #EA526F;
     border: 2px solid #EA526F;
@@ -45,11 +45,7 @@
 }
 
 
-@media (max-width: 800px) {
-    .treatmentsStyles {
-        flex: 1 1 calc(50% - 20px); /* Dos elementos por fila en pantallas medianas */
-    }
-}
+
 
 @media (max-width: 380px) {
     .treatmentsStyles {

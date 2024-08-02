@@ -1,8 +1,9 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { treatmentData } from "./data.js"
 import { useState } from "react";
-import arrowLeft from "../../../Assets/Imgs/otraArrowLeft.png"
-import arrowRight from "../../../Assets/Imgs/anotherArrowRight.png"
+import arrowLeft from "../../../Assets/Imgs/arrowLeft.png"
+import arrowRight from "../../../Assets/Imgs/arrowRight.png";
+import anotherArrowLeft from "../../../Assets/Imgs/otraArrowLeft.png"
 import PlanTreatment from "./Plans/PlanTreatment.jsx";
 import PlanStudies from "./Plans/PlanStudies.jsx";
 import PlanNutrition from "./Plans/PlanNutrition/PlanNutrition.jsx";
@@ -82,9 +83,9 @@ const Treatment = () => {
                     <SelectedComponent type={selectedButton.label} />
                     { location.pathname == '/treatment-nutrition' || location.pathname == '/treatment-physical-activity' ? (
                         <div className="navigationButtons">
-                            <button onClick={handleNext} disabled={selectedButtonIndex === buttons.length - 1}>
+                            <button className="orientationImg" onClick={handleNext} disabled={selectedButtonIndex === buttons.length - 1}>
                                 <p>Siguiente Comida</p>
-                                <img src={arrowRight} alt="next" />
+                                <img src={arrowLeft} alt="next" />
                             </button>
                             <button onClick={handlePrevious} disabled={selectedButtonIndex === 0}>
                                 <p>Regresar</p>
@@ -96,7 +97,7 @@ const Treatment = () => {
             ) }
             <div className="backContainer">
                 <button className="back" onClick={() => navigate(-1)}>
-                    <img src={arrowLeft} alt="back" />
+                    <img src={anotherArrowLeft} alt="back" />
                 </button>
             </div>
         </section>

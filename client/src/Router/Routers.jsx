@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useEffect, useState } from "react";
 import NavBar from "../Components/NavBar/NavBar.jsx";
 import Footer from "../Components/Footer/Footer.jsx";
 import Login from "../Components/Login/Login.jsx";
@@ -28,27 +29,53 @@ import PatientMedication from "../Components/Doctor/PatientRecord/PatientMedicat
 import PrivateRoute from "./PrivateRoute"; // Asegúrate de importar el componente
 import DoctorConfiguration from "../Components/Doctor/DoctorConfiguration/DoctorConfiguration.jsx";
 import PatientList from "../Components/Doctor/PatientList/PatientList.jsx";
+import OtherNavBar from "../Components/OtherNavBar/OtherNavBar.jsx";
 
-const PatientLayout = ({ children }) => (
-  <div className='flex flex-col min-h-screen bg-white'>
-    <NavBar />
-    <div className='flex-grow '>{children}</div>
-    <Footer />
-  </div>
-);
+const PatientLayout = ({ children }) => {
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 450);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth >= 500);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  return (
+    <div className='w-full flex justify-center'>
+      <div className='w-[500px]'>
+        <div className='flex flex-col min-h-screen'>
+          { !isSmallScreen && <NavBar /> }
+          { isSmallScreen && <OtherNavBar /> }
+          <div className='flex-grow'>{children}</div>
+          { !isSmallScreen && <Footer /> }
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const DoctorLayout = ({ children }) => (
-  <div className='flex flex-col min-h-screen bg-white'>
-    <div className='flex-grow '>{children}</div>
-    <DoctorFooter />
+  <div className='w-full flex justify-center'>
+    <div className='w-[500px]'>
+      <div className='flex flex-col min-h-screen'>
+        <div className='flex-grow '>{children}</div>
+        <DoctorFooter />
+      </div>
+    </div>
   </div>
 );
 
 const Router = () => {
   return (
     <BrowserRouter>
-      {/* <div className='w-full flex justify-center'>
-        <div className='w-[400px]'> */}
+    {/* <div className='w-full flex justify-center'>
+      <div className='w-[450px]'> */}
       <Routes>
         <Route exact path='/' element={<Login />} />
         {/* Landing Page */}
@@ -411,6 +438,8 @@ const Router = () => {
 
         <Route path='*' element={<Error404 />} />
       </Routes>
+      {/* </div>
+    </div> */}
     </BrowserRouter>
   );
 };
