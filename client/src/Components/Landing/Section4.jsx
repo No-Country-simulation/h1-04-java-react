@@ -1,14 +1,17 @@
 import { CarouselProvider, Slider, Slide } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
+import img1 from '../../Assets/Imgs/section4img1.png';
+import img2 from '../../Assets/Imgs/section4img2.png';
+import img3 from '../../Assets/Imgs/section4img3.png';
 
 // Imágenes para el carrusel (reemplaza estas URL con tus propias imágenes)
 const images = [
-  "https://via.placeholder.com/600x400",
-  "https://via.placeholder.com/600x400",
-  "https://via.placeholder.com/600x400",
-  "https://via.placeholder.com/600x400",
-  "https://via.placeholder.com/600x400",
-  "https://via.placeholder.com/600x400"
+  img1,
+  img2,
+  img3,
+  img1,
+  img2,
+  img3
 ];
 
 const Section4 = () => {
@@ -43,13 +46,13 @@ const Section4 = () => {
           isPlaying={true}  // Habilitar el avance automático
           className="h-[35rem]"
         >
-          <Slider className="h-[90%] py-14 my-1 px-4">
+          <Slider className="h-[90%] py-14 my-1 px-10">
             {images.map((image, index) => (
               <Slide key={index}>
-                  <div className="flex flex-col justify-start items-center gap-7 mr-8">
-                    <div className="w-[22rem] h-full ">
+                  <div className="flex flex-col justify-start items-center gap-3">
+                    <div className="w-[20rem] h-full">  {/* Ajuste de ancho */}
                       <img
-                        className="w-[22rem] h-full object-cover absolute"
+                        className="w-[20rem] h-full object-cover absolute "
                         src={image}  // Usa `image` en lugar de `images`
                         alt={`image${index + 1}`}
                       />
@@ -59,7 +62,7 @@ const Section4 = () => {
             ))}
           </Slider>
         </CarouselProvider>
-        <div className="absolute inset-0 bg-gradient-to-r from-white to-transparent" />
+        <div className="absolute inset-y-0 right-0 w-40 bg-gradient-to-l from-[#fdeee5] to-transparent" />
       </div>
     </div>
   );
