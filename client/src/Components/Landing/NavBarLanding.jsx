@@ -8,6 +8,10 @@ const NavBarLanding = () => {
     navigate('/');
   };
 
+  const handleDownloadClick = () => {
+    navigate('/download');
+  };
+
   return (
     <div className="sticky top-4 z-50">
       <div className="absolute w-full h-[5.5rem] mt-[-1.5rem] backdrop-blur-sm rounded-md"></div>
@@ -32,7 +36,10 @@ const NavBarLanding = () => {
               INICIAR SESIÓN
             </div>
           </div>
-          <div className="h-8 px-4 bg-[#ea526f] border border-[#ea526f] rounded-md flex items-center justify-between space-x-2 cursor-pointer hover:bg-[#c44559] hover:border-[#fceade]">
+          <div
+            onClick={handleDownloadClick}
+            className="h-8 px-4 bg-[#ea526f] border border-[#ea526f] rounded-md flex items-center justify-between space-x-2 cursor-pointer hover:bg-[#c44559] hover:border-[#fceade]"
+          >
             <div className="text-white text-base font-semibold">
               DESCARGAR
             </div>

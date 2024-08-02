@@ -42,7 +42,7 @@ const Section7 = () => {
             <a  href="https://www.facebook.com/multiplicatex7/posts/pfbid014ZwDs82tZJsVn2rUkTBQqBHQ82xvFTMCH5YbKjgYYgUdWeaitHQ8NEKe9pB9uf7l"
                 target="_blank"
                 rel="noopener noreferrer" 
-                className="text-[#707070] text-xl font-semibold font-['Josefin Sans'] hover:text-[#ff4900] cursor-pointer underline uppercase">
+                className="pb-2 text-[#707070] text-xl font-semibold font-['Josefin Sans'] hover:text-[#ff4900] cursor-pointer underline uppercase">
               Leer más
             </a>
           </div>
@@ -61,7 +61,7 @@ const Section7 = () => {
             <a  href="https://www.lavoz.com.ar/ciudadanos/en-la-vida-real-tambien-podes-hacer-respawn-la-campana-de-casa-justina-en-el-dia-de-donacion-de-organos/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#707070] text-xl font-semibold font-['Josefin Sans'] hover:text-[#ff4900] cursor-pointer underline uppercase">
+                className="pb-2 text-[#707070] text-xl font-semibold font-['Josefin Sans'] hover:text-[#ff4900] cursor-pointer underline uppercase">
               Leer más
             </a>
           </div>
@@ -80,7 +80,7 @@ const Section7 = () => {
             <a  href="https://www.osde.com.ar/salud-y-bienestar/justina-lidera-desde-la-inspiracion-12052.html"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#707070] text-xl font-semibold font-['Josefin Sans'] hover:text-[#ff4900] cursor-pointer underline uppercase">
+                className="pb-2 text-[#707070] text-xl font-semibold font-['Josefin Sans'] hover:text-[#ff4900] cursor-pointer underline uppercase">
               Leer más
             </a>
           </div>

@@ -4,8 +4,15 @@ import android from '../../Assets/Imgs/vector/android.svg';
 import apple from '../../Assets/Imgs/vector/apple.svg';
 import windows from '../../Assets/Imgs/vector/windows.svg';
 import { FaDownload } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 const Section1 = () => {
+  const navigate = useNavigate();
+
+  const handleDownloadClick = () => {
+    navigate('/download');
+  };
+
   return (
     <div className="w-full max-w-screen-lg mx-auto px-4 py-16 bg-white">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -26,12 +33,15 @@ const Section1 = () => {
           </div>
           <div className="flex flex-col gap-4">
             <div className="flex gap-4">
-            <div className="h-8 px-4 bg-[#ea526f] border border-[#ea526f] rounded-md flex items-center justify-between space-x-2 cursor-pointer hover:bg-[#c44559]">
-          <div className="text-white text-base font-semibold">
-            DESCARGAR
-          </div>
-          <FaDownload className="text-white" />
-        </div>
+              <div
+                onClick={handleDownloadClick}
+                className="h-8 px-4 bg-[#ea526f] border border-[#ea526f] rounded-md flex items-center justify-between space-x-2 cursor-pointer hover:bg-[#c44559]"
+              >
+                <div className="text-white text-base font-semibold">
+                  DESCARGAR
+                </div>
+                <FaDownload className="text-white" />
+              </div>
             </div>
             <div className="w-36 h-10 justify-center items-center gap-2 inline-flex">
               <img
