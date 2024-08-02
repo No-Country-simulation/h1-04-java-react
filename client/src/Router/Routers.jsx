@@ -78,10 +78,11 @@ const Router = () => {
     {/* <div className='w-full flex justify-center'>
       <div className='w-[450px]'> */}
       <Routes>
-        <Route exact path='/' element={<Login />} />
-        {/* Landing Page */}
-        <Route exact path='/landing' element={<Landing />} />
-        {/* Download Page */}
+        {/* Landing */}
+        <Route exact path='/' element={<Landing />} />
+        {/* Login */}
+        <Route exact path='/login' element={<Login />} />
+        {/* Download */}
         <Route exact path='/download' element={<Download />} />
         {/* Admin */}
         <Route

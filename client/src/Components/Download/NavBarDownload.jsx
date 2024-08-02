@@ -5,7 +5,7 @@ const NavBarDownload = () => {
   const navigate = useNavigate();
 
   const handleLoginClick = () => {
-    navigate('/');
+    navigate('/login');
   };
 
   const handleDownloadClick = () => {
@@ -13,15 +13,15 @@ const NavBarDownload = () => {
   };
 
   const handleJustinaIoClick = () => {
-    navigate('/landing');
+    navigate('/');
   };
 
   const handleJustinaLoCaneClick = () => {
-    navigate('/landing');
+    navigate('/');
   };
 
   const handleTransplanteClick = () => {
-    navigate('/landing');
+    navigate('/');
   };
 
   return (
