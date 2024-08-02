@@ -5,7 +5,7 @@ const NavBarLanding = () => {
   const navigate = useNavigate();
 
   const handleLoginClick = () => {
-    navigate('/login');
+    navigate('/');
   };
 
   return (
