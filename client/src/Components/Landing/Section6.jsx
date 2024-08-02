@@ -40,7 +40,7 @@ const Section6 = () => {
   const carouselRef = useRef(null);
 
   return (
-    <div className="w-full relative bg-[#ff8a5b]/20 py-12">
+    <div className="w-full relative bg-[#ff8a5b]/20 py-12 overflow-hidden">
       <div className="text-center text-[#c66b46] text-5xl font-normal leading-[60px] mb-12">
         Testimonios de usuarios
       </div>
