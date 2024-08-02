@@ -1,5 +1,7 @@
+import cardFacebook from '../../Assets/Imgs/facebook.png';
 import cardLogoLaVoz from '../../Assets/Imgs/la-voz.png';
 import cardLogoOsde from '../../Assets/Imgs/osde.png';
+import imgCard1 from '../../Assets/Imgs/imgCard1.png';
 import imgCard2 from '../../Assets/Imgs/imgCard2.png';
 import imgCard3 from '../../Assets/Imgs/imgCard3.png';
 
@@ -28,16 +30,19 @@ const Section7 = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-screen-lg mx-auto pb-8">
         {/* Tarjeta 1 */}
         <div className=" bg-white rounded-lg shadow-lg overflow-hidden flex flex-col justify-between">
-          <img className="w-full h-56 object-cover" src="https://via.placeholder.com/370x227" alt="Ley Justina" />
-          <img className="w-40 h-6 ml-6 mt-4" src="https://via.placeholder.com/156x22" alt="Logo" />
-          <div className="p-6 flex flex-col flex-1">
+          <img className="w-full h-56 object-cover" src={imgCard1} alt="Ley Justina" />
+          <img className="w-20 h-4 ml-6 mt-4" src={cardFacebook} alt="Logo" />
+          <div className="p-4 flex flex-col flex-1">
             <h3 className="text-[#232233] text-xl font-semibold font-['Josefin Sans'] uppercase mb-2">
-              Ley Justina: la conmovedora historia...
+            la campaña de Justina. #multiplicateX7
             </h3>
             <p className="text-[#555555] text-base font-normal leading-tight mb-4 flex-1">
-              Justina Lo Cane, una niña de 12 años de aspecto angelical, esperó en vano, en 2017, la llegada de un corazón nuevo que nunca llegó.
+            Hay no menos de 50 personas en el Penal San Martin de la provincia de Buenos Aires que estan recorriendo una transformación de la mano del equipo de...
             </p>
-            <a href="#" className="text-[#707070] text-xl font-semibold font-['Josefin Sans'] hover:text-[#ff4900] cursor-pointer underline uppercase">
+            <a  href="https://www.facebook.com/multiplicatex7/posts/pfbid014ZwDs82tZJsVn2rUkTBQqBHQ82xvFTMCH5YbKjgYYgUdWeaitHQ8NEKe9pB9uf7l"
+                target="_blank"
+                rel="noopener noreferrer" 
+                className="text-[#707070] text-xl font-semibold font-['Josefin Sans'] hover:text-[#ff4900] cursor-pointer underline uppercase">
               Leer más
             </a>
           </div>
@@ -46,14 +51,17 @@ const Section7 = () => {
         <div className=" bg-white rounded-lg shadow-lg overflow-hidden flex flex-col justify-between">
           <img className="w-full h-56 object-cover" src={imgCard2} alt="Campaña Justina" />
           <img className="w-24 h-4 ml-6 mt-4" src={cardLogoLaVoz} alt="Logo" />
-          <div className="p-6 flex flex-col flex-1">
-            <h3 className="text-[#232233] text-xl font-semibold font-['Josefin Sans'] uppercase mb-2">
+          <div className="p-4 flex flex-col flex-1">
+            <h3 className="text-[#232233] text-xl font-semibold uppercase mb-2">
               Argentina. “En la vida real también podés hacER...
             </h3>
             <p className="text-[#555555] text-base font-normal leading-tight mb-4 flex-1">
-              “En la vida real también podés hacer respawn”: la campaña de Casa Justina en el Día de Donación de Órganos. Tiene como objetivo alentar la ...
+              “En la vida real también podés hacer respawn”: la campaña de Casa Justina en el Día de Donación de Órganos. Tiene como objetivo alentar la donación en menores...
             </p>
-            <a href="#" className="text-[#707070] text-xl font-semibold font-['Josefin Sans'] hover:text-[#ff4900] cursor-pointer underline uppercase">
+            <a  href="https://www.lavoz.com.ar/ciudadanos/en-la-vida-real-tambien-podes-hacer-respawn-la-campana-de-casa-justina-en-el-dia-de-donacion-de-organos/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#707070] text-xl font-semibold font-['Josefin Sans'] hover:text-[#ff4900] cursor-pointer underline uppercase">
               Leer más
             </a>
           </div>
@@ -62,14 +70,17 @@ const Section7 = () => {
         <div className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col justify-between">
           <img className="w-full h-56 object-cover" src={imgCard3} alt="Justina Lidera" />
           <img className="w-16 h-5 ml-6 mt-4" src={cardLogoOsde} alt="Logo" />
-          <div className="p-6 flex flex-col flex-1">
+          <div className="p-4 flex flex-col flex-1">
             <h3 className="text-[#232233] text-xl font-semibold font-['Josefin Sans'] uppercase mb-2">
               “Justina lidera desde la inspiración”
             </h3>
             <p className="text-[#555555] text-base font-normal leading-tight mb-4 flex-1">
               Desde un simple detalle hasta la más grande de las acciones pueden movilizar grandes cambios. ¿Cómo se empieza una campaña que involucra un objetivo tan grande?
             </p>
-            <a href="#" className="text-[#707070] text-xl font-semibold font-['Josefin Sans'] hover:text-[#ff4900] cursor-pointer underline uppercase">
+            <a  href="https://www.osde.com.ar/salud-y-bienestar/justina-lidera-desde-la-inspiracion-12052.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#707070] text-xl font-semibold font-['Josefin Sans'] hover:text-[#ff4900] cursor-pointer underline uppercase">
               Leer más
             </a>
           </div>
