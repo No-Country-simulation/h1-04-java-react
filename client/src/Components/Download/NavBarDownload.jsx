@@ -1,7 +1,7 @@
 import { FaDownload } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
-const NavBarLanding = () => {
+const NavBarDownload = () => {
   const navigate = useNavigate();
 
   const handleLoginClick = () => {
@@ -13,15 +13,15 @@ const NavBarLanding = () => {
   };
 
   const handleJustinaIoClick = () => {
-    document.getElementById('section1').scrollIntoView({ behavior: 'smooth' });
+    navigate('/landing');
   };
 
   const handleJustinaLoCaneClick = () => {
-    document.getElementById('section4').scrollIntoView({ behavior: 'smooth' });
+    navigate('/landing');
   };
 
   const handleTransplanteClick = () => {
-    document.getElementById('section7').scrollIntoView({ behavior: 'smooth' });
+    navigate('/landing');
   };
 
   return (
@@ -72,4 +72,4 @@ const NavBarLanding = () => {
   );
 };
 
-export default NavBarLanding;
+export default NavBarDownload;

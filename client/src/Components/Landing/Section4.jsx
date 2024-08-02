@@ -4,7 +4,7 @@ import img3 from '../../Assets/Imgs/section4img3.png';
 
 const Section4 = () => {
   return (
-    <div className="w-full h-[34.75rem] px-[5rem] bg-[#fdeee5] flex justify-between items-center">
+    <div id="section4" className="w-full h-[34.75rem] px-[5rem] bg-[#fdeee5] flex justify-between items-center">
       {/* Columna 1 */}
       <div className=" flex justify-center items-center pr-16">
         <div className="flex flex-col justify-start items-start gap-8">

@@ -7,7 +7,7 @@ import imgCard3 from '../../Assets/Imgs/imgCard3.png';
 
 const Section7 = () => {
   return (
-    <div className="w-full py-24 flex flex-col items-center bg-white">
+    <div id="section7" className="w-full py-24 flex flex-col items-center bg-white">
       {/* Título y descripción */}
       <div className="text-center mb-16">
         <div className="w-full text-center text-cyan-500 text-3xl font-semibold uppercase leading-tight mb-10">

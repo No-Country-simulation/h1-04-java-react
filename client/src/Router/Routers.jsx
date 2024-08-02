@@ -30,6 +30,7 @@ import PrivateRoute from "./PrivateRoute"; // Asegúrate de importar el componen
 import DoctorConfiguration from "../Components/Doctor/DoctorConfiguration/DoctorConfiguration.jsx";
 import PatientList from "../Components/Doctor/PatientList/PatientList.jsx";
 import OtherNavBar from "../Components/OtherNavBar/OtherNavBar.jsx";
+import Download from "../Components/Download/Download.jsx";
 
 const PatientLayout = ({ children }) => {
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 450);
@@ -80,6 +81,8 @@ const Router = () => {
         <Route exact path='/' element={<Login />} />
         {/* Landing Page */}
         <Route exact path='/landing' element={<Landing />} />
+        {/* Download Page */}
+        <Route exact path='/download' element={<Download />} />
         {/* Admin */}
         <Route
           exact
