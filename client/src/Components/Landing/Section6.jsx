@@ -86,10 +86,10 @@ const Section6 = () => {
                     />
                   </div>
                   <div className="flex flex-col justify-start items-center gap-1.5 mt-[-1rem]">
-                    <div className="text-center text-[#2e363e] text-[21px] font-medium font-['Montserrat'] leading-[30.03px]">
+                    <div className="text-center text-[#2e363e] text-[21px] font-medium leading-[30.03px]">
                       {testimonial.user}
                     </div>
-                    <div className="text-center text-[#a6aeb6] text-base font-normal font-['Montserrat'] leading-7">
+                    <div className="text-center text-[#a6aeb6] text-base font-normal leading-7">
                       {testimonial.age} | {testimonial.location}
                     </div>
                   </div>
