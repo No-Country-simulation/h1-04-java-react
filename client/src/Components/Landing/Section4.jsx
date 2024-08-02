@@ -6,7 +6,7 @@ const Section4 = () => {
   return (
     <div className="w-full h-[34.75rem] px-[5rem] bg-[#fdeee5] flex justify-between items-center">
       {/* Columna 1 */}
-      <div className=" flex justify-center items-center">
+      <div className=" flex justify-center items-center pr-16">
         <div className="flex flex-col justify-start items-start gap-8">
           <div className="text-[#ea526f] text-[2.5rem] font-semibold leading-[2.75rem]">Sobre Justina Lo Cane</div>
           <div className="w-full text-[#555555] text-base font-medium leading-tight">
