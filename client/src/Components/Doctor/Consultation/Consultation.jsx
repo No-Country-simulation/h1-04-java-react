@@ -1,16 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import DoctorContext from "../../../context/DoctorContext";
-import arrowLeft from "../../../Assets/Imgs/anotherArrowLeft.png";
 import profileDoctor from "../../../Assets/Imgs/profileDoctor.png";
 import tratamiento from "../../../Assets/Imgs/tratamiento.png";
-import speak from "../../../Assets/Imgs/speak.png";
-import "./consultation.css";
 import SpeechRecognition from "./SpeechRecognition";
 import DoctorHeader from "../DoctorHeader/DoctorHeader";
+import "./consultation.css";
 
 const Consultation = () => {
-  const [isFocused, setIsFocused] = useState(false);
+  // const [isFocused, setIsFocused] = useState(false);
   const [currentNotes, setCurrentNotes] = useState("");
 
   const navigate = useNavigate();
@@ -40,23 +38,23 @@ const Consultation = () => {
         </div>
       </div>
 
-      <section className='containerTreatments newColors'>
-        <a href='/' className='treatmentsStyles'>
+      <section className='containerTreatments'>
+        <button className='treatmentsStylesDoctor'>
           <img src={tratamiento} alt='Tratamiento' />
           <p>Tratamiento</p>
-        </a>
-        <a href='/' className='treatmentsStyles'>
+        </button>
+        <button className='treatmentsStylesDoctor'>
           <img src={tratamiento} alt='Historia Clinica' />
           <p>Historia Clinica</p>
-        </a>
-        <a href='/' className='treatmentsStyles'>
+        </button>
+        <button className='treatmentsStylesDoctor'>
           <img src={tratamiento} alt='Estudios' />
           <p>Estudios</p>
-        </a>
-        <a href='/' className='treatmentsStyles'>
+        </button>
+        <button className='treatmentsStylesDoctor'>
           <img src={tratamiento} alt='Medicación' />
           <p>Medicación</p>
-        </a>
+        </button>
       </section>
 
       <section className='writeText'>

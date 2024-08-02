@@ -6,6 +6,7 @@
     margin-bottom: 20px;
     font-size: 20px;
     font-weight: 700;
+    color: #25CED1;
 }
 .titleContainer img{
     width: 25px;
@@ -112,4 +113,10 @@
     height: 16px;
     object-fit: cover;
     object-position: center;
+}
+
+
+.orientationImg img{
+    transform: rotate(180deg);
+    transition: transform 0.3s ease;
 }

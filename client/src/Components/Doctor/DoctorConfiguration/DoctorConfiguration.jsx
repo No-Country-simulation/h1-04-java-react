@@ -4,12 +4,12 @@ import arrowRight from "../../../Assets/Imgs/arrowRight.png";
 import arrowLeft from "../../../Assets/Imgs/otraArrowLeft.png";
 import privateImg from "../../../Assets/Imgs/private.png";
 import profile from "../../../Assets/Imgs/pepitaExample.png";
-import settings from "../../../Assets/Imgs/settings.png";
 import PersonalData from "../../PersonalData/PersonalData";
 import Notifications from "../../Notifications/Notifications";
 
 import DoctorContext from "../../../context/DoctorContext";
 import DoctorHeader from "../DoctorHeader/DoctorHeader";
+import "./doctorConfiguration.css"
 
 const DoctorConfiguration = () => {
   const [personalData, setPersonalData] = useState(false);
@@ -59,7 +59,7 @@ const DoctorConfiguration = () => {
     <section className='container'>
       <div className="m-5">
         <DoctorHeader text={"Configuración de cuenta"} />
-        <article className='userPictureName'>
+        <article className='userPictureNameDoctor'>
           <img
             src={profile}
             alt='Paciente img'
@@ -73,9 +73,9 @@ const DoctorConfiguration = () => {
         </article>
 
         <article className='optionsContainer'>
-          <div>
+          <div className="styleDoctor">
             <button
-              className='option font-bold flex justify-between p-2'
+              className='option font-bold flex justify-between p-2 styleDoctorButton'
               onClick={() => handlechange("personalData")}
             >
               <p>Datos Personales</p>
@@ -88,9 +88,9 @@ const DoctorConfiguration = () => {
             )}
           </div>
 
-          <div>
+          <div className="styleDoctor">
             <button
-              className='option font-bold flex justify-between p-2'
+              className='option font-bold flex justify-between p-2 styleDoctorButton'
               onClick={() => handlechange("notifications")}
             >
               <p>Notificaciones</p>
@@ -103,12 +103,12 @@ const DoctorConfiguration = () => {
             )}
           </div>
 
-          <button className='option font-bold flex justify-between p-2'>
+          <button className='option font-bold flex justify-between p-2 styleDoctorButton'>
             <p>Seguridad</p>
             <img src={privateImg} alt='arrow' className='w-6 h-6 ml-4' />
           </button>
 
-          <button className='option font-bold flex justify-between p-2'>
+          <button className='option font-bold flex justify-between p-2 styleDoctorButton'>
             <p>Privacidad</p>
             <img src={privateImg} alt='arrow' className='w-6 h-6 ml-4' />
           </button>
@@ -120,12 +120,6 @@ const DoctorConfiguration = () => {
             Log out
           </button>
         </article>
-
-        <div className='backContainer'>
-          <button className='back' onClick={() => navigate(-1)}>
-            <img src={arrowLeft} alt='back' />
-          </button>
-        </div>
       </div>
     </section>
   );

@@ -11,7 +11,6 @@ export default {
         secondary: '#25CED1',
         orangeColor: '#FF8A5B',
         beigeColor: '#FCEADE'
-
       },
     },
   },

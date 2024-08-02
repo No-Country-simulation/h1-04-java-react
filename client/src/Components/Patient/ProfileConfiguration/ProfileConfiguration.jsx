@@ -9,6 +9,7 @@ import PersonalData from "../../PersonalData/PersonalData";
 import Notifications from "../../Notifications/Notifications";
 
 import DoctorContext from "../../../context/DoctorContext";
+import "./profileConfiguration.css"
 
 const DoctorConfiguration = () => {
   const [personalData, setPersonalData] = useState(false);

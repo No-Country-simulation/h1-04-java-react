@@ -1,13 +1,12 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import profileDoctor from "../../../Assets/Imgs/profileDoctor.png";
-import arrowLeft from "../../../Assets/Imgs/anotherArrowLeft.png";
-import "./previousConsultation.css";
 import DoctorHeader from "../DoctorHeader/DoctorHeader";
+import "./previousConsultation.css";
 
 const PreviousConsultation = () => {
   const [activeTab, setActiveTab] = useState("Motivo de la cita");
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   return (
     <div className='previous-consultation'>

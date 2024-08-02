@@ -1,0 +1,75 @@
+.containerOtherNavBar {
+    background-color: #FCEADE;
+    position: relative;
+    width: 100%;
+}
+
+.icon-container {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+.menu-icon {
+    width: 50px;
+    height: 50px;
+}
+
+.sidebar {
+    padding-left: 50px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 100vh;
+    background-color: #FCEADE;
+    z-index: 999;
+    transition: transform 0.3s ease;
+    transform: translateX(0);
+    display: flex;
+    flex-direction: column;
+}
+
+
+.sidebar-open {
+    transform: translateX(0);
+}
+
+.sidebar-closed {
+    transform: translateX(-100%);
+}
+
+.containerImgNavBar img {
+    width: 200px;
+    margin-top: 50px;
+}
+
+.buttonsOtherNavBar {
+    color: #000;
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.buttonsOtherNavBar img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.buttonsOtherNavBar p:hover {
+    color: #FF4900;
+    border-bottom: 1px solid #FF4900;
+    transition: all .4s;
+}
+
+
+.sidebar-content {
+    flex: 1;
+}
+
+.sidebar-footer {
+    padding: 1rem;
+    margin-bottom: 50px;
+}
