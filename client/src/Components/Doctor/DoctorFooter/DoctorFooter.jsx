@@ -1,5 +1,3 @@
-import home from "../../../Assets/Imgs/home.png";
-import settings from "../../../Assets/Imgs/settings.png";
 import { Link } from "react-router-dom";
 import img1 from "../../../Assets/Imgs/doctorFooter1.png";
 import img2 from "../../../Assets/Imgs/doctorFooter2.png";

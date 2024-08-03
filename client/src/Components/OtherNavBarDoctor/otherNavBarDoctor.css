@@ -1,5 +1,5 @@
-.containerOtherNavBar {
-    background-color: #FCEADE;
+.otherContainerOtherNavBar {
+    background-color: #0087D0;
     position: relative;
     width: 100%;
 }
@@ -19,14 +19,14 @@
     object-position: center;
 }
 
-.sidebar {
+.sidebarDoctor {
     padding-left: 50px;
     position: fixed;
     top: 0;
     left: 0;
     width: 300px;
     height: 100vh;
-    background-color: #FCEADE;
+    background-color: #D9F2FF;
     z-index: 999;
     transition: transform 0.3s ease;
     transform: translateX(0);
@@ -48,24 +48,24 @@
     margin-top: 50px;
 }
 
-.buttonsOtherNavBar {
+.buttonsOtherNavBarDoctor {
     color: #000;
     font-weight: 700;
     font-size: 15px;
     transition: filter 0.8s ease;
 }
-.buttonsOtherNavBar img {
+.buttonsOtherNavBarDoctor img {
     width: 30px;
     height: 30px;
     margin-right: 10px;
-    filter: invert(0%) grayscale(100%) brightness(0%) contrast(100%); /* Imágenes negras oscuras por defecto */
+    filter: grayscale(50%) brightness(0%) contrast(100%);
 }
-.buttonsOtherNavBar:hover img {
-    filter: invert(35%) sepia(80%) saturate(6000%) hue-rotate(10deg);
+.buttonsOtherNavBarDoctor:hover img {
+    filter: invert(26%) sepia(100%) saturate(5000%) hue-rotate(200deg);
 }
-.buttonsOtherNavBar p:hover {
-    color: #FF4900;
-    border-bottom: 1px solid #FF4900;
+.buttonsOtherNavBarDoctor p:hover {
+    color: rgb(59 130 246);
+    border-bottom: 1px solid rgb(59 130 246);
 }
 
 

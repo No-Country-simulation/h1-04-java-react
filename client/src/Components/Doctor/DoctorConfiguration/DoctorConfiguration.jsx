@@ -74,7 +74,7 @@ const DoctorConfiguration = () => {
         <article className='optionsContainer'>
           <div className="styleDoctor">
             <button
-              className='option font-bold flex justify-between p-2 styleDoctorButton'
+              className='flex justify-between p-2 shadow-xl border-2 items-center space-x-4 p-3 rounded styleDoctorButton'
               onClick={() => handlechange("personalData")}
             >
               <p>Datos Personales</p>
@@ -89,7 +89,7 @@ const DoctorConfiguration = () => {
 
           <div className="styleDoctor">
             <button
-              className='option font-bold flex justify-between p-2 styleDoctorButton'
+              className='flex justify-between p-2 shadow-xl border-2 items-center space-x-4 p-3 rounded styleDoctorButton'
               onClick={() => handlechange("notifications")}
             >
               <p>Notificaciones</p>
@@ -102,12 +102,12 @@ const DoctorConfiguration = () => {
             )}
           </div>
 
-          <button className='option font-bold flex justify-between p-2 styleDoctorButton'>
+          <button className='flex justify-between p-2 shadow-xl border-2 items-center space-x-4 p-3 rounded styleDoctorButton'>
             <p>Seguridad</p>
             <img src={privateImg} alt='arrow' className='w-6 h-6 ml-4' />
           </button>
 
-          <button className='option font-bold flex justify-between p-2 styleDoctorButton'>
+          <button className='flex justify-between p-2 shadow-xl border-2 items-center space-x-4 p-3 rounded styleDoctorButton'>
             <p>Privacidad</p>
             <img src={privateImg} alt='arrow' className='w-6 h-6 ml-4' />
           </button>

@@ -7,6 +7,6 @@
 }
 
 .styleDoctorButton{
-    border: 2px solid #0087d098;
-    color: #0087D0;
+    width: 100%;
+    margin-bottom: 30px;
 }

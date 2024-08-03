@@ -31,6 +31,7 @@ import DoctorConfiguration from "../Components/Doctor/DoctorConfiguration/Doctor
 import PatientList from "../Components/Doctor/PatientList/PatientList.jsx";
 import OtherNavBar from "../Components/OtherNavBar/OtherNavBar.jsx";
 import Download from "../Components/Download/Download.jsx";
+import OtherNavBarDoctor from "../Components/OtherNavBarDoctor/OtherNavBarDoctor.jsx"
 
 const PatientLayout = ({ children }) => {
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth >= 500);
@@ -53,8 +54,8 @@ const PatientLayout = ({ children }) => {
       <div className='w-[500px]'>
         <div className='flex flex-col min-h-screen'>
           { !isSmallScreen && <NavBar /> }
-          { isSmallScreen && <OtherNavBar /> }
-          <div className='flex-grow ml-12'>{children}</div>
+            { isSmallScreen && <OtherNavBar /> }
+            { isSmallScreen ? <div className='flex-grow ml-12'>{children}</div> : <div className='flex-grow'>{children}</div>}
           { !isSmallScreen && <Footer /> }
         </div>
       </div>
@@ -62,16 +63,33 @@ const PatientLayout = ({ children }) => {
   );
 };
 
-const DoctorLayout = ({ children }) => (
-  <div className='w-full flex justify-center'>
-    <div className='w-[500px]'>
-      <div className='flex flex-col min-h-screen'>
-        <div className='flex-grow '>{children}</div>
-        <DoctorFooter />
+const DoctorLayout = ({ children }) => {
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth >= 500);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth >= 500);
+    };
+    
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+  return (
+    <div className='w-full flex justify-center'>
+      <div className='w-[500px]'>
+        <div className='flex flex-col min-h-screen'>
+          { isSmallScreen && <OtherNavBarDoctor /> }
+          { isSmallScreen ? <div className='flex-grow ml-12'>{children}</div> : <div className='flex-grow'>{children}</div>}
+          { !isSmallScreen && <DoctorFooter /> }
+        </div>
       </div>
     </div>
-  </div>
-);
+  )
+}
 
 const Router = () => {
   return (

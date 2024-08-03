@@ -1,4 +1,4 @@
-import React from "react";
+/* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import img from "../../Assets/Imgs/profileDoctor.png";
 
@@ -34,7 +34,7 @@ export default function CardPatient(props) {
 
         <div
           key={props.index}
-          className='flex w-full shadow-xl items-center  space-x-4  p-3 rounded mb-2'
+          className='flex w-full shadow-md items-center  space-x-4  p-3 rounded mb-2'
         >
           <div className='bg-purple-300 text-white rounded-full w-10 h-10 flex items-center justify-center'>
             <img src={img} alt='' />
