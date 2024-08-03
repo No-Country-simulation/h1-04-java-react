@@ -1,33 +1,9 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
+import "../../Components/Login/login.css"
 
-const ButtonComponent = ({
-  type = "button",
-  theme = "primary",
-  to,
-  href,
-  loading = false,
-  disabled = false,
-  children,
-}) => {
-  const classTheme = () => {
-    if (disabled) {
-      return "bg-gray-200 text-gray-400";
-    }
-    if (theme === "primary") {
-      const baseClass = "bg-blue-400 focus:ring-primary-500";
-      return `${baseClass} ${
-        loading ? "text-transparent" : "hover:bg-primary-500 text-white"
-      }`;
-    }
-    // theme === 'secondary'
-    const baseClass = "bg-gray-200 focus:ring-gray-400";
-    return `${baseClass} ${
-      loading ? "text-transparent" : "hover:bg-gray-300 text-gray-700"
-    }`;
-  };
-
+const ButtonComponent = ({ type = "button", to, href, loading = false, disabled = false, children }) => {
   const Element = () => {
     if (disabled || !(to || href)) {
       return "button";
@@ -56,7 +32,7 @@ const ButtonComponent = ({
   return (
     <ElementTag
       {...elementAttrs}
-      className={`px-4 py-2.5 inline-flex justify-center items-center gap-2 rounded border border-transparent text-sm font-semibold focus:ring-2 focus:outline-none focus:ring-offset-2 transition-all ${classTheme()}`}
+      className="buttonLogin"
       disabled={disabled || loading}
     >
       {children}
@@ -65,7 +41,6 @@ const ButtonComponent = ({
           <Icon
             icon='icomoon-free:spinner2'
             className='w-5 h-5 animate-spin'
-            style={{ color: theme === "primary" ? "white" : "gray" }}
           />
         </div>
       )}

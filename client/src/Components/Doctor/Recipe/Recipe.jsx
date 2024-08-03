@@ -9,7 +9,7 @@ export default function Recipe() {
 
   return (
     <div className=' flex flex-col justify-center items-center px-4 pt-5'>
-      <div className='md:w-1/2 w-full gap-y-3 flex flex-col'>
+      <div className='w-full gap-y-3 flex flex-col'>
         <DoctorHeader text={"Receta medica"} />
         <InputComponent label={"Remedio"} />
         <InputComponent label={"Tamaño del medicamento"} />

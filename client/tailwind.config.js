@@ -10,7 +10,7 @@ export default {
         primary: '#EA526F',
         secondary: '#25CED1',
         orangeColor: '#FF8A5B',
-        beigeColor: '#FCEADE'
+        beigeColor: '#FCEADE',
       },
     },
   },

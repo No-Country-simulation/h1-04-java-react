@@ -6,17 +6,11 @@ import "./previousConsultation.css";
 
 const PreviousConsultation = () => {
   const [activeTab, setActiveTab] = useState("Motivo de la cita");
-  // const navigate = useNavigate();
 
   return (
     <div className='previous-consultation'>
-      {/* <button className='backPage' onClick={() => navigate(-1)}>
-        <img src={arrowLeft} alt='back' />
-        <p></p>
-      </button> */}
-
       <DoctorHeader text={"Pre-Consulta"} />
-
+      
       <section className='boxCotent'>
         <div className='header'>
           <div>
@@ -38,7 +32,7 @@ const PreviousConsultation = () => {
           </div>
         </div>
       </section>
-
+      
       <section className='boxCotent'>
         <div className='tabs'>
           <button

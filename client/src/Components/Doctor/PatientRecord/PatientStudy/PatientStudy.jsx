@@ -2,7 +2,7 @@ import { useState } from "react"
 import DoctorHeader from "../../DoctorHeader/DoctorHeader"
 import CardPatientStudy from "./CardPatientStudy"
 
-const PatientStudy = () => {
+const   PatientStudy = () => {
     const [selectedButton, setSelectedButton] = useState(null);
 
     const handleSelected = (buttonId) => {

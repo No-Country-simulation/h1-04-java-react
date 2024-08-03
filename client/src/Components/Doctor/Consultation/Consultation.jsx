@@ -2,13 +2,12 @@ import { useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import DoctorContext from "../../../context/DoctorContext";
 import profileDoctor from "../../../Assets/Imgs/profileDoctor.png";
-import tratamiento from "../../../Assets/Imgs/treat.png";
+import imgExample from "../../../Assets/Imgs/imgExample.svg";
 import SpeechRecognition from "./SpeechRecognition";
 import DoctorHeader from "../DoctorHeader/DoctorHeader";
 import "./consultation.css";
 
 const Consultation = () => {
-  // const [isFocused, setIsFocused] = useState(false);
   const [currentNotes, setCurrentNotes] = useState("");
 
   const navigate = useNavigate();
@@ -22,12 +21,8 @@ const Consultation = () => {
 
   return (
     <div className='consultation'>
-      {/* <button className='backPage' onClick={() => navigate(-1)}>
-        <img src={arrowLeft} alt='back' />
-        <p>Consulta</p>
-      </button> */}
       <DoctorHeader text={"Consulta"} />
-
+      
       <div className='header'>
         <div>
           <img src={profileDoctor} alt='Laura Gomez' />
@@ -37,26 +32,26 @@ const Consultation = () => {
           <p>Consulta por control</p>
         </div>
       </div>
-
+      
       <section className='containerTreatments'>
         <button className='treatmentsStylesDoctor'>
-          <img src={tratamiento} alt='Tratamiento' />
+          <img src={imgExample} alt='Tratamiento' />
           <p>Tratamiento</p>
         </button>
         <button className='treatmentsStylesDoctor'>
-          <img src={tratamiento} alt='Historia Clinica' />
+          <img src={imgExample} alt='Historia Clinica' />
           <p>Historia Clinica</p>
         </button>
         <button className='treatmentsStylesDoctor'>
-          <img src={tratamiento} alt='Estudios' />
+          <img src={imgExample} alt='Estudios' />
           <p>Estudios</p>
         </button>
         <button className='treatmentsStylesDoctor'>
-          <img src={tratamiento} alt='Medicación' />
+          <img src={imgExample} alt='Medicación' />
           <p>Medicación</p>
         </button>
       </section>
-
+      
       <section className='writeText'>
         <p>Notas</p>
         {/* <textarea

@@ -43,11 +43,12 @@
     text-align: center;
     font-weight: 500;
     padding: 25px;
-    flex: 1 1 calc(33.333% - 20px);
+    flex: 1 1 calc(50% - 20px);
     box-sizing: border-box;
     color: #0087D0;
     background-color: #D9F2FF;
     border-radius: 10px;
+    padding-bottom: 40px;
 }
 .treatmentsStylesDoctor img{
     margin: auto;
@@ -56,19 +57,6 @@
     object-fit: cover;
     object-position: center;
 }
-
-@media (max-width: 800px) {
-    .treatmentsStylesDoctor {
-        flex: 1 1 calc(50% - 20px); /* Dos elementos por fila en pantallas medianas */
-    }
-}
-
-@media (max-width: 380px) {
-    .treatmentsStylesDoctor {
-        flex: 1 1 calc(100% - 20px); /* Un elemento por fila en pantallas pequeñas */
-    }
-}
-
 
 
 .btnConsultation {
@@ -86,4 +74,13 @@
     font-weight: 500;
     font-size: 17px;
     margin-top: 20px;
+}
+
+
+
+
+@media (max-width: 380px) {
+    .treatmentsStylesDoctor {
+        flex: 1 1 calc(100% - 20px);
+    }
 }

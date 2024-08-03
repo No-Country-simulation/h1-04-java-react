@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { login as loginService } from "../../services/authService";
 import Alert from "../../helpers/atoms/Alert";
 import InputComponent from "../../helpers/atoms/InputComponent";
@@ -8,6 +8,7 @@ import IconComponent from "../../helpers/atoms/IconComponent";
 import ButtonComponent from "../../helpers/atoms/ButtonComponent";
 import logo from "../../Assets/Imgs/logo.png";
 import AuthContext from "../../context/DoctorContext";
+import "./login.css"
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -97,33 +98,25 @@ const Login = () => {
             alt='logo'
           />
         </a>
-        <div className='flex gap-1'>
-          <button
-            onClick={() => doctor()}
-            className='shadow px-4 bg-blue-300 text-white py-2 rounded'
-          >
+        
+        <div className='flex gap-5'>
+          <button onClick={() => doctor()} className='w-24 shadow px-4 text-black py-2 rounded bg-secondary'>
             Doctor
           </button>
-
-          <button
-            onClick={() => patient()}
-            className='shadow px-4 bg-blue-300 text-white py-2 rounded'
-          >
+          <button onClick={() => patient()} className='w-24 shadow px-4 text-black py-2 rounded bg-secondary'>
             Paciente
           </button>
-          <button
-            onClick={() => admin()}
-            className='shadow px-4 bg-blue-300 text-white py-2 rounded'
-          >
+          <button onClick={() => admin()} className='w-24 shadow px-4 text-black py-2 rounded bg-secondary'>
             Admin
           </button>
         </div>
+        
         <div className='w-full max-w-md bg-white rounded-lg border shadow-sm'>
           <div className='p-7 space-y-5'>
             <h1 className='text-2xl font-bold leading-tight tracking-tight text-gray-900'>
               Login
             </h1>
-
+            
             <form className='flex flex-col gap-5' onSubmit={handleSubmit}>
               <div className='flex flex-col gap-5'>
                 <InputComponent
@@ -171,7 +164,7 @@ const Login = () => {
                   className='w-full'
                 >
                   <IconComponent name='ph:sign-in-bold' className='w-5 h-5' />
-                  Login
+                  Continuar
                 </ButtonComponent>
 
                 {/* <ButtonComponent
