@@ -1,5 +1,6 @@
 import { FaDownload } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import hearth from '../../Assets/Imgs/hearthNavbar.png';
 
 const NavBarLanding = () => {
   const navigate = useNavigate();
@@ -29,6 +30,7 @@ const NavBarLanding = () => {
       <div className="absolute w-full h-[5.5rem] mt-[-1.5rem] backdrop-blur-sm rounded-md"></div>
       <div className="relative w-full max-w-screen-xl h-12 bg-[#fceade]/90 rounded-md shadow-md flex justify-between items-center px-8 mx-auto">
         <div className="flex justify-between items-center space-x-8">
+          <img className='w-10 h-8' src={hearth} alt="" />
           <button
             onClick={handleJustinaIoClick}
             className="text-[#232233] text-lg font-semibold hover:underline uppercase leading-relaxed hover:text-[#ff4900] cursor-pointer"
