@@ -46,8 +46,6 @@ public class PatientServiceImpl implements PatientService {
 
     private final String DEFAULT_PASSWORD = "12345Aa*";
 
-    private final String LOGO_PATH = "src/main/resources/images/Justina-logo.png";
-
     @Override
     public PatientResponseDTO createPatient(PatientRequestDTO patientRequestDTO) {
         if (patientRepository.existsByEmail(patientRequestDTO.getEmail())) {
@@ -126,7 +124,7 @@ public class PatientServiceImpl implements PatientService {
     private void sendWelcomeEmail(String userEmail, String firstName, String lastName, String password) {
         try {
             String htmlContent = getWelcomeEmailBody(firstName, lastName, userEmail, password);
-            emailService.sendHtmlEmail(userEmail, "Bienvenido a Justina", htmlContent, LOGO_PATH);
+            emailService.sendHtmlEmail(userEmail, "Bienvenido a Justina", htmlContent);
         } catch (Exception e) {
             System.err.println("Error sending Welcome Email: " + e.getMessage());
         }
