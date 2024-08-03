@@ -3,6 +3,8 @@ import FooterLanding from '../Landing/FooterLanding';
 import NavBarDownload from "./NavBarDownload";
 import logo from '../../Assets/Imgs/logo.png';
 import playStore from '../../Assets/Imgs/playStore.png';
+import apple from '../../Assets/Imgs/apple.png';
+import microsoft from '../../Assets/Imgs/microsoft.png';
 
 const Download = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -66,6 +68,68 @@ const Download = () => {
           </div>
         </div>
       </div>
+
+      {/* Nueva sección */}
+      <div className="w-full bg-[#25ced1]/20 flex justify-center py-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-[1305px] mx-12 relative">
+          {/* Columna 1 */}
+          <div className="relative z-10 w-[22rem] pl-4 flex flex-col justify-center items-start gap-6 ">
+            <div className="text-[#ea526f] text-4xl font-bold leading-tight">
+              Otras opciones
+              <br /> de Descarga
+            </div>
+            <div className="text-[#555555] text-base font-semibold leading-tight">
+              Participa de manera activa en el cuidado de tu salud en todos los dispositivos que tengas.
+            </div>
+          </div>
+          {/* Columna 2 */}
+          <div className="relative inset-0 bg-gray-100 rounded-[1.25rem] z-0 h-[15em] mt-6">
+            <div className="relative z-10 w-full h-[15em] px-4 bg-[#ea526f]/10 rounded-[1.25rem] border-2 border-[#ea526f] flex flex-col justify-center items-start gap-7 z-1">
+              <div className="h-[6.875rem] flex flex-col justify-center items-start gap-2.5">
+                <div className="h-[1.625rem] text-[#1a1a1a] text-lg font-semibold leading-[3.125rem] mt-12">PC | LAPTOP</div>
+                <div className="h-[1.625rem] text-[#ea526f] text-3xl font-bold leading-[3.125rem] mb-4">WINDOWS</div>
+                <div className="h-[2.375rem] text-[#1a1a1a] text-base font-semibold leading-snug mb-4">Descárgala de forma rápida y fácil para usar en tu computadora de escritorio o tu notebook.</div>
+              </div>
+              <div
+                className="px-4 my-2 mb-3 bg-[#1a1a1a] rounded-[0.9375rem] border-2 border-white flex justify-center items-center gap-2.5 cursor-pointer hover:bg-[#333333] transition"
+                onClick={handleModalOpen}
+              >
+                <div className="w-[2.608125rem] h-[2.8125rem] relative">
+                  <img src={microsoft} alt="logo microsoft" />
+                </div>
+                <div className='flex flex-col py-2'>
+                  <span className="text-white text-base font-normal">Consíguelo de</span>
+                  <span className="text-white text-3xl font-medium ">Microsoft</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Columna 3 */}
+          <div className="relative inset-0 bg-gray-100 rounded-[1.25rem] z-0 h-[15em] mt-6">
+            <div className="relative z-10 w-full h-[15em] px-4 bg-[#ea526f]/10 rounded-[1.25rem] border-2 border-[#ea526f] flex flex-col justify-center items-start gap-7">
+              <div className="h-[6.875rem] flex flex-col justify-center items-start gap-2.5">
+                <div className="h-[1.625rem] text-[#1a1a1a] text-lg font-semibold leading-[3.125rem] mt-12">Móvil | Tablet</div>
+                <div className="h-[1.625rem] text-[#ea526f] text-3xl font-bold leading-[3.125rem] mb-4">iOS</div>
+                <div className="h-[2.375rem] text-[#1a1a1a] text-base font-semibold leading-snug mb-4">Descárgala de forma rápida y fácil para usar en tu celular con sistema iOS.</div>
+              </div>
+              <div
+                className="px-4 my-2 mb-3 bg-[#1a1a1a] rounded-[0.9375rem] border-2 border-white flex justify-center items-center gap-2.5 cursor-pointer hover:bg-[#333333] transition"
+                onClick={handleModalOpen}
+              >
+                <div className="w-[2.608125rem] h-[2.8125rem] relative">
+                  <img src={apple} alt="logo apple" />
+                </div>
+                <div className='flex flex-col py-2'>
+                  <span className="text-white text-base font-normal">Consíguelo en el</span>
+                  <span className="text-white text-3xl font-medium ">App Store</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <FooterLanding />
 
       {/* Modal */}
