@@ -203,7 +203,7 @@ public class PatientServiceImpl implements PatientService {
                 "        <p>A continuación, encontrarás tus credenciales para acceder a Justina:</p>\n" +
                 "        <p><strong>Email:</strong> " + userEmail + "</p>\n" +
                 "        <p><strong>Contraseña:</strong> " + password + "</p>\n" +
-                "        <p>Puedes iniciar sesión <a href=\"https://hackaton-no-country.vercel.app/\">aquí</a>.</p>\n" +
+                "        <p>Puedes iniciar sesión <a href=\"https://hackaton-no-country.vercel.app/login\">aquí</a>.</p>\n" +
                 "        <div class=\"footer\">\n" +
                 "            <p>Saludos cordiales,<br>El equipo de Justina</p>\n" +
                 "        </div>\n" +
