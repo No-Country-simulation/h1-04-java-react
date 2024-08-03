@@ -130,6 +130,27 @@ const Download = () => {
         </div>
       </div>
 
+      {/* Sección de Demostración */}
+      <div className="w-full bg-gray-100 flex justify-center py-12">
+        <div className="mx-12">
+          <div className="text-[#ea526f] text-4xl font-bold text-center mb-8">
+            Demostración
+          </div>
+          <div className="flex justify-center">
+            <iframe
+              width="700"
+              height="393"
+              src="https://www.youtube.com/embed/ozqvp1KsYoc?si=ZK4WwQm1Z3aKOjsT"
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+              className="rounded-lg shadow-lg"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+
       <FooterLanding />
 
       {/* Modal */}
