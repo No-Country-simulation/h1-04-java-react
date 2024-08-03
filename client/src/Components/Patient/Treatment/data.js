@@ -1,4 +1,4 @@
-import treatment from "../../../Assets/Imgs/tratamiento.png"
+import treatment from "../../../Assets/Imgs/treat.png"
 import studies from "../../../Assets/Imgs/studies.png"
 import nutricion from "../../../Assets/Imgs/nutricion.png"
 import gim from "../../../Assets/Imgs/gim.png"
@@ -71,9 +71,12 @@ export const treatmentData = {
         title: "Historia Clinica",
         buttons: [
             { label: "Diagnóstico" },
-            { label: "Tratamientos" },
+            { label: "Tratamiento Médico" },
+            { label: "Tratamiento Psicológico" },
+            { label: "Tratamiento Fisioterapéutico" },
+            { label: "Trabajo Social" },
             { label: "Medicación" },
-            { label: "Laboratorios/Estudios" }
+            { label: "Laboratorio/Estudios" }
         ]
     },
     '/treatment-psychology': {

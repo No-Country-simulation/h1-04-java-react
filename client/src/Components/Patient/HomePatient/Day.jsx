@@ -7,7 +7,7 @@ const Day = ({ image, activity, time, href, backColor }) => {
   return (
     <div
       className='flex items-center justify-between p-4 m-3'
-      style={{ border: `solid 2px ${backColor}`, borderRadius: "5px" }}
+      style={{ border: `solid 3px ${backColor}`, borderRadius: "15px" }}
     >
       <div className='flex'>
         <img src={image} alt={activity} />

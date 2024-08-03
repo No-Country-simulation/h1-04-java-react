@@ -23,6 +23,7 @@ const PatientMedication = () => {
     const ViewPopUp = ({ name }) => (
         <article className="viewPopUpPatientMedication">
             <div className="popUpContentPatientMedication">
+                <p>(se esta haciendo esta función)</p>
                 <h2>Editar {name}?</h2>
                 <textarea name="edit" id="edit"></textarea>
                 <button onClick={() => setIsPopUpVisible(false)} className="buttonContinue">Listo</button>

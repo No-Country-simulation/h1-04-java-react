@@ -1,5 +1,5 @@
+import treat from "../../../Assets/Imgs/treat.png"
 import treatment from "../../../Assets/Imgs/treatment.png"
-import treatmentt from "../../../Assets/Imgs/tratamiento.png"
 import studies from "../../../Assets/Imgs/studies.png"
 import nutricion from "../../../Assets/Imgs/nutricion.png"
 import gim from "../../../Assets/Imgs/gim.png"
@@ -8,20 +8,20 @@ import medicacion from "../../../Assets/Imgs/medicacion.png"
 import psicologia from "../../../Assets/Imgs/psicologia.png"
 import trabajoSocial from "../../../Assets/Imgs/trabajoSocial.png"
 import physiotherapy from "../../../Assets/Imgs/fisioterapia.png"
-import others from "../../../Assets/Imgs/otros.png"
+import turns from "../../../Assets/Imgs/turns.png"
 import "./treatments.css"
 
 const Treatments = () => {
     return (
         <article>
             <div className="containerTitle">
-                <img src={treatment} alt="Tratamiento" />
+                <img src={treat} alt="Tratamiento" />
                 <h1>Tratamientos</h1>
             </div>
             
             <section className="containerTreatments">
                 <a href='/treatment-treatment' className="treatmentsStyles">
-                    <img src={treatmentt} alt="Tratamiento" />
+                    <img src={treatment} alt="Tratamiento" />
                     <p>Tratamiento</p>
                 </a>
                 <a href='/treatment-studies' className="treatmentsStyles">
@@ -56,9 +56,9 @@ const Treatments = () => {
                     <img src={physiotherapy} alt="Tratamiento" />
                     <p>Fisioterapia</p>
                 </a>
-                <a href='/treatment-others' className="treatmentsStyles">
-                    <img src={others} alt="Tratamiento" />
-                    <p>Otros</p>
+                <a href='/turn-calendar' className="treatmentsStyles">
+                    <img src={turns} alt="Tratamiento" />
+                    <p>Turnos</p>
                 </a>
             </section>
         </article>

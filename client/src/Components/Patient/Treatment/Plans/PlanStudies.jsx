@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types"
 import arrowRight from "../../../../Assets/Imgs/arrowRight.png";
-import imageStudios from "../../../../Assets/Imgs/imageStudios.png"
+import imageStudios from "../../../../Assets/Imgs/study.svg"
 import question from "../../../../Assets/Imgs/question.png"
 import "./plans.css"
 

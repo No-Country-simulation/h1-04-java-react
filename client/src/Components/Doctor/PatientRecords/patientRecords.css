@@ -29,7 +29,7 @@
     text-align: center;
     font-weight: 500;
     padding: 17px;
-    flex: 1 1 calc(33.333% - 20px);
+    flex: 1 1 calc(50% - 20px);
     box-sizing: border-box;
     border-radius: 20px;
     color: #0087D0;
@@ -45,11 +45,6 @@
 }
 
 
-@media (max-width: 800px) {
-    .treatmentsStylesRecords {
-        flex: 1 1 calc(50% - 20px);
-    }
-}
 
 @media (max-width: 380px) {
     .treatmentsStylesRecords {

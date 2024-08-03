@@ -18,7 +18,7 @@
 
 .containerTreatments{
     display: flex;
-    flex-wrap: wrap; /* Permite que los elementos se envuelvan en múltiples líneas */
+    flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
     padding: 10px;
@@ -32,8 +32,8 @@
     flex: 1 1 calc(50% - 20px);
     box-sizing: border-box;
     color: #EA526F;
-    border: 2px solid #EA526F;
-    border-radius: 20px;
+    border: 3px solid #EA526F;
+    border-radius: 10px;
 }
 
 .treatmentsStyles img{

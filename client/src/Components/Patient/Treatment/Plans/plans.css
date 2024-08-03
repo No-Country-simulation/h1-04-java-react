@@ -44,7 +44,7 @@
 
 
 .containerInsideContent{
-    border: 2px solid #25CED1;
+    border: 3px solid #25CED1;
     margin-top: -5px;
     margin-bottom: 30px;
     border-radius: 10px;
@@ -53,6 +53,7 @@
 .containerInsideContent h1{
     font-size: 25px;
     font-weight: 600;
+    color: #25CED1;
 }
 .containerInsideContent p{
     font-size: 15px;
@@ -84,7 +85,7 @@
     background-color: #25CED1;
     border-radius: 30px;
     padding: 10px;
-    margin-top: 10px;
+    margin-top: 30px;
     width: 100%;
     font-weight: 700;
     font-size: 17px;
@@ -92,9 +93,9 @@
 
 
 .containerInsideContentStudies{
-    border: 2px solid #25CED1;
+    border: 3px solid #25CED1;
     color: #1E999B;
-    border-radius: 5px;
+    border-radius: 10px;
     margin-top: -5px;
     margin-bottom: 30px;
     padding: 10px;
@@ -117,14 +118,15 @@
 }
 
 .exerciseItem {
-    background-color: #b5bab9;
+    background-color: #FFFFFF;
+    border: 2px solid #25CED1;
     display: flex;
     flex-direction: column;
     gap: 5px;
 }
 
 .exerciseHeader {
-    background-color: #363130;
+    background-color: #25CED1;
     color: #ffffff;
     padding: 5px;
     padding-left: 20px;
@@ -142,15 +144,18 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    border-bottom: 2px solid #000;
+    border-bottom: 2px solid #25CED1;
     padding-bottom: 5px;
 }
 .exerciseContent h2 {
     flex-grow: 1;
     margin-left: 10px;
-    font-size: 16px;
+    font-size: 17px;
+    font-weight: 600;
 }
 .exerciseContent img {
+    width: 20px;
+    height: 20px;
     cursor: pointer;
 }
 

@@ -2,7 +2,7 @@ import home from "../../Assets/Imgs/home.png";
 import urgency from "../../Assets/Imgs/buttonFooter.png";
 import settings from "../../Assets/Imgs/settings.png";
 import turno from "../../Assets/Imgs/calendar.png";
-import treatment from "../../Assets/Imgs/treatment.png";
+import treatBlack from "../../Assets/Imgs/treatBlack.png"
 import { Link } from "react-router-dom";
 import "./footer.css";
 
@@ -14,7 +14,7 @@ const Footer = () => {
         <p>Ajustes</p>
       </Link>
       <Link to='/treatments'>
-        <img src={treatment} alt='settings img' />
+        <img src={treatBlack} alt='settings img' />
         <p>Tratamiento</p>
       </Link>
       <Link to='Aca va numero o url' className='urgency'>

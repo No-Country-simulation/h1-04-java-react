@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import DoctorContext from "../../../context/DoctorContext";
 import profileDoctor from "../../../Assets/Imgs/profileDoctor.png";
-import tratamiento from "../../../Assets/Imgs/tratamiento.png";
+import tratamiento from "../../../Assets/Imgs/treat.png";
 import SpeechRecognition from "./SpeechRecognition";
 import DoctorHeader from "../DoctorHeader/DoctorHeader";
 import "./consultation.css";
