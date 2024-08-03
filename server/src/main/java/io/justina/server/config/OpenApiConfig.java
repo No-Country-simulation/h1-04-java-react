@@ -36,7 +36,7 @@ import org.springframework.context.annotation.Configuration;
                 ),
                 @Server(
                         description = "PROD ENV",
-                        url = "https://h1-04-java-react.onrender.com"
+                        url = "https://justina-n2nb.onrender.com"
                 )
         },
         security = {
