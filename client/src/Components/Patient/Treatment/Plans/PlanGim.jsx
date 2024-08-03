@@ -45,21 +45,21 @@ const PlanGim = () => {
                 <section className="exerciseList">
                     {exercises.map(exercise => (
                         <div key={exercise.id} className="exerciseItem">
-                        <p className="exerciseHeader">{exercise.id}</p>
-                        <article className="containeExerciser">
-                            <div className="exerciseContent">
-                                <h2>{exercise.name}</h2>
-                                <img src={question} alt="question" onClick={() => {
-                                        setIsPopUpVisible(true);
-                                        setSelectedExercise(exercise.name);
-                                    }} />
-                            </div>
-                            <div className="exerciseDetails">
-                                <p>Series: {exercise.series}</p>
-                                <p>Reps: {exercise.reps}</p>
-                                <p>Pausa: {exercise.pause}</p>
-                            </div>
-                        </article>
+                            <p className="exerciseHeader">{exercise.id}</p>
+                            <article className="containeExerciser">
+                                <div className="exerciseContent">
+                                    <h2>{exercise.name}</h2>
+                                    <img src={question} alt="question" onClick={() => {
+                                            setIsPopUpVisible(true);
+                                            setSelectedExercise(exercise.name);
+                                        }} />
+                                </div>
+                                <div className="exerciseDetails">
+                                    <p>Series: {exercise.series}</p>
+                                    <p>Reps: {exercise.reps}</p>
+                                    <p>Pausa: {exercise.pause}</p>
+                                </div>
+                            </article>
                         </div>
                     ))}
                 </section>

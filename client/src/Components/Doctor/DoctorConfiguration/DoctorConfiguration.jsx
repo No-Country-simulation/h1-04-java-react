@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
 import arrowRight from "../../../Assets/Imgs/arrowRight.png";
-import arrowLeft from "../../../Assets/Imgs/otraArrowLeft.png";
 import privateImg from "../../../Assets/Imgs/private.png";
 import profile from "../../../Assets/Imgs/pepitaExample.png";
 import PersonalData from "../../PersonalData/PersonalData";
@@ -82,7 +81,7 @@ const DoctorConfiguration = () => {
               <img src={arrowRight} alt='arrow' className='w-6 h-6 ml-4' />
             </button>
             {personalData && (
-              <div className='mb-5'>
+              <div className='mb-5 containerPersonalData'>
                 <PersonalData user={patientData} />
               </div>
             )}
@@ -115,7 +114,7 @@ const DoctorConfiguration = () => {
 
           <button
             onClick={() => log()}
-            className='w-full self-end bg-red-500 rounded py-2 font-semibold text-white'
+            className='w-full self-end bg-sky-600 rounded py-2 font-semibold text-white'
           >
             Log out
           </button>

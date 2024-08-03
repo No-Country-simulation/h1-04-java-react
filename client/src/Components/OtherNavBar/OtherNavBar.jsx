@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../Assets/Imgs/logo.png"
 import settings from "../../Assets/Imgs/settings.png";
-import treatment from "../../Assets/Imgs/treatment.png";
+import treatment from "../../Assets/Imgs/treat.png";
 import turno from "../../Assets/Imgs/calendar.png";
 import home from "../../Assets/Imgs/home.png";
 import menu from "../../Assets/Imgs/menuHamburguesa.png";

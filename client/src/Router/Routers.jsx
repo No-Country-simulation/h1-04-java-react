@@ -33,15 +33,16 @@ import OtherNavBar from "../Components/OtherNavBar/OtherNavBar.jsx";
 import Download from "../Components/Download/Download.jsx";
 
 const PatientLayout = ({ children }) => {
-  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 450);
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth >= 500);
 
   useEffect(() => {
     const handleResize = () => {
       setIsSmallScreen(window.innerWidth >= 500);
     };
-
+    
     window.addEventListener('resize', handleResize);
-
+    handleResize();
+    
     return () => {
       window.removeEventListener('resize', handleResize);
     };
@@ -53,7 +54,7 @@ const PatientLayout = ({ children }) => {
         <div className='flex flex-col min-h-screen'>
           { !isSmallScreen && <NavBar /> }
           { isSmallScreen && <OtherNavBar /> }
-          <div className='flex-grow'>{children}</div>
+          <div className='flex-grow ml-12'>{children}</div>
           { !isSmallScreen && <Footer /> }
         </div>
       </div>
@@ -75,8 +76,6 @@ const DoctorLayout = ({ children }) => (
 const Router = () => {
   return (
     <BrowserRouter>
-    {/* <div className='w-full flex justify-center'>
-      <div className='w-[450px]'> */}
       <Routes>
         {/* Landing */}
         <Route exact path='/' element={<Landing />} />
@@ -442,8 +441,6 @@ const Router = () => {
 
         <Route path='*' element={<Error404 />} />
       </Routes>
-      {/* </div>
-    </div> */}
     </BrowserRouter>
   );
 };

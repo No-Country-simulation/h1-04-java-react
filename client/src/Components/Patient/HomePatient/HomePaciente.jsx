@@ -1,11 +1,11 @@
 import imgUser from "../../../Assets/Imgs/pepita.png"
 import Week from "./Weekk.jsx";
 import Day from "./Day.jsx";
-import turno from "../../../Assets/Imgs/calendar.png"
+import turno from "../../../Assets/Imgs/int.svg"
 import nutricion from "../../../Assets/Imgs/nutricion.png"
-import medicacion from "../../../Assets/Imgs/medicacion.png"
-import studies from "../../../Assets/Imgs/studies.png"
-import gim from "../../../Assets/Imgs/gim.png"
+import medicacion from "../../../Assets/Imgs/medi.svg"
+import studies from "../../../Assets/Imgs/stu.svg"
+import gim from "../../../Assets/Imgs/fit.svg"
 import "./homePaciente.css"
 
 const HomePatient = () => {
