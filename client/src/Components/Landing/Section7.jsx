@@ -7,13 +7,13 @@ import imgCard3 from '../../Assets/Imgs/imgCard3.png';
 
 const Section7 = () => {
   return (
-    <div id="section7" className="w-full py-24 flex flex-col items-center bg-white">
+    <div id="section7" className="w-full py-16 md:py-24 flex flex-col items-center bg-white">
       {/* Título y descripción */}
-      <div className="text-center mb-16">
-        <div className="w-full text-center text-cyan-500 text-3xl font-semibold uppercase leading-tight mb-10">
+      <div className="text-center mb-8 md:mb-16">
+        <div className="w-full text-center text-cyan-500 text-2xl md:text-3xl font-semibold uppercase leading-tight mb-6 md:mb-10">
           Sobre la campaña de Justina
         </div>
-        <p className="text-[#555555] text-base font-semibold leading-tight max-w-2xl mx-auto">
+        <p className="text-[#555555] text-base font-semibold leading-tight w-[90%] md:w-full max-w-2xl mx-auto">
           4 de julio del 2018, se enciende el cartel de la Cámara de Diputados de la Nación, y el capicúa dibuja la sonrisa en los millones de argentinos que comienzan a estar protegidos por la 
           <a 
             href="https://www.argentina.gob.ar/sites/default/files/ley-27447.pdf" 
@@ -27,7 +27,7 @@ const Section7 = () => {
         </p>
       </div>
       {/* Tarjetas */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-screen-lg mx-auto pb-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-[80%] md:w-full max-w-screen-lg mx-auto pb-8">
         {/* Tarjeta 1 */}
         <div className=" bg-white rounded-lg shadow-lg overflow-hidden flex flex-col justify-between">
           <img className="w-full h-56 object-cover" src={imgCard1} alt="Ley Justina" />

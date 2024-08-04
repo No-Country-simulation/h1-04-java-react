@@ -5,7 +5,7 @@ import img4 from '../../Assets/Imgs/section5-img4.png';
 
 const Section5 = () => {
   return (
-    <div className="w-full flex flex-col items-center py-10 md:py-24">
+    <div className="w-full flex flex-col items-center py-14 md:py-24">
       <div className="w-full max-w-xl flex flex-col items-center gap-6">
         <div className="flex flex-col items-center gap-3">
           <div className="w-full text-center text-pink-500 text-xl md:text-2xl font-normal leading-normal tracking-wide">
