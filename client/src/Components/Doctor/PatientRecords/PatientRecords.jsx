@@ -1,5 +1,12 @@
 import { Link } from "react-router-dom"
 import foldier from "../../../Assets/Imgs/foldier.svg"
+import consultation1 from "../../../Assets/Imgs/imgConsultation1.svg"
+import consultation2 from "../../../Assets/Imgs/imgConsultation2.svg"
+import consultation3 from "../../../Assets/Imgs/imgConsultation3.svg"
+import consultation4 from "../../../Assets/Imgs/imgConsultation4.svg"
+import anotaciones from "../../../Assets/Imgs/anotaciones.svg"
+import turnoPrevios from "../../../Assets/Imgs/turnoPrevios.svg"
+import proximoTurno from "../../../Assets/Imgs/proximoTurno.svg"
 import DoctorHeader from "../DoctorHeader/DoctorHeader"
 import "./patientRecords.css"
 
@@ -24,19 +31,19 @@ const PatientRecords = () => {
             
             <section className="containerTreatments">
                 <Link to={'/medicalHistory'} className="treatmentsStylesRecords">
-                    <img src={foldier} alt="Tratamiento" />
+                    <img src={consultation2} alt="Tratamiento" />
                     <p>Historial Medico</p>
                 </Link>
                 <Link to={'/treatmentFollowUp'} className="treatmentsStylesRecords">
-                    <img src={foldier} alt="Tratamiento" />
+                    <img src={consultation1} alt="Tratamiento" />
                     <p>Tratamiento</p>
                 </Link>
                 <Link to={'/patientStudy'} className="treatmentsStylesRecords">
-                    <img src={foldier} alt="Tratamiento" />
+                    <img src={consultation3} alt="Tratamiento" />
                     <p>Estudios</p>
                 </Link>
                 <Link to={'/patientMedication'} className="treatmentsStylesRecords">
-                    <img src={foldier} alt="Tratamiento" />
+                    <img src={consultation4} alt="Tratamiento" />
                     <p>Medicación</p>
                 </Link>
                 <Link to={"#"} className="treatmentsStylesRecords">
@@ -44,15 +51,15 @@ const PatientRecords = () => {
                     <p>Contacto</p>
                 </Link>
                 <Link to={"#"} className="treatmentsStylesRecords">
-                    <img src={foldier} alt="Tratamiento" />
+                    <img src={anotaciones} alt="Tratamiento" />
                     <p>Anotaciones</p>
                 </Link>
                 <Link to={"#"} className="treatmentsStylesRecords">
-                    <img src={foldier} alt="Tratamiento" />
+                    <img src={turnoPrevios} alt="Tratamiento" />
                     <p>Turnos previos</p>
                 </Link>
                 <Link to={"#"} className="treatmentsStylesRecords">
-                    <img src={foldier} alt="Tratamiento" />
+                    <img src={proximoTurno} alt="Tratamiento" />
                     <p>Proximos turnos</p>
                 </Link>
             </section>

@@ -80,7 +80,7 @@ const PreviousConsultation = () => {
         <button>Medicamentos</button>
       </div>
       <Link to={"/consultation"}>
-        <button id='start-consultation'>Iniciar consulta</button>
+        <button className='start-consultation'>Iniciar consulta</button>
       </Link>
     </div>
   );

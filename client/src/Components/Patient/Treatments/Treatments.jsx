@@ -44,15 +44,15 @@ const Treatments = () => {
                     <img src={historiaCli} alt="Tratamiento" />
                     <p>Historial Clinico</p>
                 </a>
-                <a href='/treatment-psychology' className="treatmentsStyles">
+                <a href='#' className="treatmentsStyles">
                     <img src={psicologia} alt="Tratamiento" />
                     <p>Psicología</p>
                 </a>
-                <a href='/treatment-social-work' className="treatmentsStyles">
+                <a href='#' className="treatmentsStyles">
                     <img src={trabajoSocial} alt="Tratamiento" />
                     <p>Trabajo Social</p>
                 </a>
-                <a href='/treatment-physiotherapy' className="treatmentsStyles">
+                <a href='#' className="treatmentsStyles">
                     <img src={physiotherapy} alt="Tratamiento" />
                     <p>Fisioterapia</p>
                 </a>

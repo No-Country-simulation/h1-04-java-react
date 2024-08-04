@@ -1,14 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { getAppointmentById } from "../../../../services/appointmentService";
 import Calendar from "../../../../helpers/atoms/Calendar";
 import Turns from "../Turns";
-import { Link } from "react-router-dom";
-import SuccesModal from "../../../Modals/SucessModal";
-import { getAppointmentById } from "../../../../services/appointmentService"; // Asegúrate de usar la ruta correcta
 import DoctorContext from "../../../../context/DoctorContext";
 
 export default function TurnCalendar() {
-  const [showVerificando, setShowVerificando] = useState(false);
-
   const [appointments, setAppointments] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -55,14 +52,14 @@ export default function TurnCalendar() {
             key={appointment.appointmentId}
             doctor={appointment.fullnameDoctor}
             time={appointment.appointmentHour}
-            href={"/"}
+            href={"/new-turn"}
             type={appointment.typeOfAppointment}
           />
         ))
       ) : (
         <p>No appointments found</p>
       )}
-      <button className='rounded-full self-end mr-5 mt-5 flex justify-center items-center pb-1 border-primary text-primary border-2 w-10 h-10 text-3xl    bg-white'>
+      <button className='rounded-full self-end mr-5 mt-5 mb-5 flex justify-center items-center pb-1 border-primary text-primary border-2 w-10 h-10 text-3xl bg-white'>
         <Link to={"/new-turn"}>+</Link>
       </button>
       {/* <div className='App'>

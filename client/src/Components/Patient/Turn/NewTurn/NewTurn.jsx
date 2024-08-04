@@ -1,9 +1,14 @@
-import React, { useContext, useState, useEffect } from "react";
-import check from "../../../../Assets/Imgs/check.png";
+import { useContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { createAppointment } from "../../../../services/appointmentService"; // Asegúrate de usar la ruta correcta
+import check from "../../../../Assets/Imgs/checkOrange.svg";
 import DoctorContext from "../../../../context/DoctorContext";
 import SuccesModal from "../../../../Components/Modals/SucessModal";
-import { createAppointment } from "../../../../services/appointmentService"; // Asegúrate de usar la ruta correcta
-import { useNavigate } from "react-router-dom";
+import turns from "../../../../Assets/Imgs/turns.png"
+import checkImgSuccess from "../../../../Assets/Imgs/checkImgSuccess.svg"
+import checkImgError from "../../../../Assets/Imgs/checkImgVerify.svg"
+import checkImgVerify from "../../../../Assets/Imgs/checkImgError.svg"
+import anotherArrowLeft from "../../../../Assets/Imgs/otraArrowLeft.png"
 
 const daysOfWeek = [
   "MONDAY",
@@ -70,12 +75,8 @@ const NewTurn = () => {
     "POSTNATAL_CARE", // Cuidado postnatal
   ];
 
-  const {
-    doctors,
-    loading,
-    error: doctorError,
-    authData,
-  } = useContext(DoctorContext);
+  const { doctors, loading, error: doctorError, authData } = useContext(DoctorContext);
+  
   const uniqueSpecialties =
     doctors && doctors.doctors
       ? Array.from(
@@ -158,20 +159,21 @@ const NewTurn = () => {
 
   function closeModal() {
     setShowVerificando(false);
-    navigate("/turn-calendar");
+    navigate("/view-turn");
   }
 
   if (loading) return <div className='text-center mt-10'>Loading...</div>;
-  if (doctorError)
-    return <div className='text-center mt-10'>{doctorError}</div>;
+  if (doctorError) return <div className='text-center mt-10'>{doctorError}</div>;
 
   return (
-    <div className='p-4'>
-      <h2 className='text-2xl font-bold mb-4'>Turnos</h2>
-
+    <section className='m-4'>
+      <div className="flex items-center text-center mb-5 text-secondary">
+        <img src={turns} alt="turno img" className="w-8 h-8" />
+        <h2 className='text-xl font-bold mb-4 mt-3 ml-2'>Turnos</h2>
+      </div>
+      
       {/* Selección de Especialidad */}
-
-      <label className='block mb-4 '>
+      <label className='block mb-4'>
         <input
           className='peer/especialidad hidden'
           type='checkbox'
@@ -179,7 +181,7 @@ const NewTurn = () => {
           onClick={() => setIsEspecialidadOpen(!isEspecialidadOpen)}
           onChange={() => setIsEspecialidadOpen(!isEspecialidadOpen)}
         />
-        <span className='block rounded-lg bg-beigeColor border-orangeColor border-2 text-orangeColor font-semibold px-4 shadow-lg h-8 transition-all duration-300 overflow-hidden peer-checked/especialidad:h-auto'>
+        <span className='block rounded-lg bg-orangeTransparent border-orangeColor border-2 text-orangeColor font-semibold px-5  shadow-lg h-8 transition-all duration-300 overflow-hidden peer-checked/especialidad:h-auto'>
           <h3 className='flex h-8 cursor-pointer items-center font-bold'>
             {selectedEspecialidad ? (
               <div className='flex justify-between items-center w-full'>
@@ -190,11 +192,11 @@ const NewTurn = () => {
               "Especialidad"
             )}
           </h3>
-          <div className='mt-2 space-y-2'>
+          <div className='mt-2 mb-0 space-y-2'>
             {uniqueSpecialties.map((esp, index) => (
               <div
                 key={index}
-                className='flex items-center'
+                className='flex items-center border-b-2 cursor-pointer'
                 onClick={() => {
                   setSelectedEspecialidad(esp);
                   setSelectedProfesional("");
@@ -212,7 +214,7 @@ const NewTurn = () => {
                   className='mr-2'
                   onChange={() => setSelectedEspecialidad(esp)}
                 />
-                <label>{esp}</label>
+                <label className="cursor-pointer">{esp}</label>
               </div>
             ))}
           </div>
@@ -220,7 +222,6 @@ const NewTurn = () => {
       </label>
 
       {/* Selección de Profesional */}
-
       <label className='block mb-4'>
         <input
           className='peer/profesional hidden'
@@ -230,7 +231,7 @@ const NewTurn = () => {
           onChange={() => setIsProfesionalOpen(!isProfesionalOpen)}
           disabled={!selectedEspecialidad}
         />
-        <span className='block rounded-lg bg-beigeColor border-orangeColor border-2 text-orangeColor font-semibold px-4 shadow-lg transition-all duration-300 h-8 overflow-hidden peer-checked/profesional:h-auto'>
+        <span className='block rounded-lg bg-orangeTransparent border-orangeColor border-2 text-orangeColor font-semibold px-5 shadow-lg transition-all duration-300 h-8 overflow-hidden peer-checked/profesional:h-auto'>
           <h3 className='flex h-8 cursor-pointer items-center font-bold'>
             {selectedProfesional ? (
               <div className='flex justify-between items-center w-full'>
@@ -246,7 +247,7 @@ const NewTurn = () => {
               professionals[selectedEspecialidad]?.map((prof, index) => (
                 <div
                   key={index}
-                  className='flex items-center'
+                  className='flex items-center border-b-2 cursor-pointer'
                   onClick={() => handleProfesionalSelect(prof)}
                 >
                   <input
@@ -258,7 +259,7 @@ const NewTurn = () => {
                     className='mr-2'
                     onChange={() => setSelectedProfesional(prof)}
                   />
-                  <label>{prof}</label>
+                  <label className="cursor-pointer">{prof}</label>
                 </div>
               ))}
           </div>
@@ -275,7 +276,7 @@ const NewTurn = () => {
           onChange={() => setIsTipoCitaOpen(!isTipoCitaOpen)}
           disabled={!selectedProfesional}
         />
-        <span className='block rounded-lg bg-beigeColor border-orangeColor border-2 text-orangeColor font-semibold px-4 shadow-lg h-8 transition-all duration-700 overflow-hidden peer-checked/tipoCita:h-auto'>
+        <span className='block rounded-lg bg-orangeTransparent border-orangeColor border-2 text-orangeColor font-semibold px-4 shadow-lg h-8 transition-all duration-700 overflow-hidden peer-checked/tipoCita:h-auto'>
           <h3 className='flex h-8 cursor-pointer items-center font-bold'>
             {selectedTipoCita ? (
               <div className='flex justify-between items-center w-full'>
@@ -291,7 +292,7 @@ const NewTurn = () => {
               tiposCita.map((tipo, index) => (
                 <div
                   key={index}
-                  className='flex items-center'
+                  className='flex items-center border-b-2 cursor-pointer'
                   onClick={() => {
                     setSelectedTipoCita(tipo);
                     setIsTipoCitaOpen(false);
@@ -306,17 +307,17 @@ const NewTurn = () => {
                     className='mr-2'
                     onChange={() => setSelectedTipoCita(tipo)}
                   />
-                  <label>{tipo}</label>
+                  <label className="cursor-pointer">{tipo}</label>
                 </div>
               ))}
           </div>
         </span>
       </label>
-
+      
       {/* Selección de Día */}
       {selectedTipoCita && (
         <div className='block mb-4'>
-          <h3 className='font-bold mb-2'>Seleccionar Día</h3>
+          <h3 className='font-bold mb-2 text-secondaryDark'>Días Disponibles</h3>
           <div className='flex space-x-2'>
             {daysOfWeek.map((day, index) =>
               doctor.workdays.includes(day) ? (
@@ -325,7 +326,7 @@ const NewTurn = () => {
                   className={`px-4 py-2 rounded-lg ${
                     selectedDay === day
                       ? "bg-secondary text-white"
-                      : "bg-beigeColor"
+                      : "border-2 border-secondary"
                   }`}
                   onClick={() => {
                     setSelectedDay(day);
@@ -339,19 +340,19 @@ const NewTurn = () => {
           </div>
         </div>
       )}
-
+      
       {/* Mostrar Horas Disponibles */}
       {selectedDay && availableHours.length > 0 && (
-        <div className='block mb-4'>
-          <h3 className='font-bold mb-2'>Horas Disponibles</h3>
-          <div className='space-y-2'>
+        <div className='block mb-4 cursor-pointer'>
+          <h3 className='font-bold mb-2 text-secondaryDark'>Horario Disponible</h3>
+          <div className='flex flex-wrap gap-2 max-w-[500px]'>
             {availableHours.map((hour, index) => (
               <div
                 key={index}
                 className={`px-4 py-2 rounded-lg border  ${
                   selectedHour === hour
                     ? "bg-secondary text-white"
-                    : "bg-beigeColor"
+                    : "border-2 border-secondary"
                 }`}
                 onClick={() => setSelectedHour(hour)}
               >
@@ -361,29 +362,55 @@ const NewTurn = () => {
           </div>
         </div>
       )}
-
+      
       {/* Botón para Crear Cita */}
       {selectedHour && (
         <button
-          className='mt-4 px-4 py-2 w-full bg-primary text-white rounded-lg'
+          className='mt-4 px-4 py-2 w-full bg-primary rounded-3xl font-semibold mb-5'
           onClick={handleCreateAppointment}
         >
-          Crear Cita
+          Confirmar
         </button>
       )}
-
-      <SuccesModal
-        title={"¡FELICITACIONES! SE AGENDO TU TURNO"}
-        text={"Te esperamos"}
+      
+      <div className="backContainer">
+        <button className="back" onClick={() => navigate(-1)}>
+          <img src={anotherArrowLeft} alt="back" />
+        </button>
+      </div>
+      
+      {/* Mensaje Verificando */}
+      {/* <SuccesModal
+        checkImg={checkImgVerify}
         show={showVerificando}
         onClose={() => closeModal()}
         check
-      />
-
-      {/* Mensajes de Error o Éxito */}
-      {/* {error && <div className='mt-4 text-red-500'>{error}</div>}
-      {success && <div className='mt-4 text-green-500'>{success}</div>} */}
-    </div>
+      /> */}
+      
+      {/* Mensaje Éxito */}
+      {success && (
+        <SuccesModal
+          checkImg={checkImgSuccess}
+          title={"¡FELICITACIONES! SE AGENDO TU TURNO"}
+          text={"Te esperamos"}
+          show={showVerificando}
+          onClose={() => closeModal()}
+          check
+        />
+      )}
+      
+      {/* Mensaje Error */}
+      {/* {error && (
+        <SuccesModal
+          checkImg={checkImgError}
+          title={"¡FELICITACIONES! SE AGENDO TU TURNO"}
+          text={"Te esperamos"}
+          show={showVerificando}
+          onClose={() => closeModal()}
+          check
+        />
+      )} */}
+    </section>
   );
 };
 

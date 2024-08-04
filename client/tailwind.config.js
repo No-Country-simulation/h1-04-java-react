@@ -9,8 +9,11 @@ export default {
       colors: {
         primary: '#EA526F',
         secondary: '#25CED1',
+        secondaryDark: '#1E999B',
         orangeColor: '#FF8A5B',
+        orangeTransparent: '#FCEADE26',
         beigeColor: '#FCEADE',
+        blueColor: '#2196f3'
       },
     },
   },

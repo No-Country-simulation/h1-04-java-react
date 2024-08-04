@@ -148,33 +148,11 @@ const Router = () => {
         />
         <Route
           exact
-          path='/confirm-new-turn'
-          element={
-            <PrivateRoute role='PATIENT'>
-              <PatientLayout>
-                 <Turn /> {/* HACER */}
-              </PatientLayout>
-            </PrivateRoute>
-          }
-        />
-        <Route
-          exact
-          path='/error-new-turn'
-          element={
-            <PrivateRoute role='PATIENT'>
-              <PatientLayout>
-                <Turn /> {/* HACER */}
-              </PatientLayout>
-            </PrivateRoute>
-          }
-        />
-        <Route
-          exact
           path='/view-turn'
           element={
             <PrivateRoute role='PATIENT'>
               <PatientLayout>
-                <Turn /> {/* HACER */}
+                <Turn />
               </PatientLayout>
             </PrivateRoute>
           }

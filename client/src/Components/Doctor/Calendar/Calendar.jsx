@@ -1,14 +1,20 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Calendar from "../../../helpers/atoms/Calendar";
 import Dates from "./Dates";
 import DoctorHeader from "../DoctorHeader/DoctorHeader";
 
 export default function CalendarDoctor() {
   const [selectedButton, setSelectedButton] = useState(null);
+  const navigate = useNavigate();
 
   const handleSelected = (index) => {
     setSelectedButton(index);
   };
+
+  const handleRedirect = () =>{
+    navigate("/query-completion");
+  }
 
   const times = [
     "8:00 AM",
@@ -27,12 +33,13 @@ export default function CalendarDoctor() {
     "9:00 AM",
     "10:00 AM",
   ];
+
   {selectedButton === "todos"
     ? { backgroundColor: "#0087D0", color: "#fff", paddingLeft: "20px", paddingRight: "20px", paddingTop: "10px", paddingBottom: "10px", borderRadius: "5px" }
     : { border: "1px solid #0087D0", color: "#0087D0", paddingLeft: "20px", paddingRight: "20px", paddingTop: "10px", paddingBottom: "10px", borderRadius: "5px" }}
 
   return (
-    <div className='mt-5 flex flex-col'>
+    <div className='m-5 flex flex-col'>
       <DoctorHeader text={"Proxima consulta"} />
       
       <Calendar />
@@ -44,6 +51,8 @@ export default function CalendarDoctor() {
           </button>
         ))}
       </div>
+      
+      <button onClick={handleRedirect} className="start-consultation">Agendar</button>
     </div>
   );
 }

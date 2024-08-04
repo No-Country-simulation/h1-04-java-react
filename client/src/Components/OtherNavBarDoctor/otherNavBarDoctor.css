@@ -1,5 +1,4 @@
 .otherContainerOtherNavBar {
-    background-color: #0087D0;
     position: relative;
     width: 100%;
 }
@@ -26,7 +25,7 @@
     left: 0;
     width: 300px;
     height: 100vh;
-    background-color: #D9F2FF;
+    background-color: #FFF;
     z-index: 999;
     transition: transform 0.3s ease;
     transform: translateX(0);
@@ -55,10 +54,12 @@
     transition: filter 0.8s ease;
 }
 .buttonsOtherNavBarDoctor img {
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     margin-right: 10px;
     filter: grayscale(50%) brightness(0%) contrast(100%);
+    object-fit: cover;
+    object-position: center;
 }
 .buttonsOtherNavBarDoctor:hover img {
     filter: invert(26%) sepia(100%) saturate(5000%) hue-rotate(200deg);

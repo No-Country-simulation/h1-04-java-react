@@ -1,13 +1,7 @@
-import React from "react";
-import checkimg from "../../Assets/Imgs/checkIMG.svg";
+/* eslint-disable react/prop-types */
+import logo from "../../Assets/Imgs/logo.png"
 
-const VerificandoModal = ({
-  show,
-  onClose,
-  title = "VERIFICANDO TU TURNO",
-  text = "Aguárdanos, estamos verificando y confirmando tu turno.",
-  check,
-}) => {
+const VerificandoModal = ({ checkImg, show, onClose, title="VERIFICANDO TU TURNO", text="Aguárdanos, estamos verificando y confirmando tu turno.", check, viewButtons=false, confirm }) => {
   if (!show) return null;
 
   const handleBackgroundClick = (e) => {
@@ -17,16 +11,13 @@ const VerificandoModal = ({
   };
 
   return (
-    <div
-      className='fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50'
-      onClick={handleBackgroundClick}
-    >
-      <div className='bg-white border-2 h-80 flex justify-center items-center border-secondary rounded-lg p-6 w-80'>
+    <div className='fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50'onClick={handleBackgroundClick}>
+      <div className='bg-white border-2 border-secondary rounded-lg p-6 h-96 flex items-center justify-center'>
         <div className='text-center'>
-          <div className='mb-4 flex justify-center'>
+          <div className='mb-5 flex justify-center'>
             {check ? (
               <div className='bg-secondary rounded-full w-20 h-20 flex justify-center items-center '>
-                <img className='p-4' src={checkimg} alt='' />
+                <img className='p-4' src={checkImg} alt='' />
               </div>
             ) : (
               <span role='img' aria-label='Verificando' className='text-4xl'>
@@ -34,8 +25,17 @@ const VerificandoModal = ({
               </span>
             )}
           </div>
-          <p className='text-lg font-semibold text-secondary'>{title}</p>
-          <p className='text-gray-600 mt-2'>{text}</p>
+          <p className='text-lg font-semibold text-secondary mb-5'>{title}</p>
+          <p className='text-gray-600 mt-2 mb-5'>{text}</p>
+          
+          { viewButtons && (
+            <div className="flex justify-around items-center mt-6">
+              <button onClick={onClose} className="rounded-3xl bg-secondary p-2 font-bold px-4">Cancelar</button>
+              <button onClick={confirm} className="rounded-3xl bg-secondary p-2 font-bold px-4">Confirmar</button>
+            </div>
+          ) }
+          
+          <img src={logo} alt="Logo Justina" className="w-24 h-16 mt-8 m-auto" />
         </div>
       </div>
     </div>

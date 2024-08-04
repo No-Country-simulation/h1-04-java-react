@@ -1,7 +1,7 @@
 import PropTypes from "prop-types"
 import { useState } from "react";
-import arrowRight from "../../../../Assets/Imgs/arrowRight.png";
-import undo from "../../../../Assets/Imgs/undo.png"
+import arrowOrange from "../../../../Assets/Imgs/arrowOrange.svg";
+import azatioprina from "../../../../Assets/Imgs/azatioprina.png"
 import muyBien from "../../../../Assets/Imgs/muyBien.png"
 import normal from "../../../../Assets/Imgs/normal.png"
 import mal from "../../../../Assets/Imgs/mal.png"
@@ -32,13 +32,13 @@ const PlanMedication = () => {
                 <div key={index}>
                     <button className="option font-bold flex justify-between p-2" onClick={() => toggleDropdown(index)}>
                         {comp.label}
-                        <img src={arrowRight} alt="arrow" className={`w-6 h-6 ml-4 ${isOpen[index] ? 'arrow-rotate' : ''}`} />
+                        <img src={arrowOrange} alt="arrow" className={`w-4 h-6 ml-4 ${isOpen[index] ? 'more-more-arrow-rotate' : 'more-arrow-rotate'}`} />
                     </button>
                     { isOpen[index] && (
                         <>
                         <div className="containerMedication">
                             <div className="undo">
-                                <img src={undo} alt="undo" />
+                                <img src={azatioprina} alt="undo" />
                                 <div>
                                     <h1>{comp.label}</h1>
                                     <p>Micofenolato-mofetil | Micofenolato sódico</p>
@@ -48,17 +48,17 @@ const PlanMedication = () => {
                             <section className="flex justify-center text-center">
                                 <div>
                                     <p>Frecuencia</p>
-                                    <p>8</p>
+                                    <span>8</span>
                                     <p>horas</p>
                                 </div>
                                 <div>
                                     <p>Dosis</p>
-                                    <p>1</p>
+                                    <span>1</span>
                                     <p>dosis</p>
                                 </div>
                                 <div>
                                     <p>Duración</p>
-                                    <p>21</p>
+                                    <span>21</span>
                                     <p>días</p>
                                 </div>
                             </section>

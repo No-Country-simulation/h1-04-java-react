@@ -1,4 +1,5 @@
-const Calendar = () => {
+/* eslint-disable react/prop-types */
+const Calendar = ({bgColor}) => {
   const now = new Date();
   const monthNames = [
     "Enero",
@@ -41,7 +42,7 @@ const Calendar = () => {
   calendarDays.push(week);
 
   return (
-    <div className='w-80 mx-auto p-4 bg-beigeColor shadow-lg rounded-3xl mb-5 mt-5'>
+    <div className={`w-80 mx-auto p-4 ${bgColor ? "bg-beigeColor" : "bg-white"} shadow-lg rounded-3xl mb-5 mt-5`}>
       <div className='text-center font-bold text-xl mb-4'>
         {monthNames[month]} {year}
       </div>

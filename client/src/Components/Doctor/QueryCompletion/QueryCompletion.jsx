@@ -4,6 +4,8 @@ import DoctorContext from "../../../context/DoctorContext";
 import profileDoctor from "../../../Assets/Imgs/profileDoctor.png";
 import DoctorHeader from "../DoctorHeader/DoctorHeader";
 import SuccesModal from "../../Modals/SucessModal";
+import agendarTurno from "../../../Assets/Imgs/agendarTurno.svg"
+import agregarReceta from "../../../Assets/Imgs/agregarReceta.svg"
 import "./queryCompletion.css";
 
 const QueryCompletion = () => {
@@ -19,11 +21,11 @@ const QueryCompletion = () => {
 
   const handleCloseModal = () => {
     setShowPopUp(false);
-    navigate("/");
+    navigate("/doctorPatient");
   } 
 
   return (
-    <div className='query-completion'>
+    <div className='m-5 query-completion'>
       <DoctorHeader text={"Recomendaciones y recetas"} />
       
       <section className='header'>
@@ -45,8 +47,14 @@ const QueryCompletion = () => {
       </section>
       
       <section className='footer-query-buttons'>
-        <a href='/doctorCalendar'>Proximo turno</a>
-        <a href='/doctorRecipe'>Receta</a>
+        <a href='/doctorCalendar'>
+          <img src={agendarTurno} alt="AgendarTurno" />
+          Agendar turno
+        </a>
+        <a href='/doctorRecipe'>
+          <img src={agregarReceta} alt="agregarReceta" />
+          Agregar receta
+        </a>
       </section>
       
       <section className='writeTextQuery'>
@@ -60,7 +68,7 @@ const QueryCompletion = () => {
         ></textarea>
       </section>
       
-      <button id='start-consultation' onClick={handlePopUp}>Enviar</button>
+      <button className='start-consultation' onClick={handlePopUp}>Enviar</button>
       
       <SuccesModal
         title={"Listo!"}

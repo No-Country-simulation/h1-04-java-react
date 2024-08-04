@@ -2,9 +2,12 @@ import { useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import DoctorContext from "../../../context/DoctorContext";
 import profileDoctor from "../../../Assets/Imgs/profileDoctor.png";
-import imgExample from "../../../Assets/Imgs/imgExample.svg";
 import SpeechRecognition from "./SpeechRecognition";
 import DoctorHeader from "../DoctorHeader/DoctorHeader";
+import consultation1 from "../../../Assets/Imgs/imgConsultation1.svg"
+import consultation2 from "../../../Assets/Imgs/imgConsultation2.svg"
+import consultation3 from "../../../Assets/Imgs/imgConsultation3.svg"
+import consultation4 from "../../../Assets/Imgs/imgConsultation4.svg"
 import "./consultation.css";
 
 const Consultation = () => {
@@ -35,19 +38,19 @@ const Consultation = () => {
       
       <section className='containerTreatments'>
         <button className='treatmentsStylesDoctor'>
-          <img src={imgExample} alt='Tratamiento' />
+          <img src={consultation1} alt='Tratamiento' />
           <p>Tratamiento</p>
         </button>
         <button className='treatmentsStylesDoctor'>
-          <img src={imgExample} alt='Historia Clinica' />
+          <img src={consultation2} alt='Historia Clinica' />
           <p>Historia Clinica</p>
         </button>
         <button className='treatmentsStylesDoctor'>
-          <img src={imgExample} alt='Estudios' />
+          <img src={consultation3} alt='Estudios' />
           <p>Estudios</p>
         </button>
         <button className='treatmentsStylesDoctor'>
-          <img src={imgExample} alt='Medicación' />
+          <img src={consultation4} alt='Medicación' />
           <p>Medicación</p>
         </button>
       </section>
@@ -68,7 +71,7 @@ const Consultation = () => {
         </div> */}
       </section>
       <SpeechRecognition />
-      <button id='start-consultation' onClick={handleSubmitNotes}>
+      <button className='start-consultation' onClick={handleSubmitNotes}>
         Finalizar consulta
       </button>
     </div>

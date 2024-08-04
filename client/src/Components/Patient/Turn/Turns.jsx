@@ -1,5 +1,6 @@
-import arrow from "../../../Assets/Imgs/arrowRight.png";
-import calendar from "../../../Assets/Imgs/calendar.png";
+/* eslint-disable react/prop-types */
+import arrow from "../../../Assets/Imgs/arrowWhite.png";
+import calendar from "../../../Assets/Imgs/otherCalendar.svg";
 
 const Turns = ({ doctor, time, href, type }) => {
   const hourMappings = {
@@ -26,7 +27,7 @@ const Turns = ({ doctor, time, href, type }) => {
   const formatHour = (hour) => hourMappings[hour] || hour;
 
   return (
-    <div className='bg-white shadow-lg justify-between px-3 border-secondary rounded-lg border-2  flex items-center py-2 mx-3 my-2'>
+    <div className='bg-white shadow-lg justify-between px-3 border-secondary rounded-lg border-2 flex items-center py-4 mx-3 my-4'>
       <div className='flex gap-3'>
         <div>
           <img src={calendar} alt='calendar' className=' ' />
@@ -41,11 +42,11 @@ const Turns = ({ doctor, time, href, type }) => {
         </div>
       </div>
 
-      <a className='' href={href}>
+      <a href={href}>
         <img
           src={arrow}
           alt='arrow'
-          className='w-6 h-6 bg-secondary rounded-full'
+          className='w-6 h-6 bg-secondary rounded-full p-1'
         />
       </a>
     </div>

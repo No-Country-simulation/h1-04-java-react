@@ -1,5 +1,5 @@
 import { useState } from "react";
-import arrowRight from "../../../../Assets/Imgs/arrowRight.png";
+import arrowOrange from "../../../../Assets/Imgs/arrowOrange.svg";
 import imageExample from "../../../../Assets/Imgs/section2-img1.png"
 import "./plans.css";
 
@@ -35,7 +35,7 @@ const PlanTreatment = () => {
                 <div key={index}>
                     <button className="option font-bold flex justify-between p-2" onClick={() => toggleDropdown(index)}>
                         {comp.label}
-                        <img src={arrowRight} alt="arrow" className={`w-6 h-6 ml-4 ${isOpen[index] ? 'arrow-rotate' : ''}`} />
+                        <img src={arrowOrange} alt="arrow" className={`w-4 h-6 ml-4 ${isOpen[index] ? 'more-more-arrow-rotate' : 'more-arrow-rotate'}`} />
                     </button>
                     { isOpen[index] && (
                         <div className="containerInsideContent">

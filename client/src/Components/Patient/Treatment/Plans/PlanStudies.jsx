@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import arrowRight from "../../../../Assets/Imgs/arrowRight.png";
 import imageStudios from "../../../../Assets/Imgs/study.svg"
 import question from "../../../../Assets/Imgs/question.png"
+import arrowOrange from "../../../../Assets/Imgs/arrowOrange.svg";
 import "./plans.css"
 
 
@@ -93,7 +94,7 @@ const PlanStudies = () => {
                 <div key={index}>
                     <button className="option font-bold flex justify-between p-2" onClick={() => toggleDropdown(index)}>
                         {comp.label}
-                        <img src={arrowRight} alt="arrow" className={`w-6 h-6 ml-4 ${isOpen[index] ? 'arrow-rotate' : ''}`} />
+                        <img src={arrowOrange} alt="arrow" className={`w-4 h-6 ml-4 ${isOpen[index] ? 'more-more-arrow-rotate' : 'more-arrow-rotate'}`} />
                     </button>
                     {isOpen[index] && (
                         <>
