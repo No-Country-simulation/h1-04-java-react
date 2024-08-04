@@ -10,6 +10,11 @@ const AddPatientForm = ({ onClose }) => {
     obraSocial: '',
   });
 
+  const [modal, setModal] = useState({
+    isOpen: false,
+    message: '',
+  });
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -17,10 +22,34 @@ const AddPatientForm = ({ onClose }) => {
 
   const isFieldEmpty = (field) => !formData[field];
 
+  const validateForm = () => {
+    const requiredFields = ['nombre', 'apellido', 'email', 'dni', 'nroDocumento', 'obraSocial'];
+    for (let field of requiredFields) {
+      if (isFieldEmpty(field)) return false;
+    }
+    return true;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (validateForm()) {
+      // Simular guardado exitoso y envío de correo
+      setModal({
+        isOpen: true,
+        message: 'Paciente guardado con éxito. Se ha enviado un correo con las credenciales.',
+      });
+    } else {
+      setModal({
+        isOpen: true,
+        message: 'Por favor, complete todos los campos obligatorios.',
+      });
+    }
+  };
+
   return (
     <div>
       <h2 className="text-lg font-semibold mb-4 text-center">Agregar Paciente</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-3 gap-4">
           <input
             type="text"
@@ -86,7 +115,6 @@ const AddPatientForm = ({ onClose }) => {
             <option value="IOMA">IOMA</option>
             <option value="PAMI">PAMI</option>
             <option value="Swiss Medical">Swiss Medical</option>
-            <option value="PAMI">PAMI</option>
             <option value="Hospital Italiano">Hospital Italiano</option>
             <option value="No Tiene">No Tiene</option>
           </select>
@@ -97,7 +125,7 @@ const AddPatientForm = ({ onClose }) => {
           <input type="text" placeholder="Barrio" className="border p-1 text-sm rounded" />
           <input type="text" placeholder="Ciudad" className="border p-1 text-sm rounded" />
           <select className="border p-1 text-sm rounded">
-          <option value="">Seleccione Grupo Sanguíneo</option>
+            <option value="">Seleccione Grupo Sanguíneo</option>
             <option value="A+">A+</option>
             <option value="A-">A-</option>
             <option value="B+">B+</option>
@@ -158,14 +186,26 @@ const AddPatientForm = ({ onClose }) => {
 
           <div className="flex flex-col items-center justify-evenly col-span-1 col-start-3">
             <h4 className='pb-2 text-md font-base text-red-600'>*Los campos en rojo son obligatorios.</h4>
-            <button type="submit" className="w-52 bg-blue-300 hover:bg-[#48c2ff] text-[#143b50] font-bold py-2 px-4 rounded border border-[#246183]">Guardar</button>
-            <button onClick={onClose} className="w-52 bg-red-400 hover:bg-red-600 text-red-800 hover:text-white font-bold py-2 px-4 rounded border border-[#7c232b]">Cerrar</button>
+            <button type="submit" className="w-52 border border-[#0087d0] text-[#0087d0] hover:bg-[#bee1f8] font-bold py-2 px-4 rounded">Guardar</button>
+            <button type="button" onClick={onClose} className="w-52 hover:bg-[#fde0e0] text-white hover:text-red-600 font-bold py-2 px-4 rounded border bg-[#e4626f] border-[#e4626f]">Cerrar</button>
           </div>
-
-
         </div>
-
       </form>
+
+      {/* Modal */}
+      {modal.isOpen && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white p-4 rounded shadow-lg">
+            <p>{modal.message}</p>
+            <button
+              onClick={() => setModal({ ...modal, isOpen: false })}
+              className="mt-4 bg-blue-500 text-white py-2 px-4 rounded"
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

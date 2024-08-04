@@ -60,7 +60,7 @@ const Patients = () => {
       <div className="mb-4">
         <button
           onClick={handleAddPatient}
-          className="bg-blue-500 hover:bg-[#d9f2ff] text-white hover:text-[#0087d0] hover:border-[#0087d0] border border-[#4763e4] px-4 py-2 rounded flex items-center"
+          className="bg-blue-500 text-white px-4 py-2 rounded-md transition-colors duration-300 hover:bg-blue-600"
         >
           <span className="mr-2">+</span> Agregar un nuevo paciente
         </button>
@@ -90,7 +90,7 @@ const Patients = () => {
                 <td className="py-1 flex flex-row justify-evenly items-center">
                   <button
                     onClick={() => handleEditPatient(patient)}
-                    className="p-1 mx-1 rounded-md border border-[#0087d0] text-[#0087d0] flex justify-center items-center hover:bg-[#f0faff]"
+                    className="p-1 mx-1 rounded-md  flex justify-center items-center border border-[#0087d0] text-[#0087d0] hover:bg-[#c7e3f7]"
                   >
                     <div className="w-20 text-base font-normal leading-normal tracking-wide">Editar</div>
                   </button>

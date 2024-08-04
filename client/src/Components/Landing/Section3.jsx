@@ -50,7 +50,7 @@ const Section3 = () => {
         </div>
         
         {/* Columna Central */}
-        <div className="flex-1 flex flex-col items-center gap-6">
+        <div className="flex-1 flex flex-col items-center gap-6 max-w-md">
           {/* Estudios Clínicos */}
           <div className="flex flex-col items-center p-4 text-center">
             <div className="items-center justify-center mb-4">
