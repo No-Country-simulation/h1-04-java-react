@@ -4,7 +4,7 @@ import img3 from '../../Assets/Imgs/section4img3.png';
 
 const Section4 = () => {
   return (
-    <div id="section4" className="w-full h-auto lg:h-[34.75rem] pt-6 md:pt-0 px-8 lg:px-[5rem] bg-[#fdeee5] flex flex-col lg:flex-row justify-center items-center">
+    <div id="section4" className="w-full h-auto lg:h-[34.75rem] pt-12 md:pt-0 px-8 lg:px-[5rem] bg-[#fdeee5] flex flex-col lg:flex-row justify-center items-center">
       {/* Columna 1 */}
       <div className="flex justify-center items-center lg:pr-16 mb-8 lg:mb-0">
         <div className="flex flex-col justify-start items-start gap-4 md:gap-8">
