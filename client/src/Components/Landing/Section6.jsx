@@ -43,7 +43,7 @@ const Section6 = () => {
 
   return (
     <div className="w-full relative bg-[#ff8a5b]/20 py-12 overflow-hidden">
-      <div className="text-center text-[#c66b46] text-5xl font-normal leading-[60px] mb-12">
+      <div className="text-center text-[#c66b46] text-3xl md:text-5xl font-semibold leading-[60px] mb-4 md:mb-12">
         Testimonios de usuarios
       </div>
       <CarouselProvider
@@ -51,26 +51,26 @@ const Section6 = () => {
         naturalSlideHeight={125}
         totalSlides={testimonials.length}
         ref={carouselRef}
-        className="h-[35rem]"
+        className="h-[21rem] md:h-[35rem]"
       >
-        <Slider className="w-full max-w-5xl mx-auto">
+        <Slider className="w-[90%] h-[17rem] md:h-[35rem] md:w-full max-w-5xl mx-auto">
           {testimonials.map((testimonial, index) => (
             <Slide key={index}>
-              <div className="h-[30rem] px-[1rem] py-[3rem]  bg-white rounded-[5px] shadow border-2 border-[#e2eaf2] flex flex-col md:flex-row justify-start items-start gap-[1rem]">
-                <div className="flex flex-col justify-start items-start gap-6 flex-1 mx-16 my-4">
-                  <div className="flex flex-col justify-start items-start gap-6">
-                    <div className="w-10 h-10 relative">
+              <div className=" h-[30rem] px-[1rem] py-1 md:py-[3rem]  bg-white rounded-[5px] shadow border-2 border-[#e2eaf2] flex flex-col md:flex-row justify-start items-start gap-[1rem]">
+                <div className="flex flex-col justify-start items-start gap-2 md:gap-6 flex-1 mx-1 md:mx-16 my-2 md:my-4">
+                  <div className="flex flex-col justify-start items-start gap-2 md:gap-6">
+                    <div className="w-6 md:w-10 h-6 md:h-10 relative">
                       <img src={item} alt="" />
                     </div>
-                    <div className="w-[23rem] stext-[#2e363e] text-3xl font-medium leading-[42.90px]">
+                    <div className="w-[90%] md:w-[23rem] stext-[#2e363e] text-lg md:text-3xl font-medium md:leading-[42.90px]">
                       {testimonial.quote}
                     </div>
                   </div>
-                  <div className="flex flex-col justify-start items-start gap-6">
+                  <div className="flex flex-col justify-start items-start gap-2 md:gap-6">
                     <div className=" text-[#555555] text-base font-normal leading-tight">
                       {testimonial.description}
                     </div>
-                    <div className="flex flex-col justify-start items-center gap-px">
+                    <div className="flex flex-col justify-start items-center gap-1px">
                       <div className="text-black text-sm font-normal leading-[21px]">
                         {testimonial.condition}
                       </div>
@@ -78,7 +78,7 @@ const Section6 = () => {
                     </div>
                   </div>
                 </div>
-                <div className="flex flex-col justify-start items-center gap-7 mr-8">
+                <div className="flex-col hidden md:flex justify-start items-center gap-7 mr-8">
                   <div className="w-[21rem] h-[21rem] relative">
                     <div className="w-[21rem] h-[21rem] absolute bg-[#f2f6f9] rounded-full border border-[#f2f6f9]"></div>
                     <img
@@ -100,7 +100,7 @@ const Section6 = () => {
             </Slide>
           ))}
         </Slider>
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-4 top-[41rem]">
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-4 md:top-[41rem]">
           <ButtonBack className="w-[4.1rem] h-[4.1rem] bg-white text-[#c66b46] rounded-full flex items-center justify-center cursor-pointer hover:bg-[#fceade] hover:border-white hover:border-[.1rem]">
             <FaChevronLeft size={30} />
           </ButtonBack>

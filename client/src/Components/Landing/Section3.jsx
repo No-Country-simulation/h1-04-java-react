@@ -7,17 +7,17 @@ import mobile3 from '../../Assets/Imgs/mobile-section3.png';
 
 const Section3 = () => {
   return (
-    <div className="w-full bg-[#25ced1]/10 py-32">
+    <div className="w-full bg-[#25ced1]/10 py-16 md:py-32">
       {/* Título de la sección */}
-      <div className="text-[#1e999b] text-3xl font-bold font-['Josefin Sans'] uppercase text-center mb-10">
+      <div className="text-[#1e999b] text-3xl font-bold font-['Josefin Sans'] uppercase text-center mb-6 md:mb-10">
         FUNCIONALIDADES PRINCIPALES
       </div>
       
       {/* Contenedor para las columnas */}
-      <div className="flex flex-col md:flex-row gap-10 px-4 md:px-10">
+      <div className="flex flex-col md:flex-row md:gap-10 px-4 md:px-10">
         {/* Columna 1 */}
         <div className="flex-1 flex flex-col justify-center">
-          <div className="flex flex-col items-end p-4 text-right py-28">
+          <div className="flex flex-col items-center md:items-end p-4 text-center md:text-right py-6 md:py-28">
             <div className="items-center justify-center mb-4">
               <img
                 src={tratamiento}
@@ -28,11 +28,11 @@ const Section3 = () => {
             <div className="text-[#1e999b] text-2xl font-semibold font-['Josefin Sans'] uppercase mb-2">
               Tratamientos
             </div>
-            <div className="text-black text-base font-semibold pl-8">
+            <div className="text-black text-base font-semibold md:pl-8">
               Podes visualizar procesos y resultados, accediendo a la información que necesitas.
             </div>
           </div>
-          <div className="flex flex-col items-end p-4 text-right">
+          <div className="flex flex-col items-center md:items-end p-4 text-center md:text-right">
             <div className="items-center justify-center mb-4">
               <img
                 src={medicacion}
@@ -40,10 +40,10 @@ const Section3 = () => {
                 className="w-10 h-10"
               />
             </div>
-            <div className="text-[#1e999b] text-2xl font-semibold font-['Josefin Sans'] uppercase mb-2">
+            <div className="text-[#1e999b] text-2xl font-semibold font-['Josefin Sans'] uppercase mb-0 md:mb-2">
               Medicación
             </div>
-            <div className="text-black text-base font-semibold  pl-8">
+            <div className="text-black text-base font-semibold md:pl-8 ">
               Podes gestionar y administrarlos, garantizando el acceso a los mismos.
             </div>
           </div>
@@ -70,7 +70,7 @@ const Section3 = () => {
           {/* Imagen */}
           <div className="flex justify-center mt-6">
             <img
-              className="w-full max-w-lg h-auto"
+              className="w-[70%] md:w-full max-w-lg h-auto"
               src={mobile3}
               alt="Placeholder"
             />
@@ -80,7 +80,7 @@ const Section3 = () => {
         {/* Columna 3 */}
         <div className="flex-1 flex flex-col justify-center">
           {/* Estudios Clínicos */}
-          <div className="flex flex-col items-start p-4 text-left py-28">
+          <div className="flex flex-col items-center md:items-start p-4 text-center md:text-left py-6 md:py-28">
             <div className="items-center justify-center mb-4">
               <img
                 src={studies}
@@ -91,12 +91,12 @@ const Section3 = () => {
             <div className="text-[#1e999b] text-2xl font-semibold font-['Josefin Sans'] uppercase mb-2">
               Estudios clínicos
             </div>
-            <div className="text-black text-base font-semibold pr-8">
+            <div className="text-black text-base font-semibold md:pr-8">
               Visualízalos en forma completa y segura en la aplicación, en todo momento y en todo lugar.
             </div>
           </div>
           {/* Turnos Médicos */}
-          <div className="flex flex-col items-start p-4 text-left">
+          <div className="flex flex-col items-center md:items-start p-4 text-center md:text-left">
             <div className="items-center justify-center mb-4">
               <img
                 src={calendar}
@@ -107,7 +107,7 @@ const Section3 = () => {
             <div className="text-[#1e999b] text-2xl font-semibold font-['Josefin Sans'] uppercase mb-2">
               Turnos médicos
             </div>
-            <div className="text-black text-base font-semibold pr-8">
+            <div className="text-black text-base font-semibold md:pr-8">
               Podes gestionar tus turnos desde la aplicación, de forma fácil y rápida.
             </div>
           </div>

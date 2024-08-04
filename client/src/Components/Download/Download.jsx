@@ -20,25 +20,25 @@ const Download = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <NavBarDownload />
-      <div className="flex-grow flex items-center justify-center bg-gray-100 pt-16 px-12 pb-8">
+      <div className="flex-grow flex items-center justify-center bg-gray-100 pt-16 px-6 md:px-12 pb-8">
         <div className="grid grid-cols-1 lg:grid-cols-2">
           {/* Columna Izquierda */}
-          <div className="flex flex-col justify-start items-start gap-6 pt-8">
+          <div className="flex flex-col justify-start items-start gap-6 md:pt-8">
             <div className="flex flex-col justify-start items-start gap-6">
               <div className="flex flex-col">
                 <div className="text-gray-600 text-sm font-normal pb-2 pl-1">
                   Un Aplicación que reinventa el futuro de la Salud
                 </div>
-                <div className=" text-teal-400 text-4xl font-bold ">
+                <div className=" text-teal-400 text-3xl md:text-4xl font-bold ">
                   DESCARGA JUSTINA.IO
                 </div>
               </div>
-              <div className=" text-gray-600 text-xl font-semibold leading-3">
+              <div className=" text-gray-600 text:lg md:text-xl font-semibold leading-3">
                 Usa JUSTINA.IO en todos tus dispositivos.
               </div>
             </div>
             {/* CUADRO ROJO */}
-            <div className="w-[25rem] h-[15em] px-4 my-6 bg-[#ea526f]/10 rounded-[1.25rem] border-2 border-[#ea526f] flex flex-col justify-center items-start gap-7">
+            <div className="w-[90%] md:w-[25rem] ml-4 md:ml-0 h-[15em] px-4 my-2 md:my-6 bg-[#ea526f]/10 rounded-[1.25rem] border-2 border-[#ea526f] flex flex-col justify-center items-start gap-7">
               <div className="h-[6.875rem] flex flex-col justify-center items-start gap-2.5">
                 <div className="h-[1.625rem] text-[#1a1a1a] text-lg font-semibold leading-[3.125rem] mt-12">Móvil | Tableta</div>
                 <div className="h-[1.625rem] text-[#ea526f] text-3xl font-bold leading-[3.125rem] mb-4">ANDROID</div>
@@ -59,7 +59,7 @@ const Download = () => {
             </div>
           </div>
           {/* Columna Derecha */}
-          <div className="flex items-center justify-center">
+          <div className="flex items-center justify-center mt-4 md:mt-0">
             <img
               src={logo}
               alt="logo"
@@ -71,14 +71,14 @@ const Download = () => {
 
       {/* Nueva sección */}
       <div className="w-full bg-[#25ced1]/20 flex justify-center py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-[1305px] mx-12 relative">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-8 w-[1305px] mx-12 relative">
           {/* Columna 1 */}
-          <div className="relative z-10 w-[22rem] pl-4 flex flex-col justify-center items-start gap-6 ">
+          <div className="relative w-[100%] md:w-[22rem] pl-0 md:pl-4 flex flex-col justify-center items-start gap-6 ">
             <div className="text-[#ea526f] text-4xl font-bold leading-tight">
               Otras opciones
               <br /> de Descarga
             </div>
-            <div className="text-[#555555] text-base font-semibold leading-tight">
+            <div className="text-[#555555]  text-base font-semibold leading-tight">
               Participa de manera activa en el cuidado de tu salud en todos los dispositivos que tengas.
             </div>
           </div>
@@ -133,19 +133,19 @@ const Download = () => {
       {/* Sección de Demostración */}
       <div className="w-full bg-gray-100 flex justify-center py-12">
         <div className="mx-12">
-          <div className="text-[#ea526f] text-4xl font-bold text-center mb-8">
-            Demostración
+          <div className="text-[#25ced1] text-4xl font-bold text-center mb-8">
+            DEMOSTRACIÓN
           </div>
           <div className="flex justify-center">
             <iframe
-              width="700"
-              height="393"
+              width="875"
+              height="491"
               src="https://www.youtube.com/embed/ozqvp1KsYoc?si=ZK4WwQm1Z3aKOjsT"
               title="YouTube video player"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen
-              className="rounded-lg shadow-lg"
+              className="rounded-lg shadow-lg w-[23rem] md:w-[875px] h-[12.8rem] md:h-[491px]"
             ></iframe>
           </div>
         </div>
@@ -156,7 +156,7 @@ const Download = () => {
       {/* Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white p-8 rounded-lg shadow-lg">
+          <div className="bg-white p-8 rounded-lg shadow-lg w-[90%] md:w-[30rem] z-20">
             <h2 className="text-xl font-bold mb-4">Información en Desarrollo</h2>
             <p className="mb-4">Esta funcionalidad está en desarrollo y pronto estará disponible.</p>
             <button
