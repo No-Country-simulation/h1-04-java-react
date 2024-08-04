@@ -73,7 +73,7 @@ const Download = () => {
       <div className="w-full bg-[#25ced1]/20 flex justify-center py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-8 w-[1305px] mx-12 relative">
           {/* Columna 1 */}
-          <div className="relative z-10 w-[100%] md:w-[22rem] pl-0 md:pl-4 flex flex-col justify-center items-start gap-6 ">
+          <div className="relative w-[100%] md:w-[22rem] pl-0 md:pl-4 flex flex-col justify-center items-start gap-6 ">
             <div className="text-[#ea526f] text-4xl font-bold leading-tight">
               Otras opciones
               <br /> de Descarga
@@ -156,7 +156,7 @@ const Download = () => {
       {/* Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white p-8 rounded-lg shadow-lg">
+          <div className="bg-white p-8 rounded-lg shadow-lg w-[90%] md:w-[30rem] z-20">
             <h2 className="text-xl font-bold mb-4">Información en Desarrollo</h2>
             <p className="mb-4">Esta funcionalidad está en desarrollo y pronto estará disponible.</p>
             <button
