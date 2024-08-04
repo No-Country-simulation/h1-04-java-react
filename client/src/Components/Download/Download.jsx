@@ -59,7 +59,7 @@ const Download = () => {
             </div>
           </div>
           {/* Columna Derecha */}
-          <div className="flex items-center justify-center">
+          <div className="flex items-center justify-center mt-4 md:mt-0">
             <img
               src={logo}
               alt="logo"
@@ -71,7 +71,7 @@ const Download = () => {
 
       {/* Nueva sección */}
       <div className="w-full bg-[#25ced1]/20 flex justify-center py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-[1305px] mx-12 relative">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-8 w-[1305px] mx-12 relative">
           {/* Columna 1 */}
           <div className="relative z-10 w-[100%] md:w-[22rem] pl-0 md:pl-4 flex flex-col justify-center items-start gap-6 ">
             <div className="text-[#ea526f] text-4xl font-bold leading-tight">
@@ -145,7 +145,7 @@ const Download = () => {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen
-              className="rounded-lg shadow-lg"
+              className="rounded-lg shadow-lg w-[23rem] md:w-[875px] h-[12.8rem] md:h-[491px]"
             ></iframe>
           </div>
         </div>
