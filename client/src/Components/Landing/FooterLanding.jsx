@@ -28,9 +28,9 @@ const FooterLanding = () => {
   return (
     <footer className="w-full bg-[#fceade] py-12">
       <div className="max-w-screen-xl mx-auto px-4">
-        <div className="flex flex-col lg:flex-row justify-between px-14">
+        <div className="flex flex-col lg:flex-row justify-between px-8 md:px-14">
           {/* Logo y Descripción */}
-          <div className="w-[20rem] mb-8 lg:mb-0">
+          <div className="w-[100%] md:w-[20rem] mb-8 lg:mb-0">
             <div className="mb-4">
               <img src={miniLogo} alt="Logo" className="w-28 h-7" />
             </div>
