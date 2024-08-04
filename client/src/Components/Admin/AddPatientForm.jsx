@@ -33,11 +33,55 @@ const AddPatientForm = ({ onClose }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
-      // Simular guardado exitoso y envío de correo
-      setModal({
-        isOpen: true,
-        message: 'Paciente guardado con éxito. Se ha enviado un correo con las credenciales.',
-      });
+      // Obtén el token del sessionStorage
+      const storedData = sessionStorage.getItem('authData');
+      let token = '';
+      if (storedData) {
+        const parsedData = JSON.parse(storedData);
+        token = parsedData.token; // Obtén solo el token
+      }
+      console.log('Token:', token);
+      
+      const headers = new Headers();
+      headers.append("Content-Type", "application/json");
+      headers.append("Authorization", `Bearer ${token}`);
+    
+      const patientData = {
+        firstName: formData.nombre,
+        lastName: formData.apellido,
+        email: formData.email,
+        documentType: formData.dni,
+        documentNumber: formData.nroDocumento,
+        idFinancier: 1, // Asegúrate de ajustar esto a lo que necesites
+      };
+    
+      console.log('Sending data:', JSON.stringify(patientData)); // Verifica los datos enviados
+    
+      fetch("https://justina-n2nb.onrender.com/v1/api/patients/create", {
+        method: "POST",
+        headers: headers,
+        body: JSON.stringify(patientData),
+      })
+        .then(response => {
+          console.log('Response Status:', response.status); // Verifica el estado de la respuesta
+          if (response.ok) {
+            return response.json(); // Intenta analizar la respuesta como JSON
+          }
+          throw new Error('Network response was not ok.');
+        })
+        .then(result => {
+          setModal({
+            isOpen: true,
+            message: 'Paciente guardado con éxito. Se ha enviado un correo con las credenciales a' + patientData.email,
+          });
+        })
+        .catch(error => {
+          setModal({
+            isOpen: true,
+            message: 'Hubo un error al guardar el paciente: ' + error.message,
+          });
+          console.error('Fetch error:', error);
+        });
     } else {
       setModal({
         isOpen: true,
@@ -45,6 +89,8 @@ const AddPatientForm = ({ onClose }) => {
       });
     }
   };
+  
+  
 
   return (
     <div>
