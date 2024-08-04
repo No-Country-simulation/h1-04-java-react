@@ -21,6 +21,11 @@ const AddDoctorForm = ({ onClose }) => {
     codigoPostal: ''
   });
 
+  const [modal, setModal] = useState({
+    isOpen: false,
+    message: '',
+  });
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -28,10 +33,39 @@ const AddDoctorForm = ({ onClose }) => {
 
   const isFieldEmpty = (field) => !formData[field];
 
+  const validateForm = () => {
+    const requiredFields = [
+      'nombre', 'apellido', 'email', 'tipoDocumento', 'nroDocumento',
+      'especialidad', 'nroLicencia', 'diasDisponibles', 'obraSocial',
+      'fechaNacimiento', 'telefono', 'calle', 'numero', 'barrio',
+      'ciudad', 'provincia', 'codigoPostal'
+    ];
+    for (let field of requiredFields) {
+      if (isFieldEmpty(field)) return false;
+    }
+    return true;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (validateForm()) {
+      // Simular guardado exitoso
+      setModal({
+        isOpen: true,
+        message: 'Doctor guardado con éxito.',
+      });
+    } else {
+      setModal({
+        isOpen: true,
+        message: 'Por favor, complete todos los campos obligatorios.',
+      });
+    }
+  };
+
   return (
     <div>
       <h2 className="text-lg font-semibold mb-4 text-center">Agregar Doctor</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-3 gap-4">
           <input
             type="text"
@@ -224,15 +258,26 @@ const AddDoctorForm = ({ onClose }) => {
           />
           <div className="flex flex-row items-center justify-evenly col-span-3">
             <h4 className="pb-2 text-md font-base text-red-600">*Los campos en rojo son obligatorios.</h4>
-            <button type="submit" className="w-52 bg-blue-300 hover:bg-[#48c2ff] text-[#143b50] font-bold py-2 px-4 rounded border border-[#246183]">
-              Guardar
-            </button>
-            <button onClick={onClose} className="w-52 bg-red-400 hover:bg-red-600 text-red-800 hover:text-white font-bold py-2 px-4 rounded border border-[#7c232b]">
+            <button type="submit" className="w-52 border border-[#0087d0] text-[#0087d0] hover:bg-[#c7e3f7] font-bold py-2 ml-[-2rem] rounded">Guardar</button>
+            <button onClick={onClose} type="button" className="w-52 hover:bg-[#fde0e0] text-white hover:text-red-600 font-bold py-2 ml-[-2rem] rounded border bg-[#e4626f] border-[#e4626f]">Cerrar</button>
+          </div>
+        </div>
+      </form>
+
+      {/* Modal */}
+      {modal.isOpen && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white p-4 rounded shadow-lg">
+            <p>{modal.message}</p>
+            <button
+              onClick={() => setModal({ ...modal, isOpen: false })}
+              className="mt-4 bg-blue-500 text-white py-2 px-4 rounded"
+            >
               Cerrar
             </button>
           </div>
         </div>
-      </form>
+      )}
     </div>
   );
 };

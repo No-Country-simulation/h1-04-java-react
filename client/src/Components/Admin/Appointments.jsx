@@ -100,21 +100,27 @@ const Appointments = () => {
 
       {selectedAppointment && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white rounded-lg shadow-lg p-6 w-2/5 relative">
+          <div className="bg-white rounded-lg shadow-lg p-6 w-2/5 relative border border-[#009ff5]">
             <button
               onClick={handleClose}
-              className="absolute w-10 h-10 top-2 right-2 bg-red-600 hover:bg-red-800 text-white p-2 rounded-md"
+              className="absolute w-10 h-10 top-2 right-2 bg-[#25ced1] hover:bg-[#1da9b0] text-white p-2 rounded-full flex items-center justify-center"
             >
               X
             </button>
-            <h2 className="text-lg font-bold mb-4">Detalles del Turno</h2>
-            <p className='font-semibold'>Día: <span className='font-normal'>{selectedAppointment.day}</span></p>
-            <p className='font-semibold'>Hora: <span className='font-normal'>{selectedAppointment.hour}</span></p>
-            <p className='font-semibold'>Médico: <span className='font-normal'>{selectedAppointment.doctorName}</span></p>
-            <p className='font-semibold'>Paciente: <span className='font-normal'>{selectedAppointment.patientName}</span></p>
-            <p className='font-semibold'>Tipo de Turno: <span className='font-normal'>{selectedAppointment.appointmentType}</span></p>
-            <p className='font-semibold'>Descripción: <span className='font-normal'>{selectedAppointment.appointmentDescription}</span></p>
-            <p className='font-semibold'>Activo: <span className='font-normal'>{selectedAppointment.isActive ? 'Sí' : 'No'}</span></p>
+            <h2 className="text-lg font-bold mb-4 text-[#009ff5]">Detalles del Turno</h2>
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <p className='font-semibold'>Día: <span className='font-normal'>{selectedAppointment.day}</span></p>
+                <p className='font-semibold'>Médico: <span className='font-normal'>{selectedAppointment.doctorName}</span></p>
+                <p className='font-semibold'>Tipo de Turno: <span className='font-normal'>{selectedAppointment.appointmentType}</span></p>
+              </div>
+              <div>
+                <p className='font-semibold'>Hora: <span className='font-normal'>{selectedAppointment.hour}</span></p>
+                <p className='font-semibold'>Paciente: <span className='font-normal'>{selectedAppointment.patientName}</span></p>
+                <p className='font-semibold'>Activo: <span className='font-normal'>{selectedAppointment.isActive ? 'Sí' : 'No'}</span></p>
+              </div>
+            </div>
+            <p className='font-semibold mt-4'>Descripción: <span className='font-normal'>{selectedAppointment.appointmentDescription}</span></p>
           </div>
         </div>
       )}

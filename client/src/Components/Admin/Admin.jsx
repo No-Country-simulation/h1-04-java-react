@@ -91,7 +91,7 @@ const Admin = () => {
           className='flex items-center p-4 pl-6 hover:bg-[#d9f2ff] hover:text-[#0087d0]'
           onClick={() => handleMenuClick("Settings")}
         >
-          <FaCog className='mr-2' /> Configuración
+          <FaCog className='mr-2' /> Mi Perfil
         </button>
         <button
           className='flex items-center p-4 pl-6 hover:bg-[#fde0e0] hover:text-red-600 mt-4'
