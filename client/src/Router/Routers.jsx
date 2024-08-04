@@ -152,7 +152,7 @@ const Router = () => {
           element={
             <PrivateRoute role='PATIENT'>
               <PatientLayout>
-                <Turn />
+                 <Turn /> {/* HACER */}
               </PatientLayout>
             </PrivateRoute>
           }
@@ -163,7 +163,7 @@ const Router = () => {
           element={
             <PrivateRoute role='PATIENT'>
               <PatientLayout>
-                <Turn />
+                <Turn /> {/* HACER */}
               </PatientLayout>
             </PrivateRoute>
           }
@@ -174,7 +174,7 @@ const Router = () => {
           element={
             <PrivateRoute role='PATIENT'>
               <PatientLayout>
-                <Turn />
+                <Turn /> {/* HACER */}
               </PatientLayout>
             </PrivateRoute>
           }

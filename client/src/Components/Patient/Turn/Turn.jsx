@@ -2,7 +2,9 @@ import "./turn.css"
 
 const Turn = () => {
     return (
-        <div>Turn</div>
+        <div>
+            
+        </div>
     )
 }
 
