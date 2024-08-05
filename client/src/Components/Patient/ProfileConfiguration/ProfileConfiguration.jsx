@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
 import arrowRight from "../../../Assets/Imgs/arrowRight.png";
 import arrowLeft from "../../../Assets/Imgs/otraArrowLeft.png";
+import arrowOrange from "../../../Assets/Imgs/arrowOrange.svg";
 import privateImg from "../../../Assets/Imgs/private.png";
 import profile from "../../../Assets/Imgs/pepitaExample.png";
 import settings from "../../../Assets/Imgs/settings.png";
@@ -14,10 +15,20 @@ import "./profileConfiguration.css"
 const DoctorConfiguration = () => {
   const [personalData, setPersonalData] = useState(false);
   const [notifications, setNotifications] = useState(false);
-  const navigate = useNavigate();
-  const { logout, fetchPatientById, authData } = useContext(DoctorContext);
   const [patientData, setPatientData] = useState(null);
   const [error, setError] = useState(null);
+  const [isOpen, setIsOpen] = useState(Array(2).fill(false));
+
+  const toggleDropdown = (index) => {
+    setIsOpen(prevState => {
+        const newState = [...prevState];
+        newState[index] = !newState[index];
+        return newState;
+    });
+};
+
+  const navigate = useNavigate();
+  const { logout, fetchPatientById, authData } = useContext(DoctorContext);
 
   useEffect(() => {
     const loadPatientData = async () => {
@@ -36,7 +47,7 @@ const DoctorConfiguration = () => {
     };
 
     loadPatientData();
-  }, []);
+  }, [authData, fetchPatientById]);
 
   function log() {
     logout();
@@ -77,10 +88,10 @@ const DoctorConfiguration = () => {
         <div>
           <button
             className='option font-bold flex justify-between p-2'
-            onClick={() => handlechange("personalData")}
+            onClick={() => { handlechange("personalData"); toggleDropdown(1)}}
           >
             <p>Datos Personales</p>
-            <img src={arrowRight} alt='arrow' className='w-6 h-6 ml-4' />
+            <img src={arrowOrange} alt="arrow" className={`w-4 h-6 ml-4 ${isOpen[1] ? 'more-more-arrow-rotate' : 'more-arrow-rotate'}`} />
           </button>
           {personalData && (
             <div className='mb-5 containerPersonalData'>
@@ -92,10 +103,10 @@ const DoctorConfiguration = () => {
         <div>
           <button
             className='option font-bold flex justify-between p-2'
-            onClick={() => handlechange("notifications")}
+            onClick={() => { handlechange("notifications"); toggleDropdown(2) }}
           >
             <p>Notificaciones</p>
-            <img src={arrowRight} alt='arrow' className='w-6 h-6 ml-4' />
+            <img src={arrowOrange} alt="arrow" className={`w-4 h-6 ml-4 ${isOpen[2] ? 'more-more-arrow-rotate' : 'more-arrow-rotate'}`} />
           </button>
           {notifications && (
             <div className='mb-5'>
@@ -118,7 +129,7 @@ const DoctorConfiguration = () => {
           onClick={() => log()}
           className='w-full self-end bg-red-500 rounded py-2 font-semibold text-white'
         >
-          Log out
+          Cerrar sesion
         </button>
       </article>
 
