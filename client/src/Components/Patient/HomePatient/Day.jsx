@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const Day = ({ image, activity, time, href, backColor }) => {
   return (
     <div
-      className='flex items-center justify-between p-4 m-3'
+      className='flex items-center justify-between p-4 m-3 bg-white'
       style={{ border: `solid 3px ${backColor}`, borderRadius: "15px" }}
     >
       <div className='flex'>

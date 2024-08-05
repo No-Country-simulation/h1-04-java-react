@@ -8,10 +8,12 @@ import consultation1 from "../../../Assets/Imgs/imgConsultation1.svg";
 import consultation2 from "../../../Assets/Imgs/imgConsultation2.svg";
 import consultation3 from "../../../Assets/Imgs/imgConsultation3.svg";
 import consultation4 from "../../../Assets/Imgs/imgConsultation4.svg";
+import SuccesModal from "../../Modals/SucessModal";
 import "./consultation.css";
 
 const Consultation = () => {
   const [isFocused, setIsFocused] = useState(false);
+  const [showVerificando, setShowVerificando] = useState(false);
 
   const navigate = useNavigate();
   const { setNotes, recognizedText } = useContext(DoctorContext);
@@ -36,19 +38,31 @@ const Consultation = () => {
       </div>
 
       <section className='containerTreatments'>
-        <button className='treatmentsStylesDoctor'>
+        <button
+          onClick={() => setShowVerificando(true)}
+          className='treatmentsStylesDoctor'
+        >
           <img src={consultation1} alt='Tratamiento' />
           <p>Tratamiento</p>
         </button>
-        <button className='treatmentsStylesDoctor'>
+        <button
+          onClick={() => setShowVerificando(true)}
+          className='treatmentsStylesDoctor'
+        >
           <img src={consultation2} alt='Historia Clinica' />
           <p>Historia Clinica</p>
         </button>
-        <button className='treatmentsStylesDoctor'>
+        <button
+          onClick={() => setShowVerificando(true)}
+          className='treatmentsStylesDoctor'
+        >
           <img src={consultation3} alt='Estudios' />
           <p>Estudios</p>
         </button>
-        <button className='treatmentsStylesDoctor'>
+        <button
+          onClick={() => setShowVerificando(true)}
+          className='treatmentsStylesDoctor'
+        >
           <img src={consultation4} alt='Medicación' />
           <p>Medicación</p>
         </button>
@@ -63,6 +77,14 @@ const Consultation = () => {
       <button className='start-consultation mb-20' onClick={handleSubmitNotes}>
         Finalizar consulta
       </button>
+
+      <SuccesModal
+        show={showVerificando}
+        onClose={() => setShowVerificando(false)}
+        none
+        title='No disponible'
+        text='Estamos trabajando en esta característica'
+      />
     </div>
   );
 };

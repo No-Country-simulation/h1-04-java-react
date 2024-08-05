@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { useContext, useEffect, useState } from "react";
-import arrowRight from "../../../../Assets/Imgs/arrowRight.png";
+import arrowRight from "../../../../Assets/Imgs/arrowOrange.svg";
 import undo from "../../../../Assets/Imgs/undo.png";
 import "./plans.css";
 import arrowOrange from "../../../../Assets/Imgs/arrowOrange.svg";
@@ -48,14 +48,14 @@ const PlanMedication = () => {
         patientData.map((treatment, index) => (
           <div key={index}>
             <button
-              className='option bg-beigeColor font-bold flex justify-between p-2'
+              className='option bg-white font-bold flex justify-between p-2'
               onClick={() => toggleDropdown(index)}
             >
               {treatment.treatmentName}
               <img
                 src={arrowRight}
                 alt='arrow'
-                className={`w-6 h-6 ml-4 ${
+                className={`w-4 h-6  ml-4 ${
                   isOpen[index] ? "arrow-rotate" : ""
                 }`}
               />
