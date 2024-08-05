@@ -124,14 +124,14 @@ const PreviousConsultation = () => {
             <>
               <h3>Medicacion</h3>
               {patientData.map((treatment, index) => (
-                <p key={index}>
+                <div key={index}>
                   {treatment.medicalPrescriptions.map((prescription, index) => (
                     <div key={index} className='border-t-2'>
                       <p>{prescription.medication.medicationName}</p>
                       <p>{prescription.indications}</p>
                     </div>
                   ))}
-                </p>
+                </div>
               ))}
             </>
           )}
