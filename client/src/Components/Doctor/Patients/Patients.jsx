@@ -97,6 +97,7 @@ const CalendarPage = () => {
               {groupedAppointments[day].map((appointment) => (
                 <CardPatient
                   key={appointment.appointmentId}
+                  id={appointment.patientId}
                   time={appointment.appointmentHour}
                   name={appointment.fullnamePatient}
                   description={appointment.typeOfAppointment}

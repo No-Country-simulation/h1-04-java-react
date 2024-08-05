@@ -1,6 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import img from "../../Assets/Imgs/profileDoctor.png";
-import { formatHour, translateDay } from "../../utils/hourMapping";
+import {
+  formatHour,
+  translateDay,
+  translateAppointmentType,
+} from "../../utils/hourMapping";
 
 export default function CardPatient(props) {
   const navigate = useNavigate();
@@ -25,7 +29,9 @@ export default function CardPatient(props) {
           <div className='text-blue-600'>{props.name}</div>
           <div className='flex text-gray-500'>
             <div className='text-sm'>{translateDay(props.date)}</div>
-            <p className='text-sm'> - {props.description}</p>
+            <p className='text-sm'>
+              - {translateAppointmentType(props.description)}
+            </p>
           </div>
         </div>
       </div>

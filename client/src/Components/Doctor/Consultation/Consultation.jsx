@@ -4,16 +4,16 @@ import DoctorContext from "../../../context/DoctorContext";
 import profileDoctor from "../../../Assets/Imgs/profileDoctor.png";
 import SpeechRecognition from "./SpeechRecognition";
 import DoctorHeader from "../DoctorHeader/DoctorHeader";
-import consultation1 from "../../../Assets/Imgs/imgConsultation1.svg"
-import consultation2 from "../../../Assets/Imgs/imgConsultation2.svg"
-import consultation3 from "../../../Assets/Imgs/imgConsultation3.svg"
-import consultation4 from "../../../Assets/Imgs/imgConsultation4.svg"
+import consultation1 from "../../../Assets/Imgs/imgConsultation1.svg";
+import consultation2 from "../../../Assets/Imgs/imgConsultation2.svg";
+import consultation3 from "../../../Assets/Imgs/imgConsultation3.svg";
+import consultation4 from "../../../Assets/Imgs/imgConsultation4.svg";
 // import speak from "../../../Assets/Imgs/speak.png"
 import "./consultation.css";
 
 const Consultation = () => {
   const [currentNotes, setCurrentNotes] = useState("");
-  const [isFocused, setIsFocused] = useState(false)
+  const [isFocused, setIsFocused] = useState(false);
 
   const navigate = useNavigate();
   const { setNotes } = useContext(DoctorContext);
@@ -27,7 +27,7 @@ const Consultation = () => {
   return (
     <div className='consultation'>
       <DoctorHeader text={"Consulta"} />
-      
+
       <div className='header'>
         <div>
           <img src={profileDoctor} alt='Laura Gomez' />
@@ -37,7 +37,7 @@ const Consultation = () => {
           <p>Consulta por control</p>
         </div>
       </div>
-      
+
       <section className='containerTreatments'>
         <button className='treatmentsStylesDoctor'>
           <img src={consultation1} alt='Tratamiento' />
@@ -56,10 +56,10 @@ const Consultation = () => {
           <p>Medicación</p>
         </button>
       </section>
-      
+
       <section className='writeText'>
         <p>Notas</p>
-        <textarea
+        {/* <textarea
           name='text'
           id='text'
           className={isFocused ? "focused" : ""}
@@ -67,8 +67,8 @@ const Consultation = () => {
           onBlur={() => setIsFocused(false)}
           onChange={(e) => setCurrentNotes(e.target.value)}
           value={currentNotes}
-        />
-        <div>
+        /> */}
+        <div className='w-full'>
           {/* <img src={speak} alt='Hablar' /> */}
           <SpeechRecognition />
         </div>
