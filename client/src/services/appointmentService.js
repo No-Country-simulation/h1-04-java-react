@@ -47,6 +47,19 @@ export const getAppointmentByDoctor = async (token, id) => {
   return await response.json();
 };
 
+export const getAppointmentsByPatient = async (token, patientId) => {
+  const response = await fetch(`${API}appointments/getByPatientId/${patientId}`, {
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  });
+  if (!response.ok) {
+    throw new Error('Error fetching patient appointments');
+  }
+  return await response.json();
+};
+
+
 export const deactivateAppointment = async (token, appointmentId) => {
   try {
     const response = await fetch(`${API}appointments/deactivateAppointment/${appointmentId}`, {

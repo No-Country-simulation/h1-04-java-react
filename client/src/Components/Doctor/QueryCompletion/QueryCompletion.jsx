@@ -4,8 +4,8 @@ import DoctorContext from "../../../context/DoctorContext";
 import profileDoctor from "../../../Assets/Imgs/profileDoctor.png";
 import DoctorHeader from "../DoctorHeader/DoctorHeader";
 import SuccesModal from "../../Modals/SucessModal";
-import agendarTurno from "../../../Assets/Imgs/agendarTurno.svg"
-import agregarReceta from "../../../Assets/Imgs/agregarReceta.svg"
+import agendarTurno from "../../../Assets/Imgs/agendarTurno.svg";
+import agregarReceta from "../../../Assets/Imgs/agregarReceta.svg";
 import "./queryCompletion.css";
 
 const QueryCompletion = () => {
@@ -17,17 +17,17 @@ const QueryCompletion = () => {
 
   const handlePopUp = () => {
     setShowPopUp(true);
-  }
+  };
 
   const handleCloseModal = () => {
     setShowPopUp(false);
     navigate("/doctorPatient");
-  } 
+  };
 
   return (
     <div className='m-5 query-completion'>
       <DoctorHeader text={"Recomendaciones y recetas"} />
-      
+
       <section className='header'>
         <div>
           <img src={profileDoctor} alt='Laura Gomez' />
@@ -37,26 +37,26 @@ const QueryCompletion = () => {
           <p>Consulta por control</p>
         </div>
       </section>
-      
+
       <section className='mt-10'>
         <p>Resumen de la consulta</p>
-        <div className='queryNotes'>
+        <div className='queryNotes bg-white'>
           <h2>Notas...</h2>
           <p>{notes}</p>
         </div>
       </section>
-      
+
       <section className='footer-query-buttons'>
         <a href='/doctorCalendar'>
-          <img src={agendarTurno} alt="AgendarTurno" />
+          <img src={agendarTurno} alt='AgendarTurno' />
           Agendar turno
         </a>
         <a href='/doctorRecipe'>
-          <img src={agregarReceta} alt="agregarReceta" />
+          <img src={agregarReceta} alt='agregarReceta' />
           Agregar receta
         </a>
       </section>
-      
+
       <section className='writeTextQuery'>
         <p>Indicaciones</p>
         <textarea
@@ -67,9 +67,11 @@ const QueryCompletion = () => {
           onBlur={() => setIsFocused(false)}
         ></textarea>
       </section>
-      
-      <button className='start-consultation' onClick={handlePopUp}>Enviar</button>
-      
+
+      <button className='start-consultation' onClick={handlePopUp}>
+        Enviar
+      </button>
+
       <SuccesModal
         title={"Listo!"}
         text={"Se agendo la proxima cita y se envio la receta exitosamente"}

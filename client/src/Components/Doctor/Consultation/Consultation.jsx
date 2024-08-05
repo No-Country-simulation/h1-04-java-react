@@ -1,5 +1,5 @@
-import { useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import DoctorContext from "../../../context/DoctorContext";
 import profileDoctor from "../../../Assets/Imgs/profileDoctor.png";
 import SpeechRecognition from "./SpeechRecognition";
@@ -8,19 +8,16 @@ import consultation1 from "../../../Assets/Imgs/imgConsultation1.svg";
 import consultation2 from "../../../Assets/Imgs/imgConsultation2.svg";
 import consultation3 from "../../../Assets/Imgs/imgConsultation3.svg";
 import consultation4 from "../../../Assets/Imgs/imgConsultation4.svg";
-// import speak from "../../../Assets/Imgs/speak.png"
 import "./consultation.css";
 
 const Consultation = () => {
-  const [currentNotes, setCurrentNotes] = useState("");
   const [isFocused, setIsFocused] = useState(false);
 
   const navigate = useNavigate();
-  const { setNotes } = useContext(DoctorContext);
+  const { setNotes, recognizedText } = useContext(DoctorContext);
 
   const handleSubmitNotes = () => {
-    setNotes(currentNotes);
-    setCurrentNotes("");
+    setNotes(recognizedText);
     navigate("/query-completion");
   };
 
@@ -58,22 +55,12 @@ const Consultation = () => {
       </section>
 
       <section className='writeText'>
-        <p>Notas</p>
-        {/* <textarea
-          name='text'
-          id='text'
-          className={isFocused ? "focused" : ""}
-          onFocus={() => setIsFocused(true)}
-          onBlur={() => setIsFocused(false)}
-          onChange={(e) => setCurrentNotes(e.target.value)}
-          value={currentNotes}
-        /> */}
+        <p className='font-bold text-lg'>Notas</p>
         <div className='w-full'>
-          {/* <img src={speak} alt='Hablar' /> */}
           <SpeechRecognition />
         </div>
       </section>
-      <button className='start-consultation' onClick={handleSubmitNotes}>
+      <button className='start-consultation mb-20' onClick={handleSubmitNotes}>
         Finalizar consulta
       </button>
     </div>

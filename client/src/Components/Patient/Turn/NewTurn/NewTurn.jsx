@@ -1,6 +1,9 @@
 import { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { createAppointment } from "../../../../services/appointmentService"; // Asegúrate de usar la ruta correcta
+import {
+  createAppointment,
+  getAppointmentsByPatient,
+} from "../../../../services/appointmentService"; // Asegúrate de usar la ruta correcta
 import check from "../../../../Assets/Imgs/checkOrange.svg";
 import DoctorContext from "../../../../context/DoctorContext";
 import SuccesModal from "../../../../Components/Modals/SucessModal";
@@ -72,7 +75,6 @@ const NewTurn = () => {
           new Set(doctors.doctors.flatMap((doctor) => doctor.specialties))
         )
       : [];
-  console.log(uniqueSpecialties);
 
   const professionals = {};
   if (doctors && doctors.doctors) {
@@ -87,12 +89,24 @@ const NewTurn = () => {
     });
   }
 
-  const updateAvailableHours = (selectedDoctor, day) => {
+  const updateAvailableHours = async (selectedDoctor, day) => {
     if (selectedDoctor && day) {
       const allHours = selectedDoctor.schedule || [];
-      const occupiedHours = selectedDoctor.appointments
+      const doctorAppointments = selectedDoctor.appointments
         .filter((appt) => appt.isActive && appt.appointmentDay === day)
         .map((appt) => appt.appointmentHour);
+
+      const patientAppointments = await getAppointmentsByPatient(
+        authData.token,
+        authData.id
+      );
+      const patientAppointmentsOnDay = patientAppointments
+        .filter((appt) => appt.isActive && appt.appointmentDay === day)
+        .map((appt) => appt.appointmentHour);
+
+      const occupiedHours = [
+        ...new Set([...doctorAppointments, ...patientAppointmentsOnDay]),
+      ];
 
       // Filtra las horas ocupadas
       const available = allHours.filter(

@@ -8,7 +8,7 @@ export default function CardPatientList(props) {
       <div className='flex items-center w-full'>
         <div
           key={props.index}
-          className='flex w-full shadow-xl border-2 items-center  space-x-4  p-3 rounded mb-2'
+          className='flex w-full shadow-lg  bg-white border-2 items-center  space-x-4  p-3 rounded mb-2'
         >
           <div className='bg-blue-100 text-white rounded-full w-10 h-10 flex items-center justify-center'>
             <img src={img} alt='' />

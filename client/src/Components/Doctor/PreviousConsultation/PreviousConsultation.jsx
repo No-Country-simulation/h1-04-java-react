@@ -64,7 +64,7 @@ const PreviousConsultation = () => {
     <div className='previous-consultation'>
       <DoctorHeader text={"Pre-Consulta"} />
 
-      <section className='boxCotent'>
+      <section className='boxCotent bg-white'>
         <div className='header'>
           <div>
             <img
@@ -92,7 +92,7 @@ const PreviousConsultation = () => {
         </div>
       </section>
 
-      <section className='boxCotent'>
+      <section className='boxCotent bg-white'>
         <div className='tabs'>
           <button
             className={activeTab === "Motivo de la cita" ? "active" : ""}
@@ -136,15 +136,15 @@ const PreviousConsultation = () => {
             </>
           )}
         </div>
+        <Link to={"/consultation"}>
+          <button className='start-consultation'>Iniciar consulta</button>
+        </Link>
       </section>
 
       {/* <div className='footer-buttons'>
         <button>Historia clínica</button>
         <button>Medicamentos</button>
       </div> */}
-      <Link to={"/consultation"}>
-        <button className='start-consultation'>Iniciar consulta</button>
-      </Link>
     </div>
   );
 };

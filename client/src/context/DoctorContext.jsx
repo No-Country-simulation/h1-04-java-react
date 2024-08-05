@@ -11,6 +11,7 @@ export const DoctorProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const [notes, setNotes] = useState("");
   const [authData, setAuthData] = useState(null);
+  const [recognizedText, setRecognizedText] = useState("");
 
   const login = (data) => {
     setAuthData(data);
@@ -97,6 +98,8 @@ export const DoctorProvider = ({ children }) => {
         logout,
         notes,
         setNotes,
+        setRecognizedText,
+        recognizedText,
         fetchPatientById,
         fetchDoctorById,
       }}

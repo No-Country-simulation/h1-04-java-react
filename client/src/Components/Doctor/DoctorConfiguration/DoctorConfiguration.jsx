@@ -8,7 +8,7 @@ import Notifications from "../../Notifications/Notifications";
 
 import DoctorContext from "../../../context/DoctorContext";
 import DoctorHeader from "../DoctorHeader/DoctorHeader";
-import "./doctorConfiguration.css"
+import "./doctorConfiguration.css";
 
 const DoctorConfiguration = () => {
   const [personalData, setPersonalData] = useState(false);
@@ -56,7 +56,7 @@ const DoctorConfiguration = () => {
 
   return (
     <section className='container'>
-      <div className="m-5">
+      <div className='m-4'>
         <DoctorHeader text={"Configuración de cuenta"} />
         <article className='userPictureNameDoctor'>
           <img
@@ -72,24 +72,24 @@ const DoctorConfiguration = () => {
         </article>
 
         <article className='optionsContainer'>
-          <div className="styleDoctor">
+          <div className='styleDoctor'>
             <button
-              className='flex justify-between p-2 shadow-xl border-2 items-center space-x-4 p-3 rounded styleDoctorButton'
+              className='flex bg-white justify-between shadow-xl border-2 items-center space-x-4 p-3 rounded styleDoctorButton'
               onClick={() => handlechange("personalData")}
             >
               <p>Datos Personales</p>
               <img src={arrowRight} alt='arrow' className='w-6 h-6 ml-4' />
             </button>
             {personalData && (
-              <div className='mb-5 containerPersonalData'>
+              <div className='mb-5 bg-white containerPersonalData'>
                 <PersonalData user={patientData} />
               </div>
             )}
           </div>
 
-          <div className="styleDoctor">
+          <div className='styleDoctor'>
             <button
-              className='flex justify-between p-2 shadow-xl border-2 items-center space-x-4 p-3 rounded styleDoctorButton'
+              className='flex justify-between bg-white shadow-xl border-2 items-center space-x-4 p-3 rounded styleDoctorButton'
               onClick={() => handlechange("notifications")}
             >
               <p>Notificaciones</p>
@@ -102,19 +102,19 @@ const DoctorConfiguration = () => {
             )}
           </div>
 
-          <button className='flex justify-between p-2 shadow-xl border-2 items-center space-x-4 p-3 rounded styleDoctorButton'>
+          <button className='flex justify-between bg-white shadow-xl border-2 items-center space-x-4 p-3 rounded styleDoctorButton'>
             <p>Seguridad</p>
             <img src={privateImg} alt='arrow' className='w-6 h-6 ml-4' />
           </button>
 
-          <button className='flex justify-between p-2 shadow-xl border-2 items-center space-x-4 p-3 rounded styleDoctorButton'>
+          <button className='flex justify-between bg-white shadow-xl border-2 items-center space-x-4 p-3 rounded styleDoctorButton'>
             <p>Privacidad</p>
             <img src={privateImg} alt='arrow' className='w-6 h-6 ml-4' />
           </button>
 
           <button
             onClick={() => log()}
-            className='w-full self-end bg-sky-600 rounded py-2 font-semibold text-white'
+            className='w-full self-end bg-sky-600 rounded py-2 mt-3 font-semibold text-white'
           >
             Log out
           </button>
