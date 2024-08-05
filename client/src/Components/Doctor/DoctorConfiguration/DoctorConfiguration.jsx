@@ -116,7 +116,7 @@ const DoctorConfiguration = () => {
             onClick={() => log()}
             className='w-full self-end bg-sky-600 rounded py-2 mt-3 font-semibold text-white'
           >
-            Log out
+            Cerrar Sesion
           </button>
         </article>
       </div>
