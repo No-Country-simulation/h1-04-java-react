@@ -23,7 +23,7 @@ const Section1 = () => {
               <div className="text-gray-600 text-sm font-normal pb-2 pl-1">
                 Un Aplicación que reinventa el futuro de la Salud
               </div>
-              <div className="w-[22rem] text-teal-400 text-4xl font-bold ">
+              <div className="w-[18rem] md:w-[22rem] text-teal-400 text-3xl md:text-4xl font-bold ">
                 JUSTINA IO: PENSADA PARA VOS
               </div>
             </div>
@@ -43,7 +43,7 @@ const Section1 = () => {
                 <FaDownload className="text-white" />
               </div>
             </div>
-            <div className="w-36 h-10 justify-center items-center gap-2 inline-flex">
+            <div className="w-20 md:w-36 h-10 justify-center items-center gap-2 inline-flex">
               <img
                 src={android}
                 alt="android"

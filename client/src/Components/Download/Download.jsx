@@ -38,14 +38,14 @@ const Download = () => {
               </div>
             </div>
             {/* CUADRO ROJO */}
-            <div className="w-[90%] md:w-[25rem] ml-4 md:ml-0 h-[15em] px-4 my-2 md:my-6 bg-[#ea526f]/10 rounded-[1.25rem] border-2 border-[#ea526f] flex flex-col justify-center items-start gap-7">
+            <div className="w-[90%] md:w-[25rem] ml-4 md:ml-0 h-[18rem] md:h-[15rem] px-4 my-2 md:my-6 bg-[#ea526f]/10 rounded-[1.25rem] border-2 border-[#ea526f] flex flex-col justify-center items-start gap-7">
               <div className="h-[6.875rem] flex flex-col justify-center items-start gap-2.5">
                 <div className="h-[1.625rem] text-[#1a1a1a] text-lg font-semibold leading-[3.125rem] mt-12">Móvil | Tableta</div>
                 <div className="h-[1.625rem] text-[#ea526f] text-3xl font-bold leading-[3.125rem] mb-4">ANDROID</div>
                 <div className="h-[2.375rem] text-[#1a1a1a] text-base font-semibold leading-snug mb-4">Descárgala de forma rápida y fácil para usar en tu celular con sistema android.</div>
               </div>
               <div
-                className="px-4 my-2 mb-3 bg-[#1a1a1a] rounded-[0.9375rem] border-2 border-white flex justify-center items-center gap-2.5 cursor-pointer hover:bg-[#333333] transition"
+                className="px-4 my-8 md:my-2 mb-3 bg-[#1a1a1a] rounded-[0.9375rem] border-2 border-white flex justify-center items-center gap-2.5 cursor-pointer hover:bg-[#333333] transition"
                 onClick={handleModalOpen}
               >
                 <div className="w-[2.608125rem] h-[2.8125rem] relative">
@@ -53,7 +53,7 @@ const Download = () => {
                 </div>
                 <div className='flex flex-col py-2'>
                   <span className="text-white text-base font-normal">Disponible en</span>
-                  <span className="text-white text-3xl font-medium ">Google Play</span>
+                  <span className="text-white text-2xl md:text-3xl font-medium ">Google Play</span>
                 </div>
               </div>
             </div>
@@ -83,15 +83,15 @@ const Download = () => {
             </div>
           </div>
           {/* Columna 2 */}
-          <div className="relative inset-0 bg-gray-100 rounded-[1.25rem] z-0 h-[15em] mt-6">
-            <div className="relative z-10 w-full h-[15em] px-4 bg-[#ea526f]/10 rounded-[1.25rem] border-2 border-[#ea526f] flex flex-col justify-center items-start gap-7 z-1">
+          <div className="relative inset-0 bg-gray-100 rounded-[1.25rem] z-0 h-[20rem] md:h-[15rem] mt-6">
+            <div className="relative z-10 w-full h-[20rem] md:h-[15rem] px-4 bg-[#ea526f]/10 rounded-[1.25rem] border-2 border-[#ea526f] flex flex-col justify-center items-start gap-7 z-1">
               <div className="h-[6.875rem] flex flex-col justify-center items-start gap-2.5">
                 <div className="h-[1.625rem] text-[#1a1a1a] text-lg font-semibold leading-[3.125rem] mt-12">PC | LAPTOP</div>
                 <div className="h-[1.625rem] text-[#ea526f] text-3xl font-bold leading-[3.125rem] mb-4">WINDOWS</div>
                 <div className="h-[2.375rem] text-[#1a1a1a] text-base font-semibold leading-snug mb-4">Descárgala de forma rápida y fácil para usar en tu computadora de escritorio o tu notebook.</div>
               </div>
               <div
-                className="px-4 my-2 mb-3 bg-[#1a1a1a] rounded-[0.9375rem] border-2 border-white flex justify-center items-center gap-2.5 cursor-pointer hover:bg-[#333333] transition"
+                className="px-4 my-14 md:my-2 mb-3 bg-[#1a1a1a] rounded-[0.9375rem] border-2 border-white flex justify-center items-center gap-2.5 cursor-pointer hover:bg-[#333333] transition"
                 onClick={handleModalOpen}
               >
                 <div className="w-[2.608125rem] h-[2.8125rem] relative">
@@ -99,22 +99,22 @@ const Download = () => {
                 </div>
                 <div className='flex flex-col py-2'>
                   <span className="text-white text-base font-normal">Consíguelo de</span>
-                  <span className="text-white text-3xl font-medium ">Microsoft</span>
+                  <span className="text-white text-2xl md:text-3xl font-medium ">Microsoft</span>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Columna 3 */}
-          <div className="relative inset-0 bg-gray-100 rounded-[1.25rem] z-0 h-[15em] mt-6">
-            <div className="relative z-10 w-full h-[15em] px-4 bg-[#ea526f]/10 rounded-[1.25rem] border-2 border-[#ea526f] flex flex-col justify-center items-start gap-7">
+          <div className="relative inset-0 bg-gray-100 rounded-[1.25rem] z-0 h-[18rem] md:h-[15rem] mt-6">
+            <div className="relative z-10 w-full h-[18rem] md:h-[15rem] px-4 bg-[#ea526f]/10 rounded-[1.25rem] border-2 border-[#ea526f] flex flex-col justify-center items-start gap-7">
               <div className="h-[6.875rem] flex flex-col justify-center items-start gap-2.5">
-                <div className="h-[1.625rem] text-[#1a1a1a] text-lg font-semibold leading-[3.125rem] mt-12">Móvil | Tablet</div>
+                <div className="h-[1.625rem] text-[#1a1a1a] text-lg font-semibold leading-[3.125rem] mt-12 md:mt-20">Móvil | Tablet</div>
                 <div className="h-[1.625rem] text-[#ea526f] text-3xl font-bold leading-[3.125rem] mb-4">iOS</div>
                 <div className="h-[2.375rem] text-[#1a1a1a] text-base font-semibold leading-snug mb-4">Descárgala de forma rápida y fácil para usar en tu celular con sistema iOS.</div>
               </div>
               <div
-                className="px-4 my-2 mb-3 bg-[#1a1a1a] rounded-[0.9375rem] border-2 border-white flex justify-center items-center gap-2.5 cursor-pointer hover:bg-[#333333] transition"
+                className="px-4 my-8 md:my-2mb-3 bg-[#1a1a1a] rounded-[0.9375rem] border-2 border-white flex justify-center items-center gap-2.5 cursor-pointer hover:bg-[#333333] transition"
                 onClick={handleModalOpen}
               >
                 <div className="w-[2.608125rem] h-[2.8125rem] relative">
@@ -122,7 +122,7 @@ const Download = () => {
                 </div>
                 <div className='flex flex-col py-2'>
                   <span className="text-white text-base font-normal">Consíguelo en el</span>
-                  <span className="text-white text-3xl font-medium ">App Store</span>
+                  <span className="text-white text-2xl md:text-3xl font-medium ">App Store</span>
                 </div>
               </div>
             </div>

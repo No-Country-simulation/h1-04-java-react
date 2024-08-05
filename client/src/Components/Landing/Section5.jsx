@@ -25,7 +25,7 @@ const Section5 = () => {
           {/* Primer elemento */}
           <div className="w-full max-w-[570px] h-[560px] flex flex-col gap-20">
             <div className="w-full h-40 relative">
-              <div className="absolute inset-0 h-48 bg-white rounded-[10px] shadow border-2 border-[#25ced1]"></div>
+              <div className="absolute inset-0 h-52 md:h-48 bg-white rounded-[10px] shadow border-2 border-[#25ced1]"></div>
               <MdCheckCircle
                 className="w-6 h-6 absolute left-[18px] top-[35px] text-[#25ced1]"
               />
@@ -37,7 +37,7 @@ const Section5 = () => {
               </div>
             </div>
             {/* Segundo elemento */}
-            <div className="w-full h-40 relative">
+            <div className="w-full h-40 relative mt-4 md:mt-0">
               <div className="absolute inset-0 h-48 bg-white rounded-[10px] shadow border-2 border-[#25ced1]"></div>
               <MdCheckCircle
                 className="w-6 h-6 absolute left-[18px] top-[35px] text-[#25ced1]"
@@ -68,7 +68,7 @@ const Section5 = () => {
         <div className="w-full lg:w-1/2 flex justify-center relative pl-8 order-1 md:order-2">
           <div className="w-[75%] md:w-full max-w-md h-[18rem] md:h-[28rem] bg-pink-500/20 rounded-2xl"></div>
           <img
-            className="absolute w-[12rem] md:w-[18.1rem] h-[12rem] md:h-[17.2rem] rounded-[1rem] left-[8rem] md:left-[9.5rem] top-[10%] transform translate-x-[30%] -translate-y-[30%]"
+            className="absolute w-[12rem] md:w-[18.1rem] h-[12rem] md:h-[17.2rem] rounded-[1rem] sm:left-[8rem] md:left-[9.5rem] top-[10%] transform translate-x-[30%] -translate-y-[30%]"
             src={img4}
             alt="Placeholder"
           />

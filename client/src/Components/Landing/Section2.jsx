@@ -29,7 +29,7 @@ const Section2 = () => {
             alt="Placeholder"
           />
           <img
-            className="absolute w-[12.1rem] md:w-[18.1rem] h-[11.5rem] md:h-[17.2rem] rounded-[1rem] left-[7.5rem] md:left-[9.5rem] top-[10%] transform translate-x-[30%] -translate-y-[30%]"
+            className="absolute w-[12.1rem] md:w-[18.1rem] h-[11.5rem] md:h-[17.2rem] rounded-[1rem] left-[5.5rem] md:left-[9.5rem] top-[10%] transform translate-x-[30%] -translate-y-[30%]"
             src={img2}
             alt="Placeholder"
           />
@@ -50,8 +50,8 @@ const Section2 = () => {
               </div>
             </div>
             {/* Segundo elemento */}
-            <div className="w-full h-40 relative">
-              <div className="absolute inset-0 h-48 bg-white rounded-[10px] shadow border-2 border-[#25ced1]"></div>
+            <div className="w-full h-40 relative mb-4 md:mb-0">
+              <div className="absolute inset-0 h-52 md:h-48 bg-white rounded-[10px] shadow border-2 border-[#25ced1]"></div>
               <MdCheckCircle
                 className="w-6 h-6 absolute left-[18px] top-[35px] text-[#25ced1]"
               />
@@ -63,8 +63,8 @@ const Section2 = () => {
               </div>
             </div>
             {/* Tercer elemento */}
-            <div className="w-full h-40 relative">
-              <div className="absolute inset-0 h-48 bg-white rounded-[10px] shadow border-2 border-[#25ced1]"></div>
+            <div className="w-full h-40 relative mb-4 md:mb-0">
+              <div className="absolute inset-0 h-52 md:h-48 bg-white rounded-[10px] shadow border-2 border-[#25ced1]"></div>
               <MdCheckCircle
                 className="w-6 h-6 absolute left-[18px] top-[35px] text-[#25ced1]"
               />

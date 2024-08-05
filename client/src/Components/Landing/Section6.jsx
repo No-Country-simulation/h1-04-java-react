@@ -53,7 +53,7 @@ const Section6 = () => {
         ref={carouselRef}
         className="h-[21rem] md:h-[35rem]"
       >
-        <Slider className="w-[90%] h-[17rem] md:h-[35rem] md:w-full max-w-5xl mx-auto">
+        <Slider className="w-[90%] h-[18.5rem] sm:h-[17rem] md:h-[35rem] md:w-full max-w-5xl mx-auto">
           {testimonials.map((testimonial, index) => (
             <Slide key={index}>
               <div className=" h-[30rem] px-[1rem] py-1 md:py-[3rem]  bg-white rounded-[5px] shadow border-2 border-[#e2eaf2] flex flex-col md:flex-row justify-start items-start gap-[1rem]">
