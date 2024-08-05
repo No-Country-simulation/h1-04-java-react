@@ -8,10 +8,12 @@ import consultation1 from "../../../Assets/Imgs/imgConsultation1.svg"
 import consultation2 from "../../../Assets/Imgs/imgConsultation2.svg"
 import consultation3 from "../../../Assets/Imgs/imgConsultation3.svg"
 import consultation4 from "../../../Assets/Imgs/imgConsultation4.svg"
+// import speak from "../../../Assets/Imgs/speak.png"
 import "./consultation.css";
 
 const Consultation = () => {
   const [currentNotes, setCurrentNotes] = useState("");
+  const [isFocused, setIsFocused] = useState(false)
 
   const navigate = useNavigate();
   const { setNotes } = useContext(DoctorContext);
@@ -57,7 +59,7 @@ const Consultation = () => {
       
       <section className='writeText'>
         <p>Notas</p>
-        {/* <textarea
+        <textarea
           name='text'
           id='text'
           className={isFocused ? "focused" : ""}
@@ -65,12 +67,12 @@ const Consultation = () => {
           onBlur={() => setIsFocused(false)}
           onChange={(e) => setCurrentNotes(e.target.value)}
           value={currentNotes}
-        /> */}
-        {/* <div>
-          <img src={speak} alt='Hablar' />
-        </div> */}
+        />
+        <div>
+          {/* <img src={speak} alt='Hablar' /> */}
+          <SpeechRecognition />
+        </div>
       </section>
-      <SpeechRecognition />
       <button className='start-consultation' onClick={handleSubmitNotes}>
         Finalizar consulta
       </button>

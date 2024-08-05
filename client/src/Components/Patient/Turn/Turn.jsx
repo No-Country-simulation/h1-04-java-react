@@ -42,7 +42,7 @@ const Turn = () => {
     }
 
     function handleCancelAppointment() {
-        // Aquí debes añadir la lógica para cancelar el turno específico basado en `cancelModalIndex`.
+        // Añadir la lógica para cancelar el turno
         setTurnCancellation(cancelModalIndex);
         closeModal();
     }

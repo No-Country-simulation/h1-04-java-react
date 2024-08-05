@@ -1,4 +1,3 @@
-import React from "react";
 import useSpeechRecognition from "../../../hooks/useSpeechRecognition";
 import speak from "../../../Assets/Imgs/speak.png";
 
@@ -13,12 +12,12 @@ export default function SpeechRecognition() {
   const bgColor = listening ? "bg-primary" : "bg-secondary";
   return (
     <div>
-      {hasRecognitionSupport ? (
+      { hasRecognitionSupport ? (
         <>
           <div className='border-2 border-black rounded resize-none w-full min-h-[15vh] mb-4'>
             {text}
           </div>
-
+          
           <div className='flex-col flex justify-center items-center'>
             <button onClick={startListening}>
               <img
@@ -27,13 +26,13 @@ export default function SpeechRecognition() {
                 alt='Hablar'
               />
             </button>
-
-            {/* <button onClick={stopListening}>Stop</button> */}
+            
+            <button onClick={stopListening}>Stop</button>
           </div>
         </>
       ) : (
         <h1>browser</h1>
-      )}
+      ) }
     </div>
   );
 }
