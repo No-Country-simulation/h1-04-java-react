@@ -55,6 +55,10 @@
  <p>
       🔸 7- Citas Médicas: 📅 <br> Facilita la creación, actualización y gestión de citas médicas, con la capacidad de recuperar citas específicas por doctor o paciente.
       </p>
+  <p>
+      🔹 Extra- SpeechRecognition: 🗣 <br> La interfaz SpeechRecognition de la Web Speech API controla el servicio de reconocimiento de voz, permitiendo iniciar, detener y manejar eventos relacionados con el reconocimiento de voz. <br>
+      <a href="https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition#browser_compatibility">[ Browser compatibility ]</a>        
+      </p>
 </div>
 
 <br>
@@ -90,19 +94,20 @@
 
 <div align='center'>
   <b>🌈 Diseño en Figma 🖌️</b>
-    <a href="https://www.figma.com/design/JqCxyf2Hfotlruh2glaqN6/Hackaton-Justina?node-id=25-18&t=EXq6OcZmI87kUmG0-1" target="_blank">[ Link al Diseño Figma ]</a>
+    <a href="https://www.figma.com/design/JqCxyf2Hfotlruh2glaqN6/Hackaton-Justina?node-id=25-19&t=abhMHMih64wc2uEW-1" target="_blank">[ Link al Diseño Figma ]</a>
 </div>
 
 <br>
 <br>
 
  <div align='center'>
-  <h2> 🎬 Video Demostración ▶ (PRÓXIMAMENTE)</h2>
+  <h2> 🎬 Video Demostración ▶ </h2>
 </div>
+
 
  <div align='center'>
   <a href="https://www.youtube.com/watch?v=CzAgxxslZu8" target="_blank" rel="noopener">
-    <img src="https://github.com/user-attachments/assets/2d123083-0b84-4d11-8164-a47b3aafe2d5" alt="mini" width="394" height="159" >
+    <img src="https://github.com/user-attachments/assets/95a4cb0c-9a31-4bda-a6d5-7e48764cdcaf" alt="mini" width="670" height="325" >
   </a>
 </div>
 
@@ -129,7 +134,7 @@
       <div>
        <h4>QA Tester</h4>
         <a href="https://www.linkedin.com/in/yosmarli-parica-1156461a2/" target="_blank" rel="author">
-            <img width="110" src="https://media.licdn.com/dms/image/D4D35AQGUM1p4R6W3mQ/profile-framedphoto-shrink_800_800/0/1710174196054?e=1722636000&v=beta&t=aEueclBqF8yaeCc_q-cA9LWlkjAiDiMoe-DaH3N4Ltg"/>
+            <img width="110" src="https://github.com/user-attachments/assets/42e3bfde-2125-474c-ac99-17936c3ddfe6"/>
         </a>
             <h4 style="margin-top: 1rem;">Yosmarli <br>Parica</h4>
         <div style='display: flex; flex-direction: column'>
@@ -143,7 +148,7 @@
       <div>
        <h4>Diseño UX/UI</h4>
         <a href="https://www.linkedin.com/in/cynthia-olocco-141081295/" target="_blank" rel="author">
-          <img width="110" src="https://media.licdn.com/dms/image/D4D35AQGtOGNUhun4rA/profile-framedphoto-shrink_800_800/0/1705974369420?e=1722636000&v=beta&t=z2PxE5sw3OSofzxrVArL5nNsXiQJdHE8GLjNqZHjveA"/>
+          <img width="110" src="https://github.com/user-attachments/assets/9423d17b-0353-43a8-b96f-295bc6cce0a3"/>
         </a>
           <h4 style="margin-top: 1rem;">Cynthia <br>Olocco</h4>
         <div style='display: flex; flex-direction: column'>
@@ -173,10 +178,10 @@
 <table align='center'>
   <tr>
     <td align='center'>
-      <div>   
+      <div>
        <h4>Frontend</h4>
         <a href="https://www.linkedin.com/in/facundomarcobacigalupo/" target="_blank" rel="author">
-          <img width="110" src="https://media.licdn.com/dms/image/D4D35AQHsgNvGvxuR2g/profile-framedphoto-shrink_800_800/0/1700695322101?e=1722636000&v=beta&t=7SCBF1MmESBKBkMrq5XoO5HsqTo4OgMt_FrtdUIk1uQ"/>
+          <img width="110" src="https://github.com/user-attachments/assets/316ec154-23d6-42e0-8e24-3593baa6414c"/>
         </a>
           <h4 style="margin-top: 1rem;">Facundo <br>Bacigalupo</h4>
           <div style='display: flex; flex-direction: column'>
@@ -190,7 +195,7 @@
       <div>
        <h4>Frontend</h4>
         <a href="https://www.linkedin.com/in/camilomartinez01/" target="_blank" rel="author">
-          <img width="110" src="https://media.licdn.com/dms/image/D4E35AQHcXcpH41ljFA/profile-framedphoto-shrink_800_800/0/1720022208619?e=1722639600&v=beta&t=0dTbfvSpzcAYN3b2vHQnfvXBgBtOmuGJ3SMpQWY8c_s"/>
+          <img width="110" src="https://github.com/user-attachments/assets/7d1265f4-0b6c-417a-a254-3957182efb25"/>
         </a>
           <h4 style="margin-top: 1rem;">Camilo <br>Martinez</h4>
         <div>
@@ -218,7 +223,7 @@
       <div>
        <h4>Backend</h4>
         <a href="https://porfolio-matias-acevedo.web.app/" target="_blank" rel="author">
-          <img width="110" src="https://avatars.githubusercontent.com/u/109118183?v=4"/>
+          <img width="110" src="https://github.com/user-attachments/assets/6da9d81a-4814-499b-b5bf-a31ab7fde797"/>
         </a>
           <h4 style="margin-top: 1rem;">Matias <br>Acevedo</h4>
         <div style='display: flex; flex-direction: column'>
@@ -238,8 +243,16 @@
 </div>
 
 <div align='center'>
-   <img src="https://github.com/user-attachments/assets/fabf69a8-43eb-4fb7-86a0-815ffa574794" alt="mini" >
-   <img src="https://github.com/user-attachments/assets/40751e74-8adc-4415-b4d9-0caffd8adaba" alt="mini" >
+   <img src="https://github.com/user-attachments/assets/d95c666e-19d8-436a-af03-4119b3583ff7" alt="mini" width="666" height="500">
+</div>
+
+<div align='center'>
+   <img src="https://github.com/user-attachments/assets/51dc5524-62bb-4a3e-bb05-b3a016df7a7f" alt="mini" width="666" height="500">
+</div>
+
+<div align='center'>
+   <img src="https://github.com/user-attachments/assets/a4adc243-979f-40c1-956d-da55642ff0c1" alt="mini" >
+   <img src="https://github.com/user-attachments/assets/39681bab-6782-4bbb-9ede-fc50a72f643a" alt="mini" >
 </div>
 
 <br>
