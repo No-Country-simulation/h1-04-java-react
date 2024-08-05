@@ -10,12 +10,14 @@ import {
   translateAppointmentType,
   translateSpecialty,
 } from "../../../utils/hourMapping";
+import SuccesModal from "../../Modals/SucessModal";
 import DoctorContext from "../../../context/DoctorContext";
 const PreviousConsultation = () => {
   const [activeTab, setActiveTab] = useState("Motivo de la cita");
   const location = useLocation();
   const { patient } = location.state || {};
   const [isOpen, setIsOpen] = useState([]);
+  const [showVerificando, setShowVerificando] = useState(false);
 
   const { fetchPatientById, authData } = useContext(DoctorContext);
   const [patientData, setPatientData] = useState([]);
@@ -136,15 +138,23 @@ const PreviousConsultation = () => {
             </>
           )}
         </div>
+        <div className='footer-buttons'>
+          <button onClick={() => setShowVerificando(true)}>
+            Historia clínica
+          </button>
+          <button onClick={() => setShowVerificando(true)}>Medicamentos</button>
+        </div>
         <Link to={"/consultation"}>
           <button className='start-consultation'>Iniciar consulta</button>
         </Link>
       </section>
-
-      {/* <div className='footer-buttons'>
-        <button>Historia clínica</button>
-        <button>Medicamentos</button>
-      </div> */}
+      <SuccesModal
+        show={showVerificando}
+        onClose={() => setShowVerificando(false)}
+        none
+        title='No disponible'
+        text='Estamos trabajando en esta característica'
+      />
     </div>
   );
 };

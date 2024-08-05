@@ -1,29 +1,44 @@
+import React, { useContext, useEffect, useState } from "react";
 import useSpeechRecognition from "../../../hooks/useSpeechRecognition";
 import speak from "../../../Assets/Imgs/speak.png";
-import { useContext, useEffect } from "react";
 import DoctorContext from "../../../context/DoctorContext";
 
 export default function SpeechRecognition() {
   const {
-    text,
+    text: recognizedText,
     listening,
     startListening,
     stopListening,
     hasRecognitionSupport,
   } = useSpeechRecognition();
 
+  const [text, setText] = useState("");
+
   const { setRecognizedText } = useContext(DoctorContext);
+
   useEffect(() => {
-    setRecognizedText(text);
-  }, [text, setRecognizedText]);
+    if (recognizedText) {
+      setText((prevText) => prevText + " " + recognizedText);
+      setRecognizedText((prevText) => prevText + " " + recognizedText);
+    }
+  }, [recognizedText, setRecognizedText]);
+
+  const handleChange = (event) => {
+    setText(event.target.value);
+    setRecognizedText(event.target.value);
+  };
+
   const bgColor = listening ? "bg-primary" : "bg-secondary";
+
   return (
-    <div>
+    <>
       {hasRecognitionSupport ? (
-        <div className='flex flex-col'>
-          <div className='border-2 bg-white text-start  border-black rounded resize-none w-96 mt-3 min-h-[15vh] mb-4'>
-            {text}
-          </div>
+        <div className='flex flex-col w-full'>
+          <textarea
+            value={text}
+            onChange={handleChange}
+            className='border-2 bg-white text-start border-black rounded resize-none mt-3 min-h-[15vh] mb-4'
+          ></textarea>
 
           <div className='flex-col flex justify-center items-center'>
             <button onClick={startListening}>
@@ -40,6 +55,6 @@ export default function SpeechRecognition() {
       ) : (
         <h1>browser</h1>
       )}
-    </div>
+    </>
   );
 }

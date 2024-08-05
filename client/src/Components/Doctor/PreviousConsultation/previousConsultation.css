@@ -110,6 +110,7 @@
 .footer-buttons {
   display: flex;
   justify-content: space-between;
+  gap: 10px;
 }
 .footer-buttons button {
   padding: 10px;
@@ -118,7 +119,7 @@
   background-color: #d9f2ff;
   color: #0087d0;
   font-weight: 500;
-  width: 45%;
+  width: 100%;
 }
 
 .start-consultation {
