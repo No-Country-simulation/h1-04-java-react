@@ -106,7 +106,7 @@
 
 
  <div align='center'>
-  <a href="https://www.youtube.com/watch?v=CzAgxxslZu8" target="_blank" rel="noopener">
+  <a href="https://youtu.be/RtNjyRXNGm8" target="_blank" rel="noopener">
     <img src="https://github.com/user-attachments/assets/95a4cb0c-9a31-4bda-a6d5-7e48764cdcaf" alt="mini" width="670" height="325" >
   </a>
 </div>
