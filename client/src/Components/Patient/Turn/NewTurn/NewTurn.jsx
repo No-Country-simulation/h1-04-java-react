@@ -4,12 +4,17 @@ import { createAppointment } from "../../../../services/appointmentService"; // 
 import check from "../../../../Assets/Imgs/checkOrange.svg";
 import DoctorContext from "../../../../context/DoctorContext";
 import SuccesModal from "../../../../Components/Modals/SucessModal";
-import turns from "../../../../Assets/Imgs/turns.png"
-import checkImgSuccess from "../../../../Assets/Imgs/checkImgSuccess.svg"
-import checkImgError from "../../../../Assets/Imgs/checkImgVerify.svg"
-import checkImgVerify from "../../../../Assets/Imgs/checkImgError.svg"
-import anotherArrowLeft from "../../../../Assets/Imgs/otraArrowLeft.png"
-
+import turns from "../../../../Assets/Imgs/turns.png";
+import checkImgSuccess from "../../../../Assets/Imgs/checkImgSuccess.svg";
+import checkImgError from "../../../../Assets/Imgs/checkImgVerify.svg";
+import checkImgVerify from "../../../../Assets/Imgs/checkImgError.svg";
+import anotherArrowLeft from "../../../../Assets/Imgs/otraArrowLeft.png";
+import {
+  formatHour,
+  translateDay,
+  translateAppointmentType,
+  translateSpecialty,
+} from "../../../../utils/hourMapping";
 const daysOfWeek = [
   "MONDAY",
   "TUESDAY",
@@ -19,27 +24,6 @@ const daysOfWeek = [
   "SATURDAY",
   "SUNDAY",
 ];
-
-const hourMappings = {
-  SEVEN_AM: "7:00 AM",
-  EIGHT_AM: "8:00 AM",
-  NINE_AM: "9:00 AM",
-  TEN_AM: "10:00 AM",
-  ELEVEN_AM: "11:00 AM",
-  TWELVE_PM: "12:00 PM",
-  ONE_PM: "1:00 PM",
-  TWO_PM: "2:00 PM",
-  THREE_PM: "3:00 PM",
-  FOUR_PM: "4:00 PM",
-  FIVE_PM: "5:00 PM",
-  SIX_PM: "6:00 PM",
-  SEVEN_PM: "7:00 PM",
-  EIGHT_PM: "8:00 PM",
-  NINE_PM: "9:00 PM",
-  TEN_PM: "10:00 PM",
-  ELEVEN_PM: "11:00 PM",
-  TWELVE_AM: "12:00 AM",
-};
 
 const NewTurn = () => {
   const [selectedEspecialidad, setSelectedEspecialidad] = useState("");
@@ -75,14 +59,20 @@ const NewTurn = () => {
     "POSTNATAL_CARE", // Cuidado postnatal
   ];
 
-  const { doctors, loading, error: doctorError, authData } = useContext(DoctorContext);
-  
+  const {
+    doctors,
+    loading,
+    error: doctorError,
+    authData,
+  } = useContext(DoctorContext);
+
   const uniqueSpecialties =
     doctors && doctors.doctors
       ? Array.from(
           new Set(doctors.doctors.flatMap((doctor) => doctor.specialties))
         )
       : [];
+  console.log(uniqueSpecialties);
 
   const professionals = {};
   if (doctors && doctors.doctors) {
@@ -129,8 +119,6 @@ const NewTurn = () => {
     setAvailableHours([]); // Reset available hours when selecting a new professional
   };
 
-  const formatHour = (hour) => hourMappings[hour] || hour;
-
   const handleCreateAppointment = async () => {
     if (!selectedDay || !selectedHour || !selectedTipoCita || !doctor) {
       setError("Please select all fields.");
@@ -163,15 +151,16 @@ const NewTurn = () => {
   }
 
   if (loading) return <div className='text-center mt-10'>Loading...</div>;
-  if (doctorError) return <div className='text-center mt-10'>{doctorError}</div>;
+  if (doctorError)
+    return <div className='text-center mt-10'>{doctorError}</div>;
 
   return (
     <section className='m-4'>
-      <div className="flex items-center text-center mb-5 text-secondary">
-        <img src={turns} alt="turno img" className="w-8 h-8" />
+      <div className='flex items-center text-center mb-5 text-secondary'>
+        <img src={turns} alt='turno img' className='w-8 h-8' />
         <h2 className='text-xl font-bold mb-4 mt-3 ml-2'>Turnos</h2>
       </div>
-      
+
       {/* Selección de Especialidad */}
       <label className='block mb-4'>
         <input
@@ -185,7 +174,7 @@ const NewTurn = () => {
           <h3 className='flex h-8 cursor-pointer items-center font-bold'>
             {selectedEspecialidad ? (
               <div className='flex justify-between items-center w-full'>
-                <p>{selectedEspecialidad}</p>
+                <p>{translateSpecialty(selectedEspecialidad)}</p>
                 <img className='h-4' src={check} alt='' />
               </div>
             ) : (
@@ -214,7 +203,9 @@ const NewTurn = () => {
                   className='mr-2'
                   onChange={() => setSelectedEspecialidad(esp)}
                 />
-                <label className="cursor-pointer">{esp}</label>
+                <label className='cursor-pointer'>
+                  {translateSpecialty(esp)}
+                </label>
               </div>
             ))}
           </div>
@@ -259,7 +250,7 @@ const NewTurn = () => {
                     className='mr-2'
                     onChange={() => setSelectedProfesional(prof)}
                   />
-                  <label className="cursor-pointer">{prof}</label>
+                  <label className='cursor-pointer'>{prof}</label>
                 </div>
               ))}
           </div>
@@ -280,7 +271,7 @@ const NewTurn = () => {
           <h3 className='flex h-8 cursor-pointer items-center font-bold'>
             {selectedTipoCita ? (
               <div className='flex justify-between items-center w-full'>
-                <p>{selectedTipoCita}</p>
+                <p>{translateAppointmentType(selectedTipoCita)}</p>
                 <img className='h-4' src={check} alt='' />
               </div>
             ) : (
@@ -307,17 +298,21 @@ const NewTurn = () => {
                     className='mr-2'
                     onChange={() => setSelectedTipoCita(tipo)}
                   />
-                  <label className="cursor-pointer">{tipo}</label>
+                  <label className='cursor-pointer'>
+                    {translateAppointmentType(tipo)}
+                  </label>
                 </div>
               ))}
           </div>
         </span>
       </label>
-      
+
       {/* Selección de Día */}
       {selectedTipoCita && (
         <div className='block mb-4'>
-          <h3 className='font-bold mb-2 text-secondaryDark'>Días Disponibles</h3>
+          <h3 className='font-bold mb-2 text-secondaryDark'>
+            Días Disponibles
+          </h3>
           <div className='flex space-x-2'>
             {daysOfWeek.map((day, index) =>
               doctor.workdays.includes(day) ? (
@@ -333,18 +328,20 @@ const NewTurn = () => {
                     updateAvailableHours(doctor, day);
                   }}
                 >
-                  {day}
+                  {translateDay(day)}
                 </button>
               ) : null
             )}
           </div>
         </div>
       )}
-      
+
       {/* Mostrar Horas Disponibles */}
       {selectedDay && availableHours.length > 0 && (
         <div className='block mb-4 cursor-pointer'>
-          <h3 className='font-bold mb-2 text-secondaryDark'>Horario Disponible</h3>
+          <h3 className='font-bold mb-2 text-secondaryDark'>
+            Horario Disponible
+          </h3>
           <div className='flex flex-wrap gap-2 max-w-[500px]'>
             {availableHours.map((hour, index) => (
               <div
@@ -362,7 +359,7 @@ const NewTurn = () => {
           </div>
         </div>
       )}
-      
+
       {/* Botón para Crear Cita */}
       {selectedHour && (
         <button
@@ -372,13 +369,13 @@ const NewTurn = () => {
           Confirmar
         </button>
       )}
-      
-      <div className="backContainer">
-        <button className="back" onClick={() => navigate(-1)}>
-          <img src={anotherArrowLeft} alt="back" />
+
+      <div className='backContainer'>
+        <button className='back' onClick={() => navigate(-1)}>
+          <img src={anotherArrowLeft} alt='back' />
         </button>
       </div>
-      
+
       {/* Mensaje Verificando */}
       {/* <SuccesModal
         checkImg={checkImgVerify}
@@ -386,7 +383,7 @@ const NewTurn = () => {
         onClose={() => closeModal()}
         check
       /> */}
-      
+
       {/* Mensaje Éxito */}
       {success && (
         <SuccesModal
@@ -398,7 +395,7 @@ const NewTurn = () => {
           check
         />
       )}
-      
+
       {/* Mensaje Error */}
       {/* {error && (
         <SuccesModal

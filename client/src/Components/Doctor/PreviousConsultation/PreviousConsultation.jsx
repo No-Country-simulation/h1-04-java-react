@@ -1,30 +1,37 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import profileDoctor from "../../../Assets/Imgs/profileDoctor.png";
 import DoctorHeader from "../DoctorHeader/DoctorHeader";
 import "./previousConsultation.css";
 
 const PreviousConsultation = () => {
   const [activeTab, setActiveTab] = useState("Motivo de la cita");
+  const location = useLocation();
+  const { patient } = location.state || {};
+
+  console.log(patient);
 
   return (
     <div className='previous-consultation'>
       <DoctorHeader text={"Pre-Consulta"} />
-      
+
       <section className='boxCotent'>
         <div className='header'>
           <div>
-            <img src={profileDoctor} alt='Laura Gomez' />
+            <img
+              src={profileDoctor}
+              alt={patient?.fullnamePatient || "Doctor"}
+            />
           </div>
           <div className='detailsHeader'>
-            <h2>Laura Gomez</h2>
-            <p>Consulta por control</p>
+            <h2>{patient?.name || "Nombre del Doctor"}</h2>
+            <p>{patient?.description || "Descripción de la consulta"}</p>
           </div>
         </div>
         <div>
           <div className='appointment-info'>
-            <p>Lunes 9 de julio</p>
-            <p>8:00 - 9:00AM</p>
+            <p>{patient?.date || "Fecha de la consulta"}</p>
+            <p>{patient?.time || "Hora de la consulta"}</p>
           </div>
           <div className='buttons'>
             <button>Reagendar</button>
@@ -32,7 +39,7 @@ const PreviousConsultation = () => {
           </div>
         </div>
       </section>
-      
+
       <section className='boxCotent'>
         <div className='tabs'>
           <button

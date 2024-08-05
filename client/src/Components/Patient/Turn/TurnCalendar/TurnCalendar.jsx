@@ -4,7 +4,7 @@ import { getAppointmentById } from "../../../../services/appointmentService";
 import Calendar from "../../../../helpers/atoms/Calendar";
 import Turns from "../Turns";
 import DoctorContext from "../../../../context/DoctorContext";
-
+import { translateDay } from "../../../../utils/hourMapping";
 export default function TurnCalendar() {
   const [appointments, setAppointments] = useState([]);
   const [error, setError] = useState(null);
@@ -43,35 +43,42 @@ export default function TurnCalendar() {
   if (loading || authLoading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
 
+  // Group appointments by day
+  const groupedAppointments = appointments.reduce((acc, appointment) => {
+    const { appointmentDay } = appointment;
+    if (!acc[appointmentDay]) {
+      acc[appointmentDay] = [];
+    }
+    acc[appointmentDay].push(appointment);
+    return acc;
+  }, {});
+
   return (
     <div className='mt-0 flex flex-col'>
       <Calendar />
-      {appointments.length > 0 ? (
-        appointments.map((appointment) => (
-          <Turns
-            key={appointment.appointmentId}
-            doctor={appointment.fullnameDoctor}
-            time={appointment.appointmentHour}
-            href={"/new-turn"}
-            type={appointment.typeOfAppointment}
-          />
+      <button className='rounded-full mb-3 w-full flex justify-center items-center pb-1 bg-primary border-2 text-xl font-bold text-white'>
+        <Link to={"/new-turn"}>Nuevo turno</Link>
+      </button>
+      {Object.keys(groupedAppointments).length > 0 ? (
+        Object.keys(groupedAppointments).map((day) => (
+          <div key={day} className='mb-6'>
+            <h3 className='text-lg font-extrabold ml-4 text-orangeColor  mb-2'>
+              {translateDay(day)}...
+            </h3>
+            {groupedAppointments[day].map((appointment) => (
+              <Turns
+                key={appointment.appointmentId}
+                doctor={appointment.fullnameDoctor}
+                time={appointment.appointmentHour}
+                href={"/view-turn"}
+                type={appointment.typeOfAppointment}
+              />
+            ))}
+          </div>
         ))
       ) : (
         <p>No appointments found</p>
       )}
-      <button className='rounded-full self-end mr-5 mt-5 mb-5 flex justify-center items-center pb-1 border-primary text-primary border-2 w-10 h-10 text-3xl bg-white'>
-        <Link to={"/new-turn"}>+</Link>
-      </button>
-      {/* <div className='App'>
-        <button onClick={() => setShowVerificando(true)} className='btn'>
-          Verificando
-        </button>
-
-        <SuccesModal
-          show={showVerificando}
-          onClose={() => setShowVerificando(false)}
-        />
-      </div> */}
     </div>
   );
 }
