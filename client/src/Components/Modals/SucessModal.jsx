@@ -26,6 +26,7 @@ const VerificandoModal = ({
     >
       <div className='bg-white border-2 max-w-[80%] border-secondary rounded-lg p-6 py-10  max-h-[50%] flex items-center justify-center'>
         <div className='text-center'>
+          <button onClick={() => onClose()}>x</button>
           <div className='mb-5  flex justify-center'>
             {check ? (
               <div className='bg-secondary rounded-full w-20 h-20 flex justify-center items-center '>
