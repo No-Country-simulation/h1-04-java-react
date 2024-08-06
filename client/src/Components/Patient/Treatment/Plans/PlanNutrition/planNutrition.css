@@ -1,0 +1,253 @@
+.weekContainer{
+    font-size: 13px;
+}
+
+.weekContainer img{
+    width: 20px;
+    height: 20px;
+}
+
+
+.feedBack{
+    color: #191919;
+    background-color: #EA526F1A;
+    padding: 15px;
+    border-radius: 10px;
+    border: 3px solid #EA526F;
+    margin-bottom: 20px;
+}
+
+.feedBack h3{
+    font-weight: 600;
+    text-align: center;
+}
+
+.feedBackImgs{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.feedBackImgs img{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 35px;
+    height: 35px;
+}
+
+.feedBack textarea{
+    background-color: #EA526F;
+    color: #FFF;
+    height: 40px;
+    width: 100%;
+    border-radius: 5px;
+    padding: 5px;
+    resize: none;
+}
+
+.feedBackButtons{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10px;
+}
+.feedBackButtons button{
+    border-radius: 20px;
+    background-color: #EA526F;
+    padding: 10px;
+    font-weight: 700;
+}
+
+
+
+.stats{
+    background-color: #25CED1;
+    color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.progress-bar-container {
+    background-color: #fff;
+    width: 100%;
+    overflow: hidden;
+    height: 10px;
+    margin: 5px 0;
+}
+
+.progress-bar {
+    background-color: #095D5F;
+    height: 100%;
+}
+
+
+
+.details{
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: 2px solid #25CED1;
+    border-radius: 10px;
+}
+
+.detailsTitle{
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    font-size: 18px;
+    color: #25CED1;
+}
+
+.recommendation{
+    font-size: 14px;
+}
+
+
+.detailsContainer {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+.detailsContainer img {
+    width: 45px;
+    height: 45px;
+    border-radius: 20px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+.detailsContainer section img {
+    border: 2px solid #EA526F;
+    border-radius: 50px;
+}
+
+.detailsContentWrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.detailsContent {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    font-size: 15px;
+    width: 100%;
+}
+
+.detailsDescription {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.detailsDescription p {
+    margin: 0;
+    font-size: 13px;
+}
+.detailsDescription img {
+    width: 15px;
+    height: 15px;
+    object-fit: cover;
+    margin-right: 0px;
+}
+
+
+
+
+.container {
+    position: relative;
+}
+
+.mainContainer {
+    transition: filter 0.3s;
+}
+
+.mainContainer.blurred {
+    filter: blur(5px);
+}
+
+.viewPopUp {
+    background-color: #fae1e6;
+    border: 2px solid #EA526F;
+    border-radius: 10px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    max-width: 450px;
+    width: 90%;
+}
+
+.popUpContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.popUpContent h2 {
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #EA526F;
+}
+.popUpContent p {
+    margin-bottom: 20px;
+}
+
+.popUpContent article img{
+    width: 450px;
+    max-height: 150px;
+    object-fit: cover;
+    object-position: center;
+    border: 2px solid #EA526F;
+    border-radius: 20px;
+}
+
+.gram {
+    background-color: #EA526F;
+    color: #FCEADE;
+    padding-right: 5px;
+    padding-left: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 25px;
+    width: 100%;
+    flex-wrap: wrap;
+    font-weight: 500;
+    font-size: 15px;
+}
+.gram div {
+    margin-left: 5px;
+    margin-right: 5px;
+    flex: 1 1 auto;
+    box-sizing: border-box;
+}
+.gram p {
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+
+.btn {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+.btn button {
+    color: #1A1A1A;
+    background-color: #EA526F;
+    border-radius: 30px;
+    padding: 10px;
+    margin-top: 15px;
+    width: 100%;
+    font-weight: 500;
+    font-size: 17px;
+}

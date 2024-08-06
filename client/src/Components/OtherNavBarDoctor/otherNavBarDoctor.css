@@ -1,0 +1,80 @@
+.otherContainerOtherNavBar {
+    position: relative;
+    width: 100%;
+}
+
+.icon-container {
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+.menu-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.sidebarDoctor {
+    padding-left: 50px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 100vh;
+    background-color: #FFF;
+    z-index: 999;
+    transition: transform 0.3s ease;
+    transform: translateX(0);
+    display: flex;
+    flex-direction: column;
+}
+
+
+.sidebar-open {
+    transform: translateX(0);
+}
+
+.sidebar-closed {
+    transform: translateX(-100%);
+}
+
+.containerImgNavBar img {
+    width: 200px;
+    margin-top: 50px;
+}
+
+.buttonsOtherNavBarDoctor {
+    color: #000;
+    font-weight: 700;
+    font-size: 15px;
+    transition: filter 0.8s ease;
+}
+.buttonsOtherNavBarDoctor img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    filter: grayscale(50%) brightness(0%) contrast(100%);
+    object-fit: cover;
+    object-position: center;
+}
+.buttonsOtherNavBarDoctor:hover img {
+    filter: invert(26%) sepia(100%) saturate(5000%) hue-rotate(200deg);
+}
+.buttonsOtherNavBarDoctor p:hover {
+    color: rgb(59 130 246);
+    border-bottom: 1px solid rgb(59 130 246);
+}
+
+
+.sidebar-content {
+    flex: 1;
+}
+
+.sidebar-footer {
+    padding: 1rem;
+    margin-bottom: 50px;
+}

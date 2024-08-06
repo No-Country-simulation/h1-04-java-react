@@ -1,0 +1,223 @@
+.weekContainer {
+  font-size: 13px;
+}
+
+.weekContainer img {
+  width: 20px;
+  height: 20px;
+}
+
+.feedBack {
+  color: #191919;
+  background-color: #d9d9d9;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.feedBack h3 {
+  font-weight: 600;
+  text-align: center;
+}
+
+.feedBackImgs {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.feedBackImgs img {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 35px;
+  height: 35px;
+}
+
+.feedBack textarea {
+  background-color: #b1b1b1;
+  height: 40px;
+  width: 100%;
+  border-radius: 5px;
+  padding: 5px;
+  resize: none;
+}
+
+.containerInsideContent {
+  border: 3px solid #25ced1;
+  background-color: white;
+  margin-top: -5px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  padding: 20px;
+}
+.containerInsideContent h1 {
+  font-size: 25px;
+  font-weight: 600;
+  color: #25ced1;
+}
+.containerInsideContent p {
+  font-size: 15px;
+}
+.containerInsideContent img {
+  height: 300px;
+  width: 90%;
+  border: 2px solid #25ced1;
+  border-radius: 20px;
+  margin: auto;
+  margin-top: 20px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.arrow-rotate {
+  transform: rotate(90deg);
+  transition: transform 0.3s ease;
+}
+
+.more-arrow-rotate {
+  transform: rotate(270deg);
+  transition: transform 0.3s ease;
+}
+.more-more-arrow-rotate {
+  transform: rotate(360deg);
+  transition: transform 0.3s ease;
+}
+
+.buttonOk {
+  display: flex;
+  justify-content: flex-end;
+}
+.buttonOk button {
+  color: #1a1a1a;
+  background-color: #25ced1;
+  border-radius: 30px;
+  padding: 10px;
+  margin-top: 30px;
+  width: 100%;
+  font-weight: 700;
+  font-size: 17px;
+}
+
+.containerInsideContentStudies {
+  border: 3px solid #25ced1;
+  color: #1e999b;
+  border-radius: 10px;
+  margin-top: -5px;
+  margin-bottom: 30px;
+  padding: 10px;
+}
+
+#detailsContentImg {
+  width: 15px;
+  height: 15px;
+  object-fit: cover;
+  margin-right: 0px;
+  margin-bottom: 10px;
+}
+
+.exerciseList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.exerciseItem {
+  background-color: #ffffff;
+  border: 2px solid #25ced1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.exerciseHeader {
+  background-color: #25ced1;
+  color: #ffffff;
+  padding: 5px;
+  padding-left: 20px;
+  font-size: 600;
+  font-size: 20px;
+}
+
+.containeExerciser {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.exerciseContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-bottom: 2px solid #25ced1;
+  padding-bottom: 5px;
+}
+.exerciseContent h2 {
+  flex-grow: 1;
+  margin-left: 10px;
+  font-size: 17px;
+  font-weight: 600;
+}
+.exerciseContent img {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.exerciseDetails {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.containerMedication {
+  background-color: #fafafa;
+  border: 2px solid #25ced1;
+  border-radius: 5px;
+  margin-top: -5px;
+  margin-bottom: 30px;
+  border-radius: 5px;
+  padding: 20px;
+}
+.containerMedication div {
+  margin-left: 5px;
+  margin-right: 5px;
+  flex: 1 1 auto;
+  box-sizing: border-box;
+  font-size: 20px;
+}
+.containerMedication section {
+  margin: 20px;
+  font-weight: 600;
+  background-color: #25ced1;
+  border-radius: 10px;
+  padding: 10px;
+  color: #fff;
+}
+.containerMedication section p {
+  color: #fff;
+}
+.containerMedication section span {
+  color: #152149;
+  font-size: 35px;
+}
+
+.undo {
+  display: flex;
+  align-items: center;
+}
+.undo img {
+  border: 2px solid #25ced1;
+  border-radius: 50px;
+}
+.undo h1 {
+  font-size: 25px;
+  font-weight: 700;
+  color: #25ced1;
+}
+.undo div {
+  margin-left: 10px;
+  font-size: 20px;
+}
+.undo p {
+  font-size: 14px;
+  font-weight: 500;
+}

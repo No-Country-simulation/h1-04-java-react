@@ -1,0 +1,135 @@
+.previous-consultation {
+  margin: 20px;
+  margin-bottom: 100px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.backPage {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+}
+.backPage img {
+  width: 40px;
+  height: 40px;
+}
+.backPage p {
+  margin-left: 15px;
+  font-weight: 600;
+}
+
+.boxCotent {
+  box-shadow: 0px 0px 3px #1616168a;
+  margin-bottom: 40px;
+  border-radius: 5px;
+  padding: 15px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.header img {
+  border-radius: 30%;
+  width: 70px;
+  height: 70px;
+}
+.detailsHeader {
+  margin-left: 15px;
+  font-weight: 500;
+}
+.detailsHeader h2 {
+  font-size: 18px;
+}
+
+.appointment-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  font-weight: 500;
+  padding: 15px;
+  background-color: #ede1ff;
+  border-radius: 5px;
+  width: 100%;
+}
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+  gap: 10px;
+}
+.buttons button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  width: 100%;
+  padding: 10px;
+  background-color: #e6e4e3;
+  color: #0087d0;
+}
+
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 16px;
+  border: 1px solid #009ff5;
+  border-radius: 5px;
+}
+.tabs button {
+  flex: 1;
+  padding: 15px;
+  cursor: pointer;
+  font-weight: 500;
+}
+.tabs .active {
+  color: #009ff5;
+  background-color: #d9f2ff;
+  border-radius: 10px;
+  transition: all 0.3s;
+}
+.content {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  background-color: #fdfdfd;
+}
+.content h3 {
+  font-weight: 500;
+  margin-top: 10px;
+}
+.content p {
+  margin-bottom: 5px;
+}
+
+.footer-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.footer-buttons button {
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #d9f2ff;
+  color: #0087d0;
+  font-weight: 500;
+  width: 100%;
+}
+
+.start-consultation {
+  background-color: #2196f3;
+  color: #fff;
+  padding: 10px;
+  margin-top: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  width: 100%;
+  margin-bottom: 10px;
+}

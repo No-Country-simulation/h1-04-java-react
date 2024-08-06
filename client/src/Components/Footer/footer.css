@@ -1,0 +1,77 @@
+.containerFooter {
+  background-color: #25CED1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  position: relative;
+}
+.containerFooter img {
+  width: 25px;
+  height: 25px;
+  margin: auto;
+}
+.containerFooter p {
+  font-size: 12px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.urgency {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  position: relative;
+}
+.urgency img {
+  width: 55px;
+  height: 55px;
+  position: absolute;
+  top: -30px;
+}
+.urgency p {
+  margin: 25px 0 0 0;
+  position: relative;
+}
+
+
+
+.viewPopUpFooter {
+  background-color: #fae1e6;
+  border: 2px solid #EA526F;
+  border-radius: 10px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  box-shadow: 0px 0px 1000px rgb(0, 0, 0);
+  z-index: 999;
+  max-width: 450px;
+  height: 60vh;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popUpContentFooter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.popUpContentFooter h2 {
+  font-weight: 600;
+  font-size: 20px;
+  margin-top: 40px;
+}
+.popUpContentFooter img{
+  width: 100px;
+  height: 100px;
+}

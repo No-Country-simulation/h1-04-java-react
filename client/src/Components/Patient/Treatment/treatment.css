@@ -1,0 +1,115 @@
+.titleContainer {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #25ced1;
+}
+.titleContainer img {
+  width: 25px;
+  height: 25px;
+  margin-left: 10px;
+  margin-right: 5px;
+}
+
+.planes {
+  background-color: #25ced1;
+  color: #000;
+  margin: auto;
+  width: 90%;
+  padding: 5px;
+  padding-left: 15px;
+  padding-right: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10px;
+  box-shadow: #0f0f0f65 0px 0px 4px;
+}
+.planes h2 {
+  font-weight: 600;
+  font-size: 18px;
+}
+.planes p {
+  font-size: 14px;
+}
+.planes img {
+  width: 25px;
+  height: 25px;
+  margin: 5px;
+}
+
+.optionsContainer {
+  width: 90%;
+  margin: auto;
+  padding-bottom: 60px;
+}
+
+.option {
+  border: 3px solid #ff8a5b;
+  border-radius: 10px;
+  background-color: white;
+  color: #ff8a5b;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.container {
+  position: relative;
+  padding-bottom: 40px;
+}
+
+.containerComponents {
+  width: 90%;
+  margin: auto;
+  padding-bottom: 110px;
+}
+
+.backContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 40px;
+  margin-right: 20px;
+}
+.back {
+  padding: 6px;
+  border: 2px solid #ea526f;
+  border-radius: 30px;
+  background-color: #fff;
+}
+.back img {
+  width: 20px;
+  height: 20px;
+}
+
+.navigationButtons {
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
+.navigationButtons button {
+  background-color: #25ced1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  font-weight: 700;
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 5px;
+}
+
+.navigationButtons img {
+  width: 16px;
+  height: 16px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.orientationImg img {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
