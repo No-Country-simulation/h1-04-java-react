@@ -14,7 +14,6 @@ const useSpeechRecognition = () => {
   useEffect(() => {
     if (!recognition) return;
     recognition.onresult = (event) => {
-      console.log(event, "aaaa");
       setText(event.results[0][0].transcript);
       recognition.stop();
       setListening(false);

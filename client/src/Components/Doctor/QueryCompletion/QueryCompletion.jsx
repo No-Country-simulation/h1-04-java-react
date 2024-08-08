@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import DoctorContext from "../../../context/DoctorContext";
 import profileDoctor from "../../../Assets/Imgs/profileDoctor.png";
 import DoctorHeader from "../DoctorHeader/DoctorHeader";
@@ -47,16 +47,16 @@ const QueryCompletion = () => {
       </section>
 
       <section className='footer-query-buttons'>
-        <a href='/doctorCalendar'>
+        <Link to='/doctorCalendar' className='B'>
           <img src={agendarTurno} alt='AgendarTurno' />
           Agendar turno
-        </a>
-        <a href='/doctorRecipe'>
+        </Link>
+        <Link to='/doctorRecipe' className='A'>
           <img src={agregarReceta} alt='agregarReceta' />
           Agregar receta
-        </a>
+        </Link>
       </section>
-
+      {/* 
       <section className='writeTextQuery'>
         <p>Indicaciones</p>
         <textarea
@@ -66,7 +66,7 @@ const QueryCompletion = () => {
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
         ></textarea>
-      </section>
+      </section> */}
 
       <button className='start-consultation' onClick={handlePopUp}>
         Enviar

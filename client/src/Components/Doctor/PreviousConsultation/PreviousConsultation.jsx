@@ -1,5 +1,4 @@
-import { useContext, useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import profileDoctor from "../../../Assets/Imgs/profileDoctor.png";
 import DoctorHeader from "../DoctorHeader/DoctorHeader";
 import "./previousConsultation.css";
@@ -8,10 +7,11 @@ import {
   formatHour,
   translateDay,
   translateAppointmentType,
-  translateSpecialty,
 } from "../../../utils/hourMapping";
 import SuccesModal from "../../Modals/SucessModal";
 import DoctorContext from "../../../context/DoctorContext";
+import { useContext, useEffect, useState } from "react";
+
 const PreviousConsultation = () => {
   const [activeTab, setActiveTab] = useState("Motivo de la cita");
   const location = useLocation();
@@ -23,8 +23,6 @@ const PreviousConsultation = () => {
   const [patientData, setPatientData] = useState([]);
   const [error, setError] = useState(null);
   const [dataAppointments, setDataAppointments] = useState([]);
-
-  // console.log(patient);
 
   useEffect(() => {
     const handleGetAppointment = async () => {
@@ -39,13 +37,13 @@ const PreviousConsultation = () => {
         throw new Error("Failed to fetch appointments");
       }
     };
-    // console.log(dataAppointments);
 
     handleGetAppointment();
   }, [authData]);
+
   useEffect(() => {
     const loadPatientData = async () => {
-      if (authData) {
+      if (authData && patient) {
         try {
           const data = await fetchPatientById(patient.id);
           setPatientData(data.patient.treatments);
@@ -60,7 +58,13 @@ const PreviousConsultation = () => {
     };
 
     loadPatientData();
-  }, []);
+  }, [authData, patient]);
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/consultation", { state: { patient: patient } });
+  };
 
   return (
     <div className='previous-consultation'>
@@ -76,7 +80,7 @@ const PreviousConsultation = () => {
           </div>
           <div className='detailsHeader'>
             <h2>{patient?.name || "Nombre del Doctor"}</h2>
-            <p>
+            <p className='text-[#5A5555]'>
               {translateAppointmentType(patient?.description) ||
                 "Descripción de la consulta"}
             </p>
@@ -87,67 +91,49 @@ const PreviousConsultation = () => {
             <p>{translateDay(patient?.date) || "Fecha de la consulta"}</p>
             <p>{formatHour(patient?.time) || "Hora de la consulta"}</p>
           </div>
-          <div className='buttons'>
-            <button>Reagendar</button>
-            <button>Cancelar</button>
+          <div className='flex justify-between '>
+            <button
+              className='text-blueColor font-bold'
+              onClick={() => setShowVerificando(true)}
+            >
+              Reagendar
+            </button>
+            <button
+              className='text-[#636F76] font-bold'
+              onClick={() => setShowVerificando(true)}
+            >
+              Ver paciente
+            </button>
           </div>
         </div>
       </section>
 
-      <section className='boxCotent bg-white'>
-        <div className='tabs'>
-          <button
-            className={activeTab === "Motivo de la cita" ? "active" : ""}
-            onClick={() => setActiveTab("Motivo de la cita")}
-          >
-            Motivo de la cita
-          </button>
-          <button
-            className={activeTab === "Tratamiento" ? "active" : ""}
-            onClick={() => setActiveTab("Tratamiento")}
-          >
-            Tratamiento
-          </button>
+      <section className='boxCotent  bg-white'>
+        <div className=''>
+          <h4 className={"font-bold mb-2"}>Motivo de la cita</h4>
         </div>
-        <div className='content'>
-          {activeTab === "Motivo de la cita" ? (
-            <>
-              <h3>Motivos</h3>
-              {patientData.map((treatment, index) => (
-                <p key={index}>{treatment.treatmentName}</p>
-              ))}
-              <br />
-              <h3>Tratamiento</h3>
-              {patientData.map((treatment, index) => (
-                <p key={index}>{treatment.indications}</p>
-              ))}
-            </>
-          ) : (
-            <>
-              <h3>Medicacion</h3>
-              {patientData.map((treatment, index) => (
-                <div key={index}>
-                  {treatment.medicalPrescriptions.map((prescription, index) => (
-                    <div key={index} className='border-t-2'>
-                      <p>{prescription.medication.medicationName}</p>
-                      <p>{prescription.indications}</p>
-                    </div>
-                  ))}
-                </div>
-              ))}
-            </>
-          )}
+
+        <div className=''>
+          <>
+            {patientData.map((treatment, index) => (
+              <p key={index}>{treatment.indications}.</p>
+            ))}
+            {patientData.map((treatment, index) => (
+              <p key={index}>{treatment.treatmentName}.</p>
+            ))}
+          </>
         </div>
-        <div className='footer-buttons'>
-          <button onClick={() => setShowVerificando(true)}>
-            Historia clínica
-          </button>
-          <button onClick={() => setShowVerificando(true)}>Medicamentos</button>
-        </div>
-        <Link to={"/consultation"}>
-          <button className='start-consultation'>Iniciar consulta</button>
-        </Link>
       </section>
+      <div className='footer-buttons  '>
+        <button className='A' onClick={() => setShowVerificando(true)}>
+          Historia clínica
+        </button>
+      </div>
+
+      <button onClick={handleClick} className='start-consultation'>
+        Iniciar consulta
+      </button>
+
       <SuccesModal
         show={showVerificando}
         onClose={() => setShowVerificando(false)}

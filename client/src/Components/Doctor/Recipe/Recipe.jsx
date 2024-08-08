@@ -8,7 +8,7 @@ export default function Recipe() {
   const [showVerificando, setShowVerificando] = useState(false);
 
   return (
-    <div className='m-5 flex flex-col justify-center items-center px-4 pt-5'>
+    <div className=' flex flex-col justify-center items-center px-4 pt-5'>
       <div className='w-full gap-y-3 flex flex-col'>
         <DoctorHeader text={"Receta medica"} />
         <InputComponent label={"Remedio"} />

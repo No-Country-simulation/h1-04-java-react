@@ -28,28 +28,39 @@ export default function SpeechRecognition() {
     setRecognizedText(event.target.value);
   };
 
+  const toggleListening = () => {
+    if (listening) {
+      stopListening();
+    } else {
+      startListening();
+    }
+  };
+
   const bgColor = listening ? "bg-primary" : "bg-secondary";
+  const buttonText = listening ? "Escuchando..." : "Empezar.";
 
   return (
     <>
       {hasRecognitionSupport ? (
         <div className='flex flex-col w-full'>
-          <textarea
-            value={text}
-            onChange={handleChange}
-            className='border-2 bg-white text-start border-black rounded resize-none mt-3 min-h-[15vh] mb-4'
-          ></textarea>
+          <div className='w-full flex flex-col p-5 bg-white rounded-xl boxCotent mb-4 mt-5'>
+            <h3 className='font-semibold'>Notas de la consulta</h3>
+            <textarea
+              value={text}
+              onChange={handleChange}
+              className='border-2 bg-white text-start rounded-xl resize-none mt-3 min-h-[15vh] mb-4'
+            ></textarea>
+          </div>
 
           <div className='flex-col flex justify-center items-center'>
-            <button onClick={startListening}>
+            <button onClick={toggleListening}>
               <img
-                className={`w-10 ${bgColor} p-2 rounded-full`}
+                className={`w-10 ${bgColor} p-2 rounded-full boxCotent mb-0`}
                 src={speak}
-                alt='Hablar'
+                alt={buttonText}
               />
             </button>
-
-            <button onClick={stopListening}>Stop</button>
+            <p>{buttonText}</p>
           </div>
         </div>
       ) : (
