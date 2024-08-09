@@ -67,7 +67,7 @@ const CalendarPage = () => {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div className='p-4 flex flex-col'>
+    <div className=' flex flex-col'>
       <button className='bg-white shadow border-2 self-end mb-3  px-3 py-1 rounded'>
         Calendario
       </button>

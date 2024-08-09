@@ -10,7 +10,7 @@ const PatientStudy = () => {
   };
 
   return (
-    <section className='m-5'>
+    <section className=''>
       <DoctorHeader text={"Estudios"} />
 
       <div className='flex justify-evenly items-center mb-10'>

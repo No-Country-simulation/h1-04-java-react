@@ -6,7 +6,7 @@ import img4 from "../../../Assets/Imgs/doctorFooter4.png";
 
 export default function DoctorFooter() {
   return (
-    <div className='w-full flex justify-around border-t-2 pt-3 fixed bottom-0 bg-white'>
+    <div className='w-full flex justify-around border-t-2 pt-3  bg-white'>
       <Link to={"/doctorPatient"}>
         <div className='flex flex-grow flex-col justify-center items-center text-[#0087D0]'>
           <img className='w-6' src={img1} alt='home img' />

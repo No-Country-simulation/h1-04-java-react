@@ -8,7 +8,7 @@ export default function Recipe() {
   const [showVerificando, setShowVerificando] = useState(false);
 
   return (
-    <div className=' flex flex-col justify-center items-center px-4 pt-5'>
+    <div className=' flex flex-col justify-between  h-full '>
       <div className='w-full gap-y-3 flex flex-col'>
         <DoctorHeader text={"Receta medica"} />
         <InputComponent label={"Remedio"} />
@@ -17,8 +17,9 @@ export default function Recipe() {
         <InputComponent label={"Frecuencia"} />
         <InputComponent label={"Otro campo"} />
       </div>
-      <EndButton text={"Firmar"} show={setShowVerificando} />
-
+      <div>
+        <EndButton text={"Firmar"} show={setShowVerificando} />
+      </div>
       <SuccesModal
         title={"Listo!"}
         text={"Se agendo la proxima cita y se envio la receta exitosamente"}

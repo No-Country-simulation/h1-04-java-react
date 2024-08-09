@@ -83,7 +83,7 @@ const PatientLists = () => {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div className='m-5 flex flex-col'>
+    <div className='flex flex-col'>
       <DoctorHeader text={"Pacientes"} />
       <input
         type='text'
@@ -97,6 +97,7 @@ const PatientLists = () => {
           filteredAppointments.map((appointment) => (
             <CardPatientList
               key={appointment.appointmentId}
+              id={appointment.patientId}
               time={`A`}
               name={appointment.fullnamePatient}
               description={appointment.typeOfAppointment}

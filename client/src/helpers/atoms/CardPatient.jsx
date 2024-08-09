@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { getImageById } from "../../Assets/images"; // Ajusta la ruta según tu estructura de carpetas
+import { getImageById } from "../../Assets/images";
 import {
   formatHour,
   translateDay,
@@ -11,13 +11,20 @@ export default function CardPatient(props) {
   const image = getImageById(props.id); // Obtén la imagen basada en el ID del paciente
 
   const handleClick = () => {
-    navigate("/previous-consultation", { state: { patient: props } });
+    navigate("/previous-consultation", {
+      state: {
+        patient: {
+          ...props,
+          image, // Asegúrate de pasar la imagen
+        },
+      },
+    });
   };
 
   return (
     <div
       onClick={handleClick}
-      className='flex gap-2  items-center w-full cursor-pointer'
+      className='flex gap-2 items-center w-full cursor-pointer'
     >
       <div className='text-blue-400 w-1/5 border-l-2 border-blue-500 pl-5'>
         {formatHour(props.time)}
