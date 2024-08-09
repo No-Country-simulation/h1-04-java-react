@@ -38,7 +38,7 @@ const PatientMedication = () => {
 
   return (
     <>
-      <section className={`m-5 ${isPopUpVisible ? "blurred" : ""}`}>
+      <section className={` ${isPopUpVisible ? "blurred" : ""}`}>
         <DoctorHeader text={"Estudios"} />
 
         {medications.map((medication, index) => (

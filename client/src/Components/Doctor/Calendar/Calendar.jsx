@@ -12,9 +12,9 @@ export default function CalendarDoctor() {
     setSelectedButton(index);
   };
 
-  const handleRedirect = () =>{
+  const handleRedirect = () => {
     navigate("/query-completion");
-  }
+  };
 
   const times = [
     "8:00 AM",
@@ -34,25 +34,53 @@ export default function CalendarDoctor() {
     "10:00 AM",
   ];
 
-  {selectedButton === "todos"
-    ? { backgroundColor: "#0087D0", color: "#fff", paddingLeft: "20px", paddingRight: "20px", paddingTop: "10px", paddingBottom: "10px", borderRadius: "5px" }
-    : { border: "1px solid #0087D0", color: "#0087D0", paddingLeft: "20px", paddingRight: "20px", paddingTop: "10px", paddingBottom: "10px", borderRadius: "5px" }}
+  {
+    selectedButton === "todos"
+      ? {
+          backgroundColor: "#0087D0",
+          color: "#fff",
+          paddingLeft: "20px",
+          paddingRight: "20px",
+          paddingTop: "10px",
+          paddingBottom: "10px",
+          borderRadius: "5px",
+        }
+      : {
+          border: "1px solid #0087D0",
+          color: "#0087D0",
+          paddingLeft: "20px",
+          paddingRight: "20px",
+          paddingTop: "10px",
+          paddingBottom: "10px",
+          borderRadius: "5px",
+        };
+  }
 
   return (
-    <div className='m-5 flex flex-col'>
+    <div className='flex flex-col'>
       <DoctorHeader text={"Proxima consulta"} />
-      
+
       <Calendar />
-      
+
       <div className='flex flex-wrap justify-center mt-5 gap-2 mb-10'>
         {times.map((time, index) => (
           <button key={index} onClick={() => handleSelected(index)}>
-            <Dates time={time} key={index} clas={`rounded-md border-2 inline-block w-32 text-center py-2 ${selectedButton === index ? "bg-blue-500 text-white border-blue-500" : "border-blue-300 text-blue-400"}`} />
+            <Dates
+              time={time}
+              key={index}
+              clas={`rounded-md border-2 inline-block w-32 text-center py-2 ${
+                selectedButton === index
+                  ? "bg-blue-500 text-white border-blue-500"
+                  : "border-blue-300 text-blue-400 bg-white"
+              }`}
+            />
           </button>
         ))}
       </div>
-      
-      <button onClick={handleRedirect} className="start-consultation">Agendar</button>
+
+      <button onClick={handleRedirect} className='start-consultation'>
+        Agendar
+      </button>
     </div>
   );
 }

@@ -4,10 +4,6 @@ import DoctorContext from "../../../context/DoctorContext";
 import profileDoctor from "../../../Assets/Imgs/profileDoctor.png";
 import SpeechRecognition from "./SpeechRecognition";
 import DoctorHeader from "../DoctorHeader/DoctorHeader";
-import consultation1 from "../../../Assets/Imgs/imgConsultation1.svg";
-import consultation2 from "../../../Assets/Imgs/imgConsultation2.svg";
-import consultation3 from "../../../Assets/Imgs/imgConsultation3.svg";
-import consultation4 from "../../../Assets/Imgs/imgConsultation4.svg";
 import SuccesModal from "../../Modals/SucessModal";
 import "./consultation.css";
 import {
@@ -15,6 +11,7 @@ import {
   translateDay,
   translateAppointmentType,
 } from "../../../utils/hourMapping";
+import MainRecords from "../PatientRecords/MainRecords";
 
 const Consultation = () => {
   const [isFocused, setIsFocused] = useState(false);
@@ -32,21 +29,25 @@ const Consultation = () => {
   };
 
   return (
-    <div className='consultation'>
-      <DoctorHeader text={"Consulta"} />
-      <div className='header'>
-        <div>
-          <img src={profileDoctor} alt={patient?.name || "Paciente"} />
+    <div className='consultation flex flex-col justify-between'>
+      <div>
+        <DoctorHeader text={"Consulta"} />
+        <div className='header'>
+          <div>
+            <img
+              src={patient?.image || profileDoctor} // Usa la imagen pasada desde CardPatient
+              alt={patient?.fullnamePatient || "Doctor"}
+            />
+          </div>
+          <div className='detailsHeader'>
+            <h2>{patient?.name || "Nombre del Paciente"}</h2>
+            <p className='text-[#5A5555]'>
+              {translateAppointmentType(patient?.description) ||
+                "Descripción de la consulta"}
+            </p>
+          </div>
         </div>
-        <div className='detailsHeader'>
-          <h2>{patient?.name || "Nombre del Paciente"}</h2>
-          <p className='text-[#5A5555]'>
-            {translateAppointmentType(patient?.description) ||
-              "Descripción de la consulta"}
-          </p>
-        </div>
-      </div>
-      <section className='containerTreatments'>
+        {/* <section className='containerTreatments m-0 p-0'>
         <button
           onClick={() => setShowVerificando(true)}
           className='treatmentsStylesDoctor bg-[#FF8A5B26] text-[#FF8A5B]'
@@ -79,11 +80,15 @@ const Consultation = () => {
           />
           <p>Medicación</p>
         </button>
-      </section>
-      <SpeechRecognition />
-      <button className='start-consultation mb-20' onClick={handleSubmitNotes}>
-        Finalizar consulta
-      </button>
+      </section> */}
+        <MainRecords />
+        <SpeechRecognition />
+      </div>
+      <div>
+        <button className='start-consultation' onClick={handleSubmitNotes}>
+          Finalizar consulta
+        </button>
+      </div>
       <SuccesModal
         show={showVerificando}
         onClose={() => setShowVerificando(false)}

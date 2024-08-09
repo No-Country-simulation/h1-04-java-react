@@ -67,72 +67,70 @@ const PreviousConsultation = () => {
   };
 
   return (
-    <div className='previous-consultation'>
-      <DoctorHeader text={"Pre-Consulta"} />
+    <div className='previous-consultation flex flex-col justify-between h-full'>
+      <div>
+        <DoctorHeader text={"Pre-Consulta"} />
 
-      <section className='boxCotent bg-white'>
-        <div className='header'>
+        <section className='boxCotent bg-white'>
+          <div className='header'>
+            <div>
+              <img
+                src={patient?.image || profileDoctor} // Usa la imagen pasada desde CardPatient
+                alt={patient?.fullnamePatient || "Doctor"}
+              />
+            </div>
+            <div className='detailsHeader'>
+              <h2>{patient?.name || "Nombre del Doctor"}</h2>
+              <p className='text-[#5A5555]'>
+                {translateAppointmentType(patient?.description) ||
+                  "Descripción de la consulta"}
+              </p>
+            </div>
+          </div>
           <div>
-            <img
-              src={profileDoctor}
-              alt={patient?.fullnamePatient || "Doctor"}
-            />
+            <div className='appointment-info'>
+              <p>{translateDay(patient?.date) || "Fecha de la consulta"}</p>
+              <p>{formatHour(patient?.time) || "Hora de la consulta"}</p>
+            </div>
+            <div className='flex justify-between '>
+              <button
+                className='text-blueColor font-bold'
+                onClick={() => setShowVerificando(true)}
+              >
+                Reagendar
+              </button>
+            </div>
           </div>
-          <div className='detailsHeader'>
-            <h2>{patient?.name || "Nombre del Doctor"}</h2>
-            <p className='text-[#5A5555]'>
-              {translateAppointmentType(patient?.description) ||
-                "Descripción de la consulta"}
-            </p>
-          </div>
-        </div>
-        <div>
-          <div className='appointment-info'>
-            <p>{translateDay(patient?.date) || "Fecha de la consulta"}</p>
-            <p>{formatHour(patient?.time) || "Hora de la consulta"}</p>
-          </div>
-          <div className='flex justify-between '>
-            <button
-              className='text-blueColor font-bold'
-              onClick={() => setShowVerificando(true)}
-            >
-              Reagendar
-            </button>
-            <button
-              className='text-[#636F76] font-bold'
-              onClick={() => setShowVerificando(true)}
-            >
-              Ver paciente
-            </button>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <section className='boxCotent  bg-white'>
-        <div className=''>
-          <h4 className={"font-bold mb-2"}>Motivo de la cita</h4>
+        <section className='boxCotent min-h-40  bg-white'>
+          <div className=''>
+            <h4 className={"font-bold mb-2"}>Motivo de la cita</h4>
+          </div>
+
+          <div className=''>
+            <>
+              {patientData.map((treatment, index) => (
+                <p key={index}>{treatment.indications}.</p>
+              ))}
+              {patientData.map((treatment, index) => (
+                <p key={index}>{treatment.treatmentName}.</p>
+              ))}
+            </>
+          </div>
+        </section>
+      </div>
+      <div>
+        <div className='footer-buttons  '>
+          <button className='A' onClick={() => setShowVerificando(true)}>
+            Historia clínica
+          </button>
         </div>
 
-        <div className=''>
-          <>
-            {patientData.map((treatment, index) => (
-              <p key={index}>{treatment.indications}.</p>
-            ))}
-            {patientData.map((treatment, index) => (
-              <p key={index}>{treatment.treatmentName}.</p>
-            ))}
-          </>
-        </div>
-      </section>
-      <div className='footer-buttons  '>
-        <button className='A' onClick={() => setShowVerificando(true)}>
-          Historia clínica
+        <button onClick={handleClick} className='start-consultation'>
+          Iniciar consulta
         </button>
       </div>
-
-      <button onClick={handleClick} className='start-consultation'>
-        Iniciar consulta
-      </button>
 
       <SuccesModal
         show={showVerificando}

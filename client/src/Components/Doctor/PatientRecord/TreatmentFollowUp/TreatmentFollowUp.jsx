@@ -26,7 +26,7 @@ const TreatmentFollowUp = () => {
 
   return (
     <>
-      <section className='m-5'>
+      <section className=''>
         <DoctorHeader text={"Tratamiento"} />
         <h3 className='mb-5'>Adherencia general al tratamiento </h3>
 

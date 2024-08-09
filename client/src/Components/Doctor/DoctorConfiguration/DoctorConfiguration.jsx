@@ -56,7 +56,7 @@ const DoctorConfiguration = () => {
 
   return (
     <section className='container'>
-      <div className='m-4'>
+      <div className=''>
         <DoctorHeader text={"Configuración de cuenta"} />
         <article className='userPictureNameDoctor'>
           <img

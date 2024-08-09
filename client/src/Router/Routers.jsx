@@ -31,7 +31,7 @@ import DoctorConfiguration from "../Components/Doctor/DoctorConfiguration/Doctor
 import PatientList from "../Components/Doctor/PatientList/PatientList.jsx";
 import OtherNavBar from "../Components/OtherNavBar/OtherNavBar.jsx";
 import Download from "../Components/Download/Download.jsx";
-import OtherNavBarDoctor from "../Components/OtherNavBarDoctor/OtherNavBarDoctor.jsx"
+import OtherNavBarDoctor from "../Components/OtherNavBarDoctor/OtherNavBarDoctor.jsx";
 
 const PatientLayout = ({ children }) => {
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth >= 500);
@@ -40,23 +40,27 @@ const PatientLayout = ({ children }) => {
     const handleResize = () => {
       setIsSmallScreen(window.innerWidth >= 500);
     };
-    
-    window.addEventListener('resize', handleResize);
+
+    window.addEventListener("resize", handleResize);
     handleResize();
-    
+
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
   return (
     <div className='w-full flex justify-center'>
       <div className='w-[500px]'>
-        <div className='flex flex-col min-h-screen'>
-          { !isSmallScreen && <NavBar /> }
-            { isSmallScreen && <OtherNavBar /> }
-            { isSmallScreen ? <div className='flex-grow ml-12'>{children}</div> : <div className='flex-grow'>{children}</div>}
-          { !isSmallScreen && <Footer /> }
+        <div className='flex flex-col h-screen'>
+          {!isSmallScreen && <NavBar />}
+          {isSmallScreen && <OtherNavBar />}
+          {isSmallScreen ? (
+            <div className='flex-grow ml-12'>{children}</div>
+          ) : (
+            <div className='flex-grow overflow-scroll'>{children}</div>
+          )}
+          {!isSmallScreen && <Footer />}
         </div>
       </div>
     </div>
@@ -70,26 +74,32 @@ const DoctorLayout = ({ children }) => {
     const handleResize = () => {
       setIsSmallScreen(window.innerWidth >= 500);
     };
-    
-    window.addEventListener('resize', handleResize);
+
+    window.addEventListener("resize", handleResize);
     handleResize();
-    
+
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
   return (
     <div className='w-full flex justify-center'>
       <div className='w-[500px]'>
-        <div className='flex flex-col min-h-screen'>
-          { isSmallScreen && <OtherNavBarDoctor /> }
-          { isSmallScreen ? <div className='flex-grow ml-12'>{children}</div> : <div className='flex-grow'>{children}</div>}
-          { !isSmallScreen && <DoctorFooter /> }
+        <div className='flex flex-col h-screen'>
+          {isSmallScreen && <OtherNavBarDoctor />}
+          {isSmallScreen ? (
+            <div className='flex-grow p-5  ml-12'>{children}</div>
+          ) : (
+            <div className='flex-grow overflow-scroll h-full w-full p-5'>
+              {children}
+            </div>
+          )}
+          {!isSmallScreen && <DoctorFooter />}
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 const Router = () => {
   return (
