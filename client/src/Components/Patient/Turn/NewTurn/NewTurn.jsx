@@ -18,6 +18,7 @@ import {
   translateAppointmentType,
   translateSpecialty,
 } from "../../../../utils/hourMapping";
+import Spinner from "../../../../helpers/atoms/Spinner";
 const daysOfWeek = [
   "MONDAY",
   "TUESDAY",
@@ -164,7 +165,7 @@ const NewTurn = () => {
     navigate("/view-turn");
   }
 
-  if (loading) return <div className='text-center mt-10'>Loading...</div>;
+  if (loading) return <Spinner/>;
   if (doctorError)
     return <div className='text-center mt-10'>{doctorError}</div>;
 

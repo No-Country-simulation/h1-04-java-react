@@ -3,6 +3,7 @@ import DoctorContext from "../../../context/DoctorContext";
 import { getAppointmentByDoctor } from "../../../services/appointmentService";
 import DoctorHeader from "../DoctorHeader/DoctorHeader";
 import CardPatientList from "./CardPatientList";
+import Spinner from "../../../helpers/atoms/Spinner";
 
 const PatientLists = () => {
   const [appointments, setAppointments] = useState([]);
@@ -79,7 +80,7 @@ const PatientLists = () => {
     filterAppointments();
   }, [search, appointments]);
 
-  if (loading || authLoading) return <p>Loading...</p>;
+  if (loading || authLoading) return <Spinner/>;
   if (error) return <p>Error: {error}</p>;
 
   return (
