@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import PropTypes from "prop-types";
 import { useState } from "react";
-import Week from "../../../HomePatient/Weekk.jsx";
+import Week from "../../../HomePatient/WeekHome.jsx";
 import muyBien from "../../../../../Assets/Imgs/muyBien.png";
 import normal from "../../../../../Assets/Imgs/normal.png";
 import mal from "../../../../../Assets/Imgs/mal.png";
@@ -116,31 +116,26 @@ const PlanNutrition = () => {
   );
 
   return (
-    <div className='container'>
-      <div className={`mainContainer ${isPopUpVisible ? "blurred" : ""}`}>
+    <div className='containerNutrition'>
+      <div className={`${isPopUpVisible ? "blurred" : ""}`}>
         {optionsNutrition.map((comp, index) => (
           <div key={index}>
-            <button
-              className='option  font-bold flex justify-between p-2'
-              onClick={() => toggleDropdown(index)}
-            >
+            <button className='option  font-bold flex justify-between p-2' onClick={() => toggleDropdown(index)}>
               {comp.label}
-              <img
-                src={arrowOrange}
-                alt='arrow'
+              <img src={arrowOrange} alt='arrow'
                 className={`w-4 h-6 ml-4 ${
                   isOpen[index] ? "more-more-arrow-rotate" : "more-arrow-rotate"
                 }`}
               />
             </button>
             {isOpen[index] && (
-              <article>
+              <div>
                 <section className='weekContainer'>
                   <Week />
                 </section>
-
+                
                 <section>
-                  <article className='stats '>
+                  <article className='stats'>
                     <div>
                       <p>Carbohidratos</p>
                       <div className='progress-bar-container'>
@@ -172,7 +167,7 @@ const PlanNutrition = () => {
                       <p>43 g de 54 g</p>
                     </div>
                   </article>
-
+                  
                   <article className='details bg-white'>
                     <div className='detailsTitle'>
                       <h1>{comp.label}</h1>
@@ -181,7 +176,7 @@ const PlanNutrition = () => {
                     <p className='recommendation'>
                       Recomendado: 30% de tu ingesta diaria (503 kcal)
                     </p>
-
+                    
                     {meals.map((meal, index) => (
                       <div key={index} className='detailsContainer '>
                         <section>
@@ -227,7 +222,7 @@ const PlanNutrition = () => {
                     <button>Confirmar</button>
                   </div>
                 </section>
-              </article>
+              </div>
             )}
           </div>
         ))}

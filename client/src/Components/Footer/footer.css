@@ -5,6 +5,8 @@
   align-items: center;
   padding: 10px;
   position: relative;
+  max-width: 500px;
+  width: 100vw;
 }
 .containerFooter img {
   width: 25px;

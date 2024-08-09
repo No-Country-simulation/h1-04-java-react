@@ -48,7 +48,7 @@ const Treatment = () => {
     selectedButtonIndex !== null ? buttons[selectedButtonIndex] : null;
 
   return (
-    <section className='container'>
+    <section className='containerBigTreatments'>
       <div className='titleContainer'>
         {image && <img src={image} alt={title} />}
         <h1>{title}</h1>
@@ -62,7 +62,7 @@ const Treatment = () => {
       </article>
       {location.pathname !== "/treatment-medication" && !SelectedComponent ? (
         <article className='optionsContainer'>
-          {buttons &&
+          { buttons &&
             buttons.map((but, index) => (
               <button
                 key={index}
@@ -76,7 +76,7 @@ const Treatment = () => {
                   className='w-4 h-6 ml-4 more-arrow-rotate'
                 />
               </button>
-            ))}
+            )) }
         </article>
       ) : (
         <article className='containerComponents'>

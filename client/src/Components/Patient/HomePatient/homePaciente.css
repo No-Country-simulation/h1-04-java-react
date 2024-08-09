@@ -1,7 +1,8 @@
-.containerHomePatient h1{
-    color: #25CED1;
+.containerHomePatient{
+    max-width: 500px;
+    width: 100vw;
 }
 
-.containerHomePatient h2{
-    color: #FF8A5B;
+.containerHomePatient h1{
+    color: #5A5555
 }

@@ -57,7 +57,7 @@
   margin-bottom: 20px;
 }
 
-.container {
+.containerBigTreatments {
   position: relative;
   padding-bottom: 40px;
 }
@@ -65,7 +65,8 @@
 .containerComponents {
   width: 90%;
   margin: auto;
-  padding-bottom: 110px;
+  overflow-x: hidden;
+  padding-bottom: 100px;
 }
 
 .backContainer {
@@ -96,7 +97,6 @@
   align-items: center;
   margin-top: 15px;
   font-weight: 700;
-  width: 100%;
   padding-left: 10px;
   padding-right: 10px;
   border-radius: 5px;

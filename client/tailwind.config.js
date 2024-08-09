@@ -13,7 +13,8 @@ export default {
         orangeColor: '#FF8A5B',
         orangeTransparent: '#FCEADE26',
         beigeColor: '#FCEADE',
-        blueColor: '#2196f3'
+        blueColor: '#2196f3',
+        blueColorClear: '#009FF5',
       },
     },
   },

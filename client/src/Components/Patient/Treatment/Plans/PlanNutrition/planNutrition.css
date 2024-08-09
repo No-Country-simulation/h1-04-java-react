@@ -1,7 +1,6 @@
 .weekContainer{
     font-size: 13px;
 }
-
 .weekContainer img{
     width: 20px;
     height: 20px;
@@ -9,6 +8,7 @@
 
 
 .feedBack{
+    margin: auto;
     color: #191919;
     background-color: #EA526F1A;
     padding: 15px;
@@ -16,7 +16,6 @@
     border: 3px solid #EA526F;
     margin-bottom: 20px;
 }
-
 .feedBack h3{
     font-weight: 600;
     text-align: center;
@@ -85,6 +84,7 @@
 
 
 .details{
+    margin: auto;
     padding: 15px;
     border-radius: 10px;
     margin-top: 15px;
@@ -156,15 +156,13 @@
 
 
 
-.container {
+.containerNutrition {
+    margin: auto;
     position: relative;
+    width: 90vw;
 }
 
-.mainContainer {
-    transition: filter 0.3s;
-}
-
-.mainContainer.blurred {
+.blurred {
     filter: blur(5px);
 }
 
@@ -250,4 +248,14 @@
     width: 100%;
     font-weight: 500;
     font-size: 17px;
+}
+
+
+.weekContainer img, .feedBackImgs img, .detailsContainer img {
+    max-width: 100%;
+    height: auto;
+}
+
+.feedBack textarea, .feedBackButtons button, .popUpContent article img, .gram {
+    box-sizing: border-box;
 }

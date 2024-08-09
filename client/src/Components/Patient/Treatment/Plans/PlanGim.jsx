@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import PropTypes from "prop-types"
 import { useState } from "react"
-import Week from "../../HomePatient/Weekk"
+import Week from "../../HomePatient/WeekHome"
 import muyBien from "../../../../Assets/Imgs/muyBien.png"
 import normal from "../../../../Assets/Imgs/normal.png"
 import mal from "../../../../Assets/Imgs/mal.png"
@@ -58,13 +58,13 @@ const PlanGim = () => {
     return (
         <article>
             { optionsGim.map((comp, index) => (
-                <div key={index}>
+                <div key={index} className="containerPlansGim">
                     <button className="option font-bold flex justify-between p-2" onClick={() => toggleDropdown(index)}>
                         {comp.label}
                         <img src={arrowOrange} alt="arrow" className={`w-4 h-6 ml-4 ${isOpen[index] ? 'more-more-arrow-rotate' : 'more-arrow-rotate'}`} />
                     </button>
                     { isOpen[index] && (
-                        <div className={`mainContainer ${isPopUpVisible ? "blurred" : ""}`}>
+                        <div className={`${isPopUpVisible ? "blurred" : ""}`}>
                             <section className="weekContainer">
                                 <Week />
                             </section>
