@@ -18,7 +18,6 @@ const PatientRecords = () => {
   const [showVerificando, setShowVerificando] = useState(false);
   const location = useLocation();
   const { patient } = location.state || {};
-  console.log(patient);
 
   return (
     <section className=''>
@@ -33,7 +32,7 @@ const PatientRecords = () => {
           <p className='text-[#5A5555]'>Paciente en tratamiento</p>
         </div>
       </section>
-      <MainRecords />
+      <MainRecords patient={patient} />
 
       {/* <Link to={"/medicalHistory"} className='treatmentsStylesRecords'>
           <img src={consultation2} alt='Tratamiento' />

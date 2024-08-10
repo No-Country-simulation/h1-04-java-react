@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import CardPatient from "../../../helpers/atoms/CardPatient";
 import DoctorContext from "../../../context/DoctorContext";
 import { getAppointmentByDoctor } from "../../../services/appointmentService";
+import Spinner from "../../../helpers/atoms/Spinner";
 
 const CalendarPage = () => {
   const getFormattedDate = (date) => {
@@ -63,7 +64,7 @@ const CalendarPage = () => {
 
   const groupedAppointments = groupAppointmentsByDay(appointments);
 
-  if (loading || authLoading) return <p>Loading...</p>;
+  if (loading || authLoading) return <Spinner/>;
   if (error) return <p>Error: {error}</p>;
 
   return (

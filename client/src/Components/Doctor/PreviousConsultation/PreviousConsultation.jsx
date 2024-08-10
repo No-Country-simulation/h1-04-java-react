@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import profileDoctor from "../../../Assets/Imgs/profileDoctor.png";
 import DoctorHeader from "../DoctorHeader/DoctorHeader";
 import "./previousConsultation.css";
@@ -122,9 +122,13 @@ const PreviousConsultation = () => {
       </div>
       <div>
         <div className='footer-buttons  '>
-          <button className='A' onClick={() => setShowVerificando(true)}>
+          <Link
+            to='/medicalHistory'
+            state={{ patient }}
+            className='A text-center'
+          >
             Historia clínica
-          </button>
+          </Link>
         </div>
 
         <button onClick={handleClick} className='start-consultation'>

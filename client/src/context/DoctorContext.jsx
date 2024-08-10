@@ -15,17 +15,17 @@ export const DoctorProvider = ({ children }) => {
 
   const login = (data) => {
     setAuthData(data);
-    sessionStorage.setItem("authData", JSON.stringify(data));
+    localStorage.setItem("authData", JSON.stringify(data));
   };
 
   const logout = () => {
     setAuthData(null);
-    sessionStorage.removeItem("authData");
+    localStorage.removeItem("authData");
   };
 
   useEffect(() => {
-    // Restaurar authData desde sessionStorage
-    const storedAuthData = sessionStorage.getItem("authData");
+    // Restaurar authData desde localStorage
+    const storedAuthData = localStorage.getItem("authData");
     if (storedAuthData) {
       setAuthData(JSON.parse(storedAuthData));
     }
@@ -54,8 +54,6 @@ export const DoctorProvider = ({ children }) => {
     }
   }, [authData]);
 
-  // GetPatientByID
-
   const fetchPatientById = async (id) => {
     if (!authData) {
       throw new Error("No authentication data available");
@@ -71,6 +69,7 @@ export const DoctorProvider = ({ children }) => {
       throw error;
     }
   };
+
   const fetchDoctorById = async (id) => {
     if (!authData) {
       throw new Error("No authentication data available");

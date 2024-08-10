@@ -5,7 +5,7 @@ import { translateDay } from "../../../../utils/hourMapping";
 import Calendar from "../../../../helpers/atoms/Calendar";
 import Turns from "../Turns";
 import DoctorContext from "../../../../context/DoctorContext";
-
+import Spinner from "../../../../helpers/atoms/Spinner";
 export default function TurnCalendar() {
   const [appointments, setAppointments] = useState([]);
   const [error, setError] = useState(null);
@@ -41,7 +41,7 @@ export default function TurnCalendar() {
     console.log(appointments);
   }, [appointments]);
 
-  if (loading || authLoading) return <p>Loading...</p>;
+  if (loading || authLoading) return <Spinner/>;
   if (error) return <p>Error: {error}</p>;
 
   // Group appointments by day
