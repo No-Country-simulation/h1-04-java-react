@@ -1,10 +1,9 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 import arrowOrange from "../../../../Assets/Imgs/arrowOrange.svg";
-import azatioprina from "../../../../Assets/Imgs/azatioprina.png";
-import muyBien from "../../../../Assets/Imgs/muyBien.png";
-import normal from "../../../../Assets/Imgs/normal.png";
-import mal from "../../../../Assets/Imgs/mal.png";
+import muyBien from "../../../../Assets/Imgs/muyBien.svg";
+import normal from "../../../../Assets/Imgs/normal.svg";
+import mal from "../../../../Assets/Imgs/mal.svg";
 import "./plans.css";
 
 const optionsTreat = [
@@ -24,34 +23,32 @@ const PlanMedication = () => {
     });
   };
 
+  const closeDropdown = (index) => {
+    setIsOpen(prevState => {
+        const newState = [...prevState];
+        newState[index] = false;
+        return newState;
+    });
+  };
+
   return (
     <article>
       {optionsTreat.map((comp, index) => (
         <div key={index}>
-          <button
-            className='option font-bold flex justify-between p-2'
-            onClick={() => toggleDropdown(index)}
-          >
+          <button className='flex justify-between p-4 optionGreen' onClick={() => toggleDropdown(index)}>
             {comp.label}
-            <img
-              src={arrowOrange}
-              alt='arrow'
-              className={`w-4 h-6 ml-4 ${
-                isOpen[index] ? "more-more-arrow-rotate" : "more-arrow-rotate"
-              }`}
-            />
+            <img src={arrowOrange} alt='arrow' className={`w-4 h-6 ml-4 imageGreen ${ isOpen[index] ? 'arrow-rotate-treatment' : 'more-more-arrow-rotate' }`}/>
           </button>
           {isOpen[index] && (
             <>
               <div className='containerMedication'>
                 <div className='undo'>
-                  <img src={azatioprina} alt='undo' />
                   <div>
                     <h1>{comp.label}</h1>
                     <p>Micofenolato-mofetil | Micofenolato sódico</p>
                   </div>
                 </div>
-
+                
                 <section className='flex justify-center text-center'>
                   <div>
                     <p>Frecuencia</p>
@@ -69,28 +66,28 @@ const PlanMedication = () => {
                     <p>días</p>
                   </div>
                 </section>
-
-                <span className='font-bold'>Instrucciones</span>
-                <p>Cada 8 horas debe tomar una dosis, luego de la comida. </p>
+                
+                <span className='font-bold' style={{color:"#5A5555"}}>Indicaciones</span>
+                <p style={{color:"#5A5555"}}>Cada 8 horas debe tomar una dosis, luego de la comida. </p>
                 <div className='buttonOk'>
                   <button onClick={() => alert("Descargando...")}>
                     Descargar Receta
                   </button>
                 </div>
               </div>
+              
               <section className='feedBack'>
-                <h3>¿Cómo te sentiste con la comida?</h3>
-                <div className='feedBackImgs'>
-                  <img src={muyBien} alt='Muy bien' />
-                  <img src={normal} alt='Normal' />
-                  <img src={mal} alt='Mal' />
-                </div>
-                <p>¿Por qué te sentiste así?</p>
-                <textarea name='text' id='text'></textarea>
-                <div className='feedBackButtons'>
-                  <button>Cancelar</button>
-                  <button>Confirmar</button>
-                </div>
+                  <h3>¿Cómo te sentiste con la comida?</h3>
+                  <div className='feedBackImgs'>
+                    <img src={muyBien} alt='Muy bien' />
+                    <img src={normal} alt='Normal' />
+                    <img src={mal} alt='Mal' />
+                  </div>
+                  <p>¿Por qué te sentiste así?</p>
+                  <textarea name='text' id='text'></textarea>
+                  <div className='feedBackButton'>
+                    <button onClick={() => closeDropdown(index)}>Confirmar</button>
+                  </div>
               </section>
             </>
           )}

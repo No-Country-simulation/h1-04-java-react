@@ -6,23 +6,9 @@
     color: #EA526F;
 }
 
-.containerPersonalData{
-    border: 2px solid #25CED1;
+.containerPersonalDa{
     border-radius: 10px;
     padding: 15px;
-}
-
-
-.validation{
-    border: 2px solid #25CED1;
-    border-radius: 10px;
-    padding: 5px;
-    margin-bottom: 10px;
-    box-shadow: 0px 4px 5px #00000040;
-}
-.validation p{
-    margin-left: 10px;
-}
-.validation img{
-    margin-right: 10px;
+    background-color: #E5F3FA;
+    color: #0087D0;
 }

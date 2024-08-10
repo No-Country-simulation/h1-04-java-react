@@ -1,15 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
-import arrowRight from "../../../Assets/Imgs/arrowRight.png";
-import arrowLeft from "../../../Assets/Imgs/otraArrowLeft.png";
 import arrowOrange from "../../../Assets/Imgs/arrowOrange.svg";
 import privateImg from "../../../Assets/Imgs/private.png";
 import profile from "../../../Assets/Imgs/pepitaExample.png";
-import settings from "../../../Assets/Imgs/settings.png";
 import PersonalData from "../../PersonalData/PersonalData";
 import Notifications from "../../Notifications/Notifications";
 
 import DoctorContext from "../../../context/DoctorContext";
+import PatientHeader from "../PatientHeader/PatientHeader";
 import "./profileConfiguration.css"
 
 const DoctorConfiguration = () => {
@@ -35,7 +33,7 @@ const DoctorConfiguration = () => {
       if (authData) {
         try {
           const data = await fetchPatientById(authData.id);
-
+          
           setPatientData(data.patient.user);
           setError(null);
         } catch (error) {
@@ -45,7 +43,7 @@ const DoctorConfiguration = () => {
         }
       }
     };
-
+    
     loadPatientData();
   }, [authData, fetchPatientById]);
 
@@ -65,11 +63,8 @@ const DoctorConfiguration = () => {
   };
 
   return (
-    <section className='container'>
-      <div className='flex items-center m-4 mainProfileConfiguration'>
-        <img src={settings} alt='configuration' className='h-6 w-6' />
-        <p className='ml-3 font-bold text-lg'>Configuración</p>
-      </div>
+    <section className='container mt-5'>
+      <PatientHeader text="Configuración" />
 
       <article className='userPictureName'>
         <img
@@ -77,7 +72,7 @@ const DoctorConfiguration = () => {
           alt='Paciente img'
           className='h-28 w-28 m-auto mt-5'
         />
-        <p className='font-bold text-lg text-center mb-10'>
+        <p className='font-bold text-center mb-5 mt-1' style={{color:"#5A5555", fontSize:"23px"}}>
           {patientData
             ? patientData.firstName + " " + patientData.lastName
             : "Cargando..."}
@@ -86,58 +81,42 @@ const DoctorConfiguration = () => {
 
       <article className='optionsContainer'>
         <div>
-          <button
-            className='option font-bold flex justify-between p-2'
+          <button className='flex justify-between optionBlue'
             onClick={() => { handlechange("personalData"); toggleDropdown(1)}}
           >
             <p>Datos Personales</p>
-            <img src={arrowOrange} alt="arrow" className={`w-4 h-6 ml-4 ${isOpen[1] ? 'more-more-arrow-rotate' : 'more-arrow-rotate'}`} />
+            <img src={arrowOrange} alt="arrow" className={`w-4 h-6 ml-4 imageBlue ${isOpen[1] ? 'arrow-rotate-treatment' : 'more-more-arrow-rotate'}`} />
           </button>
-          {personalData && (
-            <div className='mb-5 containerPersonalData'>
+          { personalData && (
+            <div className='containerPersonalData'>
               <PersonalData user={patientData} />
             </div>
-          )}
+          ) }
         </div>
 
         <div>
-          <button
-            className='option font-bold flex justify-between p-2'
+          <button className='flex justify-between optionBlue'
             onClick={() => { handlechange("notifications"); toggleDropdown(2) }}
           >
             <p>Notificaciones</p>
-            <img src={arrowOrange} alt="arrow" className={`w-4 h-6 ml-4 ${isOpen[2] ? 'more-more-arrow-rotate' : 'more-arrow-rotate'}`} />
+            <img src={arrowOrange} alt="arrow" className={`w-4 h-6 ml-4 imageBlue ${isOpen[2] ? 'arrow-rotate-treatment' : 'more-more-arrow-rotate'}`} />
           </button>
-          {notifications && (
+          { notifications && (
             <div className='mb-5'>
               <Notifications />
             </div>
-          )}
+          ) }
         </div>
 
-        <button className='option font-bold flex justify-between p-2'>
-          <p>Seguridad</p>
+        <button className='flex justify-between optionBlue'>
+          <p>Seguridad Privacidad</p>
           <img src={privateImg} alt='arrow' className='w-6 h-6 ml-4' />
         </button>
 
-        <button className='option font-bold flex justify-between p-2'>
-          <p>Privacidad</p>
-          <img src={privateImg} alt='arrow' className='w-6 h-6 ml-4' />
-        </button>
-
-        <button
-          onClick={() => log()}
-          className='w-full self-end bg-red-500 rounded py-2 font-semibold text-white'
-        >
+        <button onClick={() => log()} className='w-full self-end rounded py-2 mt-10 optionBlue'>
           Cerrar sesion
-        </button>
+        </button> 
       </article>
-
-      <div className='backContainer'>
-        <button className='back' onClick={() => navigate(-1)}>
-          <img src={arrowLeft} alt='back' />
-        </button>
-      </div>
     </section>
   );
 };

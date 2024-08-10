@@ -3,7 +3,7 @@ import "./notifications.css";
 
 const Notifications = () => {
   return (
-    <section className='containerNotifications bg-white'>
+    <section className='containerNotifications'>
       <h3>General</h3>
       <SliderButton name='Medicación' />
       <SliderButton name='Tratamiento' />

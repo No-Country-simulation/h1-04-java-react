@@ -1,5 +1,6 @@
 .containerFooter {
-  background-color: #25ced1;
+  background-color: #fff;
+  color: #0087D0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -7,6 +8,7 @@
   position: relative;
   max-width: 500px;
   width: 100vw;
+  border-top: 1px solid #0087D0;
 }
 .containerFooter img {
   width: 25px;
@@ -14,34 +16,20 @@
   margin: auto;
 }
 .containerFooter a {
-  display: flex;
-  flex-direction: column;
   width: 25%;
+}
+.containerFooter button {
+  width: 25%;
+  text-align: center;
+}
+.containerFooter button img {
+  width: 35px;
+  margin: auto;
 }
 .containerFooter p {
   font-size: 12px;
   text-align: center;
   font-weight: 600;
-}
-
-.urgency {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  font-size: 16px;
-  font-weight: 500;
-  position: relative;
-}
-.urgency img {
-  width: 55px;
-  height: 55px;
-  position: absolute;
-  top: -30px;
-}
-.urgency p {
-  margin: 25px 0 0 0;
-  position: relative;
 }
 
 .viewPopUpFooter {

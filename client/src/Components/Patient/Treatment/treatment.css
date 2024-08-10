@@ -16,45 +16,92 @@
 }
 
 .planes {
-  background-color: #25ced1;
-  color: #000;
+  background-color: #0087D0;
+  color: #fff;
   margin: auto;
   width: 90%;
-  padding: 5px;
+  padding: 10px;
   padding-left: 15px;
   padding-right: 10px;
   margin-bottom: 20px;
+  margin-top: -15px;
   display: flex;
   justify-content: space-between;
   border-radius: 10px;
   box-shadow: #0f0f0f65 0px 0px 4px;
 }
 .planes h2 {
-  font-weight: 600;
+  font-weight: 500;
   font-size: 18px;
 }
 .planes p {
   font-size: 14px;
 }
 .planes img {
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
   margin: 5px;
 }
 
 .optionsContainer {
   margin: auto;
+  width: 90%;
   padding-bottom: 60px;
 }
 
-.option {
-  border: 3px solid #ff8a5b;
+.optionGreen {
+  background-color: #03A8AB1A;
+  color: #028082;
+  box-shadow: 1px 2px 5px #1313132f;
+  font-weight: 400;
   border-radius: 10px;
-  background-color: white;
-  color: #ff8a5b;
   width: 100%;
   margin-bottom: 20px;
 }
+.imageGreen {
+  filter: invert(24%) sepia(80%) saturate(4766%) hue-rotate(163deg);
+}
+
+.optionPink {
+  background-color: #FCEDEF;
+  color: #EA526F;
+  box-shadow: 1px 2px 5px #1313132f;
+  font-weight: 400;
+  border-radius: 10px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.imagePink {
+  filter: invert(22%) sepia(80%) saturate(3945%) hue-rotate(-25deg);
+}
+
+.optionOrange {
+  background-color: #FFEDE9;
+  color: #DA6000;
+  box-shadow: 1px 2px 5px #1313132f;
+  font-weight: 400;
+  border-radius: 10px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.imageOrange {
+  filter: invert(46%) sepia(100%) saturate(5000%) hue-rotate(17deg);
+}
+
+.optionBlue{
+  background-color: #E5F3FA;
+  color: #0087D0;
+  box-shadow: 1px 2px 5px #1313132f;
+  font-weight: 400;
+  width: 100%;
+  font-weight: 500;
+  border-bottom: 1px solid #0087D099;
+  padding: 20px;
+}
+.imageBlue {
+  filter: invert(48%) sepia(100%) saturate(5900%) hue-rotate(200deg);
+}
+
 
 .containerBigTreatments {
   position: relative;
