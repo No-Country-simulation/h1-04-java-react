@@ -32,6 +32,10 @@ import PatientList from "../Components/Doctor/PatientList/PatientList.jsx";
 import OtherNavBar from "../Components/OtherNavBar/OtherNavBar.jsx";
 import Download from "../Components/Download/Download.jsx";
 import OtherNavBarDoctor from "../Components/OtherNavBarDoctor/OtherNavBarDoctor.jsx";
+import TransplantHome from "../Components/Doctor/Transplant/TransplantHome.jsx";
+import TransplantProfile from "../Components/Doctor/Transplant/TransplantProfile.jsx";
+import TransplantMedicalData from "../Components/Doctor/Transplant/TransplantMedicalData.jsx";
+import TransplantSearch from "../Components/Doctor/Transplant/TransplantSearch.jsx";
 
 const PatientLayout = ({ children }) => {
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth >= 500);
@@ -319,6 +323,50 @@ const Router = () => {
             <PrivateRoute role='DOCTOR'>
               <DoctorLayout>
                 <DoctorConfiguration />
+              </DoctorLayout>
+            </PrivateRoute>
+          }
+        />
+        <Route
+          exact
+          path='/transplantHome'
+          element={
+            <PrivateRoute role='DOCTOR'>
+              <DoctorLayout>
+                <TransplantHome />
+              </DoctorLayout>
+            </PrivateRoute>
+          }
+        />
+        <Route
+          exact
+          path='/transplantProfile/:id'
+          element={
+            <PrivateRoute role='DOCTOR'>
+              <DoctorLayout>
+                <TransplantProfile />
+              </DoctorLayout>
+            </PrivateRoute>
+          }
+        />
+        <Route
+          exact
+          path='/transplantMedicalData/:id'
+          element={
+            <PrivateRoute role='DOCTOR'>
+              <DoctorLayout>
+                <TransplantMedicalData />
+              </DoctorLayout>
+            </PrivateRoute>
+          }
+        />
+         <Route
+          exact
+          path='/transplantSearch/:id'
+          element={
+            <PrivateRoute role='DOCTOR'>
+              <DoctorLayout>
+                <TransplantSearch />
               </DoctorLayout>
             </PrivateRoute>
           }

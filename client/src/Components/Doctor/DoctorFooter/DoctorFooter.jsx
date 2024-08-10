@@ -7,10 +7,10 @@ import img4 from "../../../Assets/Imgs/doctorFooter4.png";
 export default function DoctorFooter() {
   return (
     <div className='w-full flex justify-around border-t-2 pt-3  bg-white'>
-      <Link to={"/doctorPatient"}>
+      <Link to={"/transplantHome"}>
         <div className='flex flex-grow flex-col justify-center items-center text-[#0087D0]'>
-          <img className='w-6' src={img1} alt='home img' />
-          <p>Tratamientos</p>
+          <img src={img1} alt='home img' />
+          <p>Transplante</p>
         </div>
       </Link>
       <Link to={"/doctorPatient"}>
