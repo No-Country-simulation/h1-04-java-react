@@ -195,40 +195,18 @@ const Router = () => {
         />
         <Route
           exact
-          path='/treatment-studies'
-          element={
-            <PrivateRoute role='PATIENT'>
-              <PatientLayout>
-                <Treatment />
-              </PatientLayout>
-            </PrivateRoute>
-          }
-        />
-        <Route
-          exact
-          path='/treatment-nutrition'
-          element={
-            <PrivateRoute role='PATIENT'>
-              <PatientLayout>
-                <Treatment />
-              </PatientLayout>
-            </PrivateRoute>
-          }
-        />
-        <Route
-          exact
-          path='/treatment-physical-activity'
-          element={
-            <PrivateRoute role='PATIENT'>
-              <PatientLayout>
-                <Treatment />
-              </PatientLayout>
-            </PrivateRoute>
-          }
-        />
-        <Route
-          exact
           path='/treatment-clinical-history'
+          element={
+            <PrivateRoute role='PATIENT'>
+              <PatientLayout>
+                <Treatment />
+              </PatientLayout>
+            </PrivateRoute>
+          }
+        />
+        <Route
+          exact
+          path='/treatment-studies'
           element={
             <PrivateRoute role='PATIENT'>
               <PatientLayout>
@@ -250,7 +228,7 @@ const Router = () => {
         />
         <Route
           exact
-          path='/treatment-psychology'
+          path='/treatment-physical-activity'
           element={
             <PrivateRoute role='PATIENT'>
               <PatientLayout>
@@ -261,29 +239,7 @@ const Router = () => {
         />
         <Route
           exact
-          path='/treatment-social-work'
-          element={
-            <PrivateRoute role='PATIENT'>
-              <PatientLayout>
-                <Treatment />
-              </PatientLayout>
-            </PrivateRoute>
-          }
-        />
-        <Route
-          exact
-          path='/treatment-physiotherapy'
-          element={
-            <PrivateRoute role='PATIENT'>
-              <PatientLayout>
-                <Treatment />
-              </PatientLayout>
-            </PrivateRoute>
-          }
-        />
-        <Route
-          exact
-          path='/treatment-others'
+          path='/treatment-nutrition'
           element={
             <PrivateRoute role='PATIENT'>
               <PatientLayout>

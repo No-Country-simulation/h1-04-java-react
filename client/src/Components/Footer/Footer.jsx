@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import home from "../../Assets/Imgs/home.png";
+import home from "../../Assets/Imgs/home.svg";
+import treatBlack from "../../Assets/Imgs/treatBlack.svg"
 import urgency from "../../Assets/Imgs/buttonFooter.png";
-import settings from "../../Assets/Imgs/settings.png";
-import turno from "../../Assets/Imgs/calendar.png";
-import treatBlack from "../../Assets/Imgs/treatBlack.png"
+import settings from "../../Assets/Imgs/settings.svg";
+import turno from "../../Assets/Imgs/calendar.svg";
 import loading from "../../Assets/Imgs/loading.svg"
 import "./footer.css";
 
@@ -25,15 +25,15 @@ const Footer = () => {
 
   return (
     <div className="containerFooter">
-        <Link to='/profile-configuration'>
-          <img src={settings} alt='settings img' />
-          <p>Ajustes</p>
+        <Link to='/patient'>
+          <img src={home} alt='home img' />
+          <p>Inicio</p>
         </Link>
         <Link to='/treatments'>
           <img src={treatBlack} alt='settings img' />
           <p>Tratamiento</p>
         </Link>
-        <button onClick={() => setIsPopUpVisible(true)} className='urgency'>
+        <button onClick={() => setIsPopUpVisible(true)}>
           <img src={urgency} alt='urgency img' />
           <p>Urgencia</p>
         </button>
@@ -41,9 +41,9 @@ const Footer = () => {
           <img src={turno} alt='settings img' />
           <p>Turnos</p>
         </Link>
-        <Link to='/patient'>
-          <img src={home} alt='home img' />
-          <p>Inicio</p>
+        <Link to='/profile-configuration'>
+          <img src={settings} alt='settings img' />
+          <p>Ajustes</p>
         </Link>
       
       { isPopUpVisible && <ViewPopUp /> }

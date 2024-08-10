@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getAppointmentById } from "../../../../services/appointmentService";
+import { translateDay } from "../../../../utils/hourMapping";
 import Calendar from "../../../../helpers/atoms/Calendar";
 import Turns from "../Turns";
 import DoctorContext from "../../../../context/DoctorContext";
-import { translateDay } from "../../../../utils/hourMapping";
 import Spinner from "../../../../helpers/atoms/Spinner";
 export default function TurnCalendar() {
   const [appointments, setAppointments] = useState([]);

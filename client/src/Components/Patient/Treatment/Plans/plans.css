@@ -42,17 +42,20 @@
 }
 
 .containerInsideContent {
-  border: 3px solid #25ced1;
   background-color: white;
+  box-shadow: 1px 4px 5px #1919198d;
   margin-top: -5px;
   margin-bottom: 30px;
   border-radius: 10px;
   padding: 20px;
 }
 .containerInsideContent h1 {
-  font-size: 25px;
-  font-weight: 600;
-  color: #25ced1;
+  font-size: 20px;
+  font-weight: 700;
+  color: #191919;
+}
+.containerInsideContent h3{
+  font-weight: 700;
 }
 .containerInsideContent p {
   font-size: 15px;
@@ -60,26 +63,23 @@
 .containerInsideContent img {
   height: 300px;
   width: 90%;
-  border: 2px solid #25ced1;
-  border-radius: 20px;
   margin: auto;
   margin-top: 20px;
   object-fit: cover;
   object-position: center;
 }
 
-.arrow-rotate {
-  transform: rotate(90deg);
-  transition: transform 0.3s ease;
+.arrow-rotate-treatment {
+  transform: rotate(180deg);
+  transition: transform 0.2s ease;
 }
-
 .more-arrow-rotate {
-  transform: rotate(270deg);
-  transition: transform 0.3s ease;
+  transform: rotate(180deg);
+  transition: transform 0.2s ease;
 }
 .more-more-arrow-rotate {
   transform: rotate(360deg);
-  transition: transform 0.3s ease;
+  transition: transform 0.2s ease;
 }
 
 .buttonOk {
@@ -87,11 +87,11 @@
   justify-content: flex-end;
 }
 .buttonOk button {
-  color: #1a1a1a;
-  background-color: #25ced1;
+  color: #fff;
+  background-color: #8163B0;
   border-radius: 30px;
-  padding: 10px;
-  margin-top: 30px;
+  padding: 5px;
+  margin-top: 20px;
   width: 100%;
   font-weight: 700;
   font-size: 17px;
@@ -169,12 +169,12 @@
 }
 
 .containerMedication {
-  background-color: #fafafa;
-  border: 2px solid #25ced1;
-  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 1px 4px 10px #13131348;
+  border-radius: 10px;
   margin-top: -5px;
   margin-bottom: 30px;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 20px;
 }
 .containerMedication div {
@@ -187,42 +187,82 @@
 .containerMedication section {
   margin: 20px;
   font-weight: 600;
-  background-color: #25ced1;
+  background-color: #03A8AB33;
   border-radius: 10px;
   padding: 10px;
-  color: #fff;
-}
-.containerMedication section p {
-  color: #fff;
 }
 .containerMedication section span {
-  color: #152149;
+  color: #03A8AB;
   font-size: 35px;
 }
+
 
 .undo {
   display: flex;
   align-items: center;
 }
-.undo img {
-  border: 2px solid #25ced1;
-  border-radius: 50px;
-}
 .undo h1 {
   font-size: 25px;
   font-weight: 700;
-  color: #25ced1;
+  color: #03A8AB;
 }
 .undo div {
   margin-left: 10px;
   font-size: 20px;
 }
 .undo p {
-  font-size: 14px;
-  font-weight: 500;
+  color: #5A5555;
+  font-size: 15px;
+  font-weight: 700;
 }
 
 .containerPlansGim{
   margin: auto;
   width: 90vw;
+}
+
+
+.containerContent{
+  color: #5A5555;
+  font-weight: 500;
+  box-shadow: 1px 4px 10px #13131348;
+  padding: 20px;
+  border-radius: 10px;
+}
+.containerContent h2{
+  color: #03A8AB;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.containerContent h3{
+  color: #000;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+
+.buttonsInsideContent{
+  background-color: #03A8AB1A;
+  padding: 10px;
+  display: flex;
+  justify-content:space-around ;
+  align-items: center;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 1px 4px 10px #13131348;
+}
+.buttonsInsideContent button{
+  color: #03A8AB;
+  padding: 5px;
+  border-radius: 10px;
+  width: 45%;
+  transition: all .3s;
+}
+.buttonsInsideContentSelected{
+  background-color: #03A8AB;
+  color: #fff !important;
+  padding: 5px;
+  border-radius: 10px;
+  width: 45%;
+  transition: all .3s;
 }

@@ -1,10 +1,10 @@
 .containerNotifications{
     padding: 20px;
-    border: 2px solid #25CED1;
-    border-radius: 10px;
+    background-color: #E5F3FA;
+    color: #0087D099;
 }
 .containerNotifications h3{
-    color: #25CED1;
+    color: #0087D0;
     font-weight: 700;
     font-size: 18px;
 }

@@ -20,8 +20,7 @@ const optionsNutrition = [
   { label: "Media Tarde" },
   { label: "Merienda" },
   { label: "Cena" },
-  { label: "Otros" },
-  { label: "Comunicación" },
+  { label: "Otros" }
 ];
 
 const PlanNutrition = () => {
@@ -120,13 +119,9 @@ const PlanNutrition = () => {
       <div className={`${isPopUpVisible ? "blurred" : ""}`}>
         {optionsNutrition.map((comp, index) => (
           <div key={index}>
-            <button className='option  font-bold flex justify-between p-2' onClick={() => toggleDropdown(index)}>
+            <button className='flex justify-between p-4 optionPink' onClick={() => toggleDropdown(index)}>
               {comp.label}
-              <img src={arrowOrange} alt='arrow'
-                className={`w-4 h-6 ml-4 ${
-                  isOpen[index] ? "more-more-arrow-rotate" : "more-arrow-rotate"
-                }`}
-              />
+              <img src={arrowOrange} alt='arrow' className={`w-4 h-6 ml-4 imagePink ${ isOpen[index] ? 'arrow-rotate-treatment' : 'more-more-arrow-rotate' }`}/>
             </button>
             {isOpen[index] && (
               <div>
@@ -207,7 +202,7 @@ const PlanNutrition = () => {
                     ))}
                   </article>
                 </section>
-
+                
                 <section className='feedBack'>
                   <h3>¿Cómo te sentiste con la comida?</h3>
                   <div className='feedBackImgs'>

@@ -1,0 +1,17 @@
+.backPagePatient {
+    display: flex;
+    align-items: center;
+    color: #0087D0;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+.backPagePatient img {
+    width: 25px;
+    height: 25px;
+}
+.backPagePatient p {
+    margin-left: 10px;
+    font-weight: 600;
+    font-size: 17px;
+}

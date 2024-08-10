@@ -11,13 +11,12 @@ import arrowOrange from "../../../../Assets/Imgs/arrowOrange.svg";
 import "./plans.css"
 
 const optionsGim = [
-    { label: "Día Uno" },
-    { label: "Día Dos" },
-    { label: "Día Tres" },
-    { label: "Día Cuatro" },
-    { label: "Día Cinco" },
-    { label: "Extra" },
-    { label: "Comunicación" }
+    { label: "Lunes" },
+    { label: "Martes" },
+    { label: "Miércoles" },
+    { label: "Jueves" },
+    { label: "Viernes" },
+    { label: "Extra" }
 ];
 
 const PlanGim = () => {
@@ -59,9 +58,9 @@ const PlanGim = () => {
         <article>
             { optionsGim.map((comp, index) => (
                 <div key={index} className="containerPlansGim">
-                    <button className="option font-bold flex justify-between p-2" onClick={() => toggleDropdown(index)}>
+                    <button className="flex justify-between p-4 optionOrange" onClick={() => toggleDropdown(index)}>
                         {comp.label}
-                        <img src={arrowOrange} alt="arrow" className={`w-4 h-6 ml-4 ${isOpen[index] ? 'more-more-arrow-rotate' : 'more-arrow-rotate'}`} />
+                        <img src={arrowOrange} alt="arrow" className={`w-4 h-6 ml-4 imageOrange ${isOpen[index] ? 'arrow-rotate-treatment' : 'more-more-arrow-rotate'}`} />
                     </button>
                     { isOpen[index] && (
                         <div className={`${isPopUpVisible ? "blurred" : ""}`}>
