@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import PropTypes from "prop-types"
 import { useState } from "react"
-import Week from "../../HomePatient/WeekHome"
+import Week from "../../HomePatient/WeekComponent"
 import muyBien from "../../../../Assets/Imgs/muyBien.png"
 import normal from "../../../../Assets/Imgs/normal.png"
 import mal from "../../../../Assets/Imgs/mal.png"

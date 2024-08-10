@@ -94,8 +94,8 @@
     border-radius: 10px;
     margin-top: 15px;
     margin-bottom: 15px;
-    border: 2px solid #25CED1;
     border-radius: 10px;
+    box-shadow: 1px 1px 5px #00000068;
 }
 
 .detailsTitle{
@@ -103,29 +103,17 @@
     justify-content: space-between;
     font-weight: 600;
     font-size: 18px;
-    color: #25CED1;
+    color: #EA526F;
 }
 
 .recommendation{
     font-size: 14px;
 }
 
-
 .detailsContainer {
     display: flex;
     align-items: center;
     margin-top: 10px;
-}
-.detailsContainer img {
-    width: 45px;
-    height: 45px;
-    border-radius: 20px;
-    object-fit: cover;
-    margin-right: 10px;
-}
-.detailsContainer section img {
-    border: 2px solid #EA526F;
-    border-radius: 50px;
 }
 
 .detailsContentWrapper {
@@ -143,19 +131,27 @@
 }
 
 .detailsDescription {
+    width: 100%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    padding: 25px;
+    border-radius: 10px;
+    margin-top: -10px;
+    margin-bottom: 15px;
+}
+.detailsDescription article{
     display: flex;
     justify-content: space-between;
-    width: 100%;
 }
+.detailsDescription span {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
 .detailsDescription p {
     margin: 0;
-    font-size: 13px;
-}
-.detailsDescription img {
-    width: 15px;
-    height: 15px;
-    object-fit: cover;
-    margin-right: 0px;
+    font-size: 15px;
 }
 
 
