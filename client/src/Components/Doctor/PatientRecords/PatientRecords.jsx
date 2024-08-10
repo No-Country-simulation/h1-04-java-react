@@ -65,8 +65,9 @@ const PatientRecords = () => {
         <Record
           imgSrc={foldier}
           text='Transplante cruzado'
-          onClick={() => setShowVerificando(true)}
+          link={`/transplantProfile/${patient.id}`}
         />
+
         <Record
           imgSrc={proximoTurno}
           text='Proximos turnos'

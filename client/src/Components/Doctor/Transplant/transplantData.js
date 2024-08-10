@@ -8,7 +8,7 @@ const data = [
     "nota_medico": "El paciente presenta un control adecuado de la hipertensión arterial, con los valores de presión arterial dentro del rango objetivo establecido. No se han observado efectos secundarios significativos del tratamiento actual. Se recomienda continuar con el régimen de tratamiento con Lisinopril 10 mg diariamente para mantener el control de la presión arterial."
   },
   {
-    "nombre": "Carlos Pérez",
+    "nombre": "Juan Perez",
     "edad": 60,
     "tipo_sangre": "A-",
     "organo_necesario": "Hígado",
@@ -16,7 +16,7 @@ const data = [
     "nota_medico": "El paciente muestra una recuperación estable tras la cirugía de reemplazo de cadera. El control del dolor y la movilidad están mejorando. Se sugiere continuar con la terapia física y revisar los niveles de glucosa en sangre."
   },
   {
-    "nombre": "Laura González",
+    "nombre": "Maria Lopez",
     "edad": 34,
     "tipo_sangre": "B+",
     "organo_necesario": "Corazón",
@@ -32,7 +32,7 @@ const data = [
     "nota_medico": "El paciente ha presentado una respuesta positiva al tratamiento de la diabetes tipo 2. Los niveles de glucosa en sangre están bien controlados. Se recomienda mantener el régimen de medicación y seguir con la dieta recomendada."
   },
   {
-    "nombre": "María López",
+    "nombre": "María Martinez",
     "edad": 29,
     "tipo_sangre": "O-",
     "organo_necesario": "Hígado",
@@ -40,7 +40,7 @@ const data = [
     "nota_medico": "El paciente está en recuperación tras el trasplante de Hígado. Los signos vitales son estables y no se han detectado rechazos. Se debe continuar con el tratamiento inmunosupresor y realizar chequeos periódicos."
   },
   {
-    "nombre": "Pedro Ruiz",
+    "nombre": "Jose Fernandez",
     "edad": 62,
     "tipo_sangre": "B-",
     "organo_necesario": "Riñón",

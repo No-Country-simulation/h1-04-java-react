@@ -57,7 +57,7 @@ export default function TransplantSearch() {
       <DoctorHeader text={"Posibles donantes"} />
       <h2 className='text-lg font-semibold mb-4'>Paciente</h2>
 
-      <div className='flex bg-white w-full shadow-lg items-center space-x-4 p-3 rounded-[10px] mb-2'>
+      <div className='flex bg-[#ffffff] w-full shadow-lg items-center space-x-4 p-3 rounded-[10px] mb-2'>
         <div className='text-white rounded-full w-14 h-14 flex items-center justify-center'>
           <img src={img} alt='Patient' />
         </div>
@@ -108,8 +108,8 @@ export default function TransplantSearch() {
           <label className='block font-semibold text-lg mb-2'>
             Rango de Edad: {ageRange[0]} - {ageRange[1]}
           </label>
-          <div className='flex items-center justify-center gap-2'>
-            <div className='flex items-center space-x-1'>
+          <div className='flex items-center justify-evenly '>
+            <div className='flex items-center space-x-2'>
               <button
                 onClick={() => {
                   if (ageRange[0] > 0) {
@@ -132,7 +132,7 @@ export default function TransplantSearch() {
                 +
               </button>
             </div>
-            <div className='flex items-center space-x-1'>
+            <div className='flex items-center space-x-2'>
               <button
                 onClick={() => {
                   if (ageRange[1] > ageRange[0] + 10) {
