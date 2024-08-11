@@ -256,10 +256,10 @@ const AddDoctorForm = ({ onClose }) => {
             onChange={handleChange}
             className="border p-1 text-sm rounded"
           />
-          <div className="flex flex-row items-center justify-evenly col-span-3">
+          <div className="flex flex-col md:flex-row items-center justify-evenly col-span-3">
             <h4 className="pb-2 text-md font-base text-red-600">*Los campos en rojo son obligatorios.</h4>
             <button type="submit" className="w-52 border border-[#0087d0] text-[#0087d0] hover:bg-[#c7e3f7] font-bold py-2 ml-[-2rem] rounded">Guardar</button>
-            <button onClick={onClose} type="button" className="w-52 hover:bg-[#fde0e0] text-white hover:text-red-600 font-bold py-2 ml-[-2rem] rounded border bg-[#e4626f] border-[#e4626f]">Cerrar</button>
+            <button onClick={onClose} type="button" className="w-52 hover:bg-[#fde0e0] text-white hover:text-red-600 font-bold my-2 py-2 ml-[-2rem] rounded border bg-[#e4626f] border-[#e4626f]">Cerrar</button>
           </div>
         </div>
       </form>

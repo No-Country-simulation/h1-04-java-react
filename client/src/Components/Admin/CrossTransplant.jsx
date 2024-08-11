@@ -30,7 +30,7 @@ const CrossTransplant = () => {
   };
 
   return (
-    <div className="px-4 py-6 font-roboto w-[50%]">
+    <div className="px-4 py-6 font-roboto md:w-[50%] pl-10 md:pl-0">
       <h2 className="text-xl font-semibold mb-8">Transplante Cruzado</h2>
 
       <div className="mb-4">
@@ -97,7 +97,7 @@ const CrossTransplant = () => {
 
       {showModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white rounded-lg shadow-lg p-6 w-1/3 relative">
+          <div className="bg-white rounded-lg shadow-lg p-6 w-[80%] md:w-1/3 relative">
             <button
               onClick={closeModal}
               className="absolute top-4 right-4 bg-red-500 hover:bg-red-400 text-white p-2 rounded-lg"

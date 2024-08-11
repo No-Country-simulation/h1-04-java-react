@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FaSearch } from 'react-icons/fa';
+import { FaSearch, FaEdit, FaTrash } from 'react-icons/fa';
 import Modal from './Modal';
 import AddPatientForm from './AddPatientForm';
 import EditPatientForm from './EditPatientForm';
@@ -42,14 +42,14 @@ const Patients = () => {
 
   return (
     <div className="p-4 font-roboto">
-      <h2 className="text-xl font-semibold mb-4">Pacientes</h2>
+      <h2 className="text-xl font-semibold mb-4 pl-8 md:pl-0">Pacientes</h2>
 
       {/* Barra de búsqueda */}
-      <div className="mb-4 flex items-center border border-[#4763e4] rounded-lg">
+      <div className="w-full mb-4 flex items-center border border-[#4763e4] rounded-lg">
         <FaSearch className="ml-2 text-black mr-2" />
         <input
           type="text"
-          placeholder="Buscar por apellido"
+          placeholder="Buscar por nombre"
           value={searchTerm}
           onChange={handleSearchChange}
           className="p-2 border-0 w-full focus:outline-none"
@@ -72,10 +72,10 @@ const Patients = () => {
           <thead>
             <tr>
               <th className="py-1 px-3 text-left font-semibold">Nombre</th>
-              <th className="py-1 px-3 text-left font-semibold">Email</th>
-              <th className="py-1 px-3 text-left font-semibold">Teléfono</th>
-              <th className="py-1 px-3 text-left font-semibold">Obra Social</th>
-              <th className="py-1 px-3 text-left font-semibold">Activo</th>
+              <th className="py-1 px-3 text-left font-semibold hidden md:table-cell">Email</th>
+              <th className="py-1 px-3 text-left font-semibold hidden md:table-cell">Teléfono</th>
+              <th className="py-1 px-3 text-left font-semibold hidden md:table-cell">Obra Social</th>
+              <th className="py-1 px-3 text-left font-semibold hidden md:table-cell">Activo</th>
               <th className="py-1 text-center font-semibold">Acciones</th>
             </tr>
           </thead>
@@ -83,22 +83,22 @@ const Patients = () => {
             {filteredPatients.map(patient => (
               <tr key={patient.id} className="h-8 border border-zinc-100 justify-center items-center text-sm">
                 <td className="py-1 px-3 overflow-hidden whitespace-nowrap">{patient.name}</td>
-                <td className="py-1 px-3 overflow-hidden whitespace-nowrap">{patient.email}</td>
-                <td className="py-1 px-3 overflow-hidden whitespace-nowrap">{patient.phone}</td>
-                <td className="py-1 px-3 overflow-hidden whitespace-nowrap">{patient.insurance}</td>
-                <td className="py-1 px-3 overflow-hidden whitespace-nowrap">{patient.active ? 'Sí' : 'No'}</td>
+                <td className="py-1 px-3 overflow-hidden whitespace-nowrap hidden md:table-cell">{patient.email}</td>
+                <td className="py-1 px-3 overflow-hidden whitespace-nowrap hidden md:table-cell">{patient.phone}</td>
+                <td className="py-1 px-3 overflow-hidden whitespace-nowrap hidden md:table-cell">{patient.insurance}</td>
+                <td className="py-1 px-3 overflow-hidden whitespace-nowrap hidden md:table-cell">{patient.active ? 'Sí' : 'No'}</td>
                 <td className="py-1 flex flex-row justify-evenly items-center">
                   <button
                     onClick={() => handleEditPatient(patient)}
-                    className="p-1 mx-1 rounded-md  flex justify-center items-center border border-[#0087d0] text-[#0087d0] hover:bg-[#c7e3f7]"
+                    className="p-1 mx-1 rounded-md border border-[#0087d0] text-[#0087d0] flex justify-center items-center hover:bg-[#c7e3f7]"
                   >
-                    <div className="w-20 text-base font-normal leading-normal tracking-wide">Editar</div>
+                    <FaEdit />
                   </button>
                   <button
                     onClick={() => handleDeletePatient(patient.id)}
                     className="p-1 mx-1 rounded-md border bg-[#e4626f] border-[#e4626f] text-white hover:text-red-600 flex justify-center items-center hover:bg-[#fde0e0]"
                   >
-                    <div className="w-20 text-base font-normal leading-normal tracking-wide">Eliminar</div>
+                    <FaTrash />
                   </button>
                 </td>
               </tr>
@@ -120,6 +120,6 @@ const Patients = () => {
       )}
     </div>
   );
-}
+};
 
 export default Patients;
