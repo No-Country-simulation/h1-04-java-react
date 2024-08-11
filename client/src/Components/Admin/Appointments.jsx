@@ -46,7 +46,7 @@ const Appointments = () => {
   };
 
   return (
-    <div className="p-4">
+    <div className="pt-2">
       <div className="overflow-x-auto max-h-[calc(100vh-4rem)]">
         <div className="grid grid-cols-[auto_repeat(7,_minmax(0,_1fr))] grid-rows-[auto_repeat(12,_auto)] gap-3 min-w-max">
           {/* Header con los días de la semana */}

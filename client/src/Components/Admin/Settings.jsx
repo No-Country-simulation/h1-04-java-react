@@ -38,8 +38,8 @@ const Settings = () => {
   };
 
   return (
-    <div className="p-2 font-roboto text-sm ">
-      <h2 className="text-lg font-semibold mb-4 text-left">Configuración</h2>
+    <div className="p-2 font-roboto text-sm pl-10 md:pl-0">
+      <h2 className="text-lg font-semibold mb-4 text-left pl-2 md:pl-0">Actualizar perfil</h2>
       <form onSubmit={handleSubmit} className="space-y-2">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           <div>
@@ -197,15 +197,15 @@ const Settings = () => {
             <h4 className='pb-2 text-lg font-base text-red-600'>*Los campos en rojo son obligatorios.</h4>
           </div>
         </div>
-        <div className="flex justify-between pt-8">
+        <div className="flex justify-between pr-4 md:pr-0 pt-2 md:pt-8 pb-4">
           <button
             type="submit"
-            className="w-[48%] border border-[#0087d0] text-[#0087d0] hover:bg-[#c7e3f7] font-bold py-2 px-4 rounded"
+            className="w-[48%] border border-[#0087d0] text-[#0087d0] text-xs md:text-base hover:bg-[#c7e3f7] font-bold py-2 px-2 md:px-4 rounded"
           >
             Actualizar Datos
           </button>
           <button
-            className="w-[48%] hover:bg-[#fde0e0] text-white hover:text-red-600 font-bold py-2 px-4 rounded border bg-[#e4626f] border-[#e4626f]"
+            className="w-[48%] hover:bg-[#fde0e0] text-white hover:text-red-600 text-xs md:text-base font-bold py-2 px-2 md:px-4 rounded border bg-[#e4626f] border-[#e4626f]"
           >
             Actualizar Password
           </button>

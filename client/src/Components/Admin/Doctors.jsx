@@ -43,10 +43,10 @@ const Doctors = () => {
 
   return (
     <div className="p-4 font-roboto">
-      <h2 className="text-xl font-semibold mb-4">Médicos</h2>
+      <h2 className="text-xl font-semibold mb-4 pl-8 md:pl-0">Médicos</h2>
 
       {/* Barra de búsqueda */}
-      <div className="mb-4 flex items-center border border-[#4763e4] rounded-lg">
+      <div className="w-[20rem] md:w-full mb-4 flex items-center border border-[#4763e4] rounded-lg">
         <FaSearch className="ml-2 text-black mr-2" />
         <input
           type="text"
