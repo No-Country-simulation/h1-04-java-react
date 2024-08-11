@@ -117,7 +117,6 @@ const Appointments = () => {
               <div>
                 <p className='font-semibold'>Hora: <span className='font-normal'>{selectedAppointment.hour}</span></p>
                 <p className='font-semibold'>Paciente: <span className='font-normal'>{selectedAppointment.patientName}</span></p>
-                <p className='font-semibold'>Activo: <span className='font-normal'>{selectedAppointment.isActive ? 'Sí' : 'No'}</span></p>
               </div>
             </div>
             <p className='font-semibold mt-4'>Descripción: <span className='font-normal'>{selectedAppointment.appointmentDescription}</span></p>
