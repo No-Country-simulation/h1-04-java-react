@@ -100,7 +100,7 @@ const Appointments = () => {
   
       {selectedAppointment && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white rounded-lg shadow-lg p-6 w-2/5 relative border border-[#009ff5]">
+          <div className="bg-white rounded-lg shadow-lg p-6 w-[90%] md:w-2/5 relative border border-[#009ff5]">
             <button
               onClick={handleClose}
               className="absolute w-10 h-10 top-2 right-2 bg-[#25ced1] hover:bg-[#1da9b0] text-white p-2 rounded-full flex items-center justify-center"

@@ -318,10 +318,10 @@ const EditPatientForm = ({ patient, onClose }) => {
             ></textarea>
           </div>
 
-          <div className="flex flex-col items-center justify-evenly col-span-1 col-start-3">
-            <h4 className='pb-2 text-md font-base text-red-600'>*Los campos en rojo son obligatorios.</h4>
-            <button type="submit" className="w-52 bg-blue-300 hover:bg-[#48c2ff] text-[#143b50] font-bold py-2 px-4 rounded border border-[#246183]">Guardar</button>
-            <button onClick={onClose} className="w-52 bg-red-400 hover:bg-red-600 text-red-800 hover:text-white font-bold py-2 px-4 rounded border border-[#7c232b]">Cerrar</button>
+          <div className="flex flex-col pl-2 items-center justify-evenly col-span-1 col-start-3 ">
+            <h4 className='pb-1 text-md font-base text-red-600'>*Los campos en rojo son obligatorios.</h4>
+            <button type="submit" className="w-24 md:w-52 border border-[#0087d0] text-[#0087d0] hover:bg-[#bee1f8] font-bold py-1 my-2 px-4 rounded">Guardar</button>
+            <button type="button" onClick={onClose} className="w-24 md:w-52 hover:bg-[#fde0e0] text-white hover:text-red-600 font-bold py-1 px-4 rounded border bg-[#e4626f] border-[#e4626f]">Cerrar</button>
           </div>
         </div>
       </form>

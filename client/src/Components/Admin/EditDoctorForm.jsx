@@ -200,12 +200,12 @@ const EditDoctorForm = ({ doctor, onClose }) => {
             onChange={handleChange}
             className="border p-1 text-sm rounded"
           />
-          <div className="flex flex-row items-center justify-evenly col-span-3">
+          <div className="flex flex-col md:flex-row items-center justify-evenly col-span-3">
             <h4 className="pb-2 text-md font-base text-red-600">*Los campos en rojo son obligatorios.</h4>
             <button type="submit" className="w-52 bg-blue-300 hover:bg-[#48c2ff] text-[#143b50] font-bold py-2 px-4 rounded border border-[#246183]">
               Guardar
             </button>
-            <button onClick={onClose} className="w-52 bg-red-400 hover:bg-red-600 text-red-800 hover:text-white font-bold py-2 px-4 rounded border border-[#7c232b]">
+            <button onClick={onClose} className="w-52 bg-red-400 hover:bg-red-600 my-2 text-red-800 hover:text-white font-bold py-2 px-4 rounded border border-[#7c232b]">
               Cerrar
             </button>
           </div>
