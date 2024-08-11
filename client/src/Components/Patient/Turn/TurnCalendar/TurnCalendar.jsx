@@ -6,6 +6,8 @@ import Calendar from "../../../../helpers/atoms/Calendar";
 import Turns from "../Turns";
 import DoctorContext from "../../../../context/DoctorContext";
 import Spinner from "../../../../helpers/atoms/Spinner";
+import PatientHeader from "../../PatientHeader/PatientHeader";
+
 export default function TurnCalendar() {
   const [appointments, setAppointments] = useState([]);
   const [error, setError] = useState(null);
@@ -56,14 +58,16 @@ export default function TurnCalendar() {
 
   return (
     <div className='mt-0 flex flex-col'>
-      <Calendar />
-      <button className='rounded-full mb-3 w-full flex justify-center items-center pb-1 bg-primary border-2 text-xl font-bold text-white'>
-        <Link to={"/new-turn"}>Nuevo turno</Link>
+      <PatientHeader text="Turnos" color="#5A5555"  />
+      
+      <Calendar bgColor="#8163B033" />
+      <button className='rounded-xl mb-5 mt-5 flex w-[90%] justify-center items-center p-4 border-1 font-bold text-white m-auto' style={{backgroundColor:"#8163B0"}}>
+        <Link to="/new-turn">Agendar Turno</Link>
       </button>
       {Object.keys(groupedAppointments).length > 0 ? (
         Object.keys(groupedAppointments).map((day) => (
           <div key={day} className='mb-6'>
-            <h3 className='text-lg font-extrabold ml-4 text-orangeColor  mb-2'>
+            <h3 className='text-lg ml-4 text-blackClear mb-2'>
               {translateDay(day)}...
             </h3>
             {groupedAppointments[day].map((appointment) => (

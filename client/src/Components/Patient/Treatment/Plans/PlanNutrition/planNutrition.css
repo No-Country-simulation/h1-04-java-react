@@ -160,7 +160,8 @@
 .containerNutrition {
     margin: auto;
     position: relative;
-    width: 90vw;
+    width: 100%;
+    max-width: 500px;
 }
 
 .blurred {

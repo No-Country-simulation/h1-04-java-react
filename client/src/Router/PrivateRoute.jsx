@@ -1,4 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
+/* eslint-disable react/prop-types */
+import { useContext, useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import DoctorContext from "../context/DoctorContext";
 

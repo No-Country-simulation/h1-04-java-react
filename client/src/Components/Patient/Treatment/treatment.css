@@ -105,13 +105,11 @@
 
 .containerBigTreatments {
   position: relative;
-  padding-bottom: 40px;
 }
 
 .containerComponents {
   width: 90%;
   margin: auto;
-  overflow-x: hidden;
   padding-bottom: 100px;
 }
 

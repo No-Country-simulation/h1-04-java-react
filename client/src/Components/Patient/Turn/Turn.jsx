@@ -1,27 +1,20 @@
 import { useContext, useEffect, useState } from "react";
-import {
-  getAppointmentById,
-  deactivateAppointment,
-} from "../../../services/appointmentService";
-import { useNavigate } from "react-router-dom";
+import { getAppointmentById, deactivateAppointment } from "../../../services/appointmentService";
 import DoctorContext from "../../../context/DoctorContext";
-import turns from "../../../Assets/Imgs/turns.png";
 import Turns from "./Turns.jsx";
-import anotherArrowLeft from "../../../Assets/Imgs/otraArrowLeft.png";
 import checkImgError from "../../../Assets/Imgs/checkImgError.svg";
 import SuccesModal from "../../../Components/Modals/SucessModal";
+import PatientHeader from "../PatientHeader/PatientHeader.jsx";
 
 const Turn = () => {
   const [dataAppointments, setDataAppointments] = useState([]);
   const [cancelModalIndex, setCancelModalIndex] = useState(null);
   const [showCancelModal, setShowCancelModal] = useState(false);
-  const [showCancellationSuccessModal, setShowCancellationSuccessModal] =
-    useState(false);
+  const [showCancellationSuccessModal, setShowCancellationSuccessModal] = useState(false);
   const [turnCancellation, setTurnCancellation] = useState(null);
   const [showVerificando, setShowVerificando] = useState(false);
 
   const { authData } = useContext(DoctorContext);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const handleGetAppointment = async () => {
@@ -36,7 +29,7 @@ const Turn = () => {
         throw new Error("Failed to fetch appointments");
       }
     };
-
+    
     handleGetAppointment();
   }, [authData]);
 
@@ -75,26 +68,11 @@ const Turn = () => {
     }
   };
 
-  useEffect(() => {
-    if (turnCancellation !== null) {
-      // Optionally handle other logic here
-    }
-  }, [turnCancellation]);
 
   return (
     <section className='m-4'>
-      <div className='flex justify-between items-center'>
-        <div className='flex items-center text-center text-secondary'>
-          <img src={turns} alt='turno img' className='w-8 h-8' />
-          <h2 className='text-xl font-bold mb-4 mt-3 ml-2'>Turnos</h2>
-        </div>
-        <div>
-          <p className='text-white bg-orangeColor rounded-3xl p-1 font-semibold'>
-            {dataAppointments.length}
-          </p>
-        </div>
-      </div>
-
+      <PatientHeader text="Turnos" color="#5A5555"  />
+      
       {dataAppointments.length > 0 ? (
         dataAppointments.map((dataAppoint, index) => (
           <div key={index} className='mb-5 '>
@@ -105,24 +83,21 @@ const Turn = () => {
               href={"/turn-calendar"}
               type={dataAppoint.typeOfAppointment}
             />
-            <div className='flex justify-around mt-2 items-center mb-2'>
-              <button
-                className='rounded-3xl bg-primary p-2 font-bold px-4'
+            <div className="flex flex-col items-center">
+              <button className='mb-5 rounded-lg p-3 text-white w-[90%]' style={{backgroundColor:"#8163B0"}}
                 onClick={() => openCancelModal(index)}
               >
-                Cancelar
+                Cancelar Turno
               </button>
-              <button
+              <button className='mb-5 rounded-lg p-3 text-white w-[90%]' style={{backgroundColor:"#8163B0"}}
                 onClick={() => setShowVerificando(true)}
-                className='rounded-3xl bg-orangeColor p-2 font-bold px-4'
               >
-                Modificar
+                Modificar Turno
               </button>
-              <button
+              <button className='mb-5 rounded-lg p-3 text-white w-[90%]' style={{backgroundColor:"#8163B0"}}
                 onClick={() => setShowVerificando(true)}
-                className='rounded-3xl bg-blueColor p-2 font-bold px-4'
               >
-                Finalizar
+                Agendar Nuevo Turno
               </button>
             </div>
           </div>
@@ -130,13 +105,7 @@ const Turn = () => {
       ) : (
         <h1>No se encontraron citas</h1>
       )}
-
-      <div className='backContainer'>
-        <button className='back' onClick={() => navigate(-1)}>
-          <img src={anotherArrowLeft} alt='back' />
-        </button>
-      </div>
-
+      
       {/* Cancel Confirmation Modal */}
       {cancelModalIndex !== null && (
         <SuccesModal
@@ -150,7 +119,7 @@ const Turn = () => {
           confirm={() => handleCancelAppointment()}
         />
       )}
-
+      
       {/* Cancellation Success Modal */}
       {turnCancellation !== null && (
         <SuccesModal

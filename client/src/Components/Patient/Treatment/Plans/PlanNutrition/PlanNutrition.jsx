@@ -70,13 +70,8 @@ const meals = [
 ];
 
 const PlanNutrition = () => {
-  const [isOpen, setIsOpen] = useState(
-    Array(optionsNutrition.length).fill(false)
-  );
-
-  const [detailsOpen, setDetailsOpen] = useState(
-    Array(meals.length).fill(false)
-  );
+  const [isOpen, setIsOpen] = useState(Array(optionsNutrition.length).fill(false));
+  const [detailsOpen, setDetailsOpen] = useState(Array(meals.length).fill(false));
 
   const toggleDropdown = (index) => {
     setIsOpen((prevState) => {
@@ -104,7 +99,6 @@ const PlanNutrition = () => {
 
   return (
     <div className="containerNutrition">
-      <div>
         { optionsNutrition.map((comp, index) => (
           <div key={index}>
             <button className="flex justify-between items-center p-4 optionPink" onClick={() => toggleDropdown(index)} >
@@ -125,7 +119,7 @@ const PlanNutrition = () => {
                     textColor="text-primary"
                   />
                 </section>
-
+                
                 <section>
                   <article className="details bg-white">
                     <div className="detailsTitle">
@@ -135,11 +129,11 @@ const PlanNutrition = () => {
                     <p className="recommendation">
                       Recomendado: 30% de tu ingesta diaria (503 kcal)
                     </p>
-
+                    
                     { meals.map((meal, mealIndex) => (
-                      <div key={mealIndex} className="detailsContainer ">
+                      <div key={mealIndex} className="detailsContainer">
                         <div className="detailsContentWrapper">
-                          <button className="flex justify-between items-center p-5 py-1 optionPink text-blackClear" onClick={() => toggleDetails(mealIndex)} >
+                          <button className="flex justify-between items-center p-5 py-1 optionPink text-blackClear font-medium" onClick={() => toggleDetails(mealIndex)} >
                             {meal.name}
                             <img src={arrowOrange} alt="arrow" className={`w-4 h-6 ml-4 imagePink ${
                                 detailsOpen[mealIndex]
@@ -187,7 +181,6 @@ const PlanNutrition = () => {
           </div>
         )) }
       </div>
-    </div>
   );
 };
 

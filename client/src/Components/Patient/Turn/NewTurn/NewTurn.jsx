@@ -1,24 +1,17 @@
 import { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  createAppointment,
-  getAppointmentsByPatient,
-} from "../../../../services/appointmentService"; // Asegúrate de usar la ruta correcta
+import { createAppointment, getAppointmentsByPatient } from "../../../../services/appointmentService";
 import check from "../../../../Assets/Imgs/checkOrange.svg";
 import DoctorContext from "../../../../context/DoctorContext";
 import SuccesModal from "../../../../Components/Modals/SucessModal";
 import turns from "../../../../Assets/Imgs/turns.png";
 import checkImgSuccess from "../../../../Assets/Imgs/checkImgSuccess.svg";
-import checkImgError from "../../../../Assets/Imgs/checkImgVerify.svg";
-import checkImgVerify from "../../../../Assets/Imgs/checkImgError.svg";
+// import checkImgError from "../../../../Assets/Imgs/checkImgVerify.svg";
+// import checkImgVerify from "../../../../Assets/Imgs/checkImgError.svg";
 import anotherArrowLeft from "../../../../Assets/Imgs/otraArrowLeft.png";
-import {
-  formatHour,
-  translateDay,
-  translateAppointmentType,
-  translateSpecialty,
-} from "../../../../utils/hourMapping";
+import { formatHour, translateDay, translateAppointmentType, translateSpecialty } from "../../../../utils/hourMapping";
 import Spinner from "../../../../helpers/atoms/Spinner";
+
 const daysOfWeek = [
   "MONDAY",
   "TUESDAY",
@@ -168,6 +161,7 @@ const NewTurn = () => {
   if (loading) return <Spinner/>;
   if (doctorError)
     return <div className='text-center mt-10'>{doctorError}</div>;
+
 
   return (
     <section className='m-4'>
