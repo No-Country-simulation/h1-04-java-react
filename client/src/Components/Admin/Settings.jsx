@@ -38,7 +38,7 @@ const Settings = () => {
   };
 
   return (
-    <div className="p-2 font-roboto text-sm h-screen ">
+    <div className="p-2 font-roboto text-sm ">
       <h2 className="text-lg font-semibold mb-4 text-left">Configuración</h2>
       <form onSubmit={handleSubmit} className="space-y-2">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
