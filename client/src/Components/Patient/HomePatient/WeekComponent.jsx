@@ -1,4 +1,5 @@
-const WeekHome = () => {
+/* eslint-disable react/prop-types */
+const WeekComponent = ({ backgroundColor, borderColor, textColor }) => {
     let today = new Date().getDay();
 
     const days = [
@@ -14,7 +15,7 @@ const WeekHome = () => {
     return (
         <div className="flex justify-around p-4">
             {days.map(dayObj => (
-                <button key={dayObj.id} className={`shadow-xl rounded-xl border inline-block w-20 text-center py-2 m-1 ${today === dayObj.id ? "bg-blueColorClear text-white border-blueColorClear" : "border-blueColorClear text-blueColorClear"}`}>
+                <button key={dayObj.id} className={`shadow-xl rounded-xl border inline-block w-20 text-center py-2 m-1 ${today === dayObj.id ? `${backgroundColor} text-white ${borderColor}` : `${borderColor} ${textColor}`}`}>
                     <p>{dayObj.label}</p>
                 </button>
             ))}
@@ -22,4 +23,4 @@ const WeekHome = () => {
     );
 }
 
-export default WeekHome;
+export default WeekComponent;

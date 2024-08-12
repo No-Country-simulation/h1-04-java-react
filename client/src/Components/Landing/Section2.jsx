@@ -21,15 +21,15 @@ const Section2 = () => {
       </div>
       {/* Segunda parte */}
       <div className="w-full max-w-6xl flex flex-col lg:flex-row items-center gap-16 mt-20">
-        <div className="w-full lg:w-1/2 flex justify-center relative">
-          <div className="w-[60%] md:w-full max-w-md h-[18rem] md:h-[30rem] bg-pink-500/20 rounded-2xl"></div>
+        <div className="w-full lg:w-1/2 flex justify-center relative pl-8">
+          <div className="w-[75%] md:w-full max-w-md h-[18rem] md:h-[30rem] bg-pink-500/20 rounded-2xl"></div>
           <img
-            className="absolute w-[13.6rem] md:w-[21.6rem] h-[11.7rem] md:h-[18.7rem] rounded-[1rem] left-[6%] md:left-[-3%] top-[25%]"
+            className="absolute w-[13.6rem] md:w-[21.6rem] h-[11.7rem] md:h-[18.7rem] rounded-[1rem] left-[5%] sm:left-[8rem] md:left-[-3%] top-[25%]"
             src={img1}
             alt="Placeholder"
           />
           <img
-            className="absolute w-[12.1rem] md:w-[18.1rem] h-[11.5rem] md:h-[17.2rem] rounded-[1rem] left-[5.5rem] md:left-[9.5rem] top-[10%] transform translate-x-[30%] -translate-y-[30%]"
+            className="absolute w-[12.1rem] md:w-[18.1rem] h-[11.5rem] md:h-[17.2rem] rounded-[1rem] sm:left-[9rem] md:left-[9.5rem] top-[10%] transform translate-x-[30%] -translate-y-[30%]"
             src={img2}
             alt="Placeholder"
           />

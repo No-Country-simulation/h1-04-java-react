@@ -46,8 +46,8 @@ const Appointments = () => {
   };
 
   return (
-    <div className="p-4">
-      <div className="overflow-auto">
+    <div className="pt-2">
+      <div className="overflow-x-auto max-h-[calc(100vh-4rem)]">
         <div className="grid grid-cols-[auto_repeat(7,_minmax(0,_1fr))] grid-rows-[auto_repeat(12,_auto)] gap-3 min-w-max">
           {/* Header con los días de la semana */}
           <div className="p-2"></div>
@@ -59,16 +59,16 @@ const Appointments = () => {
               {day}
             </div>
           ))}
-
+  
           {/* Columnas de horarios */}
           {hours.map((hour, index) => (
             <React.Fragment key={index}>
-              <div className="h-16 px-2.5  font-semibold justify-center items-center gap-2.5 inline-flex">
+              <div className="h-16 px-0 md:px-2.5 font-semibold justify-center items-center gap-2.5 inline-flex">
                 <div className='border-l-2 border-[#009ff5] h-12 justify-center items-center inline-flex pl-3'>
                   {parseInt(hour.split(':')[0], 10) < 12 ? `${hour} AM` : `${hour} PM`}
                 </div>
               </div>
-
+  
               {/* Columna de turnos para cada día */}
               {daysOfWeek.map((day, dayIndex) => (
                 <div key={dayIndex} className="h-16 flex items-center">
@@ -97,10 +97,10 @@ const Appointments = () => {
           ))}
         </div>
       </div>
-
+  
       {selectedAppointment && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white rounded-lg shadow-lg p-6 w-2/5 relative border border-[#009ff5]">
+          <div className="bg-white rounded-lg shadow-lg p-6 w-[90%] md:w-2/5 relative border border-[#009ff5]">
             <button
               onClick={handleClose}
               className="absolute w-10 h-10 top-2 right-2 bg-[#25ced1] hover:bg-[#1da9b0] text-white p-2 rounded-full flex items-center justify-center"
@@ -117,7 +117,6 @@ const Appointments = () => {
               <div>
                 <p className='font-semibold'>Hora: <span className='font-normal'>{selectedAppointment.hour}</span></p>
                 <p className='font-semibold'>Paciente: <span className='font-normal'>{selectedAppointment.patientName}</span></p>
-                <p className='font-semibold'>Activo: <span className='font-normal'>{selectedAppointment.isActive ? 'Sí' : 'No'}</span></p>
               </div>
             </div>
             <p className='font-semibold mt-4'>Descripción: <span className='font-normal'>{selectedAppointment.appointmentDescription}</span></p>
@@ -126,6 +125,7 @@ const Appointments = () => {
       )}
     </div>
   );
+  
 }
 
 export default Appointments;

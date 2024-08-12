@@ -3,15 +3,21 @@
     align-items: center;
     color: #0087D0;
     margin-bottom: 20px;
-    margin-top: 20px;
+    margin-top: 30px;
     margin-left: 10px;
 }
+
 .backPagePatient img {
     width: 25px;
     height: 25px;
 }
+
 .backPagePatient p {
     margin-left: 10px;
     font-weight: 600;
     font-size: 17px;
+}
+
+.backPagePatientImgGris{
+    filter: invert(44%) sepia(28%) saturate(60%) hue-rotate(130deg);
 }

@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import WeekHome from "./WeekHome.jsx";
+import WeekComponent from "./WeekComponent.jsx";
 import Day from "./Day.jsx";
 import imgUser from "../../../Assets/Imgs/imgUser.png"
 import nutricion from "../../../Assets/Imgs/apple.svg"
@@ -39,7 +39,7 @@ const HomePatient = () => {
       </div>
       
       <div>
-        <WeekHome />
+        <WeekComponent backgroundColor="bg-blueColorClear" borderColor="border-blueColorClear" textColor="text-blueColorClear" />
       </div>
       
       <div>

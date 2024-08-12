@@ -1,15 +1,10 @@
 /* eslint-disable react/prop-types */
-import PropTypes from "prop-types";
 import { useState } from "react";
-import Week from "../../../HomePatient/WeekHome.jsx";
+import PropTypes from "prop-types";
+import WeekComponent from "../../../HomePatient/WeekComponent.jsx";
 import muyBien from "../../../../../Assets/Imgs/muyBien.png";
 import normal from "../../../../../Assets/Imgs/normal.png";
 import mal from "../../../../../Assets/Imgs/mal.png";
-import imgProduct1 from "../../../../../Assets/Imgs/desayuno1.png";
-import imgProduct2 from "../../../../../Assets/Imgs/desayuno2.png";
-import imgProduct3 from "../../../../../Assets/Imgs/desayuno3.png";
-import imgProduct4 from "../../../../../Assets/Imgs/desayuno4.png";
-import question from "../../../../../Assets/Imgs/question.png";
 import arrowOrange from "../../../../../Assets/Imgs/arrowOrange.svg";
 import "./planNutrition.css";
 
@@ -20,15 +15,63 @@ const optionsNutrition = [
   { label: "Media Tarde" },
   { label: "Merienda" },
   { label: "Cena" },
-  { label: "Otros" }
+  { label: "Otros" },
+];
+
+const meals = [
+  {
+    name: "Cafe con leche",
+    description: `
+      <span>150 ml: 2 cucharas de café y 1 azúcar</span><br/>
+      Cafe con leche<br/>
+      Pelar las mandarinas, sacarle las semillas y procesar todos los gajos y la piel de ½ mandarina + el jugo del limón.<br/>
+      Colocar en una cacerola y cocinar a fuego bajo hasta que al pasar la cuchara, se quede.<br/>
+      Dejar enfriar, agregar las cucharaditas de Hileret Stevia líquida y guardar en un frasco chico de vidrio limpio y en la heladera.<br/>
+      Dura 1 semana.
+    `,
+    calories: 117,
+  },
+  {
+    name: "Tostadas Integrales",
+    description: `
+    <span>2 raciones, cada ración 20g</span><br/>
+    Tostadas Integrales<br/>
+    Pelar las mandarinas, sacarle las semillas y procesar todos los gajos y la piel de ½ mandarina + el jugo del limón.<br/>
+    Colocar en una cacerola y cocinar a fuego bajo hasta que al pasar la cuchara, se quede.<br/>
+    Dejar enfriar, agregar las cucharaditas de Hileret Stevia líquida y guardar en un frasco chico de vidrio limpio y en la heladera.<br/>
+    Dura 1 semana.
+  `,
+    calories: 102,
+  },
+  {
+    name: "Mermelada Light",
+    description: `
+      <span>2 cucharitas, cada ración 5g</span><br/>
+      Receta Mermelada casera light<br/>
+      1. Pelar las mandarinas, sacarle las semillas y procesar todos los gajos y la piel de ½ mandarina + el jugo del limón.<br/>
+      2. Colocar en una cacerola y cocinar a fuego bajo hasta que al pasar la cuchara, se quede.<br/>
+      3. Dejar enfriar, agregar las cucharaditas de Hileret Stevia líquida y guardar en un frasco chico de vidrio limpio y en la heladera.<br/>
+      4. Dura 1 semana.
+    `,
+    calories: 50,
+  },
+  {
+    name: "Jugo Natural de Naranja",
+    description: `
+    <span>250 ml</span><br/>
+    TJugo Natural de Naranja<br/>
+    Pelar las mandarinas, sacarle las semillas y procesar todos los gajos y la piel de ½ mandarina + el jugo del limón.<br/>
+    Colocar en una cacerola y cocinar a fuego bajo hasta que al pasar la cuchara, se quede.<br/>
+    Dejar enfriar, agregar las cucharaditas de Hileret Stevia líquida y guardar en un frasco chico de vidrio limpio y en la heladera.<br/>
+    Dura 1 semana.
+  `,
+    calories: 119,
+  },
 ];
 
 const PlanNutrition = () => {
-  const [isOpen, setIsOpen] = useState(
-    Array(optionsNutrition.length).fill(false)
-  );
-  const [isPopUpVisible, setIsPopUpVisible] = useState(false);
-  const [selectedMeal, setSelectedMeal] = useState(null);
+  const [isOpen, setIsOpen] = useState(Array(optionsNutrition.length).fill(false));
+  const [detailsOpen, setDetailsOpen] = useState(Array(meals.length).fill(false));
 
   const toggleDropdown = (index) => {
     setIsOpen((prevState) => {
@@ -38,193 +81,106 @@ const PlanNutrition = () => {
     });
   };
 
-  const calculatePercentage = (current, total) => {
-    return (current / total) * 100;
+  const toggleDetails = (index) => {
+    setDetailsOpen((prevState) => {
+      const newState = [...prevState];
+      newState[index] = !newState[index];
+      return newState;
+    });
   };
 
-  const meals = [
-    {
-      name: "Cafe con leche",
-      description: "150 ml: 2 cucharas de café y 1 azúcar",
-      calories: 117,
-      img: imgProduct1,
-    },
-    {
-      name: "Tostada de pan negro",
-      description: "2 raciones, cada ración 20g",
-      calories: 117,
-      img: imgProduct2,
-    },
-    {
-      name: "Mermelada Light",
-      description: "2 cucharitas, cada ración 5g",
-      calories: 117,
-      img: imgProduct3,
-    },
-    {
-      name: "Jugo Natural de Naranja",
-      description: "250 ml",
-      calories: 117,
-      img: imgProduct4,
-    },
-  ];
-
-  const ViewPopUp = ({ meal }) => (
-    <section className='viewPopUp'>
-      <div className='popUpContent'>
-        <h2>{meal.name}</h2>
-        <p>
-          1. Pelar las mandarinas, sacarle las semillas y procesar todos los
-          gajos y la piel de ½ mandarina + el jugo del limón.
-          <br />
-          2. Colocar en una cacerola y cocinar a fuego bajo hasta que al pasar
-          la cuchara, se quede.
-          <br />
-          3. Dejar enfriar, agregar las cucharaditas de Hileret Stevia líquida y
-          guardar en un frasco chico de vidrio limpio y en la heladera.
-          <br />
-          4. Dura 1 semana.
-          <br />
-        </p>
-        <section className='gram'>
-          <div>
-            <p>Carbohidratos</p>
-            <p>2,29</p>
-          </div>
-          <div>
-            <p>Proteínas</p>
-            <p>0,14</p>
-          </div>
-          <div>
-            <p>Grasas</p>
-            <p>0,05</p>
-          </div>
-          <div>
-            <p>Fibras</p>
-            <p>0,33</p>
-          </div>
-        </section>
-        <article>
-          <img src={meal.img} alt='image Example' />
-        </article>
-        <div className='btn'>
-          <button onClick={() => setIsPopUpVisible(false)}>Entendido</button>
-        </div>
-      </div>
-    </section>
-  );
+  const closeDropdown = (index) => {
+    setIsOpen((prevState) => {
+      const newState = [...prevState];
+      newState[index] = false;
+      return newState;
+    });
+  };
 
   return (
-    <div className='containerNutrition'>
-      <div className={`${isPopUpVisible ? "blurred" : ""}`}>
-        {optionsNutrition.map((comp, index) => (
+    <div className="containerNutrition">
+        { optionsNutrition.map((comp, index) => (
           <div key={index}>
-            <button className='flex justify-between p-4 optionPink' onClick={() => toggleDropdown(index)}>
+            <button className="flex justify-between items-center p-4 optionPink" onClick={() => toggleDropdown(index)} >
               {comp.label}
-              <img src={arrowOrange} alt='arrow' className={`w-4 h-6 ml-4 imagePink ${ isOpen[index] ? 'arrow-rotate-treatment' : 'more-more-arrow-rotate' }`}/>
+              <img src={arrowOrange} alt="arrow" className={`w-4 h-6 ml-4 imagePink ${
+                  isOpen[index]
+                    ? "arrow-rotate-treatment"
+                    : "more-more-arrow-rotate"
+                }`}
+              />
             </button>
-            {isOpen[index] && (
+            { isOpen[index] && (
               <div>
-                <section className='weekContainer'>
-                  <Week />
+                <section className="weekContainer">
+                  <WeekComponent
+                    backgroundColor="bg-primary"
+                    borderColor="border-primary"
+                    textColor="text-primary"
+                  />
                 </section>
                 
                 <section>
-                  <article className='stats'>
-                    <div>
-                      <p>Carbohidratos</p>
-                      <div className='progress-bar-container'>
-                        <div
-                          className='progress-bar'
-                          style={{ width: `${calculatePercentage(154, 204)}%` }}
-                        ></div>
-                      </div>
-                      <p>154 g de 204 g</p>
-                    </div>
-                    <div>
-                      <p>Proteínas</p>
-                      <div className='progress-bar-container'>
-                        <div
-                          className='progress-bar'
-                          style={{ width: `${calculatePercentage(32, 82)}%` }}
-                        ></div>
-                      </div>
-                      <p>31 g de 82 g</p>
-                    </div>
-                    <div>
-                      <p>Grasas</p>
-                      <div className='progress-bar-container'>
-                        <div
-                          className='progress-bar'
-                          style={{ width: `${calculatePercentage(43, 54)}%` }}
-                        ></div>
-                      </div>
-                      <p>43 g de 54 g</p>
-                    </div>
-                  </article>
-                  
-                  <article className='details bg-white'>
-                    <div className='detailsTitle'>
+                  <article className="details bg-white">
+                    <div className="detailsTitle">
                       <h1>{comp.label}</h1>
                       <p>387</p>
                     </div>
-                    <p className='recommendation'>
+                    <p className="recommendation">
                       Recomendado: 30% de tu ingesta diaria (503 kcal)
                     </p>
                     
-                    {meals.map((meal, index) => (
-                      <div key={index} className='detailsContainer '>
-                        <section>
-                          <img src={meal.img} alt='imgProduct' />
-                        </section>
-                        <div className='detailsContentWrapper'>
-                          <div className='detailsContent'>
-                            <p>{meal.name}</p>
-                            <p>{meal.calories}</p>
-                          </div>
-                          <div className='detailsDescription'>
-                            <p>{meal.description}</p>
-                            <img
-                              src={question}
-                              alt='question'
-                              className='cursor-pointer'
-                              onClick={() => {
-                                setIsPopUpVisible(true);
-                                setSelectedMeal({
-                                  name: meal.name,
-                                  img: meal.img,
-                                });
-                              }}
+                    { meals.map((meal, mealIndex) => (
+                      <div key={mealIndex} className="detailsContainer">
+                        <div className="detailsContentWrapper">
+                          <button className="flex justify-between items-center p-5 py-1 optionPink text-blackClear font-medium" onClick={() => toggleDetails(mealIndex)} >
+                            {meal.name}
+                            <img src={arrowOrange} alt="arrow" className={`w-4 h-6 ml-4 imagePink ${
+                                detailsOpen[mealIndex]
+                                  ? "arrow-rotate-treatment"
+                                  : "more-more-arrow-rotate"
+                              }`}
                             />
-                          </div>
+                          </button>
+                          { detailsOpen[mealIndex] && (
+                            <>
+                              <div className="detailsDescription">
+                                <article>
+                                  <span>Indicaciones:</span>
+                                  <span>{meal.calories}</span>
+                                </article>
+                                <p dangerouslySetInnerHTML={{ __html: meal.description }}></p>
+                              </div>
+                            </>
+                          ) }
                         </div>
                       </div>
-                    ))}
+                    )) }
                   </article>
                 </section>
-                
-                <section className='feedBack'>
-                  <h3>¿Cómo te sentiste con la comida?</h3>
-                  <div className='feedBackImgs'>
-                    <img src={muyBien} alt='Muy bien' />
-                    <img src={normal} alt='Normal' />
-                    <img src={mal} alt='Mal' />
+
+                <section className="feedBack">
+                  <h3 style={{ color: "#EA526F" }}>
+                    ¿Cómo te sentiste con la comida?
+                  </h3>
+                  <div className="feedBackImgs">
+                    <img src={muyBien} alt="Muy bien" />
+                    <img src={normal} alt="Normal" />
+                    <img src={mal} alt="Mal" />
                   </div>
-                  <p>¿Por qué te sentiste así?</p>
-                  <textarea name='text' id='text'></textarea>
-                  <div className='feedBackButtons'>
-                    <button>Cancelar</button>
-                    <button>Confirmar</button>
+                  <p style={{ color: "#EA526F" }}>¿Por qué te sentiste así?</p>
+                  <textarea name="text" id="text"></textarea>
+                  <div className="feedBackButton">
+                    <button style={{ backgroundColor: "#EA526F" }} onClick={() => closeDropdown(index)}>
+                      Confirmar
+                    </button>
                   </div>
                 </section>
               </div>
-            )}
+            ) }
           </div>
-        ))}
+        )) }
       </div>
-
-      {isPopUpVisible && selectedMeal && <ViewPopUp meal={selectedMeal} />}
-    </div>
   );
 };
 
