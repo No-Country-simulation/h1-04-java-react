@@ -17,16 +17,18 @@ const CardTreatmentFollowUp = ({ name }) => {
         marginLeft: "10px",
       }}
     >
-      <p style={{ color: "#0C0252", marginBottom: "30px" }}>{name}</p>
-      <img src={faceMedication} alt='Medicacion' className='w-15 h-15 m-auto' />
-      <div
-        onClick={() => setShowVerificando(true)}
-        className='flex justify-center items-center mt-4 cursor-pointer'
-      >
-        <button style={{ color: "#0C0252" }}>Mas</button>
-        <img src={more} alt='Mas' className='w-5 h-5' />
+      <div onClick={() => setShowVerificando(true)} className=' cursor-pointer'>
+        <p style={{ color: "#0C0252", marginBottom: "30px" }}>{name}</p>
+        <img
+          src={faceMedication}
+          alt='Medicacion'
+          className='w-15 h-15 m-auto'
+        />
+        <div className='flex justify-center items-center mt-4'>
+          <p style={{ color: "#0C0252" }}>Mas</p>
+          <img src={more} alt='Mas' className='w-5 h-5' />
+        </div>
       </div>
-
       <SuccesModal
         show={showVerificando}
         onClose={() => setShowVerificando(false)}

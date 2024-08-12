@@ -10,15 +10,16 @@ const isCompatible = (bloodType1, bloodType2) => {
   const compatibleBloodTypes = {
     "O-": ["O-"],
     "O+": ["O-", "O+"],
-    "A-": ["A-", "A+", "O-", "O+"],
+    "A-": ["A-", "O-"],
     "A+": ["A-", "A+", "O-", "O+"],
-    "B-": ["B-", "B+", "O-", "O+"],
+    "B-": ["B-", "O-"],
     "B+": ["B-", "B+", "O-", "O+"],
-    "AB-": ["AB-", "AB+", "A-", "A+", "B-", "B+", "O-", "O+"],
+    "AB-": ["AB-", "A-", "B-", "O-"],
     "AB+": ["AB-", "AB+", "A-", "A+", "B-", "B+", "O-", "O+"],
   };
   return compatibleBloodTypes[bloodType1].includes(bloodType2);
 };
+
 
 export default function TransplantSearch() {
   const { id } = useParams();
