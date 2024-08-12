@@ -12,10 +12,15 @@ export default {
         secondaryDark: '#1E999B',
         orangeColor: '#FF8A5B',
         orangeTransparent: '#FCEADE26',
+        gray: '#5A5555',
         beigeColor: '#FCEADE',
         blueColor: '#2196f3',
         blueColorClear: '#009FF5',
-        blackClear: '#1A1A1A'
+        blueTransparent: '#0087D026',
+        blackClear: '#1A1A1A',
+        purple: '#5C4282',
+        purpleClear: '#8163B0',
+        purpleTransparent: '#8163B01A'
       },
     },
   },

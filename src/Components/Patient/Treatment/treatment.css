@@ -92,7 +92,6 @@
   background-color: #E5F3FA;
   color: #0087D0;
   box-shadow: 1px 2px 5px #1313132f;
-  font-weight: 400;
   width: 100%;
   font-weight: 500;
   border-bottom: 1px solid #0087D099;
@@ -101,6 +100,49 @@
 .imageBlue {
   filter: invert(48%) sepia(100%) saturate(5900%) hue-rotate(200deg);
 }
+
+
+.optionPurple{
+  color: #5C4282;
+  width: 100%;
+  padding: 20px;
+  font-weight: 500;
+  font-size: 14px;
+  padding-bottom: 40px;
+}
+.optionPurple h3{
+  font-size: 16px;
+  border-bottom: 2px solid #8163B01A;
+}
+.imagePurple {
+  filter: invert(19%) sepia(100%) saturate(2900%) hue-rotate(220deg);
+}
+.custom-radio {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #5C4282;
+  border-radius: 6px;
+  background-color: transparent;
+  position: relative;
+}
+.custom-radio:checked {
+  background-color: #5C4282;
+}
+.custom-radio:checked::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  width: 6px;
+  height: 12px;
+  border: 1px solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg) translate(-50%, -50%);
+  transform-origin: center center;
+}
+
 
 
 .containerBigTreatments {

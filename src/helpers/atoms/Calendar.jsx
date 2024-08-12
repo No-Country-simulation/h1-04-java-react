@@ -56,7 +56,7 @@ const Calendar = ({bgColor}) => {
         {calendarDays.flat().map((day, index) => (
           <div key={index} className={`h-10 flex items-center justify-center text-lg
               ${day ? "" : ""}
-              ${day === today ? "bg-gray-500 text-white rounded-xl" : ""}
+              ${day === today ? "bg-purpleClear text-white rounded-xl" : ""}
             `}
           >
             {day}

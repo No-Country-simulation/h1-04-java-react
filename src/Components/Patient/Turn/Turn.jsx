@@ -105,41 +105,51 @@ const Turn = () => {
       ) : (
         <h1>No se encontraron citas</h1>
       )}
-      
+
       {/* Cancel Confirmation Modal */}
-      {cancelModalIndex !== null && (
-        <SuccesModal
-          checkImg={checkImgError}
-          title={"CANCELACIÓN DE TURNO"}
-          text={"¿Estás seguro de querer cancelar tu turno?"}
-          show={showCancelModal}
-          onClose={() => closeCancelModal()}
-          check
-          viewButtons={true}
-          confirm={() => handleCancelAppointment()}
-        />
-      )}
+      { showCancelModal & cancelModalIndex !== null && (
+        <>
+          <div className="overlay"></div>
+          <SuccesModal
+            checkImg={checkImgError}
+            title={"CANCELACIÓN DE TURNO"}
+            text={"¿Estás seguro de querer cancelar tu turno?"}
+            show={showCancelModal}
+            viewButtons={true}
+            confirm={() => handleCancelAppointment()}
+            onClose={() => closeCancelModal()}
+            check
+          />
+        </>
+      ) }
       
       {/* Cancellation Success Modal */}
-      {turnCancellation !== null && (
+      { showCancellationSuccessModal & turnCancellation !== null && (
+        <>
+          <div className="overlay"></div>
+          <SuccesModal
+            checkImg={checkImgError}
+            title={"TU TURNO SE CANCELO"}
+            text={"Tu turno se cancelo. Si lo necesitas podes solicitarlo nuevamente."}
+            show={showCancellationSuccessModal}
+            onClose={() => closeCancellationSuccessModal()}
+            check
+          />
+        </>
+      ) }
+    
+    { showVerificando && (
+      <>
+        <div className="overlay"></div>
         <SuccesModal
-          checkImg={checkImgError}
-          title={"TU TURNO SE CANCELO"}
-          text={
-            "Tu turno se cancelo. Si lo necesitas podes solicitarlo nuevamente."
-          }
-          show={showCancellationSuccessModal}
-          onClose={() => closeCancellationSuccessModal()}
-          check
+          title='No disponible'
+          text='Estamos trabajando en esta característica'
+          show={showVerificando}
+          onClose={() => setShowVerificando(false)}
+          none
         />
-      )}
-      <SuccesModal
-        show={showVerificando}
-        onClose={() => setShowVerificando(false)}
-        none
-        title='No disponible'
-        text='Estamos trabajando en esta característica'
-      />
+      </>
+    ) }
     </section>
   );
 };

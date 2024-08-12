@@ -67,15 +67,11 @@ const DoctorConfiguration = () => {
       <PatientHeader text="Configuración" />
 
       <article className='userPictureName'>
-        <img
-          src={profile}
-          alt='Paciente img'
-          className='h-28 w-28 m-auto mt-5'
-        />
+        <img src={profile} alt='Paciente img' className='h-28 w-28 m-auto mt-5'/>
         <p className='font-bold text-center mb-5 mt-1' style={{color:"#5A5555", fontSize:"23px"}}>
-          {patientData
+          { patientData
             ? patientData.firstName + " " + patientData.lastName
-            : "Cargando..."}
+            : "Cargando..." }
         </p>
       </article>
 

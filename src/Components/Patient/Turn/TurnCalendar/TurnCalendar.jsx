@@ -61,16 +61,17 @@ export default function TurnCalendar() {
       <PatientHeader text="Turnos" color="#5A5555"  />
       
       <Calendar bgColor="#8163B033" />
+      
       <button className='rounded-xl mb-5 mt-5 flex w-[90%] justify-center items-center p-4 border-1 font-bold text-white m-auto' style={{backgroundColor:"#8163B0"}}>
         <Link to="/new-turn">Agendar Turno</Link>
       </button>
-      {Object.keys(groupedAppointments).length > 0 ? (
+      { Object.keys(groupedAppointments).length > 0 ? (
         Object.keys(groupedAppointments).map((day) => (
           <div key={day} className='mb-6'>
             <h3 className='text-lg ml-4 text-blackClear mb-2'>
               {translateDay(day)}...
             </h3>
-            {groupedAppointments[day].map((appointment) => (
+            { groupedAppointments[day].map((appointment) => (
               <Turns
                 key={appointment.appointmentId}
                 doctor={appointment.fullnameDoctor}
@@ -78,12 +79,12 @@ export default function TurnCalendar() {
                 href={"/view-turn"}
                 type={appointment.typeOfAppointment}
               />
-            ))}
+            )) }
           </div>
         ))
       ) : (
         <p>No appointments found</p>
-      )}
+      ) }
     </div>
   );
 }
