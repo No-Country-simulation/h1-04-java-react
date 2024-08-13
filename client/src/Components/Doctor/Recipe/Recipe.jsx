@@ -1,9 +1,8 @@
 import { useState } from "react";
 import InputComponent from "../../../helpers/atoms/InputComponent";
-import EndButton from "../../../helpers/atoms/EndButton";
 import SuccesModal from "../../Modals/SucessModal";
 import DoctorHeader from "../DoctorHeader/DoctorHeader";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Recipe() {
   const [showVerificando, setShowVerificando] = useState(false);
@@ -12,14 +11,32 @@ export default function Recipe() {
   const [dosis, setDosis] = useState("");
   const [frecuencia, setFrecuencia] = useState("");
   const [otroCampo, setOtroCampo] = useState("");
+  const [errors, setErrors] = useState({});
+
+  const navigate = useNavigate();
 
   const handleInputChange = (setter) => (event) => {
     setter(event.target.value);
   };
-  console.log(remedio);
+
+  const validateForm = () => {
+    const newErrors = {};
+    if (!remedio) newErrors.remedio = "Este campo es obligatorio";
+    if (!tamano) newErrors.tamano = "Este campo es obligatorio";
+    if (!dosis) newErrors.dosis = "Este campo es obligatorio";
+    if (!frecuencia) newErrors.frecuencia = "Este campo es obligatorio";
+    if (!otroCampo) newErrors.otroCampo = "Este campo es obligatorio";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleSubmit = () => {
-    setShowVerificando(true);
+    if (validateForm()) {
+      navigate("/doctorRecipeRegister", {
+        state: { remedio, tamano, dosis, frecuencia, otroCampo },
+      });
+    }
   };
 
   return (
@@ -30,17 +47,11 @@ export default function Recipe() {
           <InputComponent
             type='text'
             name='remedio'
-            label={"Remedio"}
+            label={"Nombre del medicamento"}
             value={remedio}
             onChange={handleInputChange(setRemedio)}
           />
-          <InputComponent
-            type='text'
-            name='tamano'
-            label={"Tamaño del medicamento"}
-            value={tamano}
-            onChange={handleInputChange(setTamano)}
-          />
+          {errors.remedio && <p className='text-red-500'>{errors.remedio}</p>}
           <InputComponent
             type='text'
             name='dosis'
@@ -48,6 +59,7 @@ export default function Recipe() {
             value={dosis}
             onChange={handleInputChange(setDosis)}
           />
+          {errors.dosis && <p className='text-red-500'>{errors.dosis}</p>}
           <InputComponent
             type='text'
             name='frecuencia'
@@ -55,27 +67,37 @@ export default function Recipe() {
             value={frecuencia}
             onChange={handleInputChange(setFrecuencia)}
           />
+          {errors.frecuencia && (
+            <p className='text-red-500'>{errors.frecuencia}</p>
+          )}
           <InputComponent
             type='text'
-            name='otroCampo'
-            label={"Otro campo"}
-            value={otroCampo}
-            onChange={handleInputChange(setOtroCampo)}
+            name='tamano'
+            label={"Duracion"}
+            value={tamano}
+            onChange={handleInputChange(setTamano)}
           />
+          {errors.tamano && <p className='text-red-500'>{errors.tamano}</p>}
+          <div>
+            <label className='text-sm font-medium'>Indicaciones Extras</label>
+            <textarea
+              name='otroCampo'
+              value={otroCampo}
+              onChange={handleInputChange(setOtroCampo)}
+              className='w-full border mt-0 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-primary-500'
+            />
+            {errors.otroCampo && (
+              <p className='text-red-500'>{errors.otroCampo}</p>
+            )}
+          </div>
         </div>
       </div>
-      <Link
-        to={"/"}
+      <button
+        onClick={handleSubmit}
         className='w-full bg-blueColorClear font-semibold rounded-[10px] py-2 text-center text-white'
       >
         <h1>Firmar</h1>
-      </Link>
-      <SuccesModal
-        title={"Listo!"}
-        text={`Se agendó la próxima cita y se envió la receta exitosamente.\n\nDetalles:\nRemedio: ${remedio}\nTamaño del medicamento: ${tamano}\nDosis: ${dosis}\nFrecuencia: ${frecuencia}\nOtro campo: ${otroCampo}`}
-        show={showVerificando}
-        onClose={() => setShowVerificando(false)}
-      />
+      </button>
     </div>
   );
 }
