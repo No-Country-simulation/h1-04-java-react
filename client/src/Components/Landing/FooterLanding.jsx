@@ -1,10 +1,70 @@
 import { useState } from 'react';
+import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube, FaPaperPlane, FaLinkedin } from 'react-icons/fa';
 import miniLogo from "../../Assets/Imgs/miniLogo.png";
-import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube, FaPaperPlane } from 'react-icons/fa';
+import camilo from "../../Assets/Imgs/team/camilo.jpg";
+import cyn from "../../Assets/Imgs/team/cyn.jpg";
+import diego from "../../Assets/Imgs/team/diego.png";
+import facu from "../../Assets/Imgs/team/facu.jpg";
+import lisandro from "../../Assets/Imgs/team/lisandro.jpg";
+import marli from "../../Assets/Imgs/team/marli.jpg";
+import matias from "../../Assets/Imgs/team/matias.png";
+import valerie from "../../Assets/Imgs/team/valerie.jpg";
 
 const FooterLanding = () => {
   const [email, setEmail] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const teamMembers = [
+    {
+      name: 'Diego Gonzalez',
+      role: 'Team Leader',
+      linkedin: 'https://www.linkedin.com/in/diego-gonzalez-7937aa16/',
+      avatar: diego,
+    },
+    {
+      name: 'Yosmarli Parica',
+      role: 'QA Tester',
+      linkedin: 'https://www.linkedin.com/in/yosmarli-parica-1156461a2/',
+      avatar: marli,
+    },
+    {
+      name: 'Cynthia Olocco',
+      role: 'Diseño UX/UI',
+      linkedin: 'https://www.linkedin.com/in/cynthia-olocco-141081295/',
+      avatar: cyn,
+    },
+    {
+      name: 'Lisandro Argüello',
+      role: 'Diseño UX/UI',
+      linkedin: 'https://www.linkedin.com/in/lisandroarguello/',
+      avatar: lisandro,
+    },
+    {
+      name: 'Facundo Bacigalupo',
+      role: 'Frontend',
+      linkedin: 'https://www.linkedin.com/in/diego-raul-barrionuevo/',
+      avatar: facu,
+    },
+    {
+      name: 'Camilo Martinez',
+      role: 'Frontend',
+      linkedin: 'https://www.linkedin.com/in/camilomartinez01/',
+      avatar: camilo,
+    },
+    {
+      name: 'Valerie Ramos',
+      role: 'Backend',
+      linkedin: 'https://www.linkedin.com/in/valeriedramosg/',
+      avatar: valerie,
+    },
+    {
+      name: 'Matias Acevedo',
+      role: 'Backend',
+      linkedin: 'https://www.linkedin.com/in/matias-nicolas-acevedo/',
+      avatar: matias,
+    }
+  ];
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -101,8 +161,66 @@ const FooterLanding = () => {
         <div className="mt-12 border-t border-[#ea526f]"></div>
         <div className="flex justify-center mt-4 text-[#ea526f] text-base font-semibold">
           <p>© Copyright 2024 .JUSTINA.IO. All Right Reserved.</p>
+          <p
+            className="text-[#ea526f] text-base font-semibold hover:scale-110 transition-transform duration-300"
+            style={{
+              textShadow:
+                '1px 1px 1px #303030, 0 0 .5em #303030, 0 0 0.1em #303030',
+              cursor: 'pointer',
+            }}
+            onClick={() => setIsModalOpen(true)}
+          >
+            &nbsp; Equipo 4
+          </p>
         </div>
       </div>
+
+      {/* Modal */}
+{isModalOpen && (
+  <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+    <div className="bg-white p-8 rounded-lg shadow-lg max-w-3xl max-h-[96vh] overflow-y-auto">
+      <h2 className="text-black text-base text-center font-semibold mb-4">
+        h1-04-java-react | No Country
+      </h2>
+      <div className="grid grid-cols-2 gap-4 ">
+        {teamMembers.map((member) => (
+          <a
+          href={member.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="ml-2 text-blue-500 hover:scale-105 transition-transform duration-300"
+        >
+          <div key={member.name} className="flex text-[#ea526f] bg-[#fceade] items-center p-2 border rounded-lg">
+            <img
+              src={member.avatar || 'https://via.placeholder.com/150'}
+              alt={`${member.name}'s avatar`}
+              className="w-10 h-10 rounded-full mr-4"
+            />
+            <div className="flex flex-col">
+              <p className="font-semibold  text-center">{member.name}</p>
+              <div className="flex items-center mt-1">
+                <p className="text-sm text-black font-semibold">{member.role}&nbsp; </p>
+                <div className='text-blue-500'>
+                  <FaLinkedin />
+                </div>
+              </div>
+            </div>
+          </div>
+          </a>
+        ))}
+      </div>
+      <div className="flex justify-end">
+        <button
+          onClick={() => setIsModalOpen(false)}
+          className="mt-4 px-4 py-2 bg-[#25ced1] text-white rounded"
+        >
+          Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
 
       {isModalVisible && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
@@ -111,7 +229,7 @@ const FooterLanding = () => {
             <p>Te has suscrito exitosamente al newsletter.</p>
             <button
               onClick={closeModal}
-              className="mt-4 px-4 py-2 bg-[#25ced1] text-white rounded"
+              className="mt-4 px-4 py-2 bg-[#25ced1] text-white rounded ml-auto"
             >
               Cerrar
             </button>
