@@ -170,7 +170,7 @@ const FooterLanding = () => {
             }}
             onClick={() => setIsModalOpen(true)}
           >
-            &nbsp; Equipo 4
+            &nbsp; Desarrollado por
           </p>
         </div>
       </div>
