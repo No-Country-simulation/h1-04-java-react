@@ -174,6 +174,7 @@ const NewTurn = () => {
           onClick={() => setIsEspecialidadOpen(!isEspecialidadOpen)}
           onChange={() => setIsEspecialidadOpen(!isEspecialidadOpen)}
         />
+        
         <span className='block h-8 transition-all duration-300 overflow-hidden peer-checked/especialidad:h-auto optionPurple'>
           <h3 className='flex h-8 cursor-pointer items-center'>
             {selectedEspecialidad ? (

@@ -12,7 +12,7 @@ export const treatmentData = {
         plan: "Tratamiento Médico",
         description: "Diálisis Peritoneal",
         buttons: [
-            { label: "Indicaciones - Precauciones" },
+            { label: "Indicaciones _ Precauciones" },
             { label: "Comunicación" }
         ]
     },

@@ -3,15 +3,16 @@ import arrowOrange from "../../../../Assets/Imgs/arrowOrange.svg";
 import muyBien from "../../../../Assets/Imgs/muyBien.svg"
 import normal from "../../../../Assets/Imgs/normal.svg"
 import mal from "../../../../Assets/Imgs/mal.svg"
+import Turns from "../../Turn/Turns";
 import "./plans.css";
 
 const optionsTreat = [
-    { label: "Indicaciones - Precauciones" },
+    { label: "Indicaciones _ Precauciones" },
     { label: "Comunicación" }
 ];
 
 const contentMap = {
-    'turno': {
+    'indicaciones': {
         title: "Diálisis Peritoneal",
         sample: "Tratamiento",
         instructions: `
@@ -23,21 +24,20 @@ const contentMap = {
             <br />
             How to install dependencies and structure your app. Styles for headings, paragraphs, lists...etc Styles for headings, paragraphsHow to install dependencies and structure your app. Styles for headings, paragraphs, lists...etc
         `
-    },
-    'indicaciones': {
-        title: "Diálisis",
-        sample: "Comunicación",
-        instructions: `
-            Indicaciones:
-            <br />
-            How to install dependencies and structure your app. Styles for headings, paragraphs, lists...etc Styles for headings, paragraphsHow to install dependencies and structure your app. Styles for headings, paragraphs, lists...etc
-            <br /><br />
-            Precauciones:
-            <br />
-            How to install dependencies and structure your app. Styles for headings, paragraphs, lists.
-        `
     }
 };
+
+const renderTurns = () => (
+    <div className="mt-5">
+        <Turns
+            key={1}
+            doctor={"Juan Torres"}
+            time={"9:00 hs."}
+            href={"/view-turn"}
+            type={"Turno al Médico: Control"}
+        />
+    </div>
+);
 
 const PlanTreatment = () => {
     const [dropdownState, setDropdownState] = useState(
@@ -71,17 +71,16 @@ const PlanTreatment = () => {
 
     return (
         <article>
-            { optionsTreat.map((comp, index) => {
+            {optionsTreat.map((comp, index) => {
                 const { isOpen, activeButton } = dropdownState[index] || {};
-                const { title, sample, instructions } = contentMap[activeButton] || {};
-                
+
                 return (
                     <div key={index}>
                         <button className="flex justify-between p-4 optionGreen" onClick={() => toggleDropdown(index)}>
                             {comp.label}
                             <img src={arrowOrange} alt="arrow" className={`w-4 h-6 ml-4 imageGreen ${isOpen ? 'arrow-rotate-treatment' : 'more-more-arrow-rotate'}`} />
                         </button>
-                        { isOpen && (
+                        {isOpen && (
                             <div className="containerInsideContent">
                                 <article className="buttonsInsideContent">
                                     <button className={activeButton === 'turno' ? 'buttonsInsideContentSelected' : ''}
@@ -93,13 +92,21 @@ const PlanTreatment = () => {
                                         Indicaciones
                                     </button>
                                 </article>
-                                
+
                                 <article className="containerContent">
-                                    <h2>{title}</h2>
-                                    <h3>Muestra: {sample}</h3>
-                                    <p dangerouslySetInnerHTML={{ __html: instructions }} />
+                                    {activeButton === 'turno' ? (
+                                        renderTurns()
+                                    ) : (
+                                        contentMap[activeButton] && (
+                                            <>
+                                                <h2>{contentMap[activeButton].title}</h2>
+                                                <h3>{contentMap[activeButton].sample}</h3>
+                                                <p dangerouslySetInnerHTML={{ __html: contentMap[activeButton].instructions }} />
+                                            </>
+                                        )
+                                    )}
                                 </article>
-                                
+
                                 <section className='feedBack'>
                                     <h3>¿Cómo te sentiste con la comida?</h3>
                                     <div className='feedBackImgs'>
@@ -114,10 +121,10 @@ const PlanTreatment = () => {
                                     </div>
                                 </section>
                             </div>
-                        ) }
+                        )}
                     </div>
                 );
-            }) }
+            })}
         </article>
     );
 };
