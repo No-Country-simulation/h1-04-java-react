@@ -82,10 +82,6 @@
   <h2>🌐 Deploy Frontend 🌟</h2>
 </div>
 
-<div align='center'>
-  <b>💗 Pagina web Justina.io 🌍</b>
-    <a href="https://hackaton-no-country.vercel.app/">[ Link a Justina.io ]</a>
-</div>
 
 <br>
 <div align='center'>
