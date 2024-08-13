@@ -80,7 +80,7 @@ const PatientLists = () => {
     filterAppointments();
   }, [search, appointments]);
 
-  if (loading || authLoading) return <Spinner/>;
+  if (loading || authLoading) return <Spinner />;
   if (error) return <p>Error: {error}</p>;
 
   return (
@@ -91,7 +91,7 @@ const PatientLists = () => {
         placeholder='Buscar paciente...'
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        className=' p-2 border rounded shadow-lg py-3'
+        className=' p-2 border rounded-[10px] shadow-lg py-3'
       />
       <div className='mt-4'>
         {filteredAppointments.length > 0 ? (

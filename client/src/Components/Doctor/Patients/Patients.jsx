@@ -64,12 +64,12 @@ const CalendarPage = () => {
 
   const groupedAppointments = groupAppointmentsByDay(appointments);
 
-  if (loading || authLoading) return <Spinner/>;
+  if (loading || authLoading) return <Spinner />;
   if (error) return <p>Error: {error}</p>;
 
   return (
     <div className=' flex flex-col'>
-      <button className='bg-white shadow border-2 self-end mb-3  px-3 py-1 rounded'>
+      <button className='bg-white shadow self-end mb-3  px-3 py-1 rounded'>
         Calendario
       </button>
 
@@ -79,9 +79,7 @@ const CalendarPage = () => {
             <button
               key={index}
               className={`px-3 py-1 rounded ${
-                index === 1
-                  ? "bg-blue-400 text-white"
-                  : "bg-white shadow-xl border-2"
+                index === 1 ? "bg-blue-400 text-white" : "bg-white shadow-xl "
               }`}
             >
               {getFormattedDate(day)}

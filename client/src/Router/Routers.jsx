@@ -316,7 +316,7 @@ const Router = () => {
             </PrivateRoute>
           }
         />
-         <Route
+        <Route
           exact
           path='/transplantSearch/:id'
           element={
