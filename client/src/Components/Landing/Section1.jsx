@@ -65,12 +65,12 @@ const Section1 = () => {
         {/* Columna Derecha */}
         <div className="relative lg:block mr-4 md:mr-0">
           <img
-            src={device1}
+            src={device2}
             alt="Device 1"
             className="w-[70%] md:w-full max-w-xs"
           />
           <img
-            src={device2}
+            src={device1}
             alt="Device 2"
             className="absolute top-[10%] right-[-3%] w-[72%] max-w-xs"
           />
