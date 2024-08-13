@@ -1,5 +1,5 @@
 .containerOtherNavBar {
-    background-color: #FCEADE;
+    background-color: #fff;
     position: relative;
     width: 100%;
 }
@@ -26,7 +26,7 @@
     left: 0;
     width: 300px;
     height: 100vh;
-    background-color: #FCEADE;
+    background-color: #fff;
     z-index: 999;
     transition: transform 0.3s ease;
     transform: translateX(0);
@@ -54,6 +54,9 @@
     font-size: 15px;
     transition: filter 0.8s ease;
 }
+.buttonsOtherNavBar:hover {
+    color: #0087D0;
+}
 .buttonsOtherNavBar img {
     width: 30px;
     height: 30px;
@@ -61,11 +64,11 @@
     filter: invert(0%) grayscale(100%) brightness(0%) contrast(100%); /* Imágenes negras oscuras por defecto */
 }
 .buttonsOtherNavBar:hover img {
-    filter: invert(35%) sepia(80%) saturate(6000%) hue-rotate(10deg);
+    filter: invert(54%) sepia(91%) saturate(3000%) hue-rotate(174deg);
 }
 .buttonsOtherNavBar p:hover {
-    color: #FF4900;
-    border-bottom: 1px solid #FF4900;
+    color: #0087D0;
+    border-bottom: 1px solid #0087D0;
 }
 
 

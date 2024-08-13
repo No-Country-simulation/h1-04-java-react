@@ -52,7 +52,7 @@ const OtherNavBar = () => {
                         <p>INICIO</p>
                     </Link>
                 </div>
-
+                
                 <div className="sidebar-footer">
                     <button onClick={() => log()} className="buttonsOtherNavBar p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer">
                         <img src={out} alt="img" />

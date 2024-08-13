@@ -62,9 +62,6 @@ export default function TurnCalendar() {
       
       <Calendar bgColor="#8163B033" />
       
-      <button className='rounded-xl mb-5 mt-5 flex w-[90%] justify-center items-center p-4 border-1 font-bold text-white m-auto' style={{backgroundColor:"#8163B0"}}>
-        <Link to="/new-turn">Agendar Turno</Link>
-      </button>
       { Object.keys(groupedAppointments).length > 0 ? (
         Object.keys(groupedAppointments).map((day) => (
           <div key={day} className='mb-6'>
@@ -85,6 +82,10 @@ export default function TurnCalendar() {
       ) : (
         <p>No appointments found</p>
       ) }
+      
+      <button className='rounded-xl mb-5 mt-5 flex w-[90%] justify-center items-center p-4 border-1 font-bold text-white m-auto' style={{backgroundColor:"#8163B0"}}>
+        <Link to="/new-turn">Agendar Turno</Link>
+      </button>
     </div>
   );
 }

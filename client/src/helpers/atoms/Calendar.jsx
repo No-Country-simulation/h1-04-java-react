@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-const Calendar = ({bgColor}) => {
+const Calendar = ({ bgColor, textColor }) => {
   const now = new Date();
   const monthNames = [
     "Enero",
@@ -43,13 +43,13 @@ const Calendar = ({bgColor}) => {
   calendarDays.push(week);
 
   return (
-    <div className={`w-80 mx-auto p-4 shadow-lg rounded-3xl mb-5 mt-5`} style={{backgroundColor:`${bgColor}`}}>
+    <div className={`w-80 mx-auto p-4 shadow-lg rounded-3xl mb-5 mt-5`} style={{backgroundColor:`${bgColor}`, color:`${textColor}`}}>
       <div className='text-center font-bold text-xl mb-4'>
         {monthNames[month]} {year}
       </div>
       <div className='grid grid-cols-7 text-center gap-y-2'>
         {daysOfWeek.map((day, index) => (
-          <div key={index} className='font-semibold text-gray-500'>
+          <div key={index} className='text-gray-500'>
             {day}
           </div>
         ))}

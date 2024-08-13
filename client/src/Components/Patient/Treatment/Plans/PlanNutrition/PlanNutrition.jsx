@@ -23,11 +23,10 @@ const meals = [
     name: "Cafe con leche",
     description: `
       <span>150 ml: 2 cucharas de café y 1 azúcar</span><br/>
-      Cafe con leche<br/>
-      Pelar las mandarinas, sacarle las semillas y procesar todos los gajos y la piel de ½ mandarina + el jugo del limón.<br/>
-      Colocar en una cacerola y cocinar a fuego bajo hasta que al pasar la cuchara, se quede.<br/>
-      Dejar enfriar, agregar las cucharaditas de Hileret Stevia líquida y guardar en un frasco chico de vidrio limpio y en la heladera.<br/>
-      Dura 1 semana.
+      Recomendaciones<br/>
+      . Azúcar orgánica.<br/>
+      . Café tostado no torrado.<br/>
+      . Leche descremada.
     `,
     calories: 117,
   },
@@ -98,9 +97,9 @@ const PlanNutrition = () => {
   };
 
   return (
-    <div className="containerNutrition">
+    <>
         { optionsNutrition.map((comp, index) => (
-          <div key={index}>
+          <div key={index} className="containerNutrition">
             <button className="flex justify-between items-center p-4 optionPink" onClick={() => toggleDropdown(index)} >
               {comp.label}
               <img src={arrowOrange} alt="arrow" className={`w-4 h-6 ml-4 imagePink ${
@@ -111,17 +110,12 @@ const PlanNutrition = () => {
               />
             </button>
             { isOpen[index] && (
-              <div>
+              <article className="subContainerNutrition">
                 <section className="weekContainer">
-                  <WeekComponent
-                    backgroundColor="bg-primary"
-                    borderColor="border-primary"
-                    textColor="text-primary"
-                  />
+                  <WeekComponent backgroundColor="bg-primary" borderColor="border-primary" textColor="text-primary" />
                 </section>
                 
-                <section>
-                  <article className="details bg-white">
+                  <section className="details bg-white">
                     <div className="detailsTitle">
                       <h1>{comp.label}</h1>
                       <p>387</p>
@@ -156,9 +150,8 @@ const PlanNutrition = () => {
                         </div>
                       </div>
                     )) }
-                  </article>
-                </section>
-
+                  </section>
+                
                 <section className="feedBack">
                   <h3 style={{ color: "#EA526F" }}>
                     ¿Cómo te sentiste con la comida?
@@ -176,11 +169,11 @@ const PlanNutrition = () => {
                     </button>
                   </div>
                 </section>
-              </div>
+              </article>
             ) }
           </div>
         )) }
-      </div>
+      </>
   );
 };
 

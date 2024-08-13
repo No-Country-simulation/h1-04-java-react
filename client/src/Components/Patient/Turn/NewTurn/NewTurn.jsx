@@ -1,16 +1,16 @@
 import { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { createAppointment, getAppointmentsByPatient } from "../../../../services/appointmentService";
+import { formatHour, translateDay, translateAppointmentType, translateSpecialty } from "../../../../utils/hourMapping";
 import check from "../../../../Assets/Imgs/checkOrange.svg";
 import DoctorContext from "../../../../context/DoctorContext";
 import SuccesModal from "../../../../Components/Modals/SucessModal";
 import checkImgSuccess from "../../../../Assets/Imgs/checkImgSuccess.svg";
 // import checkImgError from "../../../../Assets/Imgs/checkImgVerify.svg";
 // import checkImgVerify from "../../../../Assets/Imgs/checkImgError.svg";
-import anotherArrowLeft from "../../../../Assets/Imgs/otraArrowLeft.png";
-import { formatHour, translateDay, translateAppointmentType, translateSpecialty } from "../../../../utils/hourMapping";
 import Spinner from "../../../../helpers/atoms/Spinner";
 import PatientHeader from "../../PatientHeader/PatientHeader";
+import Calendar from "../../../../helpers/atoms/Calendar";
 
 const daysOfWeek = [
   "MONDAY",
@@ -164,6 +164,33 @@ const NewTurn = () => {
 
     <div className="bg-purpleTransparent p-8 px-6 rounded-lg shadow-lg text-purple">
       <h1 className="font-medium">Agenda un turno</h1>
+
+      {/* Selección de Especialidad */}
+      <label className='block'>
+        <input
+          className='peer/especialidad hidden'
+          type='checkbox'
+          checked={isEspecialidadOpen}
+          onClick={() => setIsEspecialidadOpen(!isEspecialidadOpen)}
+          onChange={() => setIsEspecialidadOpen(!isEspecialidadOpen)}
+        />
+        <span className='block h-8 transition-all duration-300 overflow-hidden peer-checked/especialidad:h-auto optionPurple'>
+          <h3 className='flex h-8 cursor-pointer items-center'>
+            {selectedEspecialidad ? (
+              <div className='flex justify-between items-center w-full'>
+                <p>{translateSpecialty(selectedEspecialidad)}</p>
+                <img className='h-4 imagePurple' src={check} alt='' />
+              </div>
+            ) : (
+              "1 Ago, 2024 - 31 Ago, 2024"
+            )}
+          </h3>
+          <div className='mt-2 mb-0 space-y-2'>
+            <Calendar bgColor="#8163B033" color="#fff" />
+          </div>
+        </span>
+      </label>
+
       {/* Selección de Especialidad */}
       <label className='block'>
         <input
