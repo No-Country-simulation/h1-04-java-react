@@ -47,7 +47,8 @@ const Appointments = () => {
 
   return (
     <div className="pt-2">
-      <div className="overflow-x-auto max-h-[calc(100vh-4rem)]">
+      {/* Tabla para Desktop */}
+      <div className="hidden md:block overflow-x-auto max-h-[calc(100vh-4rem)]">
         <div className="grid grid-cols-[auto_repeat(7,_minmax(0,_1fr))] grid-rows-[auto_repeat(12,_auto)] gap-3 min-w-max">
           {/* Header con los días de la semana */}
           <div className="p-2"></div>
@@ -59,7 +60,7 @@ const Appointments = () => {
               {day}
             </div>
           ))}
-  
+
           {/* Columnas de horarios */}
           {hours.map((hour, index) => (
             <React.Fragment key={index}>
@@ -68,7 +69,7 @@ const Appointments = () => {
                   {parseInt(hour.split(':')[0], 10) < 12 ? `${hour} AM` : `${hour} PM`}
                 </div>
               </div>
-  
+
               {/* Columna de turnos para cada día */}
               {daysOfWeek.map((day, dayIndex) => (
                 <div key={dayIndex} className="h-16 flex items-center">
@@ -97,7 +98,49 @@ const Appointments = () => {
           ))}
         </div>
       </div>
-  
+
+      {/* Tabla para Mobile */}
+      <div className="block md:hidden overflow-x-auto max-h-[calc(100vh-4rem)]">
+        <div className="grid grid-cols-[auto_1fr] gap-3 min-w-max">
+          {/* Header con el día actual */}
+          <div className="col-span-2 w-[70%] h-12 bg-white rounded-md shadow border-l-2 border-[#bdc112] flex items-center justify-start text-right text-[#4d5e80] font-semibold pl-3 ml-24">
+            {daysOfWeek[new Date().getDay() - 1]}
+          </div>
+
+          {/* Filas de horarios con turnos */}
+          {hours.map((hour, index) => (
+            <React.Fragment key={index}>
+              <div className="h-16 px-2 font-semibold justify-center items-center gap-2.5 flex">
+                <div className='border-l-2 border-[#009ff5] h-12 justify-center items-center inline-flex pl-3'>
+                  {parseInt(hour.split(':')[0], 10) < 12 ? `${hour} AM` : `${hour} PM`}
+                </div>
+              </div>
+              <div className="h-16 flex items-center">
+                {/* Mostrar los turnos hardcodeados solo para el día actual */}
+                {appointments
+                  .filter(appointment => appointment.day === daysOfWeek[new Date().getDay() - 1] && appointment.hour === hour)
+                  .map(filteredAppointment => (
+                    <div 
+                      key={filteredAppointment.id} 
+                      className="bg-white flex flex-row w-[90%] h-5/6 justify-start items-center border rounded-md font-semibold text-gray-600 text-xs px-2 cursor-pointer shadow"
+                      onClick={() => handleClick(filteredAppointment)}
+                    >
+                      <div className="flex-shrink-0 mr-2">
+                        <img src={avatar} alt="Avatar" className="w-10 h-10 rounded-full" />
+                      </div>
+                      <div>
+                        <div>Medico: {filteredAppointment.doctorName}</div>
+                        <div>Paciente: {filteredAppointment.patientName}</div>
+                        <div>Turno: {filteredAppointment.appointmentType}</div>
+                      </div>
+                    </div>
+                  ))}
+              </div>
+            </React.Fragment>
+          ))}
+        </div>
+      </div>
+
       {selectedAppointment && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
           <div className="bg-white rounded-lg shadow-lg p-6 w-[90%] md:w-2/5 relative border border-[#009ff5]">
@@ -125,7 +168,6 @@ const Appointments = () => {
       )}
     </div>
   );
-  
 }
 
 export default Appointments;
