@@ -58,7 +58,7 @@ const InputComponent = ({
 InputComponent.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string,
-  type: PropTypes.string.isRequired,
+  type: PropTypes.string,
   disabled: PropTypes.bool,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
