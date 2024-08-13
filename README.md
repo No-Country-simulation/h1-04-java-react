@@ -314,21 +314,11 @@
   <h2>🚀Swagger:🔥</h2>
 </div>
 
-<div align='center'>
-  <b>🔸 Documentación de los endpoints en Swagger UI 🧾:</b>
-    <a href="https://justina-n2nb.onrender.com/swagger-ui/index.html#/" target="_blank">[ Link a Swagger UI ]</a>
-</div>
-
 <br>
 <br>
 
 <div align='center'>
   <h2>📊Diagrama Entidad Relacion:📈</h2>
-</div>
-
-<div align='center'>
-  <b>🔸 Link al Drive con el PDF del diagrama 💡:</b>
-    <a href="https://drive.google.com/file/d/1EWk72gLBysvzqzxzEhsiv4TPakScYo5L/view?usp=sharing" target="_blank">[ Link al Diagrama ]</a>
 </div>
 
   <br>
