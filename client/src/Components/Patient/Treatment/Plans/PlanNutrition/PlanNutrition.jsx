@@ -111,7 +111,7 @@ const PlanNutrition = () => {
             </button>
             { isOpen[index] && (
               <article className="subContainerNutrition">
-                <section className="weekContainer">
+                <section className="weekContainer" style={{marginBottom:"-10px", marginTop:"-20px"}}>
                   <WeekComponent backgroundColor="bg-primary" borderColor="border-primary" textColor="text-primary" />
                 </section>
                 

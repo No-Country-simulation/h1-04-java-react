@@ -30,6 +30,12 @@
   width: 100%;
   box-sizing: border-box;
 }
+.containerInsideContent h1{
+  font-weight: 700;
+}
+.containerInsideContent h3{
+  font-weight: 600;
+}
 
 .buttonsInsideContent {
   background-color: #03A8AB1A;
@@ -104,4 +110,26 @@
   margin-bottom: 0px;
   margin-top: 0px;
   font-weight: 700;
+}
+
+
+.exerciseList{
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 1px 2px 5px #0000004d;
+}
+
+.exerciseDetails{
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 1px 2px 5px #0000004d;
+}
+
+.exerciseDetails span{
+  font-weight: 600;
+}
+.exerciseDetails section{
+  font-weight: 600;
 }

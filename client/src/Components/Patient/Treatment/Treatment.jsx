@@ -30,7 +30,7 @@ const componentsMap = {
 
 const Treatment = () => {
   const location = useLocation();
-  const { title, buttons } = treatmentData[location.pathname] || {};
+  const { title, buttons, plan } = treatmentData[location.pathname] || {};
   const [selectedButtonIndex, setSelectedButtonIndex] = useState(null);
 
   const handleComponent = (index) => {
@@ -63,8 +63,8 @@ const Treatment = () => {
       
       <article className='planes'>
         <div>
-          <h2>Plan de {title}</h2>
-          <p>Plan personalizado</p>
+          <h2>{title}</h2>
+          <p>{plan}</p>
         </div>
         { location.pathname === "/treatment-treatment" && <ButtonDownload image={download} CVFile={CVFileTreatment} text="treatment" /> }
         { location.pathname === "/treatment-clinical-history" && <ButtonDownload image={download} CVFile={CVFileClinicalHistory} text="clinical history" /> }

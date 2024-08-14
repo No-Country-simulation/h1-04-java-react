@@ -9,7 +9,7 @@ const VerificandoModal = ({
   text = "Aguárdanos, estamos verificando y confirmando tu turno.",
   check,
   viewButtons = false,
-  confirm,
+  confirm
 }) => {
   if (!show) return null;
 
@@ -20,15 +20,12 @@ const VerificandoModal = ({
   };
 
   return (
-    <div
-      className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center'
-      style={{ zIndex: "1000" }}
+    <div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center' style={{ zIndex: "1000" }}
       onClick={handleBackgroundClick}
     >
-      <div
-        className={`bg-white border-2 max-w-[70%] border-blueColorClear  w-full rounded-lg p-6 py-10  max-h-[60%] flex items-center justify-center ${
+      <div className={`bg-white border-2 w-[80vw] border-blueColorClear  w-full rounded-lg p-6 py-10  max-h-[60%] flex items-center justify-center ${
           viewButtons ? "max-h-[100%]" : ""
-        }`}
+        }`} style={{maxWidth:"500px"}}
       >
         <div className='text-center'>
           <div className='mb-5  flex justify-center'>

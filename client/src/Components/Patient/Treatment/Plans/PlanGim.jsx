@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
-import PropTypes from "prop-types"
 import { useState } from "react"
+import PropTypes from "prop-types"
 import muyBien from "../../../../Assets/Imgs/muyBien.png"
 import normal from "../../../../Assets/Imgs/normal.png"
 import mal from "../../../../Assets/Imgs/mal.png"
@@ -123,7 +123,7 @@ const PlanGim = () => {
                                         { detailsOpen[exerciseIndex] && (
                                             <article className="exerciseDetails">
                                                 <span>Indicaciones:</span>
-                                                <section>
+                                                <section className="flex justify-around items-center mb-2 mt-2">
                                                     <p>Series: {exercise.series}</p>
                                                     <p>Reps: {exercise.reps}</p>
                                                     <p>Pausa: {exercise.pause}</p>

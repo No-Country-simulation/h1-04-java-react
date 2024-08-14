@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import "../../Components/Login/login.css"
 
-const ButtonComponent = ({ type = "button", to, href, loading = false, disabled = false, children }) => {
+const ButtonComponent = ({ type = "button", theme, to, href, loading = false, disabled = false, children }) => {
   const Element = () => {
     if (disabled || !(to || href)) {
       return "button";
@@ -32,7 +32,7 @@ const ButtonComponent = ({ type = "button", to, href, loading = false, disabled 
   return (
     <ElementTag
       {...elementAttrs}
-      className="buttonLogin"
+      className={`buttonLogin bg-${theme} mt-5`}
       disabled={disabled || loading}
     >
       {children}
