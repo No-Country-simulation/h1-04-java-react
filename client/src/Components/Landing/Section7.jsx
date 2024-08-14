@@ -10,7 +10,7 @@ const Section7 = () => {
     <div id="section7" className="w-full py-16 md:py-24 flex flex-col items-center bg-white">
       {/* Título y descripción */}
       <div className="text-center mb-8 md:mb-16">
-        <div className="w-full text-center text-cyan-500 text-2xl md:text-3xl font-semibold uppercase leading-tight mb-6 md:mb-10">
+        <div className="w-full text-center text-cyan-500 text-xl md:text-3xl font-semibold uppercase leading-tight mb-6 md:mb-10">
           Sobre la campaña de Justina
         </div>
         <p className="text-[#555555] text-base font-semibold leading-tight w-[90%] md:w-full max-w-2xl mx-auto">

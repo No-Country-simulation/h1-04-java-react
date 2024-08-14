@@ -8,7 +8,7 @@ const Section4 = () => {
       {/* Columna 1 */}
       <div className="flex justify-center items-center lg:pr-16 mb-8 lg:mb-0">
         <div className="flex flex-col justify-start items-start gap-4 md:gap-8">
-          <div className="text-[#ea526f] text-[2rem] font-bold leading-[2.75rem]">Sobre Justina Lo Cane</div>
+          <div className="text-[#ea526f] text-xl md:text-[2rem] font-bold leading-[2.75rem]">Sobre Justina Lo Cane</div>
           <div className="w-full max-w-96 text-gray-600 text-base font-semibold leading-tight">
             Justina Lo Cane tenía un año y medio cuando recibió junto a sus padres la noticia de que padecía una cardiopatía congénita. A partir de ese momento, con controles y medicamentos, logró llevar adelante una vida normal hasta que a los 12 años, el cuadro se complicó y la llevó a la necesidad de un trasplante de corazón.
           </div>
@@ -16,7 +16,7 @@ const Section4 = () => {
             href="https://www.facebook.com/multiplicatex7/" 
             target="_blank"
             rel="noopener noreferrer"
-            className="w-[8.4375rem] h-[2.5625rem] p-3 bg-[#ea526f] rounded-lg flex justify-center items-start md:items-center gap-2 transition-colors duration-300 hover:bg-[#d84e62] hover:text-[#ffffff]"
+            className="w-[8.4375rem] h-[2.5625rem] p-3 bg-[#8163b0] rounded-lg flex justify-center items-start md:items-center gap-2 transition-transform duration-300 hover:bg-[#8163b0]/90 hover:text-[#ffffff] hover:scale-105"
           >
             <div className="text-white text-sm font-normal">Más Información</div>
           </a>
@@ -25,14 +25,14 @@ const Section4 = () => {
       
       {/* Columna 2: Imágenes */}
       <div className="flex flex-col lg:flex-row justify-center items-center gap-8 md:gap-4 pb-8 md:pb-0">
-        <div className="w-[21rem] md:w-[15.625rem] h-[20rem] md:h-[24.8125rem] relative ">
-          <img className="w-full h-full object-cover rounded-lg" src={img1} alt="Imagen 1" />
+        <div className="w-full md:w-[15.625rem] h-[20rem] md:h-[24.8125rem] relative ">
+          <img className="w-[21rem] h-full object-cover rounded-lg" src={img1} alt="Imagen 1" />
         </div>
-        <div className="w-[21rem] md:w-[15.625rem] h-[20rem] md:h-[24.8125rem] relative">
-          <img className="w-full h-full object-cover rounded-lg" src={img2} alt="Imagen 2" />
+        <div className="w-full md:w-[15.625rem] h-[20rem] md:h-[24.8125rem] relative">
+          <img className="w-[21rem] h-full object-cover rounded-lg" src={img2} alt="Imagen 2" />
         </div>
-        <div className="w-[21rem] md:w-[15.625rem] h-[20rem] md:h-[24.8125rem] relative">
-          <img className="w-full h-full object-cover rounded-lg" src={img3} alt="Imagen 3" />
+        <div className="w-full md:w-[15.625rem] h-[20rem] md:h-[24.8125rem] relative">
+          <img className="w-[21rem] h-full object-cover rounded-lg" src={img3} alt="Imagen 3" />
         </div>
       </div>
     </div>

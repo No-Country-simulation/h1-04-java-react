@@ -29,7 +29,7 @@ const Download = () => {
                 <div className="text-gray-600 text-sm font-normal pb-2 pl-1">
                   Un Aplicación que reinventa el futuro de la Salud
                 </div>
-                <div className=" text-teal-400 text-3xl md:text-4xl font-bold ">
+                <div className=" text-teal-400 text-2xl md:text-4xl font-bold ">
                   DESCARGA JUSTINA.IO
                 </div>
               </div>
@@ -38,7 +38,7 @@ const Download = () => {
               </div>
             </div>
             {/* CUADRO ROJO */}
-            <div className="w-[90%] md:w-[25rem] ml-4 md:ml-0 h-[18rem] md:h-[15rem] px-4 my-2 md:my-6 bg-[#ea526f]/10 rounded-[1.25rem] border-2 border-[#ea526f] flex flex-col justify-center items-start gap-7">
+            <div className="w-[90%] md:w-[25rem] ml-4 md:ml-0 h-[18rem] md:h-[15rem] px-4 my-2 md:my-6 bg-[#ea526f]/20 rounded-[1.25rem] border-2 border-[#ea526f] flex flex-col justify-center items-start gap-7">
               <div className="h-[6.875rem] flex flex-col justify-center items-start gap-2.5">
                 <div className="h-[1.625rem] text-[#1a1a1a] text-lg font-semibold leading-[3.125rem] mt-12">Móvil | Tableta</div>
                 <div className="h-[1.625rem] text-[#ea526f] text-3xl font-bold leading-[3.125rem] mb-4">ANDROID</div>
@@ -84,7 +84,7 @@ const Download = () => {
           </div>
           {/* Columna 2 */}
           <div className="relative inset-0 bg-gray-100 rounded-[1.25rem] z-0 h-[20rem] md:h-[15rem] mt-6">
-            <div className="relative z-10 w-full h-[20rem] md:h-[15rem] px-4 bg-[#ea526f]/10 rounded-[1.25rem] border-2 border-[#ea526f] flex flex-col justify-center items-start gap-7 z-1">
+            <div className="relative z-10 w-full h-[20rem] md:h-[15rem] px-4 bg-white rounded-[1.25rem] border-2 border-[#ea526f] flex flex-col justify-center items-start gap-7 z-1">
               <div className="h-[6.875rem] flex flex-col justify-center items-start gap-2.5">
                 <div className="h-[1.625rem] text-[#1a1a1a] text-lg font-semibold leading-[3.125rem] mt-12">PC | LAPTOP</div>
                 <div className="h-[1.625rem] text-[#ea526f] text-3xl font-bold leading-[3.125rem] mb-4">WINDOWS</div>
@@ -107,7 +107,7 @@ const Download = () => {
 
           {/* Columna 3 */}
           <div className="relative inset-0 bg-gray-100 rounded-[1.25rem] z-0 h-[18rem] md:h-[15rem] mt-6">
-            <div className="relative z-10 w-full h-[18rem] md:h-[15rem] px-4 bg-[#ea526f]/10 rounded-[1.25rem] border-2 border-[#ea526f] flex flex-col justify-center items-start gap-7">
+            <div className="relative z-10 w-full h-[18rem] md:h-[15rem] px-4 bg-white rounded-[1.25rem] border-2 border-[#ea526f] flex flex-col justify-center items-start gap-7">
               <div className="h-[6.875rem] flex flex-col justify-center items-start gap-2.5">
                 <div className="h-[1.625rem] text-[#1a1a1a] text-lg font-semibold leading-[3.125rem] mt-12 md:mt-20">Móvil | Tablet</div>
                 <div className="h-[1.625rem] text-[#ea526f] text-3xl font-bold leading-[3.125rem] mb-4">iOS</div>
