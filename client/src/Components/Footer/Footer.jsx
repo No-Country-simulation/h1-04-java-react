@@ -17,7 +17,7 @@ const Footer = () => {
               <h2>Llamando...</h2>
               <img src={loading} alt="Cargando"/>
               <div className="btn">
-                  <button onClick={() => setIsPopUpVisible(false)}>Dejar de llamar</button>
+                  <button onClick={() => setIsPopUpVisible(false)} style={{backgroundColor:"#0087D0", color:"#fff"}}>Dejar de llamar</button>
               </div>
           </div>
       </section>

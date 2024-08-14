@@ -1,44 +1,23 @@
-.weekContainer {
-  font-size: 13px;
+.containerContent {
+  color: #5A5555;
+  font-weight: 500;
+  box-shadow: 1px 4px 10px #13131348;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
-.weekContainer img {
-  width: 20px;
-  height: 20px;
-}
-
-.feedBack {
-  color: #191919;
-  background-color: #d9d9d9;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-.feedBack h3 {
-  font-weight: 600;
-  text-align: center;
-}
-
-.feedBackImgs {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-
-.feedBackImgs img {
-  margin-top: 10px;
+.containerContent h2 {
+  color: #03A8AB;
+  font-weight: 700;
   margin-bottom: 10px;
-  width: 35px;
-  height: 35px;
 }
 
-.feedBack textarea {
-  background-color: #b1b1b1;
-  height: 40px;
-  width: 100%;
-  border-radius: 5px;
-  padding: 5px;
-  resize: none;
+.containerContent h3 {
+  color: #000;
+  font-weight: 600;
+  margin-bottom: 10px;
 }
 
 .containerInsideContent {
@@ -48,206 +27,109 @@
   margin-bottom: 30px;
   border-radius: 10px;
   padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
 }
-.containerInsideContent h1 {
-  font-size: 20px;
+.containerInsideContent h1{
   font-weight: 700;
-  color: #191919;
 }
 .containerInsideContent h3{
-  font-weight: 700;
-}
-.containerInsideContent p {
-  font-size: 15px;
-}
-.containerInsideContent img {
-  height: 300px;
-  width: 90%;
-  margin: auto;
-  margin-top: 20px;
-  object-fit: cover;
-  object-position: center;
-}
-
-.arrow-rotate-treatment {
-  transform: rotate(180deg);
-  transition: transform 0.2s ease;
-}
-.more-arrow-rotate {
-  transform: rotate(180deg);
-  transition: transform 0.2s ease;
-}
-.more-more-arrow-rotate {
-  transform: rotate(360deg);
-  transition: transform 0.2s ease;
-}
-
-.buttonOk {
-  display: flex;
-  justify-content: flex-end;
-}
-.buttonOk button {
-  color: #fff;
-  background-color: #8163B0;
-  border-radius: 30px;
-  padding: 5px;
-  margin-top: 20px;
-  width: 100%;
-  font-weight: 700;
-  font-size: 17px;
-}
-
-.containerInsideContentStudies {
-  border: 3px solid #25ced1;
-  color: #1e999b;
-  border-radius: 10px;
-  margin-top: -5px;
-  margin-bottom: 30px;
-  padding: 10px;
-}
-
-#detailsContentImg {
-  width: 15px;
-  height: 15px;
-  object-fit: cover;
-  margin-right: 0px;
-  margin-bottom: 10px;
-}
-
-.exerciseList {
-  margin-bottom: 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.494);
-  padding: 15px;
-  border-radius: 10px;
-  margin-top: -10px;
-}
-
-.exerciseItem {
-  padding: 10px;
-  margin-bottom: -20px;
-}
-
-.exerciseDetails section {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  font-weight: 500;
-}
-.exerciseDetails {
-  width: 100%;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  padding: 25px;
-  border-radius: 10px;
-  margin-top: -10px;
-  margin-bottom: 15px;
-}
-.exerciseDetails span{
-  font-weight: 500;
-}
-.exerciseDetails img {
-  width: 100%;
-  height: auto;
-  max-width: 300px;
-}
-
-
-.containerMedication {
-  background-color: #fff;
-  box-shadow: 1px 4px 10px #13131348;
-  border-radius: 10px;
-  margin-top: -5px;
-  margin-bottom: 30px;
-  border-radius: 10px;
-  padding: 20px;
-}
-.containerMedication div {
-  margin-left: 5px;
-  margin-right: 5px;
-  flex: 1 1 auto;
-  box-sizing: border-box;
-  font-size: 20px;
-}
-.containerMedication section {
-  margin: 20px;
   font-weight: 600;
-  background-color: #03A8AB33;
-  border-radius: 10px;
-  padding: 10px;
-}
-.containerMedication section span {
-  color: #03A8AB;
-  font-size: 35px;
 }
 
-
-.undo {
-  display: flex;
-  align-items: center;
-}
-.undo h1 {
-  font-size: 25px;
-  font-weight: 700;
-  color: #03A8AB;
-}
-.undo div {
-  margin-left: 10px;
-  font-size: 20px;
-}
-.undo p {
-  color: #5A5555;
-  font-size: 15px;
-  font-weight: 700;
-}
-
-.containerPlansGim{
-  margin: auto;
-  width: 100%;
-  max-width: 500px;
-}
-
-
-.containerContent{
-  color: #5A5555;
-  font-weight: 500;
-  box-shadow: 1px 4px 10px #13131348;
-  padding: 20px;
-  border-radius: 10px;
-}
-.containerContent h2{
-  color: #03A8AB;
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-.containerContent h3{
-  color: #000;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-
-
-.buttonsInsideContent{
+.buttonsInsideContent {
   background-color: #03A8AB1A;
   padding: 10px;
   display: flex;
-  justify-content:space-around ;
+  justify-content: space-around;
   align-items: center;
   margin-bottom: 20px;
   border-radius: 10px;
   box-shadow: 1px 4px 10px #13131348;
 }
-.buttonsInsideContent button{
+
+.buttonsInsideContent button {
   color: #03A8AB;
   padding: 5px;
   border-radius: 10px;
   width: 45%;
   transition: all .3s;
 }
-.buttonsInsideContentSelected{
+
+.buttonsInsideContentSelected {
   background-color: #03A8AB;
   color: #fff !important;
   padding: 5px;
   border-radius: 10px;
   width: 45%;
   transition: all .3s;
+}
+
+.feedBackImgs img {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 35px;
+  height: 35px;
+}
+
+
+.containerMedication{
+  background-color: #fff;
+  padding: 15px;
+  color: #5A5555;
+  font-weight: 600;
+  border-radius: 10px;
+  box-shadow: 1px 3px 6px hsla(0, 0%, 0%, 0.256);
+}
+.containerMedication h1{
+  color: #03A8AB;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.buttonOk{
+  background-color: #8163B0;
+  color: #fff;
+  width: 100%;
+  text-align: center;
+  padding: 6px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.insideContainerMedication{
+  background-color: #03A8AB33;
+  border-radius: 10px;
+  padding: 5px;
+}
+.insideContainerMedication span{
+  color: #03A8AB;
+  font-size: 35px;
+}
+.insideContainerMedication p{
+  margin-bottom: 0px;
+  margin-top: 0px;
+  font-weight: 700;
+}
+
+
+.exerciseList{
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 1px 2px 5px #0000004d;
+}
+
+.exerciseDetails{
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 1px 2px 5px #0000004d;
+}
+
+.exerciseDetails span{
+  font-weight: 600;
+}
+.exerciseDetails section{
+  font-weight: 600;
 }

@@ -1,5 +1,6 @@
 .weekContainer{
     font-size: 13px;
+    max-width: 500px;
 }
 .weekContainer img{
     width: 20px;
@@ -16,6 +17,7 @@
     border-radius: 10px;
     margin-bottom: 20px;
     margin-top: 20px;
+    max-width: 500px;
 }
 .feedBack h3{
     font-weight: 600;
@@ -96,6 +98,7 @@
     margin-bottom: 15px;
     border-radius: 10px;
     box-shadow: 1px 1px 5px #00000068;
+    max-width: 500px;
 }
 
 .detailsTitle{
@@ -159,8 +162,12 @@
 
 .containerNutrition {
     margin: auto;
-    position: relative;
     width: 100%;
+    max-width: 500px;
+}
+.subContainerNutrition{
+    margin: auto;
+    width: 90vw;
     max-width: 500px;
 }
 
@@ -260,4 +267,15 @@
 
 .feedBack textarea, .feedBackButtons button, .popUpContent article img, .gram {
     box-sizing: border-box;
+}
+
+
+
+
+@media (min-width: 500px) {
+    .subContainerNutrition {
+        margin: auto;
+        width: 100%;
+        max-width: 500px;
+    }
 }

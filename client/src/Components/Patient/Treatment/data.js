@@ -9,17 +9,17 @@ export const treatmentData = {
     '/treatment-treatment': {
         image: treatment,
         title: "Tratamiento Médico",
-        plan: "Tratamiento Médico",
+        plan: "Diálisis Peritoneal",
         description: "Diálisis Peritoneal",
         buttons: [
-            { label: "Indicaciones - Precauciones" },
+            { label: "Indicaciones _ Precauciones" },
             { label: "Comunicación" }
         ]
     },
     '/treatment-clinical-history': {
         image: historiaCli,
         title: "Historia Clínica",
-        plan: "Historia Clínica",
+        plan: "Historia Completo",
         description: "Historia Completo",
         buttons: [
             { label: "Diagnóstico" },
@@ -31,8 +31,8 @@ export const treatmentData = {
     },
     '/treatment-studies': {
         image: studies,
-        title: "Estudios | Laboratorios",
-        plan: "Estudios Clínicos | Laboratorios",
+        title: "Estudios Clínicos | Laboratorios",
+        plan: "Tratamiento Completo",
         description: "Tratamiento Completo",
         buttons: [
             { label: "Laboratorios" },
@@ -43,7 +43,7 @@ export const treatmentData = {
     '/treatment-medication': {
         image: medicacion,
         title: "Medicación",
-        plan: "Medicación",
+        plan: "Tratamiento Completo",
         description: "Tratamiento Completo",
         buttons: [
             { label: "Azatioprima" },
@@ -53,8 +53,8 @@ export const treatmentData = {
     },
     '/treatment-physical-activity': {
         image: gim,
-        title: "Actividad Física",
-        plan: "Plan Físico",
+        title: "Plan Físico",
+        plan: "Tratamiento Personalizado",
         description: "Tratamiento Personalizado",
         buttons: [
             { label: "Lunes" },
@@ -67,8 +67,8 @@ export const treatmentData = {
     },
     '/treatment-nutrition': {
         image: nutricion,
-        title: "Alimentación",
-        plan: "Plan Nutricional",
+        title: "Plan Nutricional",
+        plan: "Tratamiento Personalizado",
         description: "Tratamiento Personalizado",
         buttons: [
             { label: "Desayuno" },

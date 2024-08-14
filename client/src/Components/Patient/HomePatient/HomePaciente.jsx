@@ -45,7 +45,7 @@ const HomePatient = () => {
       <div>
         <Day image={nutricion} activity={"Desayuno"} time={"8:30 hs."} href={'/treatment-nutrition'} color="#EA526F" backColor="#EA526F26" />
         <Day image={medicacion} activity={"Medicación"} time={"Azatioprima | 9:00 hs."} href={'/treatment-medication'} color="#03A8AB" backColor="#03A8AB26" />
-        <Day image={turno} activity={"Turno al Médico: Control"} time={"Dr. Juan Torres | 9:00 hs."} href={'/treatments'} color="#8163B0" backColor="#8163B026" />
+        <Day image={turno} activity={"Turno al Médico: Control"} time={"Dr. Juan Torres | 9:00 hs."} href={'/view-turn'} color="#8163B0" backColor="#8163B026" />
         <Day image={studies} activity={"Estudios / Laboratorio"} time={"Orina Completa |9:45 hs."} href={'/treatment-studies'} color="#8163B0" backColor="#8163B026" />
         <Day image={gim} activity={"Actividad  Física"} time={"10:30 hs."} href={'/treatment-physical-activity'} color="#FF8A5B" backColor="#FF8A5B26" />
       </div>
