@@ -35,7 +35,7 @@ const Section1 = () => {
             <div className="flex gap-3">
               <div
                 onClick={handleDownloadClick}
-                className="h-12 md:h-9 px-4 bg-[#8163b0] border border-[#8163b0] rounded-md flex items-center justify-between space-x-2 cursor-pointer hover:bg-[#8163b0]/90"
+                className="h-12 md:h-9 px-4 bg-[#8163b0] border border-[#8163b0] rounded-md flex items-center justify-between space-x-2 cursor-pointer hover:bg-[#8163b0]/90 hover:scale-105 transition-transform duration-300"
               >
                 <div className="text-white text-lg md:text-base font-semibold">
                   DESCARGAR
@@ -44,7 +44,7 @@ const Section1 = () => {
               </div>
               <div
                 onClick={handleDownloadClick}
-                className="h-12 md:h-9 px-4 bg-white border border-[#8163b0] rounded-md flex items-center justify-between space-x-2 cursor-pointer hover:bg-[#8163b0]/20"
+                className="h-12 md:h-9 px-4 bg-white border border-[#8163b0] rounded-md flex items-center justify-between space-x-2 cursor-pointer hover:bg-[#8163b0]/20 hover:scale-105 transition-transform duration-300"
               >
                 <div className="text-[#8163b0] text-lg md:text-base font-semibold ">
                   DEMOSTRACIÓN

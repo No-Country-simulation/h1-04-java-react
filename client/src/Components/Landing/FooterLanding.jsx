@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube, FaPaperPlane, FaLinkedin } from 'react-icons/fa';
+import { IoOpenOutline } from "react-icons/io5";
 import miniLogo from "../../Assets/Imgs/miniLogo.png";
 import camilo from "../../Assets/Imgs/team/camilo.jpg";
 import cyn from "../../Assets/Imgs/team/cyn.jpg";
@@ -133,6 +134,15 @@ const FooterLanding = () => {
                 <FaYoutube />
               </a>
             </div>
+            <div className='mt-2'>
+              <div
+                className="text-[#8163b0] text-base font-semibold cursor-pointer hover:scale-105 transition-transform duration-300 flex items-center"
+                onClick={() => setIsModalOpen(true)}
+              >
+                Desarrollado por &nbsp; <IoOpenOutline />
+              </div>
+            </div>
+
           </div>
           {/* Newsletter */}
           <div className="lg:w-1/3">
@@ -160,17 +170,12 @@ const FooterLanding = () => {
         </div>
         <div className="mt-12 border-t border-[#ea526f]"></div>
         <div className="flex justify-center mt-4 text-[#ea526f] text-base font-semibold">
-          <p>© Copyright 2024 .JUSTINA.IO. All Right Reserved.</p>
+          <p>© Copyright 2024 .JUSTINA.IO. Todos los derechos reservados.</p>
           <p
-            className="text-[#ea526f] text-base font-semibold hover:scale-110 transition-transform duration-300"
-            style={{
-              textShadow:
-                '1px 1px 1px #303030, 0 0 .5em #303030, 0 0 0.1em #303030',
-              cursor: 'pointer',
-            }}
+            className="text-[#ea526f] text-base font-semibold cursor-pointer hover:scale-110 transition-transform duration-300"
             onClick={() => setIsModalOpen(true)}
           >
-            &nbsp; Desarrollado por
+            &nbsp; Equipo Desarrollo.
           </p>
         </div>
       </div>
@@ -180,7 +185,7 @@ const FooterLanding = () => {
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
           <div className="bg-white p-8 rounded-lg shadow-lg max-w-3xl max-h-[96vh] overflow-y-auto">
             <h2 className="text-black text-base text-center font-semibold mb-4">
-              h1-04-java-react | No Country
+              💗 h1-04-java-react | No Country 🌎
             </h2>
             <div className="grid grid-cols-2 gap-4 ">
               {teamMembers.map((member) => (
@@ -190,7 +195,7 @@ const FooterLanding = () => {
                   rel="noopener noreferrer"
                   className="ml-2 text-blue-500 hover:scale-105 transition-transform duration-300"
                 >
-                  <div key={member.name} className="flex text-[#ea526f] bg-[#fceade] items-center p-2 border rounded-lg">
+                  <div key={member.name} className="flex text-[#8163b0] bg-[#fceade] items-center p-2 border border-[#ea526f] rounded-lg">
                     <img
                       src={member.avatar || 'https://via.placeholder.com/150'}
                       alt={`${member.name}'s avatar`}

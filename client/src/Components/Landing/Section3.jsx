@@ -1,23 +1,23 @@
-import historiaCli from '../../Assets/Imgs/vector/historyCli.svg';
-import tratamiento from '../../Assets/Imgs/vector/treatment.svg';
-import medicacion from '../../Assets/Imgs/vector/medication.svg';
-import studies from '../../Assets/Imgs/vector/studies.svg';
-import calendar from '../../Assets/Imgs/vector/calendar.svg';
+import historiaCli from '../../Assets/Imgs/section3-estudios.png';
+import tratamiento from '../../Assets/Imgs/section3-tratamiento.png';
+import medicacion from '../../Assets/Imgs/section3-medication.png';
+import transplante from '../../Assets/Imgs/section3-tranplante.png';
+import calendar from '../../Assets/Imgs/section3-turnos.png';
 import mobile3 from '../../Assets/Imgs/mobile-section3.png';
 
 const Section3 = () => {
   return (
-    <div className="w-full bg-[#25ced1]/10 py-16 md:py-32">
+    <div className="w-full bg-[#25ced1]/10 py-16 md:py-28">
       {/* Título de la sección */}
-      <div className="text-[#1e999b] text-3xl font-bold font-['Josefin Sans'] uppercase text-center mb-6 md:mb-10">
+      <div className="text-[#1e999b] text-3xl font-bold font-['Josefin Sans'] uppercase text-center mb-6">
         FUNCIONALIDADES PRINCIPALES
       </div>
-      
+
       {/* Contenedor para las columnas */}
-      <div className="flex flex-col md:flex-row md:gap-10 px-4 md:px-10">
+      <div className="flex flex-row">
         {/* Columna 1 */}
-        <div className="flex-1 flex flex-col justify-center">
-          <div className="flex flex-col items-center md:items-end p-4 text-center md:text-right py-6 md:py-28">
+        <div className="flex-1 flex flex-col justify-center mr-[-1rem] gap-32">
+          <div className="flex flex-col items-center md:items-end text-center md:text-right ">
             <div className="items-center justify-center mb-4">
               <img
                 src={tratamiento}
@@ -28,31 +28,8 @@ const Section3 = () => {
             <div className="text-[#1e999b] text-2xl font-semibold font-['Josefin Sans'] uppercase mb-2">
               Tratamientos
             </div>
-            <div className="text-black text-base font-semibold md:pl-8">
-              Podes visualizar procesos y resultados, accediendo a la información que necesitas.
-            </div>
           </div>
-          <div className="flex flex-col items-center md:items-end p-4 text-center md:text-right">
-            <div className="items-center justify-center mb-4">
-              <img
-                src={medicacion}
-                alt="medicacion"
-                className="w-10 h-10"
-              />
-            </div>
-            <div className="text-[#1e999b] text-2xl font-semibold font-['Josefin Sans'] uppercase mb-0 md:mb-2">
-              Medicación
-            </div>
-            <div className="text-black text-base font-semibold md:pl-8 ">
-              Podes gestionar y administrarlos, garantizando el acceso a los mismos.
-            </div>
-          </div>
-        </div>
-        
-        {/* Columna Central */}
-        <div className="flex-1 flex flex-col items-center gap-6 max-w-md">
-          {/* Estudios Clínicos */}
-          <div className="flex flex-col items-center p-4 text-center">
+          <div className="flex flex-col items-center md:items-end text-center md:text-right">
             <div className="items-center justify-center mb-4">
               <img
                 src={historiaCli}
@@ -60,43 +37,54 @@ const Section3 = () => {
                 className="w-10 h-10"
               />
             </div>
-            <div className="text-[#1e999b] text-2xl font-semibold font-['Josefin Sans'] uppercase mb-2">
+            <div className="text-[#1e999b] text-2xl font-semibold font-['Josefin Sans'] uppercase mb-0 md:mb-2">
               Estudios clínicos
             </div>
-            <div className="text-black text-base font-semibold px-4">
-              Visualízalos en forma completa y segura en la aplicación, en todo momento y en todo lugar.
-            </div>
           </div>
+        </div>
+
+        {/* Columna Central */}
+        <div className="flex-1 flex flex-col items-center max-w-md ">
           {/* Imagen */}
-          <div className="flex justify-center mt-6">
+          <div className="flex justify-center">
             <img
               className="w-[70%] md:w-full max-w-lg h-auto"
               src={mobile3}
               alt="Placeholder"
             />
           </div>
-        </div>
-        
-        {/* Columna 3 */}
-        <div className="flex-1 flex flex-col justify-center">
-          {/* Estudios Clínicos */}
-          <div className="flex flex-col items-center md:items-start p-4 text-center md:text-left py-6 md:py-28">
-            <div className="items-center justify-center mb-4">
+          {/* Transplante Cruzado */}
+          <div className="flex flex-col items-center text-center">
+            <div className="items-center justify-center mb-4 mt-[-1.5rem]">
               <img
-                src={studies}
-                alt="studies"
+                src={transplante}
+                alt="medicacion"
                 className="w-10 h-10"
               />
             </div>
             <div className="text-[#1e999b] text-2xl font-semibold font-['Josefin Sans'] uppercase mb-2">
-              Estudios clínicos
+              Transplante Cruzado
             </div>
-            <div className="text-black text-base font-semibold md:pr-8">
-              Visualízalos en forma completa y segura en la aplicación, en todo momento y en todo lugar.
+          </div>
+        </div>
+
+        {/* Columna 3 */}
+        <div className="flex-1 flex flex-col justify-center ml-[-1rem] gap-32">
+          {/* Estudios Clínicos */}
+          <div className="flex flex-col items-center md:items-start text-center md:text-left">
+            <div className="items-center justify-center mb-4">
+              <img
+                src={medicacion}
+                alt="medicacion"
+                className="w-10 h-10"
+              />
+            </div>
+            <div className="text-[#1e999b] text-2xl font-semibold font-['Josefin Sans'] uppercase mb-2">
+            Medicación
             </div>
           </div>
           {/* Turnos Médicos */}
-          <div className="flex flex-col items-center md:items-start p-4 text-center md:text-left">
+          <div className="flex flex-col items-center md:items-start text-center md:text-left">
             <div className="items-center justify-center mb-4">
               <img
                 src={calendar}
@@ -106,9 +94,6 @@ const Section3 = () => {
             </div>
             <div className="text-[#1e999b] text-2xl font-semibold font-['Josefin Sans'] uppercase mb-2">
               Turnos médicos
-            </div>
-            <div className="text-black text-base font-semibold md:pr-8">
-              Podes gestionar tus turnos desde la aplicación, de forma fácil y rápida.
             </div>
           </div>
         </div>

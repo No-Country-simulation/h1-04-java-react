@@ -16,7 +16,7 @@ const Section4 = () => {
             href="https://www.facebook.com/multiplicatex7/" 
             target="_blank"
             rel="noopener noreferrer"
-            className="w-[8.4375rem] h-[2.5625rem] p-3 bg-[#ea526f] rounded-lg flex justify-center items-start md:items-center gap-2 transition-colors duration-300 hover:bg-[#d84e62] hover:text-[#ffffff]"
+            className="w-[8.4375rem] h-[2.5625rem] p-3 bg-[#8163b0] rounded-lg flex justify-center items-start md:items-center gap-2 transition-transform duration-300 hover:bg-[#8163b0]/90 hover:text-[#ffffff] hover:scale-105"
           >
             <div className="text-white text-sm font-normal">Más Información</div>
           </a>
