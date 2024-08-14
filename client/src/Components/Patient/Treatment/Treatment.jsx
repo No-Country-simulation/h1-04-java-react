@@ -7,9 +7,16 @@ import PlanNutrition from "./Plans/PlanNutrition/PlanNutrition.jsx";
 import PlanGim from "./Plans/PlanGim.jsx";
 import PlanClinical from "./Plans/PlanClinical.jsx";
 import PlanMedication from "./Plans/PlanMedication.jsx";
-import download from "../../../Assets/Imgs/download.png";
 import arrowOrange from "../../../Assets/Imgs/arrowOrange.svg";
 import PatientHeader from "../PatientHeader/PatientHeader.jsx";
+import CVFileTreatment from '../../../Assets/files/tratamiento.pdf';
+import CVFileClinicalHistory from '../../../Assets/files/receta.pdf';
+import CVFileStudies from '../../../Assets/files/receta.pdf';
+import CVFileMedication from '../../../Assets/files/receta.pdf';
+import CVFilePhysicalActivity from '../../../Assets/files/receta.pdf';
+import CVFileNutrition from '../../../Assets/files/receta.pdf';
+import ButtonDownload from "./ButtonDownload/ButtonDownload.jsx";
+import download from "../../../Assets/Imgs/download.png";
 import "./treatment.css";
 
 const componentsMap = {
@@ -53,14 +60,21 @@ const Treatment = () => {
       <div className='titleContainer'>
         <PatientHeader text={title} />
       </div>
+      
       <article className='planes'>
         <div>
           <h2>Plan de {title}</h2>
           <p>Plan personalizado</p>
         </div>
-        <img src={download} alt='download' /> {/* Descargar PDF o algo */}
+        { location.pathname === "/treatment-treatment" && <ButtonDownload image={download} CVFile={CVFileTreatment} text="treatment" /> }
+        { location.pathname === "/treatment-clinical-history" && <ButtonDownload image={download} CVFile={CVFileClinicalHistory} text="clinical history" /> }
+        { location.pathname === "/treatment-studies" && <ButtonDownload image={download} CVFile={CVFileStudies} text="studies" /> }
+        { location.pathname === "/treatment-medication" && <ButtonDownload image={download} CVFile={CVFileMedication} text="medication" /> }
+        { location.pathname === "/treatment-physical-activity" && <ButtonDownload image={download} CVFile={CVFilePhysicalActivity} text="physical activity" /> }
+        { location.pathname === "/treatment-nutrition" && <ButtonDownload image={download} CVFile={CVFileNutrition} text="nutrition" /> }
       </article>
-      {!SelectedComponent ? (
+      
+      { !SelectedComponent ? (
         <article className='optionsContainer'>
           { buttons &&
             buttons.map((but, index) => (
@@ -87,7 +101,7 @@ const Treatment = () => {
             <SelectedComponent type={selectedButton?.label} />
           )}
         </article>
-      )}
+      ) }
     </section>
   );
 };

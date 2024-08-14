@@ -4,8 +4,8 @@
   box-shadow: 1px 4px 10px #13131348;
   padding: 20px;
   border-radius: 10px;
-  max-width: 100%; /* Asegúrate de que no exceda el ancho del contenedor padre */
-  box-sizing: border-box; /* Incluye el relleno y el borde en el ancho total */
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .containerContent h2 {
@@ -27,7 +27,7 @@
   margin-bottom: 30px;
   border-radius: 10px;
   padding: 20px;
-  width: 100%; /* Asegúrate de que se adapte al contenedor padre */
+  width: 100%;
   box-sizing: border-box;
 }
 
@@ -64,4 +64,44 @@
   margin-bottom: 10px;
   width: 35px;
   height: 35px;
+}
+
+
+.containerMedication{
+  background-color: #fff;
+  padding: 15px;
+  color: #5A5555;
+  font-weight: 600;
+  border-radius: 10px;
+  box-shadow: 1px 3px 6px hsla(0, 0%, 0%, 0.256);
+}
+.containerMedication h1{
+  color: #03A8AB;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.buttonOk{
+  background-color: #8163B0;
+  color: #fff;
+  width: 100%;
+  text-align: center;
+  padding: 6px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.insideContainerMedication{
+  background-color: #03A8AB33;
+  border-radius: 10px;
+  padding: 5px;
+}
+.insideContainerMedication span{
+  color: #03A8AB;
+  font-size: 35px;
+}
+.insideContainerMedication p{
+  margin-bottom: 0px;
+  margin-top: 0px;
+  font-weight: 700;
 }

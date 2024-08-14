@@ -4,6 +4,8 @@ import arrowOrange from "../../../../Assets/Imgs/arrowOrange.svg";
 import muyBien from "../../../../Assets/Imgs/muyBien.svg";
 import normal from "../../../../Assets/Imgs/normal.svg";
 import mal from "../../../../Assets/Imgs/mal.svg";
+import ButtonDownload from "../ButtonDownload/ButtonDownload";
+import CVFileMedication from '../../../../Assets/files/receta.pdf';
 import "./plans.css";
 
 const optionsTreat = [
@@ -39,17 +41,15 @@ const PlanMedication = () => {
             {comp.label}
             <img src={arrowOrange} alt='arrow' className={`w-4 h-6 ml-4 imageGreen ${ isOpen[index] ? 'arrow-rotate-treatment' : 'more-more-arrow-rotate' }`}/>
           </button>
-          {isOpen[index] && (
+          { isOpen[index] && (
             <>
               <div className='containerMedication'>
-                <div className='undo'>
-                  <div>
-                    <h1>{comp.label}</h1>
-                    <p>Micofenolato-mofetil | Micofenolato sódico</p>
-                  </div>
-                </div>
+                <section>
+                  <h1>{comp.label}</h1>
+                  <p className='font-bold mb-5'>Micofenolato-mofetil | Micofenolato sódico</p>
+                </section>
                 
-                <section className='flex justify-center text-center'>
+                <section className='flex justify-around text-center mb-5 insideContainerMedication'>
                   <div>
                     <p>Frecuencia</p>
                     <span>8</span>
@@ -67,12 +67,13 @@ const PlanMedication = () => {
                   </div>
                 </section>
                 
-                <span className='font-bold' style={{color:"#5A5555"}}>Indicaciones</span>
-                <p style={{color:"#5A5555"}}>Cada 8 horas debe tomar una dosis, luego de la comida. </p>
+                <div className="mb-5">
+                  <span className='font-bold' style={{color:"#5A5555"}}>Indicaciones</span>
+                  <p style={{color:"#5A5555"}}>Cada 8 horas debe tomar una dosis, luego de la comida. </p>
+                </div>
+                
                 <div className='buttonOk'>
-                  <button onClick={() => alert("Descargando...")}>
-                    Descargar Receta
-                  </button>
+                  <ButtonDownload CVFile={CVFileMedication} text={comp.label} />
                 </div>
               </div>
               
@@ -90,7 +91,7 @@ const PlanMedication = () => {
                   </div>
               </section>
             </>
-          )}
+          ) }
         </div>
       ))}
     </article>
