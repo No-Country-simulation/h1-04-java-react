@@ -5,6 +5,7 @@ import privateImg from "../../../Assets/Imgs/private.png";
 import profile from "../../../Assets/Imgs/pepitaExample.png";
 import PersonalData from "../../PersonalData/PersonalData";
 import Notifications from "../../Notifications/Notifications";
+import salir from "../../../Assets/Imgs/salir.svg"
 
 import DoctorContext from "../../../context/DoctorContext";
 import PatientHeader from "../PatientHeader/PatientHeader";
@@ -81,7 +82,7 @@ const DoctorConfiguration = () => {
             onClick={() => { handlechange("personalData"); toggleDropdown(1)}}
           >
             <p>Datos Personales</p>
-            <img src={arrowOrange} alt="arrow" className={`w-4 h-6 ml-4 imageBlue ${isOpen[1] ? 'arrow-rotate-treatment' : 'more-more-arrow-rotate'}`} />
+            <img src={arrowOrange} alt="arrow" className={`w-3 h-6  ml-4 imageBlue ${isOpen[1] ? 'arrow-rotate-treatment' : 'more-more-arrow-rotate'}`} />
           </button>
           { personalData && (
             <div className='containerPersonalData'>
@@ -95,7 +96,7 @@ const DoctorConfiguration = () => {
             onClick={() => { handlechange("notifications"); toggleDropdown(2) }}
           >
             <p>Notificaciones</p>
-            <img src={arrowOrange} alt="arrow" className={`w-4 h-6 ml-4 imageBlue ${isOpen[2] ? 'arrow-rotate-treatment' : 'more-more-arrow-rotate'}`} />
+            <img src={arrowOrange} alt="arrow" className={`w-3 h-6 ml-4 imageBlue ${isOpen[2] ? 'arrow-rotate-treatment' : 'more-more-arrow-rotate'}`} />
           </button>
           { notifications && (
             <div className='mb-5'>
@@ -106,11 +107,12 @@ const DoctorConfiguration = () => {
 
         <button className='flex justify-between optionBlue'>
           <p>Seguridad Privacidad</p>
-          <img src={privateImg} alt='arrow' className='w-6 h-6 ml-4' />
+          <img src={privateImg} alt='arrow' className='w-6 h-6 ml-4 imageBlue' />
         </button>
 
-        <button onClick={() => log()} className='w-full self-end rounded py-2 mt-10 optionBlue'>
-          Cerrar sesion
+        <button onClick={() => log()} className='w-full self-end rounded py-4 mt-10 optionBlue flex justify-between items-center'>
+          Salir
+          <img src={salir} alt="Salir img" />
         </button> 
       </article>
     </section>

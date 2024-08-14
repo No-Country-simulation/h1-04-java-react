@@ -199,3 +199,14 @@
   transform: rotate(180deg);
   transition: transform 0.3s ease;
 }
+
+
+.arrow-rotate-treatment {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
+
+.more-more-arrow-rotate {
+  transform: rotate(0deg); 
+  transition: transform 0.3s ease;
+}
