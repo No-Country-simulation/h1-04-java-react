@@ -176,50 +176,50 @@ const FooterLanding = () => {
       </div>
 
       {/* Modal */}
-{isModalOpen && (
-  <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-    <div className="bg-white p-8 rounded-lg shadow-lg max-w-3xl max-h-[96vh] overflow-y-auto">
-      <h2 className="text-black text-base text-center font-semibold mb-4">
-        h1-04-java-react | No Country
-      </h2>
-      <div className="grid grid-cols-2 gap-4 ">
-        {teamMembers.map((member) => (
-          <a
-          href={member.linkedin}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="ml-2 text-blue-500 hover:scale-105 transition-transform duration-300"
-        >
-          <div key={member.name} className="flex text-[#ea526f] bg-[#fceade] items-center p-2 border rounded-lg">
-            <img
-              src={member.avatar || 'https://via.placeholder.com/150'}
-              alt={`${member.name}'s avatar`}
-              className="w-10 h-10 rounded-full mr-4"
-            />
-            <div className="flex flex-col">
-              <p className="font-semibold  text-center">{member.name}</p>
-              <div className="flex items-center mt-1">
-                <p className="text-sm text-black font-semibold">{member.role}&nbsp; </p>
-                <div className='text-blue-500'>
-                  <FaLinkedin />
-                </div>
-              </div>
+      {isModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+          <div className="bg-white p-8 rounded-lg shadow-lg max-w-3xl max-h-[96vh] overflow-y-auto">
+            <h2 className="text-black text-base text-center font-semibold mb-4">
+              h1-04-java-react | No Country
+            </h2>
+            <div className="grid grid-cols-2 gap-4 ">
+              {teamMembers.map((member) => (
+                <a
+                  href={member.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="ml-2 text-blue-500 hover:scale-105 transition-transform duration-300"
+                >
+                  <div key={member.name} className="flex text-[#ea526f] bg-[#fceade] items-center p-2 border rounded-lg">
+                    <img
+                      src={member.avatar || 'https://via.placeholder.com/150'}
+                      alt={`${member.name}'s avatar`}
+                      className="w-10 h-10 rounded-full mr-4"
+                    />
+                    <div className="flex flex-col">
+                      <p className="font-semibold  text-center">{member.name}</p>
+                      <div className="flex items-center mt-1">
+                        <p className="text-sm text-black font-semibold">{member.role}&nbsp; </p>
+                        <div className='text-blue-500'>
+                          <FaLinkedin />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+            <div className="flex justify-end">
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="mt-4 px-4 py-2 bg-[#25ced1] text-white rounded"
+              >
+                Cerrar
+              </button>
             </div>
           </div>
-          </a>
-        ))}
-      </div>
-      <div className="flex justify-end">
-        <button
-          onClick={() => setIsModalOpen(false)}
-          className="mt-4 px-4 py-2 bg-[#25ced1] text-white rounded"
-        >
-          Cerrar
-        </button>
-      </div>
-    </div>
-  </div>
-)}
+        </div>
+      )}
 
 
       {isModalVisible && (

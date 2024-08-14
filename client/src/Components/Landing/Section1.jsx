@@ -3,7 +3,7 @@ import device2 from '../../Assets/Imgs/device2.png';
 import android from '../../Assets/Imgs/vector/android.svg';
 import apple from '../../Assets/Imgs/vector/apple.svg';
 import windows from '../../Assets/Imgs/vector/windows.svg';
-import { FaDownload } from 'react-icons/fa';
+import download from '../../Assets/Imgs/downloadLanding.png';
 import { useNavigate } from 'react-router-dom';
 
 const Section1 = () => {
@@ -32,15 +32,23 @@ const Section1 = () => {
             </div>
           </div>
           <div className="flex flex:row md:flex-col gap-14 md:gap-4">
-            <div className="flex gap-4">
+            <div className="flex gap-3">
               <div
                 onClick={handleDownloadClick}
-                className="h-12 md:h-8 px-4 bg-[#ea526f] border border-[#ea526f] rounded-md flex items-center justify-between space-x-2 cursor-pointer hover:bg-[#c44559]"
+                className="h-12 md:h-9 px-4 bg-[#8163b0] border border-[#8163b0] rounded-md flex items-center justify-between space-x-2 cursor-pointer hover:bg-[#8163b0]/90"
               >
                 <div className="text-white text-lg md:text-base font-semibold">
                   DESCARGAR
                 </div>
-                <FaDownload className="text-white" />
+                <img src={download} alt="download-icon" />
+              </div>
+              <div
+                onClick={handleDownloadClick}
+                className="h-12 md:h-9 px-4 bg-white border border-[#8163b0] rounded-md flex items-center justify-between space-x-2 cursor-pointer hover:bg-[#8163b0]/20"
+              >
+                <div className="text-[#8163b0] text-lg md:text-base font-semibold ">
+                  DEMOSTRACIÓN
+                </div>
               </div>
             </div>
             <div className="w-20 md:w-36 h-10 justify-center items-center gap-2 inline-flex">
