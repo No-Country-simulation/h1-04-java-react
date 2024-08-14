@@ -11,7 +11,7 @@ const Section5 = () => {
           <div className="w-full text-center text-pink-500 text-xl md:text-2xl font-normal leading-normal tracking-wide">
             PARA PROFESIONALES DE LA SALUD
           </div>
-          <div className="w-full text-center text-cyan-500 text-3xl font-semibold uppercase leading-tight">
+          <div className="w-full text-center text-cyan-500 text-xl md:text-3xl font-semibold uppercase leading-tight">
             impulsa la innovación
           </div>
         </div>

@@ -183,7 +183,7 @@ const FooterLanding = () => {
       {/* Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-          <div className="bg-white p-8 rounded-lg shadow-lg max-w-3xl max-h-[96vh] overflow-y-auto">
+          <div className="bg-white m-4 md:m-0 p-4 md:p-8 rounded-lg shadow-lg max-w-3xl max-h-[96vh] overflow-y-auto">
             <h2 className="text-black text-base text-center font-semibold mb-4">
               💗 h1-04-java-react | No Country 🌎
             </h2>
@@ -195,16 +195,16 @@ const FooterLanding = () => {
                   rel="noopener noreferrer"
                   className="ml-2 text-blue-500 hover:scale-105 transition-transform duration-300"
                 >
-                  <div key={member.name} className="flex text-[#8163b0] bg-[#fceade] items-center p-2 border border-[#ea526f] rounded-lg">
+                  <div key={member.name} className="flex flex-col md:flex-row text-[#8163b0] bg-[#fceade] items-center p-2 border border-[#ea526f] rounded-lg">
                     <img
                       src={member.avatar || 'https://via.placeholder.com/150'}
                       alt={`${member.name}'s avatar`}
-                      className="w-10 h-10 rounded-full mr-4"
+                      className="w-10 h-10 rounded-full md:mr-4"
                     />
-                    <div className="flex flex-col">
-                      <p className="font-semibold  text-center">{member.name}</p>
+                    <div className="flex flex-col items-center md:items-start">
+                      <p className="font-semibold text-xs md:text-base text-center">{member.name}</p>
                       <div className="flex items-center mt-1">
-                        <p className="text-sm text-black font-semibold">{member.role}&nbsp; </p>
+                        <p className="text-xs md:text-sm text-black font-semibold ">{member.role}&nbsp; </p>
                         <div className='text-blue-500'>
                           <FaLinkedin />
                         </div>

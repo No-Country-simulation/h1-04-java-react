@@ -8,10 +8,10 @@ const Section2 = () => {
     <div className="w-full flex flex-col items-center py-2 md:py-10">
       <div className="w-full max-w-xl flex flex-col items-center gap-6">
         <div className="flex flex-col items-center gap-3">
-          <div className="w-full text-center text-pink-500 text-2xl font-normal leading-normal tracking-wide">
+          <div className="w-full text-center text-pink-500 text-xl md:text-2xl font-normal leading-normal tracking-wide">
             PARA PACIENTES
           </div>
-          <div className="w-full text-center text-cyan-500 text-3xl font-semibold uppercase leading-tight">
+          <div className="w-full text-center text-cyan-500 text-xl md:text-3xl font-semibold uppercase leading-tight">
             pensada para vos
           </div>
         </div>

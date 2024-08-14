@@ -23,7 +23,7 @@ const Section1 = () => {
               <div className="text-gray-600 text-sm font-normal pb-2 pl-1">
                 Un Aplicación que reinventa el futuro de la Salud
               </div>
-              <div className="w-[18rem] md:w-[22rem] text-teal-400 text-3xl md:text-4xl font-bold ">
+              <div className="w-[18rem] md:w-[22rem] text-teal-400 text-2xl md:text-4xl font-bold ">
                 JUSTINA IO: PENSADA PARA VOS
               </div>
             </div>
@@ -31,13 +31,13 @@ const Section1 = () => {
               Te presentamos una aplicación innovadora, amigable y de fácil uso, que posibilita a los profesionales de la salud y a los pacientes participar de una manera activa en el cuidado de la salud, a partir de la recopilación de datos que permiten tomar medidas significativas para la mejora en los resultados de la salud y el bienestar general del paciente.
             </div>
           </div>
-          <div className="flex flex:row md:flex-col gap-14 md:gap-4">
+          <div className="flex flex-col gap-4">
             <div className="flex gap-3">
               <div
                 onClick={handleDownloadClick}
                 className="h-12 md:h-9 px-4 bg-[#8163b0] border border-[#8163b0] rounded-md flex items-center justify-between space-x-2 cursor-pointer hover:bg-[#8163b0]/90 hover:scale-105 transition-transform duration-300"
               >
-                <div className="text-white text-lg md:text-base font-semibold">
+                <div className="text-white text-base font-semibold">
                   DESCARGAR
                 </div>
                 <img src={download} alt="download-icon" />
@@ -46,12 +46,12 @@ const Section1 = () => {
                 onClick={handleDownloadClick}
                 className="h-12 md:h-9 px-4 bg-white border border-[#8163b0] rounded-md flex items-center justify-between space-x-2 cursor-pointer hover:bg-[#8163b0]/20 hover:scale-105 transition-transform duration-300"
               >
-                <div className="text-[#8163b0] text-lg md:text-base font-semibold ">
+                <div className="text-[#8163b0] text-base font-semibold ">
                   DEMOSTRACIÓN
                 </div>
               </div>
             </div>
-            <div className="w-20 md:w-36 h-10 justify-center items-center gap-2 inline-flex">
+            <div className="w-20 md:w-36 h-10 pl-8 md:pl-0 justify-center items-center gap-2 inline-flex">
               <img
                 src={android}
                 alt="android"
