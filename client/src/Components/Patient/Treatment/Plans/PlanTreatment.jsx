@@ -108,7 +108,7 @@ const PlanTreatment = () => {
                                 </article>
 
                                 <section className='feedBack'>
-                                    <h3>¿Cómo te sentiste con la comida?</h3>
+                                    <h3>¿Cómo te sentiste con el tratamiento médico?</h3>
                                     <div className='feedBackImgs'>
                                         <img src={muyBien} alt='Muy bien' />
                                         <img src={normal} alt='Normal' />

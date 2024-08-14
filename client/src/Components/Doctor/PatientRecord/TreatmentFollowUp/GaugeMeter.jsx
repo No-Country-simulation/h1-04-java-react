@@ -2,7 +2,7 @@
 const GaugeMeter = ({ value }) => {
     const radius = 40;
     const circumference = 2 * Math.PI * radius;
-    const percentage = (value / 5) * 100; // Asumiendo que el valor máximo es 5
+    const percentage = (value / 5) * 100;
     const offset = circumference - (percentage / 100) * circumference;
 
     return (
