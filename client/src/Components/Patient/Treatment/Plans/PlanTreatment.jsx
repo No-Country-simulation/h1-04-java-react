@@ -16,13 +16,18 @@ const contentMap = {
         title: "Diálisis Peritoneal",
         sample: "Tratamiento",
         instructions: `
-            Indicaciones:
+            Indicaciones: 
             <br />
-            How to install dependencies and structure your app. Styles for headings, paragraphs, lists.
-            <br /><br />
+            Se conecta a la máquina que recorre un ciclo de entre 3 y 5 intercambios por la noche mientras duerme. El paciente debe estar sujeto a la máquina por 10 a 12 horas durante este período. En la mañana comienza un intercambio con un tiempo de permanencia que dura todo el día. Esto le permite pasar más tiempo durante el día sin tener que hacer intercambios.
+            <br /> <br />
             Precauciones:
             <br />
-            How to install dependencies and structure your app. Styles for headings, paragraphs, lists...etc Styles for headings, paragraphsHow to install dependencies and structure your app. Styles for headings, paragraphs, lists...etc
+            Con la diálisis peritoneal existe el riesgo de infección del peritoneo (peritonitis) o de la zona donde está insertado el catéter. He aquí algunos consejos:
+            Lávese las manos antes de realizar un intercambio o de manejar el catéter.
+            Utilice una máscara quirúrgica al realizar un intercambio.
+            Revise cuidadosamente cada bolsa de solución en busca de señales de contaminación.
+            Limpie la zona del catéter con un antiséptico todos los días.
+            Revise el orificio de salida en busca de hinchazón, sangrado o señales de infección. Llame a su proveedor de inmediato si tiene fiebre u otras señales de infección.
         `
     }
 };
