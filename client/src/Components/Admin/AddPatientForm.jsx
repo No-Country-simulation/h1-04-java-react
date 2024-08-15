@@ -33,8 +33,8 @@ const AddPatientForm = ({ onClose }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
-      // Obtén el token del sessionStorage
-      const storedData = sessionStorage.getItem('authData');
+      // Obtén el token del localStorage
+      const storedData = localStorage.getItem('authData');
       let token = '';
       if (storedData) {
         const parsedData = JSON.parse(storedData);
