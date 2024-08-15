@@ -26,7 +26,7 @@ import MedicalHistory from "../Components/Doctor/PatientRecord/MedicalHistory/Me
 import TreatmentFollowUp from "../Components/Doctor/PatientRecord/TreatmentFollowUp/TreatmentFollowUp.jsx";
 import PatientStudy from "../Components/Doctor/PatientRecord/PatientStudy/PatientStudy.jsx";
 import PatientMedication from "../Components/Doctor/PatientRecord/PatientMedication/PatientMedication.jsx";
-import PrivateRoute from "./PrivateRoute.jsx"; // Asegúrate de importar el componente
+import PrivateRoute from "./PrivateRoute.jsx";
 import DoctorConfiguration from "../Components/Doctor/DoctorConfiguration/DoctorConfiguration.jsx";
 import PatientList from "../Components/Doctor/PatientList/PatientList.jsx";
 import OtherNavBar from "../Components/OtherNavBar/OtherNavBar.jsx";

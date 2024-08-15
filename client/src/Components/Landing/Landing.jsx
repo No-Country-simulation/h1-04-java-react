@@ -7,6 +7,7 @@ import Section5 from './Section5';
 import Section6 from './Section6';
 import Section7 from './Section7';
 import FooterLanding from './FooterLanding';
+import MainChatBot from "../ChatBot/MainChatBot";
 
 export default function Landing() {
   return (
@@ -19,6 +20,7 @@ export default function Landing() {
       <Section5 />
       <Section6 />
       <Section7 />
+      <MainChatBot />
       <FooterLanding />
     </div>
   );
