@@ -1,14 +1,44 @@
-.mainProfileConfiguration{
+.mainProfileConfiguration {
     color: #25CED1;
 }
 
-.userPictureName{
-    color: #EA526F;
-}
-
-.containerPersonalDa{
+.containerPersonalDa {
     border-radius: 10px;
     padding: 15px;
     background-color: #E5F3FA;
     color: #0087D0;
+}
+
+
+
+.userPictureName {
+    position: relative;
+    color: #EA526F;
+    text-align: center;
+}
+
+.imageContainer {
+    position: relative;
+    display: inline-block;
+    border: 2px solid #0087D0;
+    background-color: #0087D0;
+    border-radius: 100px;
+}
+
+.mainImage {
+    height: 120px;
+    width: 100%;
+    display: block;
+    border-radius: 100px;
+}
+
+.footerImage {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 40px;
+    width: auto;
+    border-radius: 100px;
+    z-index: 1;
 }

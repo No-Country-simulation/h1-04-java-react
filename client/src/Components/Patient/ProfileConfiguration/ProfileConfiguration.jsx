@@ -2,11 +2,11 @@ import { useNavigate } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
 import arrowOrange from "../../../Assets/Imgs/arrowOrange.svg";
 import privateImg from "../../../Assets/Imgs/private.png";
-import profile from "../../../Assets/Imgs/pepitaExample.png";
+import profile from "../../../Assets/Imgs/newImgUser.png";
+import footerImgUserSettings from "../../../Assets/Imgs/footerImgUserSettings.png";
 import PersonalData from "../../PersonalData/PersonalData";
 import Notifications from "../../Notifications/Notifications";
 import salir from "../../../Assets/Imgs/salir.svg"
-
 import DoctorContext from "../../../context/DoctorContext";
 import PatientHeader from "../PatientHeader/PatientHeader";
 import "./profileConfiguration.css"
@@ -68,7 +68,10 @@ const DoctorConfiguration = () => {
       <PatientHeader text="Configuración" />
 
       <article className='userPictureName'>
-        <img src={profile} alt='Paciente img' className='h-28 w-28 m-auto mt-5'/>
+        <div className='imageContainer'>
+          <img src={profile} alt='Paciente img' className='mainImage' />
+          <img src={footerImgUserSettings} alt='Footer paciente img' className='footerImage' />
+        </div>
         <p className='font-bold text-center mb-5 mt-1' style={{color:"#5A5555", fontSize:"23px"}}>
           { patientData
             ? patientData.firstName + " " + patientData.lastName

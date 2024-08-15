@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import WeekComponent from "./WeekComponent.jsx";
 import Day from "./Day.jsx";
-import imgUser from "../../../Assets/Imgs/imgUser.png"
+import imgUser from "../../../Assets/Imgs/newImgUser.png"
 import nutricion from "../../../Assets/Imgs/apple.svg"
 import medicacion from "../../../Assets/Imgs/pill.svg"
 import turno from "../../../Assets/Imgs/outline.svg"
@@ -35,7 +35,7 @@ const HomePatient = () => {
         <div className="flex justify-center items-center mt-5 mb-4">
           <img src={imgUser} alt="img user" className="w-32 h-32" />
         </div>
-        <h1>¡Hola { patient ? patient.firstName : 'Cargando...' }!</h1>
+        <h1>¡Hola { patient ? patient.firstName + " " + patient.lastName : 'Cargando...' }!</h1>
       </div>
       
       <div>

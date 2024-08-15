@@ -81,7 +81,7 @@ const Login = () => {
     setPassword("12345Aa*");
   }
   function patient() {
-    setEmail("juan@patient.com");
+    setEmail("maria@patient.com");
     setPassword("12345Aa*");
   }
   function admin() {
