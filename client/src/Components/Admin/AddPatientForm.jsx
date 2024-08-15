@@ -41,11 +41,11 @@ const AddPatientForm = ({ onClose }) => {
         token = parsedData.token; // Obtén solo el token
       }
       console.log('Token:', token);
-      
+
       const headers = new Headers();
       headers.append("Content-Type", "application/json");
       headers.append("Authorization", `Bearer ${token}`);
-    
+
       const patientData = {
         firstName: formData.nombre,
         lastName: formData.apellido,
@@ -54,9 +54,9 @@ const AddPatientForm = ({ onClose }) => {
         documentNumber: formData.nroDocumento,
         idFinancier: 1, // Asegúrate de ajustar esto a lo que necesites
       };
-    
+
       console.log('Sending data:', JSON.stringify(patientData)); // Verifica los datos enviados
-    
+
       fetch("https://justina-n2nb.onrender.com/v1/api/patients/create", {
         method: "POST",
         headers: headers,
@@ -89,8 +89,8 @@ const AddPatientForm = ({ onClose }) => {
       });
     }
   };
-  
-  
+
+
 
   return (
     <div>
@@ -230,11 +230,26 @@ const AddPatientForm = ({ onClose }) => {
             <textarea placeholder="Describa las medicaciones" className="border p-1 text-sm rounded w-full h-[4.2rem]"></textarea>
           </div>
 
-          <div className="flex flex-col pl-2 items-center justify-evenly col-span-1 col-start-3 ">
-            <h4 className='pb-1 text-md font-base text-red-600'>*Los campos en rojo son obligatorios.</h4>
-            <button type="submit" className="w-24 md:w-52 border border-[#0087d0] text-[#0087d0] hover:bg-[#bee1f8] font-bold py-1 my-2 px-4 rounded">Guardar</button>
-            <button type="button" onClick={onClose} className="w-24 md:w-52 hover:bg-[#fde0e0] text-white hover:text-red-600 font-bold py-1 px-4 rounded border bg-[#e4626f] border-[#e4626f]">Cerrar</button>
+          <div className="flex flex-col items-start justify-evenly col-span-1 col-start-3">
+            <h3 className="text-left font-semibold text-md mb-2">Agregar Historia Clínica</h3>
+
+            <input
+              type="file"
+              className="border p-1 text-sm rounded w-full mb-2"
+            />
+
+            <textarea
+              type="text"
+              placeholder="Descripción de la Historia Clínica"
+              className="border p-1 text-sm rounded w-full"
+            />
           </div>
+
+        </div>
+        <div className="flex flex-row items-center justify-end gap-4 mt-1">
+          <h4 className='pb-1 text-md font-base text-red-600'>*Los campos en rojo son obligatorios.</h4>
+          <button type="submit" className="w-24 md:w-52 border border-[#0087d0] text-[#0087d0] hover:bg-[#bee1f8] font-bold py-1 my-2 px-4 rounded">Guardar</button>
+          <button type="button" onClick={onClose} className="w-24 md:w-52 hover:bg-[#fde0e0] text-white hover:text-red-600 font-bold py-1 px-4 rounded border bg-[#e4626f] border-[#e4626f]">Cerrar</button>
         </div>
       </form>
 
