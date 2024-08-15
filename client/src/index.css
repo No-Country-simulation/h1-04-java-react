@@ -5,3 +5,24 @@
 body{
     background-color: aliceblue !important;
 }
+
+/* Estilos para la barra de desplazamiento en navegadores basados en WebKit (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 12px; 
+}
+::-webkit-scrollbar-track {
+    background: transparent; 
+}
+::-webkit-scrollbar-thumb {
+    background: #161616b4;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #161616b4;
+}
+
+/* Estilos para Firefox (usando scrollbar-width) */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #161616b4 transparent;
+}

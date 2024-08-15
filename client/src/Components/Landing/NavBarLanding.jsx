@@ -1,5 +1,5 @@
-import download from '../../Assets/Imgs/downloadLanding.png';
 import { useNavigate } from 'react-router-dom';
+import download from '../../Assets/Imgs/downloadLanding.png';
 import hearth from '../../Assets/Imgs/hearthNavbar.png';
 
 const NavBarLanding = () => {

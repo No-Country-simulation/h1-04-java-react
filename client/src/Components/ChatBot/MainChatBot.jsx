@@ -9,11 +9,11 @@ import "./mainChatBot.css"
 const DiseñoChat = {
     background: '#f5f8fb',
     fontFamily: 'Arial, sans-serif',
-    headerBgColor: '#00bcd4',
-    headerFontColor: '#fff',
+    headerBgColor: '#fceade',
+    headerFontColor: '#232233',
     headerFontSize: '15px',
-    botBubbleColor: '#00bcd4',
-    botFontColor: '#fff',
+    botBubbleColor: '#fceade',
+    botFontColor: '#232233',
     userBubbleColor: '#fff',
     userFontColor: '#4a4a4a',
 };
@@ -61,7 +61,7 @@ const MainChatBot = () => {
                             steps={[
                                 {
                                     id: 'intro',
-                                    message: 'Bienvenido a mi ChatBot. ¿Cómo te llamas?',
+                                    message: 'Bienvenido a Justina.io. ¿Cómo te llamas?',
                                     trigger: '1',
                                 },
                                 {
